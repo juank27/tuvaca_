@@ -1,67 +1,201 @@
-/************************header***********************************/
+:root {
+    --verde: #4B8325;
+    --blanco: #ffff;
+    --gris_claro: #E5E5E5;
+    --gris_oscuro: #A6A6A6;
+    --cafe: #A96224;
+    --font1: 'Port Lligat Sans', sans-serif;
+    --font2: 'Inter', sans-serif;
+}
 
-.header_imagenes{
+/************************header***********************************/
+/*banner de imagenes*/
+.header_imagenes {
     order: 4;
     margin-top: 10px;
+    height: 750px;
 }
-.nav{
+
+/*menu de navegación*/
+.header_navegacion {
     order: 1;
-    z-index:9;
+    z-index: 9;
     height: 60px;
     top: 0px;
     margin-top: 0%;
     position: fixed;
     background-color: white;
 }
-.titulo{
+
+/*estilos iconos de navegacion*/
+.header_icon_uno,
+.header_icon_dos,
+.header_icon_tres {
+    width: 40px;
+    height: 40px;
+}
+
+/*titulo del header*/
+.header_titulo {
     font-size: 2.4rem;
     line-height: 2.8rem;
     margin-top: 8%;
     padding: 0 30%;
     order: 2;
 }
-.icon_uno,.icon_dos,.icon_tres{
-    width: 40px;
-    height:40px;
-}
-.header_botones{
+
+/*botones para registro e inicio de sesion*/
+.header_botones {
     order: 3;
 }
-.header_botones button{
+
+.header_botones button {
     width: 20%;
     font-size: 1.6rem;
     cursor: pointer;
 }
-/************************main***********************************/
-main{
-    width: 100%;
-    margin-top: 3%;
+
+/************************Inicio de Sesión***********************************/
+/*modal secundario*/
+.modal_IS {
+    width: 35%;
+    height: 90%;
 }
-.baner_uno{
-    width: 0px;
-    height: 0px;
+
+/*imputs*/
+.modal_IS_formulario input[type=email],
+.modal_IS_formulario input[type=password] {
+    width: 80%;
+    border-radius: 5px;
+    height: 30%;
 }
-.contenido{
+
+/************************Comunes***********************************/
+.modal_ContendorC {
+    margin-bottom: 0;
+}
+
+/*logo*/
+.modal_logo {
+    width: 180px;
+    height: 125px;
+    margin-left: 10%;
+}
+
+/*boton iniciar*/
+.modal_formulario button {
+    width: 30%;
+    font-size: 1.6rem;
+}
+
+.modal_separador {
+    margin-bottom: 20px;
+}
+
+.modal_google a,
+.modal_facebook a {
+    font-size: 1.6rem;
+}
+
+/************************Registrarse***********************************/
+.modal_formulario_R input {
+    width: 40%;
+    height: 35px;
+    gap: 10px;
+}
+
+.modal_R {
+    width: 48%;
+    height: 95%;
+}
+
+/************************Main baner uno***********************************/
+.main_banerU {
+    display: none;
+}
+
+/************************Main contenido***********************************/
+.main_contenido {
     width: 100%;
     height: auto;
     display: grid;
     max-width: 3000;
     justify-content: center;
-    grid-template-columns: repeat(2,40%);
-    grid-template-rows: repeat(2,300px);
+    grid-template-columns: repeat(2, 40%);
+    grid-template-rows: repeat(2, 300px);
     gap: 5%;
     margin-bottom: 5%;
 }
-.contenido_p{
+
+.main_contenido_p {
     width: 100%;
-    box-shadow: 0px 4px 4px 0  rgba(0, 0, 0, .2);
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, .2);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.prev,
-.next {
-    display: none;
+.municipios{
+    width: 100%;
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+/************************Main baner dos***********************************/
+.main_banerD {
+    height: 200px;
+    margin-bottom: 5%;
+}
+
+/************************Main contacto***********************************/
+.main_contacto {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_contacto_titulo {
+    font-size: 2rem;
+}
+
+.main_contacto input {
+    margin-bottom: 30px;
+    border: none;
+}
+
+.main_contacto button {
+    font-size: 1.8rem;
+}
+
+/************************Footer***********************************/
+.footer_correo {
+    width: 70%;
+}
+
+.footer_correo p,
+.footer_banerf p {
+    font-size: 1.8rem;
+}
+.footer_baner {
+    height: 200px;
+}
+/************************Sections Municipios***********************************/
+.modal_M_contenido{
+    width: 45%;
+    height: 70%;
+}
+.select_municipios a{
+    font-size: 1.6rem;
+}
+.modal_M  h1{
+    width: 30%;
+    left: 35%;
+    font-size: 1.6rem;
+}
+.ubicación{
+    width:30px;
+    height: 30px;
 }
