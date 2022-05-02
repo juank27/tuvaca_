@@ -230,7 +230,7 @@ body {
 .modal_IS {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 90%;
+    height: 60%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -282,6 +282,7 @@ body {
     border-radius: 10px;
     padding: 5px;
     width: 70%;
+    height: 30px;
 }
 
 /************************Registrarse***********************************/
@@ -303,7 +304,7 @@ body {
 .modal_R {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -349,6 +350,7 @@ body {
     border-radius: 10px;
     padding: 5px;
     width: 70%;
+    height: 30px;
 }
 
 .modal_formulario_R input[type=number]::-webkit-inner-spin-button,
@@ -376,11 +378,13 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 5px;}
+    padding: 5px;
+}
 .modal_logo {
     width: 110px;
     height: 75px;
     margin-left: 10%;
+    margin-bottom: 5%;
 }
 .modal_formulario button {
     background-color: var(--verde);
@@ -401,10 +405,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .modal_separador {
     width: 70%;
-    height: 1%;
+    height: 0.5%;
     border-radius: 10px;
     background-color: var(--verde);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 ::placeholder {
     margin-left: 5px;
@@ -947,7 +951,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal_M {
     width:100%;
     background-color: transparent;
-    height: 100%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1048,6 +1052,12 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: center;
     background-size: contain;
     top: 2%;
+}
+.modal_ContendorCM {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
 }
 .cerrar_modal_M:hover {
     background-image: url(../icons/Cancel-1.png);
