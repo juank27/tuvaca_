@@ -230,7 +230,7 @@ body {
 .modal_IS {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 60%;
+    height: 70%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -304,7 +304,7 @@ body {
 .modal_R {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 85%;
+    height: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -369,6 +369,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal_Cuerpo {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 95%;
     width: 100%;
