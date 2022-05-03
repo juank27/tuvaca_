@@ -119,14 +119,16 @@
     width: 100%;
     height: auto;
     display: grid;
-    max-width: 3000;
+    max-width: 1200;
     justify-content: center;
     grid-template-columns: repeat(2, 40%);
     grid-template-rows: repeat(2, 300px);
     gap: 5%;
     margin-bottom: 5%;
 }
-
+.main_contenido_titulo{
+    font-size: 1.6rem;
+}
 .main_contenido_p {
     width: 100%;
     box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, .2);
@@ -158,16 +160,18 @@
 }
 
 .main_contacto_titulo {
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 
 .main_contacto input {
     margin-bottom: 30px;
     border: none;
+    width: 70%;
+    height: 50px;
 }
 
 .main_contacto button {
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 /************************Footer***********************************/

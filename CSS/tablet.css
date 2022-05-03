@@ -27,13 +27,21 @@
     font-size: 1.8rem;
     line-height: 1.4rem;
 }
+.header_botones button {
+    width: 30%;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
 /************************Inicio de Sesión***********************************/
 /*imputs*/
 .modal_IS_formulario input[type=email],.modal_IS_formulario input[type=password]{
     width: 60%;
 }
 .modal_IS{
-    width:70%;}
+    width:60%;
+    height: 75%;
+}
+
 
 /************************Comunes***********************************/
 /*logo*/
@@ -93,6 +101,9 @@
     width: 100%;
     box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, .2);
     border-radius: 10px;
+}
+.main_contenido_titulo{
+    font-size: 1.4rem;
 }
 /************************Main baner dos***********************************/
 .main_banerD{

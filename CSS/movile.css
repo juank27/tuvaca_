@@ -230,7 +230,7 @@ body {
 .modal_IS {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 60%;
+    height: 80%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -304,7 +304,7 @@ body {
 .modal_R {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 80%;
+    height: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -444,7 +444,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: none;
     font-size: var(--font2);
     color: var(--gris_oscuro);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 .modal_facebook {
@@ -473,7 +473,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: none;
     font-size: var(--font2);
     color: var(--gris_oscuro);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 /************************Main***********************************/
@@ -551,8 +551,8 @@ input[type=number]::-webkit-outer-spin-button {
 /**municipios**/
 .municipios{
     display: grid;
-    grid-template-columns: repeat(7,14%);
-    grid-template-rows: repeat(7,14%);
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(10,10%);
     width: 75%;
     justify-content: center;
     height:288px;
@@ -586,7 +586,7 @@ input[type=number]::-webkit-outer-spin-button {
 .uno_M{
     width: 30px;
     height: 30px;
-    grid-area: 2/4/3/5;
+    grid-area: 3/5/4/6;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -598,7 +598,7 @@ input[type=number]::-webkit-outer-spin-button {
 .dos_M{
     width: 30px;
     height: 30px;
-    grid-area: 3/3/4/4;
+    grid-area: 4/5/5/6;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -610,7 +610,7 @@ input[type=number]::-webkit-outer-spin-button {
 .tres_M{
     width: 30px;
     height: 30px;
-    grid-area: 3/4/4/5;
+    grid-area: 5/6/6/7;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -622,7 +622,7 @@ input[type=number]::-webkit-outer-spin-button {
 .cuatro_M{
     width: 30px;
     height: 30px;
-    grid-area: 3/5/4/6;
+    grid-area: 5/7/6/8;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -634,7 +634,7 @@ input[type=number]::-webkit-outer-spin-button {
 .cinco_M{
     width: 30px;
     height: 30px;
-    grid-area: 4/2/5/3;
+    grid-area: 6/4/7/5;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -646,7 +646,18 @@ input[type=number]::-webkit-outer-spin-button {
 .seis_M{
     width: 30px;
     height: 30px;
-    grid-area: 4/3/5/4;
+    grid-area: 6/5/7/6;
+    align-self: center;
+    justify-self:center;
+    background-image: url(../icons/Cow.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.siete_M{
+    width: 30px;
+    height: 30px;
+    grid-area: 6/7/7/8;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -655,21 +666,10 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: contain;
     visibility: hidden;
 }
-.siete_M{
-    width: 30px;
-    height: 30px;
-    grid-area: 4/4/5/5;
-    align-self: center;
-    justify-self:center;
-    background-image: url(../icons/Cow.png);
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: contain;
-}
 .ocho_M{
     width: 30px;
     height: 30px;
-    grid-area: 4/5/5/6;
+    grid-area: 7/5/8/6;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -681,7 +681,7 @@ input[type=number]::-webkit-outer-spin-button {
 .nueve_M{
     width: 30px;
     height: 30px;
-    grid-area: 4/6/5/7;
+    grid-area: 7/6/8/7;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -693,7 +693,7 @@ input[type=number]::-webkit-outer-spin-button {
 .diez_M{
     width: 30px;
     height: 30px;
-    grid-area: 5/2/6/3;
+    grid-area: 8/3/9/4;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -717,7 +717,7 @@ input[type=number]::-webkit-outer-spin-button {
 .doce_M{
     width: 30px;
     height: 30px;
-    grid-area: 5/4/6/5;
+    grid-area: 8/5/9/6;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -729,7 +729,7 @@ input[type=number]::-webkit-outer-spin-button {
 .trece_M{
     width: 30px;
     height: 30px;
-    grid-area: 5/5/6/6;
+    grid-area: 4/7/5/8;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -741,7 +741,7 @@ input[type=number]::-webkit-outer-spin-button {
 .catorce_M{
     width: 30px;
     height: 30px;
-    grid-area: 5/6/6/7;
+    grid-area: 9/4/10/5;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -753,7 +753,7 @@ input[type=number]::-webkit-outer-spin-button {
 .quince_M{
     width: 30px;
     height: 30px;
-    grid-area: 6/2/7/3;
+    grid-area: 7/3/8/4;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
@@ -765,7 +765,7 @@ input[type=number]::-webkit-outer-spin-button {
 .unoseis_M{
     width: 30px;
     height: 30px;
-    grid-area: 6/3/7/4;
+    grid-area: 6/8/7/9;
     align-self: center;
     justify-self:center;
     background-image: url(../icons/Cow.png);
