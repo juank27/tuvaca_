@@ -313,19 +313,19 @@ simijaca.addEventListener("click", function () {
 })
 susa.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "3/4/4/5";
-    ubicación.style.alignSelf= "end";
+    ubicación.style.gridArea= "4/4/5/5";
+    ubicación.style.alignSelf= "start";
 })
 suta.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
     ubicación.style.gridArea= "5/4/6/5";
-    ubicación.style.alignSelf= "start";c
+    ubicación.style.alignSelf= "start";
 
 })
 tausa.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
     ubicación.style.gridArea= "5/3/6/4";
-    ubicación.style.alignSelf= "center";
+    ubicación.style.alignSelf= "end";
 })
 ubate.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
