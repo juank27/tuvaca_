@@ -333,4 +333,217 @@ ubate.addEventListener("click", function () {
     ubicación.style.alignSelf= "end";
 
 })
+/*****************************modal directorio*******************************/
+let directorio = document.querySelectorAll(".directorio")[0];
+let modaldirectorio = document.querySelectorAll(".modal_container_D")[0];
+let cerrardirectorio = document.querySelectorAll(".cerrar_modal_D")[0];
+let modaldirectorio2 = document.querySelectorAll(".modal_D")[0];
+directorio.addEventListener("click", function () {
 
+    modaldirectorio.style.opacity = "1";
+    modaldirectorio.style.visibility = "visible";
+    modaldirectorio2.classList.toggle("modal_cerrado_D")
+})
+cerrardirectorio.addEventListener("click", function () {
+    modaldirectorio2.classList.toggle("modal_cerrado_D");
+    setTimeout(function () {
+        modaldirectorio.style.opacity = "0";
+        modaldirectorio.style.visibility = "hidden";
+    }, 900)
+})
+let filtro2 = document.querySelectorAll(".filtros2")[0];
+let municipioD = document.querySelectorAll(".municipioD")[0];
+let municipioDF = document.querySelectorAll(".municipiosDF")[0];
+let vendedorD = document.querySelectorAll(".vendedorD")[0];
+let vendedorDF = document.querySelectorAll(".vendedorDF")[0];
+let precioD = document.querySelectorAll(".preciosD")[0];
+let preciosD = document.querySelectorAll(".precioD")[0];
+let vehiculo = document.querySelectorAll(".vehiculo")[0];
+let vehiculoF = document.querySelectorAll(".vehiculoF")[0];
+vehiculo.addEventListener("click", function () {
+    vehiculoF.style.visibility = "visible";
+    vehiculoF.style.height= "auto";
+    municipioDF.style.visibility = "hidden";
+    municipioDF.style.height= "0px";
+    vendedorDF.style.visibility = "hidden";
+    vendedorDF.style.height= "0px";
+    filtro2.style.visibility="visible"
+    filtro2.style.height= "auto";
+    precioD.style.visibility="hidden"
+    precioD.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Vehiculo';
+})
+municipioD.addEventListener("click", function () {
+    vehiculoF.style.visibility = "hidden";
+    vehiculoF.style.height= "0px";
+    municipioDF.style.visibility = "visible";
+    municipioDF.style.height= "auto";
+    vendedorF.style.visibility = "hidden";
+    vendedorDF.style.height= "0px";
+    filtro2.style.visibility="visible"
+    filtro2.style.height= "auto";
+    precioD.style.visibility="hidden"
+    precioD.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Municipios';
+})
+vendedorD.addEventListener("click", function () {
+    vehiculoF.style.visibility = "hidden";
+    vehiculoF.style.height= "0px";
+    municipioDF.style.visibility = "hidden";
+    municipioDF.style.height= "0px";
+    vendedorDF.style.visibility = "visible";
+    vendedorDF.style.height= "auto";
+    filtro2.style.visibility="visible"
+    filtro2.style.height= "auto";
+    precioD.style.visibility="hidden"
+    precioD.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Vendedor';
+})
+preciosD.addEventListener("click", function () {
+    vehiculoF.style.visibility = "hidden";
+    vehiculoF.style.height= "opx";
+    municipioDF.style.visibility = "hidden";
+    municipioDF.style.height= "0px";
+    vendedorDF.style.visibility = "hidden";
+    vendedorDF.style.height= "0px";
+    filtro2.style.visibility="hidden"
+    filtro2.style.height= "0px";
+    precioD.style.visibility="visible"
+    precioD.style.height= "auto"
+    document.getElementById('categoria').innerHTML='Precio';
+})
+/*****************************modal busqueda*******************************/
+let busquedas = document.querySelectorAll(".busquedas")[0];
+let modalBusqueda = document.querySelectorAll(".modal_container_B")[0];
+let cerrarBusqueda = document.querySelectorAll(".cerrar_modal_B")[0];
+let modalBusqueda2 = document.querySelectorAll(".modal_B")[0];
+
+busquedas.addEventListener("click", function () {
+
+    modalBusqueda.style.opacity = "1";
+    modalBusqueda.style.visibility = "visible";
+    modalBusqueda2.classList.toggle("modal_cerrado_B")
+})
+cerrarBusqueda.addEventListener("click", function () {
+    modalBusqueda2.classList.toggle("modal_cerrado_B");
+    setTimeout(function () {
+        modalBusqueda.style.opacity = "0";
+        modalBusqueda.style.visibility = "hidden";
+    }, 900)
+})
+let filtro = document.querySelectorAll(".filtros")[0];
+let precios = document.querySelectorAll(".precios")[0];
+let raza = document.querySelectorAll(".raza")[0];
+let razaF = document.querySelectorAll(".razaF")[0];
+let categoria = document.querySelectorAll(".categoria")[0];
+let categoriaF = document.querySelectorAll(".categoriasF")[0];
+let edad = document.querySelectorAll(".edad")[0];
+let edadF = document.querySelectorAll(".edadF")[0];
+let municipio = document.querySelectorAll(".municipioB")[0];
+let municipioF = document.querySelectorAll(".municipiosF")[0];
+let vendedor = document.querySelectorAll(".vendedor")[0];
+let vendedorF = document.querySelectorAll(".vendedorF")[0];
+let precio = document.querySelectorAll(".precio")[0];
+
+
+raza.addEventListener("click", function () {
+    razaF.style.visibility = "visible";
+    razaF.style.height= "auto";
+    categoriaF.style.visibility = "hidden";
+    categoriaF.style.height= "0px";
+    edadF.style.visibility = "hidden";
+    edadF.style.height= "0px";
+    municipioF.style.visibility = "hidden";
+    municipioF.style.height= "0px";
+    vendedorF.style.visibility = "hidden";
+    vendedorF.style.height= "0px";
+    filtro.style.visibility="visible"
+    filtro.style.height= "auto";
+    precios.style.visibility="hidden"
+    precios.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Raza';
+})
+categoria.addEventListener("click", function () {
+    razaF.style.visibility = "hidden";
+    razaF.style.height= "0px";
+    categoriaF.style.visibility = "visible";
+    categoriaF.style.height= "auto";
+    edadF.style.visibility = "hidden";
+    edadF.style.height= "0px";
+    municipioF.style.visibility = "hidden";
+    municipioF.style.height= "0px";
+    vendedorF.style.visibility = "hidden";
+    vendedorF.style.height= "0px";
+    filtro.style.visibility="visible"
+    filtro.style.height= "auto";
+    precios.style.visibility="hidden"
+    precios.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Categoria';
+})
+edad.addEventListener("click", function () {
+    razaF.style.visibility = "hidden";
+    razaF.style.height= "0px";
+    categoriaF.style.visibility = "hidden";
+    categoriaF.style.height= "0px";
+    edadF.style.visibility = "visible";
+    edadF.style.height= "auto";
+    municipioF.style.visibility = "hidden";
+    municipioF.style.height= "0px";
+    vendedorF.style.visibility = "hidden";
+    vendedorF.style.height= "0px";
+    filtro.style.visibility="visible"
+    filtro.style.height= "auto";
+    precios.style.visibility="hidden"
+    precios.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Edad';
+})
+municipio.addEventListener("click", function () {
+    razaF.style.visibility = "hidden";
+    razaF.style.height= "0px";
+    categoriaF.style.visibility = "hidden";
+    categoriaF.style.height= "0px";
+    edadF.style.visibility = "hidden";
+    edadF.style.height= "0px";
+    municipioF.style.visibility = "visible";
+    municipioF.style.height= "auto";
+    vendedorF.style.visibility = "hidden";
+    vendedorF.style.height= "0px";
+    filtro.style.visibility="visible"
+    filtro.style.height= "auto";
+    precios.style.visibility="hidden"
+    precios.style.height= "0px"
+    document.getElementById('categoria').innerHTML='Municipio';
+})
+vendedor.addEventListener("click", function () {
+    razaF.style.visibility = "hidden";
+    razaF.style.height= "0px";
+    categoriaF.style.visibility = "hidden";
+    categoriaF.style.height= "0px";
+    edadF.style.visibility = "hidden";
+    edadF.style.height= "0px";
+    municipioF.style.visibility = "hidden";
+    municipioF.style.height= "0px";
+    vendedorF.style.visibility = "visible";
+    vendedorF.style.height= "auto";
+    filtro.style.visibility="visible"
+    filtro.style.height= "auto";
+    precios.style.visibility="hidden"
+    precios.style.height= "0px";
+    document.getElementById('categoria').innerHTML='Vendedor';
+})
+precio.addEventListener("click", function () {
+    razaF.style.visibility = "hidden";
+    razaF.style.height= "0px";
+    categoriaF.style.visibility = "hidden";
+    categoriaF.style.height= "0px";
+    edadF.style.visibility = "hidden";
+    edadF.style.height= "0px";
+    municipioF.style.visibility = "hidden";
+    municipioF.style.height= "0px";
+    vendedorF.style.visibility = "hidden";
+    vendedorF.style.height= "0px";
+    filtro.style.visibility="hidden"
+    filtro.style.height= "0px";
+    precios.style.visibility="visible"
+    precios.style.height= "auto";
+})

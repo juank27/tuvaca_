@@ -208,3 +208,41 @@
 .modal_ContendorCM {
     width: 60%;
 }
+/************************Sections Publicaciones***********************************/
+.modal_B_contenido{
+    width: 40%;
+    height: 75%;
+}
+.modal_B  h1{
+    width: 30%;
+    left: 35%;
+    font-size: 1.6rem;
+}
+.select_busqueda a{
+    font-size: 1.6rem;}
+.nombre_filtro{
+    font-size: 1.8rem;}
+.resultado_filtro{
+    font-size: 1.8rem;}
+.precios{
+    width: 70%;
+    font-size: 1.8rem;
+}
+.casilla_p{
+    height: 30px;
+}
+.pesos, .lista{
+    width: 25px;
+    height: 25px;
+}
+/************************Sections Publicaciones***********************************/
+
+.modal_D_contenido{
+    width: 40%;
+    height: 75%;
+}
+.modal_D  h1{
+    width: 30%;
+    left: 35%;
+    font-size: 1.6rem;
+}

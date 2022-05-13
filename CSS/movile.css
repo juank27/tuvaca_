@@ -530,6 +530,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
     justify-content: center;
     position: relative;
 }
@@ -849,6 +850,172 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 5px;
     border-radius: 10px;
 }
+/***Busqueda***/
+.main_contenido_busqueda{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main_contenido_bBuscador{
+    width: 70%;
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.main_contenido_bBuscador p{
+    font-family: var(--font1);
+    font-weight: 700;
+    color: var(--verde);
+    font-size: 1.4rem;
+    display: block;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 8ch;
+    animation:typing 2s steps(8) infinite,blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+@keyframes typing{
+    from{width:0 ;}
+}
+@keyframes blink{
+    50%{border: transparent;}
+}
+.main_contenido_bBuscador span{
+    width: 20px;
+    height: 20px;
+    background-image: url(../icons/Search.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.main_contenido_bCajas{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.main_contenido_bCaja{
+    width:35%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.main_bCaja_foto{
+    width: 100%;
+    height: 60px;
+    background-color: var(--gris_claro);
+    background-image: url(../icons/Cow-1.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+.main_bCaja_texto{
+    width: 50%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--gris_claro);
+}
+.main_bCaja_calificacion{
+    width:100%;
+    height:10px;
+    display: flex;
+    align-items: center;
+}
+.calificacion_strart{
+    width: 30%;
+    height: 100%;
+    display: flex;
+}
+.strart{
+    width: 10px;
+    height: 10px;
+    background-image: url(../icons/star.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.calificacion_texto{
+    width: 30%;
+    height: 50%;
+    border-radius: 5px;
+    background-color: var(--gris_claro);
+}
+.calificacion_precio{
+    width: 5px;
+    height: 5px;
+    background-image: url(../icons/Vector.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+/****acarreos****/
+.main_contenido_acarreos{
+    width: 100%;
+    height: 60%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.main_caja_acarreos{
+    width: 40%;
+    height: 50px;
+}
+.main_cajaA_texto{
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--gris_claro);
+}
+.main_cajaA_Contenido{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.carro{
+    width: 40px;
+    height: 40px;
+    background-image: url(../icons/Truck.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.texto_carro{
+    width: 60%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.texto_carro div{
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: var(--gris_claro);
+}
 /************************Main baner dos***********************************/
 .main_banerD{
     display: grid;
@@ -1137,9 +1304,308 @@ input[type=number]::-webkit-outer-spin-button {
 .cerrar_modal_M:hover {
     background-image: url(../icons/Cancel-1.png);
 }
-/* #cajaUno.animate__pulse  {
-    animation-iteration-count: infinite;
-} */
-#cajaDos.animate__pulse{
+/************************Sections Busqueda***********************************/
+.modal_container_B{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_B {
+    width:100%;
+    background-color: transparent;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    transform: translateY(0%);
+    transition: transform 1s;
+}
+.modal_cerrado_B {
+    transform: translateY(-200%);
+}
+.cerrar_modal_B:hover {
+    background-image: url(../icons/Cancel-1.png);
+}
+.modal_B_contenido{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal_B  h1{
+    width: 60%;
+    height: 10%;
+    background-color: var(--verde);
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    font-family: var(--font2);
+    font-weight: 700;
+    font-size: 1.2rem;
+    left: 20%;
+    top: 10%;
+}
+.modal_B_busqueda{
+    width: 60%;
+    background-color:white;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 4px 4px 0  rgba(0, 0, 0, .2);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+}
+.modal_ContendorCB {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+.cerrar_modal_B {
+    background-image: url(../icons/Cancel.png);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    top: 2%;
+}
+.select_busqueda{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    background-color: var(--gris_claro);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100%;
+    box-shadow: 0px 4px 4px 0  rgba(0, 0, 0, .2);
+}
+.main_contenido_bBuscadorC{
+    width: 70%;
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 25px;
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.main_contenido_bBuscadorC span{
+    width: 20px;
+    height: 20px;
+    background-image: url(../icons/Search.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.select_busqueda a{
+    text-decoration: none;
+    color: var(--verde);
+    margin-bottom: 9px;
+    font-size: 1.2rem;
+    font-family: var(--font2);
+    font-weight: bold;
+}
+.select_busqueda a:focus{
+    color: var(--cafe);
+    border-bottom: 1px solid var(--cafe);
+}
+.select_busqueda a:hover{
+    color: var(--cafe);
+    border-bottom: 1px solid var(--cafe);
+}
+.filtros{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+.nombre_filtro{
+    width:50% ;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #4B8325;
+    background-color: var(--gris_claro);
+    border-radius: 5px;
+    text-align: center;
+    font-family: var(--font1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 5px;
+}
+.nombre_filtro span{
+    width: 15px;
+    height: 15px;
+    background-image: url(../icons/select.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.resultado_filtro{
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+    color: #4B8325;
+    font-family: var(--font1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--gris_claro);
+}
+.resultado_filtro p{
+    padding: 0 5px;
+    border-bottom: 2px solid var(--gris_oscuro);
+    margin-bottom: 2px;
+}
+.categoriasF,.edadF, .municipiosF, .razaF, .vendedorF{
+    height: 0px;
+    visibility: hidden;
+}
+.precios{
+    width: 100%;
+    display: flex;
+    height: 0px;
+    visibility: hidden;
+    justify-content: space-between;
+    padding: 0 5px;
+    color: #4B8325;
+    font-family: var(--font1);
+    font-size: 1.4rem;
+}
+.casilla_p{
+    width: 40%;
+    height: auto;
+    background-color: var(--gris_claro);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pesos{
+    width: 10px;
+    height: 10px;
+    background-image: url(../icons/Vector.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.lista{
+    width: 10px;
+    height: 10px;
+    background-image: url(../icons/precio.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+
+/************************Sections Busqueda***********************************/
+.modal_container_D{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_D {
+    width:100%;
+    background-color: transparent;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    transform: translateY(0%);
+    transition: transform 1s;
+}
+.modal_D  h1{
+    width: 60%;
+    height: 10%;
+    background-color: var(--verde);
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    font-family: var(--font2);
+    font-weight: 700;
+    font-size: 1.2rem;
+    left: 20%;
+    top: 10%;
+}
+.modal_cerrado_D {
+    transform: translateY(-200%);
+}
+.cerrar_modal_D:hover {
+    background-image: url(../icons/Cancel-1.png);
+}
+.modal_ContendorCD {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+.cerrar_modal_D {
+    background-image: url(../icons/Cancel.png);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    top: 2%;
+}
+.municipiosDF, .vehiculoF, .vendedorDF{
+    height: 0px;
+    visibility: hidden;
+}
+.filtros2{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+/************************Animación***********************************/
+.animate__animated{
     animation-iteration-count: infinite;
 }
