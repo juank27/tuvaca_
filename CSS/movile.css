@@ -1229,6 +1229,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1.2rem;
     font-family: var(--font2);
     font-weight: bold;
+    cursor: pointer;
 }
 .select_municipios a:focus{
     color: var(--cafe);
@@ -1431,6 +1432,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1.2rem;
     font-family: var(--font2);
     font-weight: bold;
+    cursor: pointer;
 }
 .select_busqueda a:focus{
     color: var(--cafe);
