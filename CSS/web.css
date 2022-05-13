@@ -208,7 +208,7 @@
 .modal_ContendorCM {
     width: 60%;
 }
-/************************Sections Publicaciones***********************************/
+/************************Sections busqueda***********************************/
 .modal_B_contenido{
     width: 40%;
     height: 75%;
@@ -235,7 +235,10 @@
     width: 25px;
     height: 25px;
 }
-/************************Sections Publicaciones***********************************/
+.modal_ContendorCB {
+    width: 60%;
+}
+/************************Sections directorio***********************************/
 
 .modal_D_contenido{
     width: 40%;
@@ -245,4 +248,7 @@
     width: 30%;
     left: 35%;
     font-size: 1.6rem;
+}
+.modal_ContendorCD {
+    width: 60%;
 }
