@@ -790,6 +790,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+
 }
 .contenido_p_izquierdo{
     width: 50%;
@@ -1528,7 +1529,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: contain;
 }
 
-/************************Sections Busqueda***********************************/
+/************************Sections Directorio***********************************/
 .modal_container_D{
     opacity: 0;
     visibility: hidden;
@@ -1606,6 +1607,235 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-between;
     gap: 5px;
+}
+/************************Sections Publicaciones***********************************/
+.modal_container_P{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_P {
+    width:100%;
+    background-color: transparent;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    transform: translateY(0%);
+    transition: transform 1s;
+}
+.modal_P  h1{
+    width: 60%;
+    height: 10%;
+    background-color: var(--verde);
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    font-family: var(--font2);
+    font-weight: 700;
+    font-size: 1.2rem;
+    left: 20%;
+    top: 10%;
+}
+.modal_cerrado_P {
+    transform: translateY(-200%);
+}
+.cerrar_modal_P:hover {
+    background-image: url(../icons/Cancel-1.png);
+}
+.modal_ContendorCP {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+.select_publicacion{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    background-color: var(--gris_claro);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100%;
+    box-shadow: 0px 4px 4px 0  rgba(0, 0, 0, .2);
+}
+.cerrar_modal_P {
+    background-image: url(../icons/Cancel.png);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    top: 2%;
+}
+.select_publicacion a{
+    text-decoration: none;
+    color: var(--verde);
+    font-size: 1.2rem;
+    font-family: var(--font2);
+    font-weight: bold;
+    cursor: pointer;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+.select_publicacion div{
+    width: 60%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 9px;
+}
+.select_publicacion div:hover{
+    border-bottom: 1px solid var(--cafe);
+}
+.select_publicacion div:focus{
+    border-bottom: 1px solid var(--cafe);
+}
+.borrar_S{
+    background-image: url(../icons/Trash.png);
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.B:hover>span {
+    background-image: url(../icons/Trash-1.png);
+}
+.editar_S{
+    background-image: url(../icons/Vector-2.png);
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.E:hover>span {
+    background-image: url(../icons/Vector-3.png);
+}
+.crear_S{
+    background-image: url(../icons/Clear\ Search.png);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.C:hover>span {
+    background-image: url(../icons/Clear\ Search-1.png);
+}
+.publicar_S{
+    background-image: url(../icons/Share\ 3.png);
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.P:hover>span {
+    background-image: url(../icons/Share\ 3-1.png);
+}
+.select_publicacion a:focus{
+    color: var(--cafe);
+}
+.select_publicacion a:hover{
+    color: var(--cafe);
+}
+.modal_P_publicacion{
+    display: flex;
+    width: 70%;
+    background-color:rgb(255, 255, 255,.9);
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    flex-direction: column;
+}
+.modal_P_contenido{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/****modules de la publicacion***/
+
+.modal_editar{
+    height: 0px;
+    width: 100%;
+
+    visibility: hidden;
+}
+.botonE{
+    margin-top: 10px;
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #4B8325;
+    font-size: 1.2rem;
+    font-family: var(--font2);
+    font-weight: bold;
+}
+.botonE p{
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: var(--gris_claro);
+}
+.modal_publicar{
+    height: 0px;
+    width: 100%;
+    visibility: hidden;
+}
+.modal_borrar{
+    height: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--verde);
+    visibility: hidden;
+}
+.modal_crear{
+    background-image: url(../images/crear.png);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.modal_borrar p{
+    border-radius: 5px;
+    font-family: var(--font2);
+    font-weight: bold;
+    padding: 10px;
+    background-color: var(--gris_claro);
 }
 /************************Animación***********************************/
 .animate__animated{

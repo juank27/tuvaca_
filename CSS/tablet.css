@@ -191,7 +191,7 @@
 /************************Sections directorio***********************************/
 
 .modal_D_contenido{
-    width: 0%;
+    width: 60%;
     height: 75%;
 }
 .modal_D  h1{
@@ -201,4 +201,21 @@
 }
 .modal_ContendorCD {
     width: 60%;
+}
+/************************Sections directorio***********************************/
+
+.modal_P_contenido{
+    width: 60%;
+    height: 75%;
+}
+.modal_P  h1{
+    width: 40%;
+    left: 30%;
+    font-size: 1.6rem;
+}
+.modal_ContendorCP {
+    width: 60%;
+}
+.botonE p{
+    height: 20px;
 }

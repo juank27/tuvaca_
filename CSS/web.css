@@ -252,3 +252,20 @@
 .modal_ContendorCD {
     width: 60%;
 }
+/************************Sections publicaciones***********************************/
+
+.modal_P_contenido{
+    width: 45%;
+    height: 75%;
+}
+.modal_P  h1{
+    width: 30%;
+    left: 35%;
+    font-size: 1.6rem;
+}
+.modal_ContendorCP {
+    width: 60%;
+}
+.botonE p{
+    height: 20px;
+}
