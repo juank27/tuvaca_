@@ -1,68 +1,68 @@
 /*****************************menu*******************************/
-let home= document.getElementById('homes');
-let cow= document.getElementById('cow');
-let mail= document.getElementById('mail');
-let body=document.getElementById('body');
+let home = document.getElementById('homes');
+let cow = document.getElementById('cow');
+let mail = document.getElementById('mail');
+let body = document.getElementById('body');
 
-home.addEventListener('click',function(){
-    home.style.backgroundImage='url("./icons/casa2.png")';
-    home.style.transition="0.2s"
-    mail.style.backgroundImage='url("./icons/mail.png")';
-    mail.style.transition="0.2s";
-    cow.style.backgroundImage='url("./icons/Cow-1.png")';
-    cow.style.transition="0.2s";
+home.addEventListener('click', function () {
+    home.style.backgroundImage = 'url("./icons/casa2.png")';
+    home.style.transition = "0.2s"
+    mail.style.backgroundImage = 'url("./icons/mail.png")';
+    mail.style.transition = "0.2s";
+    cow.style.backgroundImage = 'url("./icons/Cow-1.png")';
+    cow.style.transition = "0.2s";
 })
-cow.addEventListener('click',function(){
-    home.style.backgroundImage='url("./icons/casa.png")';
-    home.style.transition="0.2s";
-    mail.style.backgroundImage='url("./icons/mail.png")';
-    mail.style.transition="0.2s";
-    cow.style.backgroundImage='url("./icons/Cow.png")';
-    cow.style.transition="0.2s";
+cow.addEventListener('click', function () {
+    home.style.backgroundImage = 'url("./icons/casa.png")';
+    home.style.transition = "0.2s";
+    mail.style.backgroundImage = 'url("./icons/mail.png")';
+    mail.style.transition = "0.2s";
+    cow.style.backgroundImage = 'url("./icons/Cow.png")';
+    cow.style.transition = "0.2s";
 })
-mail.addEventListener('click',function(){
-    home.style.backgroundImage='url("./icons/casa.png")';
-    home.style.transition="0.2s"
-    mail.style.backgroundImage='url("./icons/mail2.png")';
-    mail.style.transition="0.2s";
-    cow.style.backgroundImage='url("./icons/Cow-1.png")';
-    cow.style.transition="0.2s";
+mail.addEventListener('click', function () {
+    home.style.backgroundImage = 'url("./icons/casa.png")';
+    home.style.transition = "0.2s"
+    mail.style.backgroundImage = 'url("./icons/mail2.png")';
+    mail.style.transition = "0.2s";
+    cow.style.backgroundImage = 'url("./icons/Cow-1.png")';
+    cow.style.transition = "0.2s";
 })
 
 
 window.onload = function () {
-    function uno(){
-        setTimeout(function(){
+    function uno() {
+        setTimeout(function () {
             document.getElementById("uno").style.visibility = "visible";
-        },200
+        }, 200
         )
-        setTimeout(function(){
+        setTimeout(function () {
             document.getElementById("unoseis").style.visibility = "visible";
             document.getElementById("cinco").style.visibility = "visible";
-        },400
+        }, 400
         )
-        setTimeout(function(){
+        setTimeout(function () {
             document.getElementById("nueve").style.visibility = "visible";
             document.getElementById("diez").style.visibility = "visible";
             document.getElementById("quince").style.visibility = "visible";
-        },800
+        }, 800
         )
-        setTimeout(function(){
+        setTimeout(function () {
             document.getElementById("seis").style.visibility = "visible";
             document.getElementById("doce").style.visibility = "visible";
             document.getElementById("dos").style.visibility = "visible";
             document.getElementById("tres").style.visibility = "visible";
-        },1200
+        }, 1200
         )
-        setTimeout(function(){
+        setTimeout(function () {
             document.getElementById("ocho").style.visibility = "visible";
             document.getElementById("once").style.visibility = "visible";
             document.getElementById("cuatro").style.visibility = "visible";
             document.getElementById("catorce").style.visibility = "visible";
             document.getElementById("trece").style.visibility = "visible";
-        },1400
+        }, 1400
         )
-        setTimeout(function(){
+        setTimeout(function () {
             document.getElementById("uno").style.visibility = "hidden";
             document.getElementById("unoseis").style.visibility = "hidden";
             document.getElementById("cinco").style.visibility = "hidden";
@@ -78,7 +78,7 @@ window.onload = function () {
             document.getElementById("cuatro").style.visibility = "hidden";
             document.getElementById("catorce").style.visibility = "hidden";
             document.getElementById("trece").style.visibility = "hidden";
-        },1600
+        }, 1600
         )
     }
     let intervalo = setInterval(uno, 1700);
@@ -283,54 +283,54 @@ let ubate = document.querySelectorAll(".ubate")[0];
 let ubicación = document.querySelectorAll(".ubicación")[0];
 carupa.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "4/3/5/4";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "4/3/5/4";
+    ubicación.style.alignSelf = "start";
 })
 cucunuba.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "5/5/6/6";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "5/5/6/6";
+    ubicación.style.alignSelf = "start";
 })
 fuquene.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "3/5/4/6";
-    ubicación.style.alignSelf= "end";
+    ubicación.style.gridArea = "3/5/4/6";
+    ubicación.style.alignSelf = "end";
 })
 guacheta.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "4/6/5/7";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "4/6/5/7";
+    ubicación.style.alignSelf = "start";
 })
 lenguazaque.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "4/6/5/7";
-    ubicación.style.alignSelf= "end";
+    ubicación.style.gridArea = "4/6/5/7";
+    ubicación.style.alignSelf = "end";
 })
 simijaca.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "3/4/4/5";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "3/4/4/5";
+    ubicación.style.alignSelf = "start";
 })
 susa.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "4/4/5/5";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "4/4/5/5";
+    ubicación.style.alignSelf = "start";
 })
 suta.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "5/4/6/5";
-    ubicación.style.alignSelf= "start";
+    ubicación.style.gridArea = "5/4/6/5";
+    ubicación.style.alignSelf = "start";
 
 })
 tausa.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "5/3/6/4";
-    ubicación.style.alignSelf= "end";
+    ubicación.style.gridArea = "5/3/6/4";
+    ubicación.style.alignSelf = "end";
 })
 ubate.addEventListener("click", function () {
     ubicación.style.visibility = "visible";
-    ubicación.style.gridArea= "4/4/5/5";
-    ubicación.style.alignSelf= "end";
+    ubicación.style.gridArea = "4/4/5/5";
+    ubicación.style.alignSelf = "end";
 
 })
 /*****************************modal directorio*******************************/
@@ -362,55 +362,55 @@ let vehiculo = document.querySelectorAll(".vehiculo")[0];
 let vehiculoF = document.querySelectorAll(".vehiculoF")[0];
 vehiculo.addEventListener("click", function () {
     vehiculoF.style.visibility = "visible";
-    vehiculoF.style.height= "auto";
+    vehiculoF.style.height = "auto";
     municipioDF.style.visibility = "hidden";
-    municipioDF.style.height= "0px";
+    municipioDF.style.height = "0px";
     vendedorDF.style.visibility = "hidden";
-    vendedorDF.style.height= "0px";
-    filtro2.style.visibility="visible"
-    filtro2.style.height= "auto";
-    precioD.style.visibility="hidden"
-    precioD.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Vehiculo';
+    vendedorDF.style.height = "0px";
+    filtro2.style.visibility = "visible"
+    filtro2.style.height = "auto";
+    precioD.style.visibility = "hidden"
+    precioD.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Vehiculo';
 })
 municipioD.addEventListener("click", function () {
     vehiculoF.style.visibility = "hidden";
-    vehiculoF.style.height= "0px";
+    vehiculoF.style.height = "0px";
     municipioDF.style.visibility = "visible";
-    municipioDF.style.height= "auto";
+    municipioDF.style.height = "auto";
     vendedorF.style.visibility = "hidden";
-    vendedorDF.style.height= "0px";
-    filtro2.style.visibility="visible"
-    filtro2.style.height= "auto";
-    precioD.style.visibility="hidden"
-    precioD.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Municipios';
+    vendedorDF.style.height = "0px";
+    filtro2.style.visibility = "visible"
+    filtro2.style.height = "auto";
+    precioD.style.visibility = "hidden"
+    precioD.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Municipios';
 })
 vendedorD.addEventListener("click", function () {
     vehiculoF.style.visibility = "hidden";
-    vehiculoF.style.height= "0px";
+    vehiculoF.style.height = "0px";
     municipioDF.style.visibility = "hidden";
-    municipioDF.style.height= "0px";
+    municipioDF.style.height = "0px";
     vendedorDF.style.visibility = "visible";
-    vendedorDF.style.height= "auto";
-    filtro2.style.visibility="visible"
-    filtro2.style.height= "auto";
-    precioD.style.visibility="hidden"
-    precioD.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Vendedor';
+    vendedorDF.style.height = "auto";
+    filtro2.style.visibility = "visible"
+    filtro2.style.height = "auto";
+    precioD.style.visibility = "hidden"
+    precioD.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Vendedor';
 })
 preciosD.addEventListener("click", function () {
     vehiculoF.style.visibility = "hidden";
-    vehiculoF.style.height= "opx";
+    vehiculoF.style.height = "opx";
     municipioDF.style.visibility = "hidden";
-    municipioDF.style.height= "0px";
+    municipioDF.style.height = "0px";
     vendedorDF.style.visibility = "hidden";
-    vendedorDF.style.height= "0px";
-    filtro2.style.visibility="hidden"
-    filtro2.style.height= "0px";
-    precioD.style.visibility="visible"
-    precioD.style.height= "auto"
-    document.getElementById('categoria').innerHTML='Precio';
+    vendedorDF.style.height = "0px";
+    filtro2.style.visibility = "hidden"
+    filtro2.style.height = "0px";
+    precioD.style.visibility = "visible"
+    precioD.style.height = "auto"
+    document.getElementById('categoria').innerHTML = 'Precio';
 })
 /*****************************modal busqueda*******************************/
 let busquedas = document.querySelectorAll(".busquedas")[0];
@@ -448,104 +448,104 @@ let precio = document.querySelectorAll(".precio")[0];
 
 raza.addEventListener("click", function () {
     razaF.style.visibility = "visible";
-    razaF.style.height= "auto";
+    razaF.style.height = "auto";
     categoriaF.style.visibility = "hidden";
-    categoriaF.style.height= "0px";
+    categoriaF.style.height = "0px";
     edadF.style.visibility = "hidden";
-    edadF.style.height= "0px";
+    edadF.style.height = "0px";
     municipioF.style.visibility = "hidden";
-    municipioF.style.height= "0px";
+    municipioF.style.height = "0px";
     vendedorF.style.visibility = "hidden";
-    vendedorF.style.height= "0px";
-    filtro.style.visibility="visible"
-    filtro.style.height= "auto";
-    precios.style.visibility="hidden"
-    precios.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Raza';
+    vendedorF.style.height = "0px";
+    filtro.style.visibility = "visible"
+    filtro.style.height = "auto";
+    precios.style.visibility = "hidden"
+    precios.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Raza';
 })
 categoria.addEventListener("click", function () {
     razaF.style.visibility = "hidden";
-    razaF.style.height= "0px";
+    razaF.style.height = "0px";
     categoriaF.style.visibility = "visible";
-    categoriaF.style.height= "auto";
+    categoriaF.style.height = "auto";
     edadF.style.visibility = "hidden";
-    edadF.style.height= "0px";
+    edadF.style.height = "0px";
     municipioF.style.visibility = "hidden";
-    municipioF.style.height= "0px";
+    municipioF.style.height = "0px";
     vendedorF.style.visibility = "hidden";
-    vendedorF.style.height= "0px";
-    filtro.style.visibility="visible"
-    filtro.style.height= "auto";
-    precios.style.visibility="hidden"
-    precios.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Categoria';
+    vendedorF.style.height = "0px";
+    filtro.style.visibility = "visible"
+    filtro.style.height = "auto";
+    precios.style.visibility = "hidden"
+    precios.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Categoria';
 })
 edad.addEventListener("click", function () {
     razaF.style.visibility = "hidden";
-    razaF.style.height= "0px";
+    razaF.style.height = "0px";
     categoriaF.style.visibility = "hidden";
-    categoriaF.style.height= "0px";
+    categoriaF.style.height = "0px";
     edadF.style.visibility = "visible";
-    edadF.style.height= "auto";
+    edadF.style.height = "auto";
     municipioF.style.visibility = "hidden";
-    municipioF.style.height= "0px";
+    municipioF.style.height = "0px";
     vendedorF.style.visibility = "hidden";
-    vendedorF.style.height= "0px";
-    filtro.style.visibility="visible"
-    filtro.style.height= "auto";
-    precios.style.visibility="hidden"
-    precios.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Edad';
+    vendedorF.style.height = "0px";
+    filtro.style.visibility = "visible"
+    filtro.style.height = "auto";
+    precios.style.visibility = "hidden"
+    precios.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Edad';
 })
 municipio.addEventListener("click", function () {
     razaF.style.visibility = "hidden";
-    razaF.style.height= "0px";
+    razaF.style.height = "0px";
     categoriaF.style.visibility = "hidden";
-    categoriaF.style.height= "0px";
+    categoriaF.style.height = "0px";
     edadF.style.visibility = "hidden";
-    edadF.style.height= "0px";
+    edadF.style.height = "0px";
     municipioF.style.visibility = "visible";
-    municipioF.style.height= "auto";
+    municipioF.style.height = "auto";
     vendedorF.style.visibility = "hidden";
-    vendedorF.style.height= "0px";
-    filtro.style.visibility="visible"
-    filtro.style.height= "auto";
-    precios.style.visibility="hidden"
-    precios.style.height= "0px"
-    document.getElementById('categoria').innerHTML='Municipio';
+    vendedorF.style.height = "0px";
+    filtro.style.visibility = "visible"
+    filtro.style.height = "auto";
+    precios.style.visibility = "hidden"
+    precios.style.height = "0px"
+    document.getElementById('categoria').innerHTML = 'Municipio';
 })
 vendedor.addEventListener("click", function () {
     razaF.style.visibility = "hidden";
-    razaF.style.height= "0px";
+    razaF.style.height = "0px";
     categoriaF.style.visibility = "hidden";
-    categoriaF.style.height= "0px";
+    categoriaF.style.height = "0px";
     edadF.style.visibility = "hidden";
-    edadF.style.height= "0px";
+    edadF.style.height = "0px";
     municipioF.style.visibility = "hidden";
-    municipioF.style.height= "0px";
+    municipioF.style.height = "0px";
     vendedorF.style.visibility = "visible";
-    vendedorF.style.height= "auto";
-    filtro.style.visibility="visible"
-    filtro.style.height= "auto";
-    precios.style.visibility="hidden"
-    precios.style.height= "0px";
-    document.getElementById('categoria').innerHTML='Vendedor';
+    vendedorF.style.height = "auto";
+    filtro.style.visibility = "visible"
+    filtro.style.height = "auto";
+    precios.style.visibility = "hidden"
+    precios.style.height = "0px";
+    document.getElementById('categoria').innerHTML = 'Vendedor';
 })
 precio.addEventListener("click", function () {
     razaF.style.visibility = "hidden";
-    razaF.style.height= "0px";
+    razaF.style.height = "0px";
     categoriaF.style.visibility = "hidden";
-    categoriaF.style.height= "0px";
+    categoriaF.style.height = "0px";
     edadF.style.visibility = "hidden";
-    edadF.style.height= "0px";
+    edadF.style.height = "0px";
     municipioF.style.visibility = "hidden";
-    municipioF.style.height= "0px";
+    municipioF.style.height = "0px";
     vendedorF.style.visibility = "hidden";
-    vendedorF.style.height= "0px";
-    filtro.style.visibility="hidden"
-    filtro.style.height= "0px";
-    precios.style.visibility="visible"
-    precios.style.height= "auto";
+    vendedorF.style.height = "0px";
+    filtro.style.visibility = "hidden"
+    filtro.style.height = "0px";
+    precios.style.visibility = "visible"
+    precios.style.height = "auto";
 })
 /*****************************modal busqueda*******************************/
 let publicaciones = document.querySelectorAll(".publicaciones")[0];
@@ -557,6 +557,19 @@ publicaciones.addEventListener("click", function () {
     modalPublicacion.style.opacity = "1";
     modalPublicacion.style.visibility = "visible";
     modalPublicacion2.classList.toggle("modal_cerrado_P")
+
+    document.addEventListener('keydown', (event) => {
+        if (event.keyCode == 27) {
+            console.log("cerro");
+            modalPublicacion2.classList.toggle("modal_cerrado_P");
+            setTimeout(function () {
+                modalPublicacion.style.opacity = "0";
+                modalPublicacion.style.visibility = "hidden";
+            }, 900)
+
+        }
+    }, false);
+
 })
 cerrarPublicacion.addEventListener("click", function () {
     modalPublicacion2.classList.toggle("modal_cerrado_P");
@@ -564,6 +577,8 @@ cerrarPublicacion.addEventListener("click", function () {
         modalPublicacion.style.opacity = "0";
         modalPublicacion.style.visibility = "hidden";
     }, 900)
+    console.log("cerro2");
+    
 })
 let C1 = document.querySelectorAll(".C")[0];
 let E1 = document.querySelectorAll(".E")[0];
@@ -575,42 +590,43 @@ let P = document.querySelectorAll(".modal_publicar")[0];
 let B = document.querySelectorAll(".modal_borrar")[0];
 
 C1.addEventListener("click", function () {
-    C.style.visibility="visible"
-    C.style.height= "auto";
+    C.style.visibility = "visible"
+    C.style.height = "auto";
     E.style.visibility = "hidden";
-    E.style.height= "0px";
+    E.style.height = "0px";
     P.style.visibility = "hidden";
-    P.style.height= "0px";
+    P.style.height = "0px";
     B.style.visibility = "hidden";
-    B.style.height= "0px";
+    B.style.height = "0px";
 })
 E1.addEventListener("click", function () {
-    E.style.visibility="visible"
-    E.style.height= "auto";
+    E.style.visibility = "visible"
+    E.style.height = "auto";
     C.style.visibility = "hidden";
-    C.style.height= "0px";
+    C.style.height = "0px";
     P.style.visibility = "hidden";
-    P.style.height= "0px";
+    P.style.height = "0px";
     B.style.visibility = "hidden";
-    B.style.height= "0px";
+    B.style.height = "0px";
 })
 P1.addEventListener("click", function () {
-    P.style.visibility="visible"
-    P.style.height= "auto";
+    P.style.visibility = "visible"
+    P.style.height = "auto";
     E.style.visibility = "hidden";
-    E.style.height= "0px";
+    E.style.height = "0px";
     C.style.visibility = "hidden";
-    C.style.height= "0px";
+    C.style.height = "0px";
     B.style.visibility = "hidden";
-    B.style.height= "0px";
+    B.style.height = "0px";
 })
 B1.addEventListener("click", function () {
-    B.style.visibility="visible"
-    B.style.height= "auto";
+    B.style.visibility = "visible"
+    B.style.height = "auto";
     E.style.visibility = "hidden";
-    E.style.height= "0px";
+    E.style.height = "0px";
     P.style.visibility = "hidden";
-    P.style.height= "0px";
+    P.style.height = "0px";
     C.style.visibility = "hidden";
-    C.style.height= "0px";
+    C.style.height = "0px";
 })
+
