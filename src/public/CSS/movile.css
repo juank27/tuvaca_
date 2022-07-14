@@ -102,7 +102,7 @@ body {
 
 .header_navegacion ul {
     list-style: none;
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -119,8 +119,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
 }
 
@@ -135,8 +135,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-image: url("../icons/Cow-1.png");
     cursor: pointer;
 }
@@ -152,8 +152,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-image: url("../icons/mail.png");
     cursor: pointer;
 }
@@ -167,9 +167,9 @@ body {
 
 /*titulo del header*/
 .header_titulo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    line-height: 1.3rem;
+    line-height: 1.6rem;
     color: var(--gris_oscuro);
     font-family: var(--font1);
     margin-bottom: 5%;
@@ -225,6 +225,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal_IS {
@@ -484,6 +485,17 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.main_parrafo{
+    width: 80%;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.6rem;
+        color: var(--gris_oscuro);
+        font-family: var(--font1);
+        margin-bottom: 10%;
+        text-align: justify;
+
 }
 /************************Main baner uno***********************************/
 .main_banerU{
@@ -1190,6 +1202,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .modal_M {
     width:100%;
@@ -1245,7 +1258,7 @@ input[type=number]::-webkit-outer-spin-button {
     grid-template-columns: repeat(7,14%);
     grid-template-rows: repeat(7,14%);
     width: 55%;
-    background-color:rgb(255, 255, 255,.9);
+    background-color:rgb(255, 255, 255);
     height:100%;
     box-shadow: 0px 4px 4px 0  rgba(0, 0, 0, .2);
     border-top-left-radius: 10px;
@@ -1320,6 +1333,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal_B {
@@ -1543,6 +1557,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal_D {
@@ -1622,6 +1637,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal_P {
@@ -1766,7 +1782,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal_P_publicacion{
     display: flex;
     width: 70%;
-    background-color:rgb(255, 255, 255,.9);
+    background-color:rgb(255, 255, 255);
     height:100%;
     justify-content: center;
     align-items: center;
@@ -1823,12 +1839,16 @@ input[type=number]::-webkit-outer-spin-button {
     visibility: hidden;
 }
 .modal_crear{
-    background-image: url(../images/crear.png);
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal_crear img{
+    width: 80%;
+    height: 60%;
+
 }
 .modal_borrar p{
     border-radius: 5px;
