@@ -16,10 +16,16 @@ router.get('/users', async (req, res) => {
 	res.send('Hello World');
 });
 
-router.post('/new-user', (req, res) => {
+router.post('/new-user', async(req, res) => {
 	//crear un nuevo usuario
 	const { name, email, password, phone, ubication } = req.body;
-	console.log(name, email, password, phone, ubication);
+	await db.collection('users').add({
+		name,
+		email,
+		password,
+		phone,
+		ubication
+	})
 	res.send('new user');
 });
 module.exports = router;
