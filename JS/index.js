@@ -29,7 +29,7 @@ mail.addEventListener('click', function () {
     cow.style.transition = "0.2s";
 })
 
-
+/*****************************animación municipios*******************************/
 window.onload = function () {
     function uno() {
         setTimeout(function () {
@@ -82,134 +82,7 @@ window.onload = function () {
         )
     }
     let intervalo = setInterval(uno, 1700);
-    /* function uno(){
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca4-M.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca1-M.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca2-M.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca6-M.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca3-M.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca7-M.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca8-M.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca5-M.jpg";
-            },2000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca6-M.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca4-M.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca1-M.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca7-M.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca2-M.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca8-M.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca5-M.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca3-M.jpg";
-            },4000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca7-M.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca6-M.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca4-M.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca8-M.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca1-M.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca5-M.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca3-M.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca2-M.jpg";
-            },6000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca8-M.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca7-M.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca6-M.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca5-M.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca4-M.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca3-M.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca2-M.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca1-M.jpg";
-            },8000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca5-M.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca8-M.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca7-M.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca3-M.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca6-M.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca2-M.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca1-M.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca4-M.jpg";
-                console.log("5")
-            },10000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca3-P.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca5-P.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca8-P.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca2-P.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca7-P.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca1-P.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca4-P.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca6-P.jpg";
-                console.log("6")
-            },12000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca2-P.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca3-P.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca5-P.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca1-P.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca8-P.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca4-P.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca6-P.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca7-P.jpg";
-                console.log("7")
-            },14000
-            )
-            setTimeout(function(){
-                document.getElementById("uno").src="./images/vacas/vaca1-P.jpg";
-                document.getElementById("dos").src="./images/vacas/vaca2-P.jpg";
-                document.getElementById("tres").src="./images/vacas/vaca3-P.jpg";
-                document.getElementById("cuatro").src="./images/vacas/vaca4-P.jpg";
-                document.getElementById("cinco").src="./images/vacas/vaca5-P.jpg";
-                document.getElementById("seis").src="./images/vacas/vaca6-P.jpg";
-                document.getElementById("siete").src="./images/vacas/vaca7-P.jpg";
-                document.getElementById("ocho").src="./images/vacas/vaca8-P.jpg";
-                console.log("8")
-
-            },16000
-            )
-        }
-        let intervalo = setInterval(uno, 17000);
-    function dos(){
-        setTimeout(function(){
-            document.getElementById("unoM").src="./images/granjas/granja4-M.jpg";
-            document.getElementById("dosM").src="./images/granjas/granja1-M.jpg";
-            document.getElementById("tresM").src="./images/granjas/granja2-M.jpg";
-        },2000
-        )
-        setTimeout(function(){
-            document.getElementById("unoM").src="./images/granjas/granja5-M.jpg";
-            document.getElementById("dosM").src="./images/granjas/granja4-M.jpg";
-            document.getElementById("tresM").src="./images/granjas/granja1-M.jpg";
-        },4000
-        )
-        setTimeout(function(){
-            document.getElementById("unoM").src="./images/granjas/granja6-M.jpg";
-            document.getElementById("dosM").src="./images/granjas/granja5-M.jpg";
-            document.getElementById("tresM").src="./images/granjas/granja4-M.jpg";
-        },6000
-        )
-        setTimeout(function(){
-            document.getElementById("unoM").src="./images/granjas/granja1-M.jpg";
-            document.getElementById("dosM").src="./images/granjas/granja2-M.jpg";
-            document.getElementById("tresM").src="./images/granjas/granja3-M.jpg";
-        },8000
-        )
-    }
-    let intervalo2 = setInterval(dos, 9000);*/
-
-
 }
-
-
 
 /*****************************modal de inicio de sesion*******************************/
 let abrirSesion = document.querySelectorAll(".modal_IS_abrir")[0];
@@ -218,11 +91,11 @@ let modalSesion = document.querySelectorAll(".modal_container_IS")[0];
 let modalSesion2 = document.querySelectorAll(".modal_IS")[0];
 
 abrirSesion.addEventListener("click", function () {
-
     modalSesion.style.opacity = "1";
     modalSesion.style.visibility = "visible";
     modalSesion2.classList.toggle("modal_cerrado_IS")
 })
+
 cerrarSesion.addEventListener("click", function () {
     modalSesion2.classList.toggle("modal_cerrado_IS");
     setTimeout(function () {
@@ -547,7 +420,7 @@ precio.addEventListener("click", function () {
     precios.style.visibility = "visible"
     precios.style.height = "auto";
 })
-/*****************************modal busqueda*******************************/
+/*****************************modal publicaciones*******************************/
 let publicaciones = document.querySelectorAll(".publicaciones")[0];
 let modalPublicacion = document.querySelectorAll(".modal_container_P")[0];
 let cerrarPublicacion = document.querySelectorAll(".cerrar_modal_P")[0];
@@ -558,17 +431,6 @@ publicaciones.addEventListener("click", function () {
     modalPublicacion.style.visibility = "visible";
     modalPublicacion2.classList.toggle("modal_cerrado_P")
 
-    document.addEventListener('keydown', (event) => {
-        if (event.keyCode == 27) {
-            console.log("cerro");
-            modalPublicacion2.classList.toggle("modal_cerrado_P");
-            setTimeout(function () {
-                modalPublicacion.style.opacity = "0";
-                modalPublicacion.style.visibility = "hidden";
-            }, 900)
-
-        }
-    }, false);
 
 })
 cerrarPublicacion.addEventListener("click", function () {
@@ -577,8 +439,6 @@ cerrarPublicacion.addEventListener("click", function () {
         modalPublicacion.style.opacity = "0";
         modalPublicacion.style.visibility = "hidden";
     }, 900)
-    console.log("cerro2");
-    
 })
 let C1 = document.querySelectorAll(".C")[0];
 let E1 = document.querySelectorAll(".E")[0];
@@ -591,7 +451,7 @@ let B = document.querySelectorAll(".modal_borrar")[0];
 
 C1.addEventListener("click", function () {
     C.style.visibility = "visible"
-    C.style.height = "auto";
+    C.style.height = "60%";
     E.style.visibility = "hidden";
     E.style.height = "0px";
     P.style.visibility = "hidden";
