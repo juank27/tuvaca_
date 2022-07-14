@@ -1,0 +1,29 @@
+{
+  "name": "tuvaca_",
+  "version": "1.0.0",
+  "description": "TuVaca",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juank27/tuvaca_.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juank27/tuvaca_/issues"
+  },
+  "homepage": "https://github.com/juank27/tuvaca_#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "firebase-admin": "^11.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
