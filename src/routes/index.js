@@ -48,30 +48,30 @@ function registrar(email, password) {
 		});
 }
 
-var email ;
-var password ;
 router.post('/new-user', async (req, res) => {
 	console.log('hola dentro de ');
-	let { password,email } = req.body;
-	globalThis.email = email;
-	globalThis.password = password;
+	let { password, confirmPassword, email } = req.body;
 
-	console.log(globalThis.email, globalThis.password);
-	createUserWithEmailAndPassword(auth, globalThis.email, globalThis.password)
-		.then((userCredential) => {
-			// Signed in
-			const user = userCredential.user;
-			res.send('new user');
-			console.log(user);
-			console.log('registro exitoso');
-			// ...
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			// ..
-			console.log('error', error);
-		});
+	if (password !== confirmPassword) {
+		let text = 'Las contraseñas no coinciden';
+		res.send('/src/public/index.html',text);
+	} else {
+		createUserWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				res.send('new user');
+				console.log(user);
+				console.log('registro exitoso');
+				// ...
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// ..
+				console.log('error', error);
+			});
+	}
 });
 
 router.post('/new-userr', async (req, res) => {
