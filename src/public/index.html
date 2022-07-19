@@ -396,11 +396,11 @@
             <div class="modal_ContendorC"><span class="cerrar_modal_R"></span></div>
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./images/logo2.png" alt="">
-                <form class=" modal_formulario_R modal_formulario" action="/new-user" method="POST">
-                    <input type="text" name="name" placeholder="Nombre Completo">
-                    <input type="number" name="phone" placeholder="Número de Teléfono">
-                    <input type="email" name="email" placeholder="Correo Electronico">
-                    <input type="text" name="ubication" list="municipios" placeholder="Municipio">
+                <form class=" modal_formulario_R modal_formulario" id="register-form" action="new-user" method="POST">
+                    <input type="text" name="name" id="name" placeholder="Nombre Completo">
+                    <input type="number" name="phone" id="phone" placeholder="Número de Teléfono">
+                    <input type="email" name="email" id="email-a" placeholder="Correo Electronico">
+                    <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio">
                     <datalist id="municipios">
                         <option value="Ubaté"></option>
                         <option value="Carmen de Carupa"></option>
@@ -412,8 +412,9 @@
                         <option value="Simijaca"></option>
                         <option value="Susa"></option>
                     </datalist>
-                    <input type="password" name="password-one" placeholder="Contraseña">
-                    <input type="password" name="password" placeholder="Verificar Contraseña">
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Verificar Contraseña">
+                    <p id="nn"></p>
                     <button type="submit">Registrarse</button>
                 </form>
                 <div class="modal_separador"></div>
@@ -658,12 +659,18 @@
                     <div class="E"><span class="editar_S"></span><a class="editar">Editar</a></div>
                     <div class="P"><span class="publicar_S"></span><a class="publicar"> Publicar</a></div>
                     <div class="B"><span class="borrar_S"></span><a class="borrar"> Borrar</a></div>
-
                 </section>
             </section>
         </section>
     </section>
     <script src="./JS/index.js"></script>
-</body>
+    <!--<script src="./JS/main.js"></script>-->
 
+    <!-- FIREBASE SCRIPTS-->
+    <script type="module">
+        
+    </script>
+    <!-- Code -->
+    <!--<script src="./JS/prueba.js"></script>-->
+</body>
 </html>
