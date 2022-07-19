@@ -61,7 +61,10 @@
     width: 35%;
     height: 60%;
 }
-
+.modal_IS2 {
+    width: 35%;
+    height: 60%;
+}
 /*imputs*/
 .modal_IS_formulario input[type=email],
 .modal_IS_formulario input[type=password] {
@@ -108,7 +111,14 @@
     width: 48%;
     height: 70%;
 }
-
+.modal_R2 {
+    width: 48%;
+    height: 70%;
+}
+.modal_Cuerpo h1{
+    font-size: 2.5rem;
+    margin-bottom: 3%;
+}
 /************************Main baner uno***********************************/
 .main_banerU {
     display: none;
