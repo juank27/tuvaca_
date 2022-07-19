@@ -48,22 +48,33 @@ function registrar(email, password) {
 		});
 }
 
+//clave nayis -> gKG0mb2v5qWE4CGYG5nUH5oLaBi2
+// new user email
 router.post('/new-user', async (req, res) => {
 	console.log('hola dentro de ');
-	let { password, confirmPassword, email } = req.body;
+	let { password, confirmPassword, email, phone, ubication, name } = req.body;
 
 	if (password !== confirmPassword) {
 		let text = 'Las contraseñas no coinciden';
-		res.send('/src/public/index.html',text);
+		res.send(text);
 	} else {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				res.send('new user');
-				console.log(user);
-				console.log('registro exitoso');
+				//console.log(user);
+				//console.log('registro exitoso');
 				// ...
+				const userRef = auth.currentUser;
+				//obteniendo el id del usuario userRef.uid
+				console.log(userRef.uid);
+				db.collection('users').doc(userRef.uid).set({
+					name,
+					email,
+					phone,
+					ubication,
+				})
+				res.send('new user');
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -73,7 +84,7 @@ router.post('/new-user', async (req, res) => {
 			});
 	}
 });
-
+//ba5Rv6P2s0PKHhhipvk8KilICEI3
 router.post('/new-userr', async (req, res) => {
 	console.log('hola dentro del segundo registro');
 	registrar(globalThis.email, globalThis.password);
