@@ -41,6 +41,11 @@
     width:60%;
     height: 75%;
 }
+.modal_IS2{
+    width:60%;
+    height: 75%;
+}
+
 
 
 /************************Comunes***********************************/
@@ -71,6 +76,14 @@
 .modal_R{
     width:80%;
     height: 70%;
+}
+.modal_R2{
+    width:80%;
+    height: 70%;
+}
+.modal_Cuerpo h1{
+    font-size: 2rem;
+    margin-bottom: 2%;
 }
 /************************Main baner uno***********************************/
 .main_banerU{
