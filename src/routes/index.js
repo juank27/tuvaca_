@@ -4,7 +4,9 @@ const { dbFirebase, app, auth} = require('../firebaseCloud');//importar la base 
 const {  createUserWithEmailAndPassword,
 			signInWithEmailAndPassword,
 			onAuthStateChanged,
-			signOut
+			signOut,
+			browserSessionPersistence,
+			setPersistence
 		} = require('firebase/auth');
 
 const router = Router();
@@ -49,18 +51,32 @@ router.get('/home', async (req, res) => {
 	res.render('home');
 })*/
 //ruta inicial
-router.get('/', async(req, res, next) => {
-	res.render('index');
+router.get('/', async (req, res) => {
+	auth.onAuthStateChanged(async (user) => {
+		if (user) {
+			res.render('home');
+		} else {
+			res.render('index');
+		}
+	});
 });
-router.get('/home', async(req, res, next) => {
-	res.render('home');
+router.get('/home', async(req, res) => {
+	auth.onAuthStateChanged(async (user) => {
+		if (user) {
+			res.render('home');
+		} else {
+			res.render('index');
+		}
+	});
+	//res.render('home');
 });
+
 //logout
-router.all('/logout',  async(req, res) => {
-	signOut(auth).then(() => {
+router.get('/logout',  async (req, res) => {
+	auth.signOut().then(() => {
 		// Sign-out successful.
 		console.log('logout');
-		res.redirect('/');
+		res.render('/home');
 	}).catch((error) => {
 		// An error happened.
 	});
@@ -106,20 +122,62 @@ router.post('/new-user', async (req, res) => {
 router.post('/login', async (req, res) => {
 	let { email, password } = req.body;
 	console.log(email, password);
-	signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
+	setPersistence(auth, browserSessionPersistence)
+		.then(() => {
+			res.render('home');
+			signInWithEmailAndPassword(auth, email, password)
+				.then((userCredential) => {
 			// Signed in
 			const user = userCredential.user;
 			console.log('Login exitoso');
 			//console.log(user);
-			res.render('home');
-		})
+				res.render('home');
+				res.end();
+			})
 		.catch((error) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
-			console.log('error', errorCode);
+			//console.log('error', errorCode);
 			//res.sendStatus(errorCode).send(errorMessage);
 		});
+
+		})
+		.catch((error) => {
+			// Handle Errors here.
+			const errorCode = error.code;
+			const errorMessage = error.message;
+		});
+
+	// signInWithEmailAndPassword(auth, email, password)
+	// 	.then((userCredential) => {
+	// 		// Signed in
+	// 		const user = userCredential.user;
+	// 		console.log('Login exitoso');
+	// 		//console.log(user);
+
+	// 		setPersistence(auth, browserSessionPersistence)
+	// 			.then(() => {
+	// 				// Existing and future Auth states are now persisted in the current
+	// 				// session only. Closing the window would clear any existing state even
+	// 				// if a user forgets to sign out.
+	// 				// ...
+	// 				// New sign-in will be persisted with session persistence.
+	// 				res.render('home');
+	// 				return signInWithEmailAndPassword(auth, email, password);
+	// 			})
+	// 			.catch((error) => {
+	// 				// Handle Errors here.
+	// 				const errorCode = error.code;
+	// 				const errorMessage = error.message;
+	// 			});
+
+	// 		})
+	// 	.catch((error) => {
+	// 		const errorCode = error.code;
+	// 		const errorMessage = error.message;
+	// 		//console.log('error', errorCode);
+	// 		//res.sendStatus(errorCode).send(errorMessage);
+	// 	});
 	//res.send('login');
 });
 
