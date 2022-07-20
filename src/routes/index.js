@@ -1,8 +1,11 @@
 const { Router } = require('express');
 const { db,} = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth} = require('../firebaseCloud');//importar la base de datos
-const { createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth');
-
+const {  createUserWithEmailAndPassword,
+			signInWithEmailAndPassword,
+			onAuthStateChanged,
+			signOut
+		} = require('firebase/auth');
 
 const router = Router();
 /*
@@ -19,6 +22,49 @@ router.get('/users', async (req, res) => {
 	res.send('Hello World');
 });
 */
+
+//inicio de  tu vaca
+/*
+router.get('/home', async (req, res) => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is signed in, see docs for a list of available properties
+			// https://firebase.google.com/docs/reference/js/firebase.User
+			//validar si existe una sesion o no y redireccionar a la pagina principal
+			const uid = user.uid;
+			console.log('Logueado');
+			console.log(uid);
+			console.log(user.email);
+			res.render('home');
+			//return true
+			// ...
+		} else {
+			console.log('sin loguear.');
+			// User is signed out
+			// ...
+			res.render('index');
+			//return false
+		}
+	});
+	res.render('home');
+})*/
+//ruta inicial
+router.get('/', async(req, res, next) => {
+	res.render('index');
+});
+router.get('/home', async(req, res, next) => {
+	res.render('home');
+});
+//logout
+router.all('/logout',  async(req, res) => {
+	signOut(auth).then(() => {
+		// Sign-out successful.
+		console.log('logout');
+		res.redirect('/');
+	}).catch((error) => {
+		// An error happened.
+	});
+});
 
 // new user email
 router.post('/new-user', async (req, res) => {
