@@ -8,7 +8,8 @@ const {  createUserWithEmailAndPassword,
 			browserSessionPersistence,
 			setPersistence
 		} = require('firebase/auth');
-
+//const express = require('express');
+//const router = express.Router();
 const router = Router();
 /*
 router.get('/users', async (req, res) => {
@@ -50,33 +51,76 @@ router.get('/home', async (req, res) => {
 	});
 	res.render('home');
 })*/
+// function verificar () {
+// 	auth.onAuthStateChanged(async (user) => {
+// 		if (user) {
+// 			console.log('entre y si estoy logueado ---------------');
+// 			return  true;
+// 		} else {
+// 			console.log('entree y no estoy logueado ----------------');
+// 			return  false;
+// 		}
+// 	});
+// }
+
 //ruta inicial
 router.get('/', async (req, res) => {
+	// auth.onAuthStateChanged(async (user) => {
+	// 	if (user) {
+	// 		res.render('home');
+	// 	} else {
+	// 		res.render('index');
+	// 	}
+	// });
+	//res.render('index');
+	//------------------------------------------------------
+	// let a = verificar();
+	// console.log(verificar());
+	// if (a) {
+	// 	console.log('Logueado');
+	// 	res.render('home');
+	// } else {
+	// 	console.log('sin loguear.');
+	// 	res.render('index');
+	// }
+	//------------------------------------------------------
 	auth.onAuthStateChanged(async (user) => {
 		if (user) {
+			console.log('entre y si estoy logueado ---------------');
+			//return true;
 			res.render('home');
 		} else {
+			console.log('entree y no estoy logueado ----------------');
+			//return false;
 			res.render('index');
 		}
 	});
 });
+
 router.get('/home', async(req, res) => {
-	auth.onAuthStateChanged(async (user) => {
-		if (user) {
-			res.render('home');
-		} else {
-			res.render('index');
-		}
-	});
+	// auth.onAuthStateChanged(async (user) => {
+	// 	if (user) {
+	// 		res.render('home');
+	// 	} else {
+	// 		res.render('index');
+	// 	}
+	// });
+	let a =  verificar();
+	if (a) {
+		res.render('home');
+	} else {
+		res.render('index');
+	}
 	//res.render('home');
 });
 
-//logout
-router.get('/logout',  async (req, res) => {
+// //logout
+router.use('/logout',   async (req, res, next) => {
 	auth.signOut().then(() => {
 		// Sign-out successful.
 		console.log('logout');
-		res.render('/home');
+		//next();
+		res.render('index');
 	}).catch((error) => {
 		// An error happened.
 	});
@@ -119,28 +163,28 @@ router.post('/new-user', async (req, res) => {
 });
 
 //login user email
-router.post('/login', async (req, res) => {
+router.post('/login',  async(req, res) => {
 	let { email, password } = req.body;
+	console.log(email, password);
 	console.log(email, password);
 	setPersistence(auth, browserSessionPersistence)
 		.then(() => {
-			res.render('home');
+			//res.render('home');
 			signInWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 			// Signed in
 			const user = userCredential.user;
 			console.log('Login exitoso');
 			//console.log(user);
-				res.render('home');
-				res.end();
+			res.render('home');
+			//next();
 			})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			//console.log('error', errorCode);
-			//res.sendStatus(errorCode).send(errorMessage);
-		});
-
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				//console.log('error', errorCode);
+				//res.sendStatus(errorCode).send(errorMessage);
+			});
 		})
 		.catch((error) => {
 			// Handle Errors here.
