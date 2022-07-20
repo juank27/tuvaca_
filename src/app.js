@@ -24,3 +24,4 @@ app.use(express.static(path.join(__dirname, 'public')));//archivos estaticos
 
 
 module.exports = app;
+
