@@ -25,6 +25,37 @@ router.get('/users', async (req, res) => {
 	res.send('Hello World');
 });
 */
+//ruta inicial
+router.get('/', (req, res) => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is signed in, see docs for a list of available properties
+			// https://firebase.google.com/docs/reference/js/firebase.User
+			//validar si existe una sesion o no y redireccionar a la pagina principal
+			const uid = user.uid;
+			console.log('Logueado');
+			console.log(uid);
+			console.log(user.email);
+			res.render('home');
+			// ...
+		} else {
+			console.log('sin loguear.');
+			// User is signed out
+			// ...
+			res.render('index');
+		}
+	});
+});
+//logout
+router.all('/logout', async(req, res) => {
+	signOut(auth).then(() => {
+		// Sign-out successful.
+		console.log('logout');
+		res.render('index');
+	}).catch((error) => {
+		// An error happened.
+	});
+});
 
 //inicio de  tu vaca
 /*
