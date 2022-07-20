@@ -61,10 +61,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-image: url("../images/error2.png");
+    background-image: url("../images/error3.png");
 }
 .error{
-    color: #A96224;
+    color: #4B8325;
     font-size: var(--font1);
     margin-bottom: 5%;
 }
@@ -514,7 +514,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal_google:hover>span {
     background-image: url(../icons/Google.png);
 }
-.modal_google:hover>button {
+.modal_google:hover>a {
     color: var(--cafe);
 }
 .modal_google span {
@@ -526,7 +526,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: center;
     background-size: contain;
 }
-.modal_google button {
+.modal_google a {
     border: none;
     text-decoration: none;
     font-size: var(--font2);
@@ -546,7 +546,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal_facebook:hover>span {
     background-image: url(../icons/Facebook\ F.png);
 }
-.modal_facebook:hover>button {
+.modal_facebook:hover>a {
     color: var(--cafe);
 }
 .modal_facebook span {
@@ -558,7 +558,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: center;
     background-size: contain;
 }
-.modal_facebook button {
+.modal_facebook a {
     border: none;
     background-color: transparent;
     text-decoration: none;

@@ -5,27 +5,27 @@ let mail = document.getElementById('mail');
 let body = document.getElementById('body');
 
 home.addEventListener('click', function () {
-    home.style.backgroundImage = 'url("./icons/casa2.png")';
+    home.style.backgroundImage = 'url("./principal/icons/casa2.png")';
     home.style.transition = "0.2s"
-    mail.style.backgroundImage = 'url("./icons/mail.png")';
+    mail.style.backgroundImage = 'url("./principal/icons/mail.png")';
     mail.style.transition = "0.2s";
-    cow.style.backgroundImage = 'url("./icons/Cow-1.png")';
+    cow.style.backgroundImage = 'url("./principal/icons/Cow-1.png")';
     cow.style.transition = "0.2s";
 })
 cow.addEventListener('click', function () {
-    home.style.backgroundImage = 'url("./icons/casa.png")';
+    home.style.backgroundImage = 'url("./principal/icons/casa.png")';
     home.style.transition = "0.2s";
-    mail.style.backgroundImage = 'url("./icons/mail.png")';
+    mail.style.backgroundImage = 'url("./principal/icons/mail.png")';
     mail.style.transition = "0.2s";
-    cow.style.backgroundImage = 'url("./icons/Cow.png")';
+    cow.style.backgroundImage = 'url("./principal/icons/Cow.png")';
     cow.style.transition = "0.2s";
 })
 mail.addEventListener('click', function () {
-    home.style.backgroundImage = 'url("./icons/casa.png")';
+    home.style.backgroundImage = 'url("./principal/icons/casa.png")';
     home.style.transition = "0.2s"
-    mail.style.backgroundImage = 'url("./icons/mail2.png")';
+    mail.style.backgroundImage = 'url("./principal/icons/mail2.png")';
     mail.style.transition = "0.2s";
-    cow.style.backgroundImage = 'url("./icons/Cow-1.png")';
+    cow.style.backgroundImage = 'url("./principal/icons/Cow-1.png")';
     cow.style.transition = "0.2s";
 })
 
