@@ -7,25 +7,27 @@
     --font1: 'Port Lligat Sans', sans-serif;
     --font2: 'Inter', sans-serif;
 }
-/*menu de navegación*/
-.header_navegacion {
-    height: 90px;
+body{
+    width: 80%;
 }
-.header_navegacion img{
-    width:10%;
-    height: 100%;
-    margin-left: 5%  ;
+
+/*menu de navegación*/
+.header_navegacion ul{
+    width: 50%;
+}
+.header_navegacion h1{
+    font-size: 2.8rem;
 }
 /*estilos iconos de navegacion*/
 .header_icon_uno,.header_icon_dos,.header_icon_cuatro {
-    width:35px;
-    height: 35px;
+    width:30px;
+    height: 30px;
 }
 .header_icon_tres {
-    width: 37px;
-    height: 37px;
-}
-.header_icon_cinco {
     width: 33px;
     height: 33px;
+}
+.header_icon_cinco {
+    width: 35px;
+    height: 35px;
 }

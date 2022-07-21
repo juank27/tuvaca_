@@ -24,13 +24,15 @@ html {
 }
 
 body {
-    background-color: rgba(229, 229, 229, .5);
-    max-width: 800px;
+    background-color:  #F8F8F8;
+    width: 100%;
     min-width: 320px;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    overflow-y:hidden
 }
 /************************header***********************************/
 .header{
@@ -42,28 +44,29 @@ body {
 }
 /*menu de navegación*/
 .header_navegacion {
-    margin-bottom: 5%;
+    background-color: #F8F8F8;
     width: 100%;
-    height: 60px;
+    height: 7vh;
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
-    z-index: 9;
-    position: fixed;
+    align-items: center;
+    z-index:9;
+    position:fixed;
     border-bottom: 1px solid var(--gris_oscuro);
-    box-shadow: 0 2px 4px 0 var(--gris_oscuro);
-
+    box-shadow: 0px 15px 10px -15px var(--gris_oscuro);
 }
-.header_navegacion img{
-    width: 18%;
-    height: 80%;
-    margin-left: 5%  ;
+.header_navegacion h1{
+    font-family: var(--font2);
+    font-size: 2rem;
+    color: #4B8325;
+    font-weight: bolder;
+    margin-left: 2%;
 }
 .header_navegacion ul {
     list-style: none;
     width: 70%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -80,8 +83,6 @@ body {
 
 .header_icon_uno:hover {
     background-image: url("../icons/Cow.png");
-    border-bottom: 2px solid var(--cafe);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
     transition: 0.2s;
 }
 .header_icon_dos {
@@ -96,12 +97,24 @@ body {
 
 .header_icon_dos:hover {
     background-image: url("../icons/Sum2.png");
-    border-bottom: 2px solid var(--cafe);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
     transition: 0.2s;
 }
 .header_icon_tres {
     background-image: url("../icons/Truck.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.header_icon_tres:hover {
+    background-image: url("../icons/Truck2.png");
+    transition: 0.2s;
+}
+.header_icon_cuatro {
+    background-image: url("../icons/chat.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -110,41 +123,36 @@ body {
     cursor: pointer;
 }
 
-.header_icon_tres:hover {
-    background-image: url("../icons/Truck2.png");
-    border-bottom: 2px solid var(--cafe);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
-    transition: 0.2s;
-}
-.header_icon_cuatro {
-    background-image: url("../icons/chat.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 23px;
-    height: 23px;
-    cursor: pointer;
-}
-
 .header_icon_cuatro:hover {
     background-image: url("../icons/chat1.png");
-    border-bottom: 2px solid var(--cafe);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
     transition: 0.2s;
 }
 .header_icon_cinco {
-    background-image: url("../icons/perfil.png");
+    background-image: url("../images/perfil.jpeg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
-    width: 22px;
-    height: 22px;
+    background-size:contain;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: var(--gris_oscuro);
     cursor: pointer;
 }
 
 .header_icon_cinco:hover {
-    background-image: url("../icons/perfil1.png");
-    border-bottom: 2px solid var(--cafe);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
+    background-image: url("../images/perfil.jpeg");
     transition: 0.2s;
+}
+main{
+    width: 100%;
+    height: 90vh;
+    margin-top: 9vh;
+}
+.embed-container {
+    width: 100%;
+    height: 100%;
+}
+.embed-container iframe {
+    width: 100%;
+    height: 100%;
 }

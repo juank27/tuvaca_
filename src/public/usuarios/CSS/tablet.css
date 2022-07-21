@@ -7,14 +7,24 @@
     --font1: 'Port Lligat Sans', sans-serif;
     --font2: 'Inter', sans-serif;
 }
-/*menu de navegación*/
-.header_navegacion {   
-    height: 80px;
+html{
+    display: flex;
+    align-items: center;
+    flex-direction: column
 }
-.header_navegacion img{
-    width:10%;
-    height: 100%;
-    margin-left: 5%  ;
+body{
+    width: 70%;
+}
+/*menu de navegación*/
+.header_navegacion{
+    width: 80%;
+    height: 9vh;
+}
+.header_navegacion ul{
+    width: 60%;
+}
+.header_navegacion h1{
+    font-size: 2.3rem;
 }
 /*estilos iconos de navegacion*/
 .header_icon_uno,.header_icon_dos,.header_icon_cuatro {
@@ -26,6 +36,6 @@
     height: 32px;
 }
 .header_icon_cinco {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
 }
