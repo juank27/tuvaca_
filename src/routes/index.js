@@ -10,6 +10,7 @@ const {  createUserWithEmailAndPassword,
 		} = require('firebase/auth');
 
 const router = Router();
+
 let estado=false;
 function verificarEstado(){
 	if(estado){
@@ -113,4 +114,28 @@ router.post('/login',  async(req, res) => {
 		});
 });
 
+router.get('/InicioSesion', async(req, res) => {
+	res.render('InicioSesion');
+
+});
+router.get('/menu', async(req, res) => {
+	res.render('menu');
+
+});
+router.get('/publicaciones', async(req, res) => {
+	res.render('publicaciones');
+
+});
+router.get('/crearPublicacion', async(req, res) => {
+	res.render('crearPublicacion');
+
+});
+router.get('/acarreos', async(req, res) => {
+	res.render('acarreos');
+
+});
+router.get('/perfil', async(req, res) => {
+	res.render('perfil');
+
+});
 module.exports = router;

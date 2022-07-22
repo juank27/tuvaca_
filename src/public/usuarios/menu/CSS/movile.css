@@ -31,8 +31,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    overflow-y:hidden
 }
 /************************header***********************************/
 .header{
@@ -114,24 +112,10 @@ body {
     transition: 0.2s;
 }
 .header_icon_cuatro {
-    background-image: url("../icons/chat.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
 
-.header_icon_cuatro:hover {
-    background-image: url("../icons/chat1.png");
-    transition: 0.2s;
-}
-.header_icon_cinco {
-    background-image: url("../images/perfil.jpeg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size:contain;
+    background-size:cover;
     width: 30px;
     height: 30px;
     border-radius: 50px;
@@ -139,20 +123,22 @@ body {
     cursor: pointer;
 }
 
-.header_icon_cinco:hover {
-    background-image: url("../images/perfil.jpeg");
+.header_icon_cuatro:hover {
+    box-shadow: 0 4px 4px 0 #A96224;
     transition: 0.2s;
 }
-main{
+
+/************************main***********************************/
+.main{
     width: 100%;
     height: 90vh;
     margin-top: 9vh;
 }
-.embed-container {
+.main_iframer {
     width: 100%;
     height: 100%;
 }
-.embed-container iframe {
+.main_iframer iframe {
     width: 100%;
     height: 100%;
 }
