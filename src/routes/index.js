@@ -11,26 +11,23 @@ const {  createUserWithEmailAndPassword,
 
 const router = Router();
 
-let estado=false;
-function verificarEstado(){
-	if(estado){
+let estado=false; //estado de la sesion
+//verificando estados de la sesion con las rutas
+function verificarEstado(res, ruta, ruta2){
+	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
-		return 'home';
-	}else{
+		res.render(ruta);
+	} else {
 		console.log('raiz raiz');
 		// res.render('index')
-		return 'index';
+		res.render( ruta2, { layout: false });
 	}
 }
 router.get('/', async (req, res) => {
-	res.render(verificarEstado());
+	verificarEstado(res, 'publicaciones', 'index');
 });
 
-router.get('/home', async(req, res) => {
-	res.render(verificarEstado());
-
-});
 console.log(estado)
 // //logout
 router.use('/logout',   async (req, res, next) => {
@@ -69,7 +66,7 @@ router.post('/new-user', async (req, res) => {
 					phone,
 					ubication,
 				})
-				res.render('InicioSesion');
+				res.redirect('/iniciosesion');
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -96,7 +93,7 @@ router.post('/login',  async(req, res) => {
 			const user = userCredential.user;
 			console.log('Login exitoso');
 			estado=true;
-			res.redirect('/home');
+			res.redirect('/publicaciones');
 			//console.log(user);
 			//next();
 			})
@@ -114,28 +111,28 @@ router.post('/login',  async(req, res) => {
 		});
 });
 
-router.get('/InicioSesion', async(req, res) => {
-	res.render('InicioSesion');
-
+router.get('/iniciosesion', async(req, res) => {
+	//res.render('InicioSesion');
+	verificarEstado(res, 'publicaciones', 'InicioSesion');
 });
-router.get('/menu', async(req, res) => {
-	res.render('menu');
 
-});
 router.get('/publicaciones', async(req, res) => {
-	res.render('publicaciones');
-
+	verificarEstado(res, 'publicaciones','index');
 });
+
 router.get('/crearPublicacion', async(req, res) => {
-	res.render('crearPublicacion');
-
+	//res.render('crearPublicacion');
+	verificarEstado(res, 'crearPublicacion', 'index');
 });
+
 router.get('/acarreos', async(req, res) => {
-	res.render('acarreos');
-
+	//res.render('acarreos');
+	verificarEstado(res, 'acarreos', 'index');
 });
+
 router.get('/perfil', async(req, res) => {
-	res.render('perfil');
-
+	//res.render('perfil');
+	verificarEstado(res, 'perfil', 'index');
 });
+
 module.exports = router;
