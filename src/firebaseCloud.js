@@ -1,6 +1,6 @@
 const { initializeApp } = require('firebase/app');
 const { getFirestore, collection, getDocs } = require('firebase/firestore/lite');
-const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
+const { getAuth, GoogleAuthProvider } = require("firebase/auth");
 
 const firebaseConfig = {
 	apiKey: "AIzaSyDlasdrgnXPMmIqioRVObso5lwBp1e5UCs",
@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const dbFirebase = getFirestore(app);
 const auth = getAuth();
 const user = auth.currentUser;
+const provider = new GoogleAuthProvider(app);
 
 
 module.exports = {
@@ -23,4 +24,5 @@ module.exports = {
 	dbFirebase,
 	auth,
 	user,
+	provider,
 }

@@ -1,42 +1,45 @@
 const { Router } = require('express');
 const { db,} = require('../firebase');//importar la base de datos
-const { dbFirebase, app, auth} = require('../firebaseCloud');//importar la base de datos
+const { dbFirebase, app, auth, provider} = require('../firebaseCloud');//importar la base de datos
 const {  createUserWithEmailAndPassword,
 			signInWithEmailAndPassword,
 			onAuthStateChanged,
 			signOut,
 			browserSessionPersistence,
-			setPersistence
+			setPersistence, //percistencia de la sesion
+			signInWithPopup,
+			signInWithRedirect,
+			getRedirectResult,
+			GoogleAuthProvider,
 		} = require('firebase/auth');
 
 const router = Router();
 
-let estado=false;
-function verificarEstado(){
-	if(estado){
+let estado=false; //estado de la sesion
+//verificando estados de la sesion con las rutas
+function verificarEstado(res, ruta, ruta2, callback){
+	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
-		return 'home';
-	}else{
+		callback();
+		res.render(ruta);
+	} else {
 		console.log('raiz raiz');
 		// res.render('index')
-		return 'index';
+		res.render( ruta2, { layout: false });
 	}
 }
 router.get('/', async (req, res) => {
-	res.render(verificarEstado());
+	verificarEstado(res, 'publicaciones', 'index');
 });
 
-router.get('/home', async(req, res) => {
-	res.render(verificarEstado());
-
-});
 console.log(estado)
+
 // //logout
 router.use('/logout',   async (req, res, next) => {
 	auth.signOut().then(() => {
 		// Sign-out successful.
-		estado=false;
+		estado = false;
 		console.log('logout');
 		//next();
 		res.redirect('/');
@@ -44,9 +47,9 @@ router.use('/logout',   async (req, res, next) => {
 		// An error happened.
 	});
 });
-
+// ----------------- register ----------------- //
 // new user email
-router.post('/new-user', async (req, res) => {
+router.post('/new-user-email', async (req, res) => {
 	console.log('hola dentro de ');
 	let { password, confirmPassword, email, phone, ubication, name } = req.body;
 
@@ -69,20 +72,26 @@ router.post('/new-user', async (req, res) => {
 					phone,
 					ubication,
 				})
-				res.render('InicioSesion');
+				res.redirect('/iniciosesion');
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				// ..
-				console.log('error', errorCode);
+				console.log('fatal', errorCode);
 				//res.sendStatus(errorCode).send(errorMessage);
 			});
 	}
 });
 
+//register with google
+router.get('/holas', async (req, res) => {
+	res.send('hola');
+});
+
+//-------------------- Logins ----------------------//
 //login user email
-router.post('/login',  async(req, res) => {
+router.post('/login-email',  async(req, res) => {
 	let render;
 	let { email, password } = req.body;
 	console.log(email, password);
@@ -96,7 +105,7 @@ router.post('/login',  async(req, res) => {
 			const user = userCredential.user;
 			console.log('Login exitoso');
 			estado=true;
-			res.redirect('/home');
+			res.redirect('/publicaciones');
 			//console.log(user);
 			//next();
 			})
@@ -114,28 +123,39 @@ router.post('/login',  async(req, res) => {
 		});
 });
 
-router.get('/InicioSesion', async(req, res) => {
-	res.render('InicioSesion');
-
+router.get('/iniciosesion', async(req, res) => {
+	//res.render('InicioSesion');
+	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
+		//...
+	});
 });
-router.get('/menu', async(req, res) => {
-	res.render('menu');
 
-});
 router.get('/publicaciones', async(req, res) => {
-	res.render('publicaciones');
-
+	verificarEstado(res, 'publicaciones', 'index', () => {
+		//...
+	});
 });
+
 router.get('/crearPublicacion', async(req, res) => {
-	res.render('crearPublicacion');
-
+	//res.render('crearPublicacion');
+	verificarEstado(res, 'crearPublicacion', 'index', () => {
+		//...
+	});
 });
+
 router.get('/acarreos', async(req, res) => {
-	res.render('acarreos');
-
+	//res.render('acarreos');
+	verificarEstado(res, 'acarreos', 'index', () => {
+	//...
+	});
 });
+
 router.get('/perfil', async(req, res) => {
-	res.render('perfil');
-
+	//res.render('perfil');
+	//verificarEstado(res, 'perfil', 'index');
+	verificarEstado(res, 'perfil', 'index', () => {
+		console.log('Estoy dentro del perfil con un callback');
+	});
 });
+
 module.exports = router;

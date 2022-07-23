@@ -9,7 +9,7 @@ app.set("views", path.join(__dirname, "views")); //permite trabajar con handleba
 app.engine(
 	".hbs",
 	exphbs.create({
-		defaultLayout: false,//para poder usar layouts
+		defaultLayout: "menu",//para poder usar layouts
 		extname: ".hbs",
 		//layoutsDir: "views/layouts/"
 	}).engine
