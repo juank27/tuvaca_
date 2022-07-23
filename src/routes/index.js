@@ -13,10 +13,11 @@ const router = Router();
 
 let estado=false; //estado de la sesion
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2){
+function verificarEstado(res, ruta, ruta2, callback){
 	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
+		callback();
 		res.render(ruta);
 	} else {
 		console.log('raiz raiz');
@@ -113,26 +114,37 @@ router.post('/login',  async(req, res) => {
 
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion');
+	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
+		//...
+	});
 });
 
 router.get('/publicaciones', async(req, res) => {
-	verificarEstado(res, 'publicaciones','index');
+	verificarEstado(res, 'publicaciones', 'index', () => {
+		//...
+	});
 });
 
 router.get('/crearPublicacion', async(req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index');
+	verificarEstado(res, 'crearPublicacion', 'index', () => {
+		//...
+	});
 });
 
 router.get('/acarreos', async(req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'acarreos', 'index');
+	verificarEstado(res, 'acarreos', 'index', () => {
+	//...
+	});
 });
 
 router.get('/perfil', async(req, res) => {
 	//res.render('perfil');
-	verificarEstado(res, 'perfil', 'index');
+	//verificarEstado(res, 'perfil', 'index');
+	verificarEstado(res, 'perfil', 'index', () => {
+		console.log('Estoy dentro del perfil con un callback');
+	});
 });
 
 module.exports = router;
