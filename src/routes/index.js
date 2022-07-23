@@ -1,12 +1,16 @@
 const { Router } = require('express');
 const { db,} = require('../firebase');//importar la base de datos
-const { dbFirebase, app, auth} = require('../firebaseCloud');//importar la base de datos
+const { dbFirebase, app, auth, provider} = require('../firebaseCloud');//importar la base de datos
 const {  createUserWithEmailAndPassword,
 			signInWithEmailAndPassword,
 			onAuthStateChanged,
 			signOut,
 			browserSessionPersistence,
-			setPersistence
+			setPersistence, //percistencia de la sesion
+			signInWithPopup,
+			signInWithRedirect,
+			getRedirectResult,
+			GoogleAuthProvider,
 		} = require('firebase/auth');
 
 const router = Router();
@@ -29,11 +33,12 @@ router.get('/', async (req, res) => {
 });
 
 console.log(estado)
+
 // //logout
 router.use('/logout',   async (req, res, next) => {
 	auth.signOut().then(() => {
 		// Sign-out successful.
-		estado=false;
+		estado = false;
 		console.log('logout');
 		//next();
 		res.redirect('/');
@@ -41,9 +46,9 @@ router.use('/logout',   async (req, res, next) => {
 		// An error happened.
 	});
 });
-
+// ----------------- register ----------------- //
 // new user email
-router.post('/new-user', async (req, res) => {
+router.post('/new-user-email', async (req, res) => {
 	console.log('hola dentro de ');
 	let { password, confirmPassword, email, phone, ubication, name } = req.body;
 
@@ -72,14 +77,32 @@ router.post('/new-user', async (req, res) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				// ..
-				console.log('error', errorCode);
+				console.log('fatal', errorCode);
 				//res.sendStatus(errorCode).send(errorMessage);
 			});
 	}
 });
+//register with google
+router.get('/holas', async (req, res) => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is signed in, see docs for a list of available properties
+			// https://firebase.google.com/docs/reference/js/firebase.User
+			const uid = user.uid;
+			console.log('entre aca');
+			console.log(user);
+			// ...
+		} else {
+			// User is signed out
+			// ...
+			console.log('no entre aca');
+		}});
+	res.render('index', { layout: false });
+});
 
+//-------------------- Logins ----------------------//
 //login user email
-router.post('/login',  async(req, res) => {
+router.post('/login-email',  async(req, res) => {
 	let render;
 	let { email, password } = req.body;
 	console.log(email, password);

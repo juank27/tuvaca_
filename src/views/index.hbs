@@ -373,7 +373,7 @@
             <div class="modal_ContendorC"><span class="cerrar_modal_IS"></span></div>
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                <form class="modal_formulario_IS modal_formulario" action="/login" method="POST">
+                <form class="modal_formulario_IS modal_formulario" action="/login-email" method="POST">
                     <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
                     <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
                     <button type="submit">Iniciar Sesión</button>
@@ -381,11 +381,11 @@
                 <div class="modal_separador"></div>
                 <div class="modal_google">
                     <span></span>
-                    <a href="">Iniciar Sesión con Google</a>
+                    <a href="/login-google">Iniciar Sesión con Google</a>
                 </div>
                 <div class="modal_facebook">
                     <span></span>
-                    <a href="">Iniciar Sesión con Facebook</a>
+                    <a href="/login-facebook">Iniciar Sesión con Facebook</a>
                 </div>
             </div>
         </section>
@@ -396,7 +396,7 @@
             <div class="modal_ContendorC"><span class="cerrar_modal_R"></span></div>
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user" method="POST">
+                <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email" method="POST">
                     <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
                     <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
                     <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required >
@@ -420,11 +420,11 @@
                 <div class="modal_separador"></div>
                 <div class="modal_google">
                     <span></span>
-                    <a href="">Registrarse con Google</a>
+                    <a href=""> Registrarse con Google</a>
                 </div>
                 <div class="modal_facebook">
                     <span></span>
-                    <a href="">Registrarse con Facebook</a>
+                    <a href="/new-user-facebook">Registrarse con Facebook</a>
                 </div>
             </div>
         </section>
@@ -664,6 +664,75 @@
         </section>
     </section>
     <script src="./principal/JS/index.js"></script>
+    {{!-- <script src="./JS/firebaseAuth.js"></script> --}}
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDlasdrgnXPMmIqioRVObso5lwBp1e5UCs",
+        authDomain: "tuvaca-ce478.firebaseapp.com",
+        projectId: "tuvaca-ce478",
+        storageBucket: "tuvaca-ce478.appspot.com",
+        messagingSenderId: "487906553455",
+        appId: "1:487906553455:web:35cd78dd5c339b1d3ba79a",
+        measurementId: "G-3LYFGJK1ET"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+
+    loginGoogle.addEventListener('click', (e) => {
+        // signInWithRedirect(auth, provider);
+        // redirect the result
+        //  getRedirectResult(auth)
+        //    .then((result) => {
+        //      // This gives you a Google Access Token. You can use it to access Google APIs.
+        //      const credential = GoogleAuthProvider.credentialFromResult(result);
+        //      const token = credential.accessToken;
+        //      // The signed-in user info.
+        //      const user = result.user;
+        //    }).catch((error) => {
+        //      // Handle Errors here.
+        //      const errorCode = error.code;
+        //      const errorMessage = error.message;
+        //      // The email of the user's account used.
+        //      const email = error.email;
+        //      // The AuthCredential type that was used.
+        //      const credential = GoogleAuthProvider.credentialFromError(error);
+        //      // ...
+        // });
+
+
+        // sign in with popup tab
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                alert(user.displayName);
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                alert(errorMessage);
+            });
+    });
+    </script>
 </body>
 
     <!-- FIREBASE SCRIPTS-->
