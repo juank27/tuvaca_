@@ -53,25 +53,29 @@ logingoogle.addEventListener('click', (e) => {
 	// 	});
 
 	const provider = new firebase.auth.GoogleAuthProvider();
-	auth.signInWithPopup(provider).then((result) => {
-		const credential = GoogleAuthProvider.credentialFromResult(result);
-		const token = credential.accessToken;
-		// The signed-in user info.
-		const user = result.user;
+	auth.signInWithPopup(provider)
+		.then((result) => {
+			//const credential = provider.credentialFromResult(result);
+			//const token = credential.accessToken;
+			// The signed-in user info.
+			const user = result.user;
 
-		console.log(user);
-		window.location.href = "/holas";
-	})
-		.catch(err => {
+			console.log(user.displayName); //name
+			console.log(user.email); //email
+			console.log(user.photoURL); //photo
+			console.log(user.uid); //uid
+			//window.location.href = "/holas";
+		})
+		.catch((error) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
 			// The email of the user's account used.
 			const email = error.email;
 			// The AuthCredential type that was used.
-			const credential = GoogleAuthProvider.credentialFromError(error);
+			//const credential = provider.credentialFromError(error);
 			// ...
-			alert(errorMessage);
-
+			console.log(errorMessage);
+			//alert(errorMessage);
 		})
 });
 

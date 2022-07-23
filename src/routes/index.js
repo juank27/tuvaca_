@@ -86,7 +86,7 @@ router.post('/new-user-email', async (req, res) => {
 
 //register with google
 router.get('/holas', async (req, res) => {
-	res.render
+	res.send('hola');
 });
 
 //-------------------- Logins ----------------------//
