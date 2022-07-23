@@ -83,22 +83,10 @@ router.post('/new-user-email', async (req, res) => {
 			});
 	}
 });
+
 //register with google
 router.get('/holas', async (req, res) => {
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			// User is signed in, see docs for a list of available properties
-			// https://firebase.google.com/docs/reference/js/firebase.User
-			const uid = user.uid;
-			console.log('entre aca');
-			console.log(user);
-			// ...
-		} else {
-			// User is signed out
-			// ...
-			console.log('no entre aca');
-		}});
-	res.render('index', { layout: false });
+	res.render
 });
 
 //-------------------- Logins ----------------------//

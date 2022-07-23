@@ -1,26 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
+const logingoogle = document.getElementById("logingoogle");
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-	apiKey: "AIzaSyDlasdrgnXPMmIqioRVObso5lwBp1e5UCs",
-	authDomain: "tuvaca-ce478.firebaseapp.com",
-	projectId: "tuvaca-ce478",
-	storageBucket: "tuvaca-ce478.appspot.com",
-	messagingSenderId: "487906553455",
-	appId: "1:487906553455:web:35cd78dd5c339b1d3ba79a",
-	measurementId: "G-3LYFGJK1ET"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider(app);
-
-loginGoogle.addEventListener('click', (e) => {
+logingoogle.addEventListener('click', (e) => {
 	// signInWithRedirect(auth, provider);
 
 
@@ -48,19 +28,41 @@ loginGoogle.addEventListener('click', (e) => {
 
 
 	// sign in with popup tab
-	signInWithPopup(auth, provider)
-		.then((result) => {
-			// This gives you a Google Access Token. You can use it to access the Google API.
-			const credential = GoogleAuthProvider.credentialFromResult(result);
-			const token = credential.accessToken;
-			// The signed-in user info.
-			const user = result.user;
+	// signInWithPopup(auth, provider)
+	// 	.then((result) => {
+	// 		// This gives you a Google Access Token. You can use it to access the Google API.
+	// 		const credential = GoogleAuthProvider.credentialFromResult(result);
+	// 		const token = credential.accessToken;
+	// 		// The signed-in user info.
+	// 		const user = result.user;
 
+	// 		console.log(user);
+	// 		window.location.href = "/holas";
+	// 		// ...
+	// 	}).catch((error) => {
+	// 		// Handle Errors here.
+	// 		const errorCode = error.code;
+	// 		const errorMessage = error.message;
+	// 		// The email of the user's account used.
+	// 		const email = error.email;
+	// 		// The AuthCredential type that was used.
+	// 		const credential = GoogleAuthProvider.credentialFromError(error);
+	// 		// ...
+	// 		alert(errorMessage);
 
-			alert(user.displayName);
-			// ...
-		}).catch((error) => {
-			// Handle Errors here.
+	// 	});
+
+	const provider = new firebase.auth.GoogleAuthProvider();
+	auth.signInWithPopup(provider).then((result) => {
+		const credential = GoogleAuthProvider.credentialFromResult(result);
+		const token = credential.accessToken;
+		// The signed-in user info.
+		const user = result.user;
+
+		console.log(user);
+		window.location.href = "/holas";
+	})
+		.catch(err => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
 			// The email of the user's account used.
@@ -68,8 +70,8 @@ loginGoogle.addEventListener('click', (e) => {
 			// The AuthCredential type that was used.
 			const credential = GoogleAuthProvider.credentialFromError(error);
 			// ...
-
 			alert(errorMessage);
-		});
+
+		})
 });
 
