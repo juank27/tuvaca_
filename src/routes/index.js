@@ -85,8 +85,17 @@ router.post('/new-user-email', async (req, res) => {
 });
 
 //register with google
-router.get('/holas', async (req, res) => {
-	res.send('hola');
+router.post('/register-google', async (req, res) => {
+	let {/*name campos*/} = req.body;
+	setPersistence(auth, browserSessionPersistence)
+		.then(() => {
+
+		})
+		.catch((error) => {
+			// Handle Errors here.
+			const errorCode = error.code;
+			const errorMessage = error.message;
+		});
 });
 
 //-------------------- Logins ----------------------//
