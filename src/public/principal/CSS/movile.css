@@ -454,11 +454,11 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
 }
 .modal_Cuerpo h1{
-    font-size: var(--font1);
+    font-size: var(--font2);
     color: #4B8325;
     font-size: 1.6rem;
     margin-bottom: 5%;
-    font-weight: bold
+    font-weight: bold;
 }
 .modal_ContendorC {
     width: 100%;

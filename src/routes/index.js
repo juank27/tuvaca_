@@ -51,13 +51,13 @@ router.use('/logout',   async (req, res, next) => {
 // new user email
 router.post('/new-user-email', async (req, res) => {
 	console.log('hola dentro de ');
-	let { password, confirmPassword, email, phone, ubication, name } = req.body;
+	let { passwordd, confirmPassword, email, phone, ubication, name } = req.body;
 
-	if (password !== confirmPassword) {
+	if (passwordd !== confirmPassword) {
 		let text = 'Las contraseñas no coinciden';
 		res.send(text);
 	} else {
-		createUserWithEmailAndPassword(auth, email, password)
+		createUserWithEmailAndPassword(auth, email, passwordd)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
@@ -166,5 +166,6 @@ router.get('/perfil', async(req, res) => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
+
 
 module.exports = router;

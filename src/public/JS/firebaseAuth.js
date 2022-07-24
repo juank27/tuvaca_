@@ -1,4 +1,15 @@
 const logingoogle = document.getElementById("logingoogle");
+const google=document.getElementById("google");
+const facebook=document.getElementById("facebook");
+const contra = document.getElementById("passwordd");
+const ccontraseña = document.getElementById("confirmPassword");
+const cerrar=document.getElementById("cerrar");
+const titulo = document.getElementById("titulo");
+const boton = document.getElementById("boton");
+const nombre = document.getElementById("name");
+const correo = document.getElementById("email-a");
+const formulario= document.getElementById("register-form");
+
 
 logingoogle.addEventListener('click', (e) => {
 	// signInWithRedirect(auth, provider);
@@ -64,7 +75,23 @@ logingoogle.addEventListener('click', (e) => {
 			console.log(user.email); //email
 			console.log(user.photoURL); //photo
 			console.log(user.uid); //uid
-			//window.location.href = "/holas";
+			// contra.style.display="none";
+			ccontraseña.style.display="none";
+			ccontraseña.removeAttribute("required");
+			titulo.style.display="block";
+			contra.style.display="none"
+			contra.removeAttribute("required");
+			cerrar.style.display="none";
+			facebook.style.display="none";
+			google.style.display="none";
+			nombre.disabled =true;
+			correo.disabled =true;
+			document.getElementById("id").value = id;
+			nombre.value =user.displayName ;
+			correo.value = user.email;
+			boton.innerText="Finalizar";
+			formulario.setAttribute('action', 'register_google')
+			//window.location.href = "/registro";
 		})
 		.catch((error) => {
 			const errorCode = error.code;
@@ -78,4 +105,6 @@ logingoogle.addEventListener('click', (e) => {
 			//alert(errorMessage);
 		})
 });
+
+
 
