@@ -1,4 +1,4 @@
-const logingoogle = document.getElementById("logingoogle");
+const registergoogle = document.getElementById("registergoogle");
 const google=document.getElementById("google");
 const facebook=document.getElementById("facebook");
 const contra = document.getElementById("passwordd");
@@ -10,59 +10,8 @@ const nombre = document.getElementById("name");
 const correo = document.getElementById("email-a");
 const formulario= document.getElementById("register-form");
 
-
-logingoogle.addEventListener('click', (e) => {
-	// signInWithRedirect(auth, provider);
-
-
-	// redirect the result
-	//  getRedirectResult(auth)
-	//    .then((result) => {
-	//      // This gives you a Google Access Token. You can use it to access Google APIs.
-	//      const credential = GoogleAuthProvider.credentialFromResult(result);
-	//      const token = credential.accessToken;
-
-	//      // The signed-in user info.
-	//      const user = result.user;
-
-	//    }).catch((error) => {
-	//      // Handle Errors here.
-	//      const errorCode = error.code;
-	//      const errorMessage = error.message;
-	//      // The email of the user's account used.
-	//      const email = error.email;
-	//      // The AuthCredential type that was used.
-	//      const credential = GoogleAuthProvider.credentialFromError(error);
-	//      // ...
-
-	// });
-
-
-	// sign in with popup tab
-	// signInWithPopup(auth, provider)
-	// 	.then((result) => {
-	// 		// This gives you a Google Access Token. You can use it to access the Google API.
-	// 		const credential = GoogleAuthProvider.credentialFromResult(result);
-	// 		const token = credential.accessToken;
-	// 		// The signed-in user info.
-	// 		const user = result.user;
-
-	// 		console.log(user);
-	// 		window.location.href = "/holas";
-	// 		// ...
-	// 	}).catch((error) => {
-	// 		// Handle Errors here.
-	// 		const errorCode = error.code;
-	// 		const errorMessage = error.message;
-	// 		// The email of the user's account used.
-	// 		const email = error.email;
-	// 		// The AuthCredential type that was used.
-	// 		const credential = GoogleAuthProvider.credentialFromError(error);
-	// 		// ...
-	// 		alert(errorMessage);
-
-	// 	});
-
+// .then(() => {}
+registergoogle.addEventListener('click', (e) => {
 	const provider = new firebase.auth.GoogleAuthProvider();
 	auth.signInWithPopup(provider)
 		.then((result) => {
@@ -109,5 +58,27 @@ logingoogle.addEventListener('click', (e) => {
 		})
 });
 
+const logingoogle = document.getElementById("logingoogle");
+const formlogin = document.getElementById("login-form");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 
+logingoogle.addEventListener('click', (e) => {
+	const provider = new firebase.auth.GoogleAuthProvider();
+	auth.signInWithPopup(provider)
+		.then((result) => {
+			const user = result.user;
+			console.log('entre');
+			password.removeAttribute("required");
+			email.value = user.email;
+			formlogin.setAttribute('action', 'login-google');
+			formlogin.submit();
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			// The email of the user's account used.
+			console.log(errorMessage);
+		});
+});

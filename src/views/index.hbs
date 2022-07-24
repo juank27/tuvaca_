@@ -373,7 +373,7 @@
             <div class="modal_ContendorC"><span class="cerrar_modal_IS"></span></div>
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                <form class="modal_formulario_IS modal_formulario" action="/login-email" method="POST">
+                <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
                     <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
                     <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
                     <button type="submit">Iniciar Sesión</button>
@@ -381,7 +381,7 @@
                 <div class="modal_separador"></div>
                 <div class="modal_google">
                     <span></span>
-                    <a href="/login-google">Iniciar Sesión con Google</a>
+                    <a id="logingoogle">Iniciar Sesión con Google</a>
                 </div>
                 <div class="modal_facebook">
                     <span></span>
@@ -425,11 +425,11 @@
                 <div class="modal_separador"></div>
                 <div class="modal_google" id="google">
                     <span></span>
-                    <a id="logingoogle" > Registrarse con Google</a>
+                    <a id="registergoogle" > Registrarse con Google</a>
                 </div>
                 <div class="modal_facebook" id="facebook">
                     <span></span>
-                    <a id="loginfacebook">Registrarse con Facebook</a>
+                    <a id="registerfacebook">Registrarse con Facebook</a>
                 </div>
             </div>
         </section>
@@ -671,7 +671,6 @@
     <script src="./principal/JS/index.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
     <!-- Don't change the format for any other products. -->
     <!-- etc. -->
     <script>

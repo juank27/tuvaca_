@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { db,} = require('../firebase');//importar la base de datos
-const { dbFirebase, app, auth, provider} = require('../firebaseCloud');//importar la base de datos
+const { dbFirebase, app, auth, provider, user} = require('../firebaseCloud');//importar la base de datos
 const {  createUserWithEmailAndPassword,
 			signInWithEmailAndPassword,
 			onAuthStateChanged,
@@ -87,18 +87,14 @@ router.post('/new-user-email', async (req, res) => {
 //register with google
 router.post('/register-google', async (req, res) => {
 	let {nameb, emailb, id, phone, ubication, photo } = req.body;
-	console.log(nameb);
-	console.log(emailb);
-	console.log(id);
-	console.log(phone);
-	console.log(ubication);
-	console.log(photo);
+	let name = nameb;
+	let email = emailb;
 
 	setPersistence(auth, browserSessionPersistence)
 		.then(() => {
 			db.collection('users').doc(id).set({
-				nameb,
-				emailb,
+				name,
+				email,
 				phone,
 				ubication,
 				photo,
@@ -120,10 +116,13 @@ router.post('/register-google', async (req, res) => {
 router.post('/login-email',  async(req, res) => {
 	let render;
 	let { email, password } = req.body;
+	console.log(req.body);
 	console.log(email, password);
 	console.log(email, password);
 	setPersistence(auth, browserSessionPersistence)
+	//console.log('entro')
 		.then(() => {
+			console.log('aca si entro');
 			//res.render('home');
 			signInWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
@@ -140,13 +139,42 @@ router.post('/login-email',  async(req, res) => {
 				const errorMessage = error.message;
 				//console.log('error', errorCode);
 				//res.sendStatus(errorCode).send(errorMessage);
+				console.log('error del codigooo ', errorCode);
+				//res.render('error', { layout: false });
+				console.log('Este es el mensaje de error ', errorMessage);
 			});
 		})
 		.catch((error) => {
 			// Handle Errors here.
 			const errorCode = error.code;
 			const errorMessage = error.message;
+			console.log('error del codigooo ', errorCode);
+			//res.render('error', { layout: false });
+			console.log('Este es el mensaje de error ', errorMessage);
 		});
+});
+
+//login with google
+router.post('/login-google', async (req, res) => {
+	let { email } = req.body;
+	console.log('estoy en el backend');
+	console.log(typeof(email));
+	let users = db.collection('users');
+	let verific = await users.where('email', '==', email).get();
+	if (verific.empty) {
+		console.log('no existe');
+		console.log(verific.empty);
+		res.redirect('/');
+	} else {
+		console.log('existe');
+		console.log(verific.empty);
+		estado = true;
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
+				res.redirect('/publicaciones');
+			})
+	}
+	// res.send(verific.email);
 });
 
 router.get('/iniciosesion', async(req, res) => {
@@ -183,6 +211,5 @@ router.get('/perfil', async(req, res) => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
-
 
 module.exports = router;
