@@ -71,10 +71,10 @@ logingoogle.addEventListener('click', (e) => {
 			// The signed-in user info.
 			const user = result.user;
 
-			console.log(user.displayName); //name
-			console.log(user.email); //email
-			console.log(user.photoURL); //photo
-			console.log(user.uid); //uid
+			// console.log(user.displayName); //name
+			// console.log(user.email); //email
+			// console.log(user.photoURL); //photo
+			// console.log(user.uid); //uid
 			// contra.style.display="none";
 			ccontraseña.style.display="none";
 			ccontraseña.removeAttribute("required");
@@ -86,11 +86,14 @@ logingoogle.addEventListener('click', (e) => {
 			google.style.display="none";
 			nombre.disabled =true;
 			correo.disabled =true;
-			document.getElementById("id").value = id;
+			document.getElementById("id").value = user.uid;
+			document.getElementById("photo").value = user.photoURL;
+			document.getElementById("nameb").value = user.displayName;
+			document.getElementById("emailb").value = user.email;
 			nombre.value =user.displayName ;
 			correo.value = user.email;
 			boton.innerText="Finalizar";
-			formulario.setAttribute('action', 'register_google')
+			formulario.setAttribute('action', 'register-google')
 			//window.location.href = "/registro";
 		})
 		.catch((error) => {

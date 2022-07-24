@@ -30,7 +30,7 @@ function verificarEstado(res, ruta, ruta2, callback){
 	}
 }
 router.get('/', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'index');
+	verificarEstado(res, 'publicaciones', 'index', () => {});
 });
 
 console.log(estado)
@@ -71,7 +71,7 @@ router.post('/new-user-email', async (req, res) => {
 					email,
 					phone,
 					ubication,
-				})
+				});
 				res.redirect('/iniciosesion');
 			})
 			.catch((error) => {
@@ -86,15 +86,32 @@ router.post('/new-user-email', async (req, res) => {
 
 //register with google
 router.post('/register-google', async (req, res) => {
-	let {/*name campos*/} = req.body;
+	let {nameb, emailb, id, phone, ubication, photo } = req.body;
+	console.log(nameb);
+	console.log(emailb);
+	console.log(id);
+	console.log(phone);
+	console.log(ubication);
+	console.log(photo);
+
 	setPersistence(auth, browserSessionPersistence)
 		.then(() => {
-
+			db.collection('users').doc(id).set({
+				nameb,
+				emailb,
+				phone,
+				ubication,
+				photo,
+			});
+			console.log('si entre');
+			estado = true;
+			res.redirect('/publicaciones');
 		})
 		.catch((error) => {
 			// Handle Errors here.
 			const errorCode = error.code;
 			const errorMessage = error.message;
+			res.send(errorCode)
 		});
 });
 
