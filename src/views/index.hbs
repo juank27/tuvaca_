@@ -393,10 +393,12 @@
     <!--Section fomulario de registro-->
     <section class="modal_container_R ">
         <section class="modal_R modal_cerrado_R">
-            <div class="modal_ContendorC"><span class="cerrar_modal_R"></span></div>
+            <div class="modal_ContendorC" id="cerrar"><span class="cerrar_modal_R"></span></div>
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
+                <h1 id="titulo" style="display:none">Completar Registro</h1>
                 <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email" method="POST">
+                    <input type="text" name="id" id="id" type="text" style="display:none">
                     <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
                     <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
                     <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required >
@@ -412,19 +414,19 @@
                         <option value="Simijaca"></option>
                         <option value="Susa"></option>
                     </datalist>
-                    <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
+                    <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña" minlength="7" required>
                     <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Verificar Contraseña" minlength="7" required>
                     <p id="nn"></p>
-                    <button type="submit">Registrarse</button>
+                    <button id="boton" type="submit">Registrarse</button>
                 </form>
                 <div class="modal_separador"></div>
-                <div class="modal_google">
+                <div class="modal_google" id="google">
                     <span></span>
                     <a id="logingoogle" > Registrarse con Google</a>
                 </div>
-                <div class="modal_facebook">
+                <div class="modal_facebook" id="facebook">
                     <span></span>
-                    <a href="/new-user-facebook">Registrarse con Facebook</a>
+                    <a id="loginfacebook">Registrarse con Facebook</a>
                 </div>
             </div>
         </section>
