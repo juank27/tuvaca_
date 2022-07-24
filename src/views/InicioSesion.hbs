@@ -16,26 +16,49 @@
     <title>tuVaca.com</title>
 </head>
 <body class="body">
+    {{!-- {{{layout : false}}} --}}
     <section class="modal_container_IS2 ">
         <section class="modal_IS2 ">
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                <form class="modal_formulario_IS modal_formulario" action="/login-email" method="POST">
+                <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
                     <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
                     <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
                     <button type="submit">Iniciar Sesión</button>
                 </form>
+                <p>{{mensaje}}</p>
                 <div class="modal_separador"></div>
                 <div class="modal_google">
                     <span></span>
-                    <a href="">Iniciar Sesión con Google</a>
+                    <a id="logingoogle">Iniciar Sesión con Google</a>
                 </div>
                 <div class="modal_facebook">
                     <span></span>
-                    <a href="">Iniciar Sesión con Facebook</a>
+                    <a id="loginfacebook">Iniciar Sesión con Facebook</a>
                 </div>
             </div>
         </section>
     </section>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+    <!-- Don't change the format for any other products. -->
+    <!-- etc. -->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            // YOUR FIREBASE CREDENTIALS HERE
+            apiKey: "AIzaSyDlasdrgnXPMmIqioRVObso5lwBp1e5UCs",
+            authDomain: "tuvaca-ce478.firebaseapp.com",
+            projectId: "tuvaca-ce478",
+            storageBucket: "tuvaca-ce478.appspot.com",
+            messagingSenderId: "487906553455",
+            appId: "1:487906553455:web:35cd78dd5c339b1d3ba79a",
+            measurementId: "G-3LYFGJK1ET"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+    </script>
+    <script src="./JS/firebaseAuthLogin.js"></script>
 </body>
 </html>

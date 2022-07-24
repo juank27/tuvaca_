@@ -15,15 +15,19 @@ const {  createUserWithEmailAndPassword,
 
 const router = Router();
 
+let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, callback){
+	console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
 		res.render(ruta);
-	} else {
+	} else if (mensaje !== undefined) {
+		res.render('InicioSesion', { layout: false, mensaje });
+	}	else {
 		console.log('raiz raiz');
 		// res.render('index')
 		res.render( ruta2, { layout: false });
@@ -114,11 +118,7 @@ router.post('/register-google', async (req, res) => {
 //-------------------- Logins ----------------------//
 //login user email
 router.post('/login-email',  async(req, res) => {
-	let render;
 	let { email, password } = req.body;
-	console.log(req.body);
-	console.log(email, password);
-	console.log(email, password);
 	setPersistence(auth, browserSessionPersistence)
 	//console.log('entro')
 		.then(() => {
@@ -126,23 +126,31 @@ router.post('/login-email',  async(req, res) => {
 			//res.render('home');
 			signInWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
-			// Signed in
-			const user = userCredential.user;
-			console.log('Login exitoso');
-			estado=true;
-			res.redirect('/publicaciones');
-			//console.log(user);
-			//next();
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				//console.log('error', errorCode);
-				//res.sendStatus(errorCode).send(errorMessage);
-				console.log('error del codigooo ', errorCode);
-				//res.render('error', { layout: false });
-				console.log('Este es el mensaje de error ', errorMessage);
-			});
+					// Signed in
+					const user = userCredential.user;
+					console.log('Login exitoso');
+					estado = true;
+					mensaje = undefined;
+					res.redirect('/publicaciones');
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					//console.log('error', errorCode);
+					//res.sendStatus(errorCode).send(errorMessage);
+					console.log(typeof(errorCode));
+					console.log('error del codigooo ', errorCode);
+					//res.render('error', { layout: false });
+					console.log('Este es el mensaje de error ', errorMessage);
+
+					if (errorCode === 'auth/user-not-found') {
+						mensaje = 'El usuario no existe';
+						res.redirect('/inicio-err');
+					} else{
+						mensaje = 'Contraseña incorrecta O intenta iniciar con Google o Facebook';
+						res.redirect('/inicio-err');
+					}
+				});
 		})
 		.catch((error) => {
 			// Handle Errors here.
@@ -153,7 +161,6 @@ router.post('/login-email',  async(req, res) => {
 			console.log('Este es el mensaje de error ', errorMessage);
 		});
 });
-
 //login with google
 router.post('/login-google', async (req, res) => {
 	let { email } = req.body;
@@ -164,11 +171,14 @@ router.post('/login-google', async (req, res) => {
 	if (verific.empty) {
 		console.log('no existe');
 		console.log(verific.empty);
+		console.log(verific);
 		res.redirect('/');
 	} else {
 		console.log('existe');
 		console.log(verific.empty);
+		console.log(verific);
 		estado = true;
+		mensaje = undefined;
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
 				res.redirect('/publicaciones');
@@ -177,9 +187,17 @@ router.post('/login-google', async (req, res) => {
 	// res.send(verific.email);
 });
 
+router.get('/inicio-err', (req, res) => {
+	console.log(mensaje);
+	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
+		// ...
+	});
+	//res.render('InicioSesion', { layout: false, mensaje });
+});
+
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
+	verificarEstado(res, 'publicaciones', 'index', () => {
 		//...
 	});
 });
@@ -210,6 +228,38 @@ router.get('/perfil', async(req, res) => {
 	verificarEstado(res, 'perfil', 'index', () => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
+});
+
+router.get('/consulta', async(req, res) => {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.where('email', '==', 'nayibepelaez03@gmail.com').get();
+	console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(typeof(userRegister));//-> salida: object
+	console.log(userRegister);//-> Estructura de datos
+	if (userRegister.length > 0) {
+		console.log('existe');
+		res.send(userRegister[0].email);
+	} else {
+		console.log('no existe');
+		res.send('no existe');
+	}
+	//[
+	// 	{
+	// 		id: 'SWf7jxis7lSTY7sd87RpZ2eN8B63',
+	// 			phone: '3112465403',
+	// 				email: 'camilo@gmail.com',
+	// 					ubication: 'Carmen de Carupa',
+	// 						name: 'Camilo Ruiz'
+	// 	}
+	// ]
+   // para acceder a los datos del objeto
+	//res.send(userRegister[0].email);
 });
 
 module.exports = router;
