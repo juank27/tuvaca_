@@ -1,10 +1,7 @@
 
 /************************section***********************************/
-body {
+.body_publicaciones {
     width: 70%;
-}
-.modal_p {
-    width: 100%;
 }
 .publicacion{
     width: 45%;
@@ -14,6 +11,12 @@ body {
     height: auto;
 }
 .publicacion_descripcion{
-    width: 40%;
+    width: 50%;
     height: auto;
+}
+.publicacion_linea1b p{
+    font-size: 1.6rem;
+}
+.publicacion_linea2b p{
+    font-size: 1.6rem;
 }

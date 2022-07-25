@@ -23,7 +23,7 @@ html {
     scroll-padding: 10vh;
 }
 
-body {
+.body_publicaciones{
     background-color:  #F8F8F8;
     width: 100%;
     min-width: 320px;
@@ -31,6 +31,14 @@ body {
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
 }
 /************************section***********************************/
 .publicacion{
@@ -66,6 +74,7 @@ body {
 .publicacion_imagen{
     width: 90%;
     height: auto;
+    cursor: pointer;
 }
 .publicacion_imagen img{
     width: 100%;
@@ -126,16 +135,15 @@ body {
     height: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .publicacion_perfil div{
-    background-image: url("../../menu/images/perfil.jpeg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size:contain;
+    background-size:cover;
     width: 30px;
     height: 30px;
     border-radius: 50px;
+    margin-right: 2%;
     background-color: var(--gris_oscuro);
     cursor: pointer;
 }
@@ -169,8 +177,8 @@ body {
 }
 /************************modal***********************************/
 .modal_container_p {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     z-index: 9;
     width: 100%;
@@ -195,9 +203,9 @@ body {
     transform: translateY(0%);
     transition: transform 1s;
 }
-/* .modal_cerrado_p {
+.modal_cerrado_p {
     transform: translateY(-200%);
-} */
+}
 .modal_Contendorp {
     width: 100%;
     display: flex;

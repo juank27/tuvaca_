@@ -27,11 +27,11 @@ body {
     background-color:  #F8F8F8;
     width: 100%;
     min-width: 320px;
-    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 /************************header***********************************/
 .header{
     width: 100%;
@@ -97,6 +97,7 @@ body {
     background-image: url("../icons/Sum2.png");
     transition: 0.2s;
 }
+
 .header_icon_tres {
     background-image: url("../icons/Truck.png");
     background-repeat: no-repeat;
@@ -124,6 +125,10 @@ body {
 }
 
 .header_icon_cuatro:hover {
+    box-shadow: 0 4px 4px 0 #A96224;
+    transition: 0.2s;
+}
+.header_icon_cuatro:focus {
     box-shadow: 0 4px 4px 0 #A96224;
     transition: 0.2s;
 }
