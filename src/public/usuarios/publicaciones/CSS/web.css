@@ -3,6 +3,9 @@
 body{
     width: 80%;
 }
+.modal_p {
+    width: 100%;
+}
 .publicacion{
     width: 30%;
 }
