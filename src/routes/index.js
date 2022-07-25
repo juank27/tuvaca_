@@ -19,14 +19,16 @@ let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, callback){
-	console.log(mensaje);
+	//console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
 		res.render(ruta);
 	} else if (mensaje !== undefined) {
-		res.render('InicioSesion', { layout: false, mensaje });
+		let mensajeError = mensaje;
+		mensaje = undefined;
+		res.render('InicioSesion', { layout: false, mensajeError });
 	}	else {
 		console.log('raiz raiz');
 		// res.render('index')
@@ -93,7 +95,6 @@ router.post('/register-google', async (req, res) => {
 	let {nameb, emailb, id, phone, ubication, photo } = req.body;
 	let name = nameb;
 	let email = emailb;
-
 	setPersistence(auth, browserSessionPersistence)
 		.then(() => {
 			db.collection('users').doc(id).set({
@@ -145,10 +146,10 @@ router.post('/login-email',  async(req, res) => {
 
 					if (errorCode === 'auth/user-not-found') {
 						mensaje = 'El usuario no existe';
-						res.redirect('/inicio-err');
+						res.redirect('/iniciosesion');
 					} else{
 						mensaje = 'Contraseña incorrecta O intenta iniciar con Google o Facebook';
-						res.redirect('/inicio-err');
+						res.redirect('/iniciosesion');
 					}
 				});
 		})
@@ -169,14 +170,11 @@ router.post('/login-google', async (req, res) => {
 	let users = db.collection('users');
 	let verific = await users.where('email', '==', email).get();
 	if (verific.empty) {
-		console.log('no existe');
-		console.log(verific.empty);
-		console.log(verific);
-		res.redirect('/');
+		//redireccion al mensaje de error porque el email no esta registrado
+		// en la bdd
+		mensaje = 'El usuario no existe';
+		res.redirect('/iniciosesion');
 	} else {
-		console.log('existe');
-		console.log(verific.empty);
-		console.log(verific);
 		estado = true;
 		mensaje = undefined;
 		setPersistence(auth, browserSessionPersistence)
@@ -187,17 +185,10 @@ router.post('/login-google', async (req, res) => {
 	// res.send(verific.email);
 });
 
-router.get('/inicio-err', (req, res) => {
-	console.log(mensaje);
-	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
-		// ...
-	});
-	//res.render('InicioSesion', { layout: false, mensaje });
-});
 
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'index', () => {
+	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
 		//...
 	});
 });
@@ -261,5 +252,19 @@ router.get('/consulta', async(req, res) => {
    // para acceder a los datos del objeto
 	//res.send(userRegister[0].email);
 });
+
+async function verficEmail(email, callback) {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.where('email', '==', email).get();
+	if (querySnapshot.empty) {
+		//no esta registrado el email
+		callback();
+	} else {
+		//ya esta registrado el email
+		res.render()
+	}
+}
+
 
 module.exports = router;
