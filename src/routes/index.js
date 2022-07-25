@@ -63,30 +63,32 @@ router.post('/new-user-email', async (req, res) => {
 		let text = 'Las contraseñas no coinciden';
 		res.send(text);
 	} else {
-		createUserWithEmailAndPassword(auth, email, passwordd)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				//console.log(user);
-				//console.log('registro exitoso');
-				// ...
-				const userRef = auth.currentUser;
-				//obteniendo el id del usuario userRef.uid
-				db.collection('users').doc(userRef.uid).set({
-					name,
-					email,
-					phone,
-					ubication,
+		verficEmail(res, email, () => {
+			createUserWithEmailAndPassword(auth, email, passwordd)
+				.then((userCredential) => {
+					// Signed in
+					const user = userCredential.user;
+					//console.log(user);
+					//console.log('registro exitoso');
+					// ...
+					const userRef = auth.currentUser;
+					//obteniendo el id del usuario userRef.uid
+					db.collection('users').doc(userRef.uid).set({
+						name,
+						email,
+						phone,
+						ubication,
+					});
+					res.redirect('/iniciosesion');
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ..
+					console.log('fatal', errorCode);
+					//res.sendStatus(errorCode).send(errorMessage);
 				});
-				res.redirect('/iniciosesion');
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// ..
-				console.log('fatal', errorCode);
-				//res.sendStatus(errorCode).send(errorMessage);
-			});
+		});
 	}
 });
 
@@ -143,7 +145,6 @@ router.post('/login-email',  async(req, res) => {
 					console.log('error del codigooo ', errorCode);
 					//res.render('error', { layout: false });
 					console.log('Este es el mensaje de error ', errorMessage);
-
 					if (errorCode === 'auth/user-not-found') {
 						mensaje = 'El usuario no existe';
 						res.redirect('/iniciosesion');
@@ -193,8 +194,7 @@ router.get('/iniciosesion', async(req, res) => {
 	});
 });
 router.get('/registro', async(req, res) => {
-	//res.render('InicioSesion');
-	verificarEstado(res, 'publucaciones', 'registro', () => {
+	verificarEstado(res, 'publicaciones', 'registro', () => {
 		//...
 	});
 });
@@ -258,7 +258,7 @@ router.get('/consulta', async(req, res) => {
 	//res.send(userRegister[0].email);
 });
 
-async function verficEmail(email, callback) {
+async function verficEmail(res, email, callback) {
 	let users = db.collection('users');
 	//consulta con la condicion
 	let querySnapshot = await users.where('email', '==', email).get();
@@ -267,7 +267,8 @@ async function verficEmail(email, callback) {
 		callback();
 	} else {
 		//ya esta registrado el email
-		res.render()
+		mensaje = 'El email ya esta registrado, inicia sesion';
+		res.redirect('/iniciosesion');
 	}
 }
 
