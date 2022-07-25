@@ -19,14 +19,16 @@
     <section class="modal_container_R2 ">
         <section class="modal_R2 ">
             <div class="modal_Cuerpo">
-                <h1>Completar Registro</h1>
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
+                <h1 id="titulo" style="display:none">Completar Registro</h1>
                 <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email" method="POST">
-                    <a id="logingoogle" style="display:none"> Registrarse con Google</a>
                     <input type="text" name="id" id="id" type="text" style="display:none">
-                    <input type="text" name="name" id="name" placeholder="Nombre Completo" readonly onmousedown="return false;">
-                    <input type="email" name="email" id="email-a" placeholder="Correo Electronico" readonly onmousedown="return false;">
+                    <input type="text" name="photo" id="photo" type="text" style="display:none">
+                    <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
+                    <input type="text" name="nameb" id="nameb" placeholder="Nombre Completo" style="display:none">
                     <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                    <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required>
+                    <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
                     <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio" required>
                     <datalist id="municipios">
                         <option value="Ubaté"></option>
@@ -39,16 +41,26 @@
                         <option value="Simijaca"></option>
                         <option value="Susa"></option>
                     </datalist>
-
+                    <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña" minlength="7" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Verificar Contraseña" minlength="7" required>
                     <p id="nn"></p>
-                    <button type="submit">Finalizar</button>
+                    <button id="boton" type="submit">Registrarse</button>
                 </form>
+                <div class="modal_separador"></div>
+                <div class="modal_google" id="google">
+                    <span></span>
+                    <a id="registergoogle" > Registrarse con Google</a>
+                </div>
+                <div class="modal_facebook" id="facebook">
+                    <span></span>
+                    <a id="registerfacebook">Registrarse con Facebook</a>
+                </div>
             </div>
         </section>
     </section>
-        {{!-- <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="./principal/JS/index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
     <!-- Don't change the format for any other products. -->
     <!-- etc. -->
     <script>
@@ -67,6 +79,6 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
     </script>
-    <script src="./JS/firebaseAuth.js"></script> --}}
+    <script src="./JS/firebaseAuth.js"></script>
 </body>
 </html>

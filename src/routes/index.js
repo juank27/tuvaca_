@@ -192,7 +192,12 @@ router.get('/iniciosesion', async(req, res) => {
 		//...
 	});
 });
-
+router.get('/registro', async(req, res) => {
+	//res.render('InicioSesion');
+	verificarEstado(res, 'publucaciones', 'registro', () => {
+		//...
+	});
+});
 router.get('/publicaciones', async(req, res) => {
 	verificarEstado(res, 'publicaciones', 'index', () => {
 		//...
