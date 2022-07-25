@@ -18,6 +18,7 @@
 </head>
 
 <body class="body_publicaciones">
+    {{#each datos}}
     <section class="publicacion" >
         <!--en esta division estan los tres punticos para borrar y editar la publicación-->
         <div class="publicacion_mas">
@@ -39,9 +40,9 @@
         <div class="publicacion_linea2">
             <div class="publicacion_perfil">
                 <!--foto de perfil del publicador-->
-                <div style="background-image: url(./usuarios/menu/images/mar.jpg)"></div>
+                <div style="background-image: url({{photo}})"></div>
                 <!--nombre del publicador-->
-                <p>Nayibe Casas</p>
+                <p>{{name}}</p>
             </div>
             <!--calificación de la publicacion-->
             <div class="publicación_cal">
@@ -50,14 +51,13 @@
         </div>
         <div class="publicacion_linea3">
             <!--precio del bovino-->
-            <p>Ubaté</p>
+            <p>{{ubication}}</p>
             <!--precio del bovino-->
             <p>$25.000</p>
             <!--tipo de bovino-->
             <p>Vaca-Holstein</p>
         </div>
     </section>
-
     <section class="modal_container_p ">
         <section class="modal_p modal_cerrado_p">
             <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
@@ -83,9 +83,9 @@
                     <div class="publicacion_linea2b">
                         <div class="publicacion_perfil">
                             <!--foto de perfil del publicador-->
-                            <div style="background-image: url(./usuarios/menu/images/mar.jpg)"></div>
+                            <div style="background-image: url({{photo}})"></div>
                             <!--nombre del publicador-->
-                            <p>Nayibe Casas</p>
+                            <p>{{name}}</p>
                         </div>
                         <!--calificación de la publicacion-->
                         <div class="publicación_cal">
@@ -95,6 +95,7 @@
             </div>
         </section>
     </section>
+    {{/each}}
     <script src="./usuarios/publicaciones/JS/index.js"></script>
 </body>
 </html>

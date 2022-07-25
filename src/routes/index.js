@@ -12,19 +12,22 @@ const {  createUserWithEmailAndPassword,
 			getRedirectResult,
 			GoogleAuthProvider,
 		} = require('firebase/auth');
+const { async } = require('@firebase/util');
 
 const router = Router();
 
 let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2, callback){
+function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	//console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
-		res.render(ruta);
+		console.log('------------------------------------------------------');
+		console.log(datos);
+		res.render(ruta, {datos});
 	} else if (mensaje !== undefined) {
 		let mensajeError = mensaje;
 		mensaje = undefined;
@@ -189,7 +192,7 @@ router.post('/login-google', async (req, res) => {
 
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion', () => {
+	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
 		//...
 	});
 });
@@ -199,21 +202,25 @@ router.get('/registro', async(req, res) => {
 	});
 });
 router.get('/publicaciones', async(req, res) => {
-	verificarEstado(res, 'publicaciones', 'index', () => {
-		//...
-	});
+	publicaciones()
+	.then((publicaciones) => {
+		verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
+			//...
+		});
+	})
+	.catch((error) => {console.log("No hay publicaiones", error);});
 });
 
 router.get('/crearPublicacion', async(req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index', () => {
+	verificarEstado(res, 'crearPublicacion', 'index', datos = '', () => {
 		//...
 	});
 });
 
 router.get('/acarreos', async(req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'acarreos', 'index', () => {
+	verificarEstado(res, 'acarreos', 'index', datos = '', () => {
 	//...
 	});
 });
@@ -221,7 +228,7 @@ router.get('/acarreos', async(req, res) => {
 router.get('/perfil', async(req, res) => {
 	//res.render('perfil');
 	//verificarEstado(res, 'perfil', 'index');
-	verificarEstado(res, 'perfil', 'index', () => {
+	verificarEstado(res, 'perfil', 'index', datos = '', () => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
@@ -258,6 +265,7 @@ router.get('/consulta', async(req, res) => {
 	//res.send(userRegister[0].email);
 });
 
+//funcion para verificar el email
 async function verficEmail(res, email, callback) {
 	let users = db.collection('users');
 	//consulta con la condicion
@@ -269,6 +277,30 @@ async function verficEmail(res, email, callback) {
 		//ya esta registrado el email
 		mensaje = 'El email ya esta registrado, inicia sesion';
 		res.redirect('/iniciosesion');
+	}
+}
+
+//funion para obtener las publicaciones
+async function publicaciones() {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.get();
+	//console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(typeof (userRegister));//-> salida: object
+	//console.log(userRegister);//-> Estructura de datos
+	if (userRegister.length > 0) {
+		console.log('existe');
+		return userRegister;
+		//res.send(userRegister[0].email);
+	} else {
+		console.log('no existen mas publicaciones');
+		//res.send('no existen publicaciones');
+		return 'No hay publicaciones';
 	}
 }
 
