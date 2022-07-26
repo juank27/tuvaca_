@@ -318,6 +318,31 @@ router.get('/consulta', async(req, res) => {
    // para acceder a los datos del objeto
 	//res.send(userRegister[0].email);
 });
+//usuarios
+router.get('/consulta2', async(req, res) => {
+	Users()
+	.then((publicaciones) => {res.send(publicaciones);})
+	.catch((error) => {console.log("No hay publicaiones", error);});
+});
+//publicaciones
+router.get('/consulta3', async (req, res) => {
+	publicaciones()
+		.then((publicaciones) => { res.send(publicaciones); })
+		.catch((error) => { console.log("No hay publicaiones", error); });
+});
+//unir publicacion con usuario
+router.get('/consulta4', async (req, res) => {
+	publicaciones()
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let a = unir(publicaciones, users);
+					res.send(a);
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
+});
 
 //funcion para verificar el email
 async function verficEmail(res, email, callback) {
@@ -334,8 +359,8 @@ async function verficEmail(res, email, callback) {
 	}
 }
 
-//funion para obtener las publicaciones
-async function publicaciones() {
+//traer todos los usuarios
+async function Users() {
 	let users = db.collection('users');
 	//consulta con la condicion
 	let querySnapshot = await users.get();
@@ -357,6 +382,48 @@ async function publicaciones() {
 		return 'No hay publicaciones';
 	}
 }
+//traer publicaciones
+async function publicaciones() {
+	let publications = db.collection('publications');
+	//consulta con la condicion
+	let querySnapshot = await publications.get();
+	//console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(typeof (userRegister));//-> salida: object
+	//console.log(userRegister);//-> Estructura de datos
+	if (userRegister.length > 0) {
+		console.log('existe');
+		return userRegister;
+	} else {
+		console.log('no existen mas publicaciones');
+		return 'No hay publicaciones';
+	}
+}
 
+//funion para obtener las publicaciones
+function unir(publicaciones, user) {
+	let publicacionesUser = [];
+	let union;
+	publicaciones.forEach(element => {
+		user.forEach(element2 => {
+			if (element.iduser === element2.id) {
+				console.log('entre');
+				let use = {
+					name: element2.name,
+					phone: element2.phone,
+					ubication: element2.ubication,
+					photo: element2.photo,
+				};
+				union = { ...use, ...element };
+				publicacionesUser.push(union);
+			}
+		})
+	});
+	return publicacionesUser;
+}
 
 module.exports = router;
