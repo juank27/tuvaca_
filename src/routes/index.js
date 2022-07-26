@@ -18,7 +18,7 @@ const router = Router();
 
 let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
-
+let modal=true;
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	//console.log(mensaje);
@@ -26,7 +26,12 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 		console.log('home raiz');
 		// res.render('home');
 		callback();
-		res.render(ruta, {datos});
+		if(modal){
+			res.render(ruta, {datos});
+		}else{
+			res.render(ruta, { layout: false,datos});
+			modal=true;
+		}
 	} else if (mensaje !== undefined) {
 		let mensajeError = mensaje;
 		mensaje = undefined;
@@ -266,8 +271,7 @@ router.get('/publicaciones', async(req, res) => {
 	.catch((error) => {console.log("No hay publicaiones", error);});
 });
 router.get('/modalpublicaciones', async(req, res) => {
-	//res.render('crearPublicacion');
-	layoutV=false;
+	modal=false;
 	verificarEstado(res, 'modalPublicaciones', 'index', datos = '', () => {
 		//...
 	});

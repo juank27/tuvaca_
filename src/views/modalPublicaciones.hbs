@@ -17,14 +17,14 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_publicaciones">
-
+<body class="body_modal" >
+<section class="modal_p2 ">
             <div class="modal_Cuerpo">
                 <div class="publicacion_mas">
                     <span></span>
                 </div>
                 <!--En esta division esta la imagen del bovino a vender-->
-                <div class="publicacion_imagen2" >
+                <div class="publicacion_imagen2">
                     <img src="./usuarios/menu/images/vacas.jpg" alt="">
                 </div>
                 <div class="publicacion_descripcion">
@@ -40,9 +40,10 @@
                     <div class="publicacion_linea2b">
                         <div class="publicacion_perfil">
                             <!--foto de perfil del publicador-->
-                            <div style="background-image: url({{photo}})"></div>
+                            <div id="foto" style="background-image: url({{datos.0.photo}})"></div>
                             <!--nombre del publicador-->
-                            <p>{{name}}</p>
+                            <p id="nombre">{{name}}
+                                </p>
                         </div>
                         <!--calificación de la publicacion-->
                         <div class="publicación_cal">
@@ -50,5 +51,7 @@
                     </div>
                 </div>
             </div>
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+        </section>
 </body>
 </html>

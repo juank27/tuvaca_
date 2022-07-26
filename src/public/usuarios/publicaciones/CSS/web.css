@@ -6,11 +6,14 @@
 .modal_p {
     width: 80%;
 }
+.modal_p {
+    width: 80%;
+}
 .publicacion{
     width: 30%;
 }
 .publicacion_imagen2{
-    width: 50%;
+    width: auto;
     height: auto;
 }
 .publicacion_descripcion{
