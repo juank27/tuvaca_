@@ -18,6 +18,7 @@ const router = Router();
 
 let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
+
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	//console.log(mensaje);
@@ -39,7 +40,7 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	}
 }
 router.get('/', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'index', () => {});
+	verificarEstado(res, 'publicaciones', 'index',datos = '', () => {});
 });
 
 console.log(estado)
@@ -210,7 +211,13 @@ router.get('/publicaciones', async(req, res) => {
 	})
 	.catch((error) => {console.log("No hay publicaiones", error);});
 });
-
+router.get('/modalpublicaciones', async(req, res) => {
+	//res.render('crearPublicacion');
+	layoutV=false;
+	verificarEstado(res, 'modalPublicaciones', 'index', datos = '', () => {
+		//...
+	});
+});
 router.get('/crearPublicacion', async(req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearPublicacion', 'index', datos = '', () => {

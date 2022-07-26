@@ -18,50 +18,8 @@
 </head>
 
 <body class="body_publicaciones">
-    {{#each datos}}
-    <section class="publicacion" >
-        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
-        <div class="publicacion_mas">
-            <span></span>
-        </div>
-        <!--En esta division esta la imagen del bovino a vender-->
-        <div class="publicacion_imagen" onclick="posicion({{@index}})">
-            <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
-        </div>
-        <!--En esta división esta la fecha, los me gusta y el chat-->
-        <div class="publicacion_linea1">
-            <p>21/julio/2022</p>
-            <div>
-                <div class="chat"></div>
-                <div class="me_gusta"></div>
-            </div>
-        </div>
-        <!--En esta división esta:-->
-        <div class="publicacion_linea2">
-            <div class="publicacion_perfil">
-                <!--foto de perfil del publicador-->
-                <div style="background-image: url({{photo}})"></div>
-                <!--nombre del publicador-->
-                <p>{{name}}</p>
-            </div>
-            <!--calificación de la publicacion-->
-            <div class="publicación_cal">
 
-            </div>
-        </div>
-        <div class="publicacion_linea3">
-            <!--precio del bovino-->
-            <p>{{ubication}}</p>
-            <!--precio del bovino-->
-            <p>$25.000</p>
-            <!--tipo de bovino-->
-            <p>Vaca-Holstein</p>
-        </div>
-    </section>
-    <section class="modal_container_p ">
-        <section class="modal_p modal_cerrado_p" >
-        <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
-        <div class="modal_Cuerpo">
+            <div class="modal_Cuerpo">
                 <div class="publicacion_mas">
                     <span></span>
                 </div>
@@ -84,7 +42,7 @@
                             <!--foto de perfil del publicador-->
                             <div style="background-image: url({{photo}})"></div>
                             <!--nombre del publicador-->
-                            <p>{{datos.name}}</p>
+                            <p>{{name}}</p>
                         </div>
                         <!--calificación de la publicacion-->
                         <div class="publicación_cal">
@@ -92,10 +50,5 @@
                     </div>
                 </div>
             </div>
-            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
-        </section>
-    </section>
-    {{/each}}
-    <script src="./usuarios/publicaciones/JS/index.js"></script>
 </body>
 </html>
