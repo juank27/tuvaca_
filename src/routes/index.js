@@ -25,13 +25,11 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 		console.log('home raiz');
 		// res.render('home');
 		callback();
-		console.log('------------------------------------------------------');
-		console.log(datos);
 		res.render(ruta, {datos});
 	} else if (mensaje !== undefined) {
 		let mensajeError = mensaje;
 		mensaje = undefined;
-		res.render('InicioSesion', { layout: false, mensajeError });
+		res.render(ruta2, { layout: false, mensajeError });
 	}	else {
 		console.log('raiz raiz');
 		// res.render('index')
@@ -39,8 +37,15 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	}
 }
 router.get('/', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'index', () => {});
+	publicaciones()
+		.then((publicaciones) => {
+			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
+				//...
+			});
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
 });
+
 
 console.log(estado)
 
@@ -63,8 +68,8 @@ router.post('/new-user-email', async (req, res) => {
 	let { passwordd, confirmPassword, email, phone, ubication, name } = req.body;
 
 	if (passwordd !== confirmPassword) {
-		let text = 'Las contraseñas no coinciden';
-		res.send(text);
+		mensaje = 'Las contraseñas no coinciden';
+		res.redirect('/registro');
 	} else {
 		verficEmail(res, email, () => {
 			createUserWithEmailAndPassword(auth, email, passwordd)
@@ -81,6 +86,7 @@ router.post('/new-user-email', async (req, res) => {
 						email,
 						phone,
 						ubication,
+						photo:'https://static.vecteezy.com/system/resources/previews/007/319/933/non_2x/black-avatar-person-icons-user-profile-icon-vector.jpg',
 					});
 					res.redirect('/iniciosesion');
 				})
@@ -100,27 +106,56 @@ router.post('/register-google', async (req, res) => {
 	let {nameb, emailb, id, phone, ubication, photo } = req.body;
 	let name = nameb;
 	let email = emailb;
-	setPersistence(auth, browserSessionPersistence)
-		.then(() => {
-			db.collection('users').doc(id).set({
-				name,
-				email,
-				phone,
-				ubication,
-				photo,
+	verficEmail(res, email, () => {
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
+				db.collection('users').doc(id).set({
+					name,
+					email,
+					phone,
+					ubication,
+					photo,
+				});
+				console.log('si entre');
+				estado = true;
+				res.redirect('/publicaciones');
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				res.send(errorCode)
 			});
-			console.log('si entre');
-			estado = true;
-			res.redirect('/publicaciones');
-		})
-		.catch((error) => {
-			// Handle Errors here.
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			res.send(errorCode)
-		});
+	});
 });
 
+//register with facebook
+router.post('/register-facebook', async (req, res) => {
+	let { nameb, emailb, id, phone, ubication, photo } = req.body;
+	let name = nameb;
+	let email = emailb;
+	verficEmail(res, email, () => {
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
+				db.collection('users').doc(id).set({
+					name,
+					email,
+					phone,
+					ubication,
+					photo,
+				});
+				console.log('si entre');
+				estado = true;
+				res.redirect('/publicaciones');
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				res.send(errorCode)
+			});
+	});
+});
 //-------------------- Logins ----------------------//
 //login user email
 router.post('/login-email',  async(req, res) => {
@@ -166,13 +201,13 @@ router.post('/login-email',  async(req, res) => {
 			console.log('Este es el mensaje de error ', errorMessage);
 		});
 });
+
 //login with google
 router.post('/login-google', async (req, res) => {
-	let { email } = req.body;
-	console.log('estoy en el backend');
-	console.log(typeof(email));
+	let { emailb } = req.body;
+
 	let users = db.collection('users');
-	let verific = await users.where('email', '==', email).get();
+	let verific = await users.where('email', '==', emailb).get();
 	if (verific.empty) {
 		//redireccion al mensaje de error porque el email no esta registrado
 		// en la bdd
@@ -186,7 +221,26 @@ router.post('/login-google', async (req, res) => {
 				res.redirect('/publicaciones');
 			})
 	}
-	// res.send(verific.email);
+});
+
+//login with facebook
+router.post('/login-facebook', async (req, res) => {
+	let { emailb } = req.body;
+	let users = db.collection('users');
+	let verific = await users.where('email', '==', emailb).get();
+	if (verific.empty) {
+		//redireccion al mensaje de error porque el email no esta registrado
+		// en la bdd
+		mensaje = 'El usuario no existe';
+		res.redirect('/iniciosesion');
+	} else {
+		estado = true;
+		mensaje = undefined;
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
+				res.redirect('/publicaciones');
+			})
+	}
 });
 
 
@@ -197,7 +251,7 @@ router.get('/iniciosesion', async(req, res) => {
 	});
 });
 router.get('/registro', async(req, res) => {
-	verificarEstado(res, 'publicaciones', 'registro', () => {
+	verificarEstado(res, 'publicaciones', 'registro', datos = '', () => {
 		//...
 	});
 });
