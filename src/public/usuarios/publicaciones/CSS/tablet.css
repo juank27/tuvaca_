@@ -3,11 +3,14 @@
 .body_publicaciones {
     width: 70%;
 }
+.modal_p {
+    width: 70%;
+}
 .publicacion{
     width: 45%;
 }
 .publicacion_imagen2{
-    width: 40%;
+    width: auto;
     height: auto;
 }
 .publicacion_descripcion{

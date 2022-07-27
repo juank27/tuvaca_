@@ -15,9 +15,10 @@ const {  createUserWithEmailAndPassword,
 const { async } = require('@firebase/util');
 
 const router = Router();
-
+let buscarGlobal;
 let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
+let modal=true;
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	//console.log(mensaje);
@@ -25,7 +26,12 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 		console.log('home raiz');
 		// res.render('home');
 		callback();
-		res.render(ruta, {datos});
+		if(modal){
+			res.render(ruta, {datos});
+		}else{
+			res.render(ruta, { layout: false,datos});
+			modal=true;
+		}
 	} else if (mensaje !== undefined) {
 		let mensajeError = mensaje;
 		mensaje = undefined;
@@ -243,7 +249,7 @@ router.post('/login-facebook', async (req, res) => {
 	}
 });
 
-
+// ------------------- other actions ----------------------//
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
 	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
@@ -255,7 +261,7 @@ router.get('/registro', async(req, res) => {
 		//...
 	});
 });
-router.get('/publicaciones', async(req, res) => {
+router.get('/publicacioness', async(req, res) => {
 	publicaciones()
 	.then((publicaciones) => {
 		verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
@@ -264,7 +270,13 @@ router.get('/publicaciones', async(req, res) => {
 	})
 	.catch((error) => {console.log("No hay publicaiones", error);});
 });
-
+router.get('/modalpublicaciones', async(req, res) => {
+	modal=false;
+	console.log(buscarGlobal);
+	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, () => {
+		//...
+	});
+});
 router.get('/crearPublicacion', async(req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearPublicacion', 'index', datos = '', () => {
@@ -286,6 +298,7 @@ router.get('/perfil', async(req, res) => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
+
 
 router.get('/consulta', async(req, res) => {
 	let users = db.collection('users');
@@ -331,13 +344,40 @@ router.get('/consulta3', async (req, res) => {
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
 //unir publicacion con usuario
-router.get('/consulta4', async (req, res) => {
+router.get('/publicaciones', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
-					let a = unir(publicaciones, users);
-					res.send(a);
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
+});
+router.post('/abrir-publicaciones', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	console.log('abri publicaciones');
+	publicaciones()
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					let buscar = publicacion.find( function (element) {
+						return element.id == id_p;
+					});
+					//console.log(buscar);
+					//res.send(a);
+					// verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+					// 	//...
+					// });
+					buscarGlobal = buscar;
+					res.redirect('/modalpublicaciones');
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
