@@ -19,8 +19,10 @@
 
 <body class="body_publicaciones">
     {{#each datos}}
-    <form class="publicacion" id="publicacion" target="_blank"  action="/abrir-publicaciones" method="POST">
-        <input value={{id}} name="id_p" type="text" id="id" style="display:none;">
+    <form class="publicacion" id="publicacion" target="_blanck"  action="/abrir-publicaciones" method="POST">
+        <input value={{id}}  type="text" class="id" style="display:none;">
+        <input  name="id_p" type="text" id="id2" value="" style="display:none;">
+
         <!--en esta division estan los tres punticos para borrar y editar la publicación-->
         <div class="publicacion_mas">
             <span></span>
@@ -61,5 +63,6 @@
     </form>
     {{/each}}
 </body>
+<script src="./usuarios/publicaciones/JS/index.js"></script>
 
 </html>
