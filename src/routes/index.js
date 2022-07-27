@@ -377,6 +377,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 					// 	//...
 					// });
 					buscarGlobal = buscar;
+					console.log(buscar);
 					res.redirect('/modalpublicaciones');
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
