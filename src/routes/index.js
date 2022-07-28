@@ -19,6 +19,7 @@ let buscarGlobal;
 let mensaje = undefined; //mensaje de error
 let estado=false; //estado de la sesion
 let modal=true;
+// ---------------------------------------------------------------------------------------------//
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', callback){
 	//console.log(mensaje);
@@ -42,20 +43,26 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback){
 		res.render( ruta2, { layout: false });
 	}
 }
+
+// ------------------------------------ Rutas iniciales --------------------------------------------------//
+// ruta principal de la pagina
 router.get('/', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
-			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
-				//...
-			});
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
 
-
-console.log(estado)
-
-// //logout
+//logout
 router.use('/logout',   async (req, res, next) => {
 	auth.signOut().then(() => {
 		// Sign-out successful.
@@ -67,7 +74,8 @@ router.use('/logout',   async (req, res, next) => {
 		// An error happened.
 	});
 });
-// ----------------- register ----------------- //
+
+// -------------------------------------------- register ------------------------------------------ //
 // new user email
 router.post('/new-user-email', async (req, res) => {
 	console.log('hola dentro de ');
@@ -162,7 +170,8 @@ router.post('/register-facebook', async (req, res) => {
 			});
 	});
 });
-//-------------------- Logins ----------------------//
+
+//------------------------------------------------- Logins ----------------------------------------------//
 //login user email
 router.post('/login-email',  async(req, res) => {
 	let { email, password } = req.body;
@@ -249,18 +258,22 @@ router.post('/login-facebook', async (req, res) => {
 	}
 });
 
-// ------------------- other actions ----------------------//
+//---------------------------------------------- other actions --------------------------------------------//
 router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
 	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
 		//...
 	});
 });
+
+// formulario de registro y solicitudes en la pagina de inicio
 router.get('/registro', async(req, res) => {
 	verificarEstado(res, 'publicaciones', 'registro', datos = '', () => {
 		//...
 	});
 });
+
+//ruta inicial para renderizar publicaciones
 router.get('/publicacioness', async(req, res) => {
 	publicaciones()
 	.then((publicaciones) => {
@@ -270,6 +283,8 @@ router.get('/publicacioness', async(req, res) => {
 	})
 	.catch((error) => {console.log("No hay publicaiones", error);});
 });
+
+//modal para mostrar las publicaciones
 router.get('/modalpublicaciones', async(req, res) => {
 	modal=false;
 	console.log(buscarGlobal);
@@ -277,6 +292,8 @@ router.get('/modalpublicaciones', async(req, res) => {
 		//...
 	});
 });
+
+//Crear publicaciones
 router.get('/crearPublicacion', async(req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearPublicacion', 'index', datos = '', () => {
@@ -284,6 +301,7 @@ router.get('/crearPublicacion', async(req, res) => {
 	});
 });
 
+// rufa de los acarreos
 router.get('/acarreos', async(req, res) => {
 	//res.render('acarreos');
 	verificarEstado(res, 'acarreos', 'index', datos = '', () => {
@@ -291,59 +309,16 @@ router.get('/acarreos', async(req, res) => {
 	});
 });
 
+// ruta del perfil
 router.get('/perfil', async(req, res) => {
 	//res.render('perfil');
-	//verificarEstado(res, 'perfil', 'index');
+	//verificarEstado (res, 'perfil', 'index');
 	verificarEstado(res, 'perfil', 'index', datos = '', () => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
 
-
-router.get('/consulta', async(req, res) => {
-	let users = db.collection('users');
-	//consulta con la condicion
-	let querySnapshot = await users.where('email', '==', 'nayibepelaez03@gmail.com').get();
-	console.log('imprimiendo contenido');
-	//obtener los datos de la consulta en un nuevo objeto
-	let userRegister = querySnapshot.docs.map((doc) => ({
-		id: doc.id,
-		...doc.data(),
-	}));
-	console.log(typeof(userRegister));//-> salida: object
-	console.log(userRegister);//-> Estructura de datos
-	if (userRegister.length > 0) {
-		console.log('existe');
-		res.send(userRegister[0].email);
-	} else {
-		console.log('no existe');
-		res.send('no existe');
-	}
-	//[
-	// 	{
-	// 		id: 'SWf7jxis7lSTY7sd87RpZ2eN8B63',
-	// 			phone: '3112465403',
-	// 				email: 'camilo@gmail.com',
-	// 					ubication: 'Carmen de Carupa',
-	// 						name: 'Camilo Ruiz'
-	// 	}
-	// ]
-   // para acceder a los datos del objeto
-	//res.send(userRegister[0].email);
-});
-//usuarios
-router.get('/consulta2', async(req, res) => {
-	Users()
-	.then((publicaciones) => {res.send(publicaciones);})
-	.catch((error) => {console.log("No hay publicaiones", error);});
-});
-//publicaciones
-router.get('/consulta3', async (req, res) => {
-	publicaciones()
-		.then((publicaciones) => { res.send(publicaciones); })
-		.catch((error) => { console.log("No hay publicaiones", error); });
-});
-//unir publicacion con usuario
+//unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
@@ -359,6 +334,8 @@ router.get('/publicaciones', async (req, res) => {
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
+
+//abrir publicaciones detalladas en otra ventana
 router.post('/abrir-publicaciones', async (req, res) => {
 	let { id_p } = req.body;
 	console.log(id_p);
@@ -371,11 +348,6 @@ router.post('/abrir-publicaciones', async (req, res) => {
 					let buscar = publicacion.find( function (element) {
 						return element.id == id_p;
 					});
-					//console.log(buscar);
-					//res.send(a);
-					// verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
-					// 	//...
-					// });
 					buscarGlobal = buscar;
 					console.log(buscar);
 					res.redirect('/modalpublicaciones');
@@ -385,6 +357,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
 
+// --------------------------------------- Funciones de ayuda -----------------------------------------//
 //funcion para verificar el email
 async function verficEmail(res, email, callback) {
 	let users = db.collection('users');
@@ -466,5 +439,38 @@ function unir(publicaciones, user) {
 	});
 	return publicacionesUser;
 }
+
+//------------------------------Esto es una prueba -------------------------------------------------------
+router.get('/consulta', async (req, res) => {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.where('email', '==', 'nayibepelaez03@gmail.com').get();
+	console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(typeof (userRegister));//-> salida: object
+	console.log(userRegister);//-> Estructura de datos
+	if (userRegister.length > 0) {
+		console.log('existe');
+		res.send(userRegister[0].email);
+	} else {
+		console.log('no existe');
+		res.send('no existe');
+	}
+	//[
+	// 	{
+	// 		id: 'SWf7jxis7lSTY7sd87RpZ2eN8B63',
+	// 			phone: '3112465403',
+	// 				email: 'camilo@gmail.com',
+	// 					ubication: 'Carmen de Carupa',
+	// 						name: 'Camilo Ruiz'
+	// 	}
+	// ]
+	// para acceder a los datos del objeto
+	//res.send(userRegister[0].email);
+});
 
 module.exports = router;
