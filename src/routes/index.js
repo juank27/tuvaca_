@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { db,} = require('../firebase');//importar la base de datos
-const { dbFirebase, app, auth, provider, user} = require('../firebaseCloud');//importar la base de datos
+const { dbFirebase, app, auth, provider, user, storage} = require('../firebaseCloud');//importar la base de datos
 const {  createUserWithEmailAndPassword,
 			signInWithEmailAndPassword,
 			onAuthStateChanged,
@@ -472,5 +472,29 @@ router.get('/consulta', async (req, res) => {
 	// para acceder a los datos del objeto
 	//res.send(userRegister[0].email);
 });
+//subida de imagenes
+router.get('/img', async(req, res) =>{
+	res.render('imagenes', {layout: false});
+});
+const {ref, uploadString} = require('firebase/storage');
+//subir imagnes	a la base de datos
+router.post('/storage', async (req, res) => {
+	let { file } = req.body;
+	console.log(file);
+	console.log(typeof (file));
+	let img = ref(storage,`${file}`);
+	await uploadString(img, 'imagenes/file.png')
+		.then((snapshot) => {
+			console.log(snapshot);
+			res.send('subido');
+		});
+});
+
+router.get('/storage', async (req, res) => {
+	res.render('error', {layout: false});
+});
+
+
+
 
 module.exports = router;
