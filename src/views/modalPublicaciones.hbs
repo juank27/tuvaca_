@@ -17,41 +17,60 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_modal" >
-<section class="modal_p2 ">
-            <div class="modal_Cuerpo">
-                <div class="publicacion_mas">
-                    <span></span>
-                </div>
-                <!--En esta division esta la imagen del bovino a vender-->
-                <div class="publicacion_imagen2">
-                    <img src="./usuarios/menu/images/vacas.jpg" alt="">
-                </div>
-                <div class="publicacion_descripcion">
-                    <!--En esta división esta la fecha, los me gusta y el chat-->
-                    <div class="publicacion_linea1b">
-                        <p>21/julio/2022</p>
-                        <div>
-                            <div class="chat"></div>
-                            <div class="me_gusta"></div>
-                        </div>
+<body class="body_modal">
+    <section class="modal_p2 ">
+        <div class="modal_Cuerpo">
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen2">
+                <img src="./usuarios/menu/images/vacas.jpg" alt="">
+            </div>
+            <div class="publicacion_descripcion">
+                <!--En esta división esta la fecha, los me gusta y el chat-->
+                <div class="publicacion_linea1b">
+                    <p>21/julio/2022</p>
+                    <div>
+                        <div class="chat"></div>
                     </div>
-                    <!--En esta división esta:-->
-                    <div class="publicacion_linea2b">
-                        <div class="publicacion_perfil">
-                            <!--foto de perfil del publicador-->
-                            <div id="foto" style="background-image: url({{datos.photo}})"></div>
-                            <!--nombre del publicador-->
-                            <p id="nombre">{{datos.name}}</p>
-                                </p>
-                        </div>
-                        <!--calificación de la publicacion-->
-                        <div class="publicación_cal">
-                        </div>
+                </div>
+                <!--En esta división esta:-->
+                <div class="publicacion_linea2b">
+                    <div class="publicacion_perfil">
+                        <!--foto de perfil del publicador-->
+                        <div id="foto" style="background-image: url({{datos.photo}})"></div>
+                        <!--nombre del publicador-->
+                        <p id="nombre">{{datos.name}}</p>
+                        </p>
                     </div>
+                    <!--municipio del bovino-->
+                    <p>{{datos.ubication}}</p>
+                </div>
+                <div class="publicacion_linea3b">
+                    <ul>
+                        <li>{{datos.categoria}}</li>
+                        <li>{{datos.edad}}</li>
+                        <li>{{datos.raza}}</li>
+                        <li>{{datos.producto}}</li>
+                        <li>{{datos.precio}}</li>
+                    </ul>
+                </div>
+                <div class="publicacion_linea4b">
+                    <p>
+                    {{datos.descripcion}} <br>
+                    {{datos.prenada}} <br>
+                    {{datos.tipoprenada}} <br>
+                    {{datos.toro}} <br>
+                    {{datos.semanas}} <br>
+                    {{datos.nprenada}}
+                    </p>
                 </div>
             </div>
-            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
-        </section>
+        </div>
+        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+    </section>
+
 </body>
+
 </html>

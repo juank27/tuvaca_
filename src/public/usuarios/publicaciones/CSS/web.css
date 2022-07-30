@@ -21,8 +21,11 @@
     height: auto;
 }
 .publicacion_linea1b p{
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 .publicacion_linea2b p{
-    font-size: 2rem;
+    font-size: 1.8rem;
+}
+.publicacion_linea3b p{
+    font-size: 1.8rem;
 }

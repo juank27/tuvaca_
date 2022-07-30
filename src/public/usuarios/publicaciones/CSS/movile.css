@@ -151,17 +151,12 @@ main{
     background-color: var(--gris_oscuro);
     cursor: pointer;
 }
-.publicacion_perfil p{
+
+.publicacion_linea2 p{
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
-}
-.publicación_cal{
-    width: 40%;
-    height: 10px;
-    border: 1px solid var(--verde);
-    border-radius: 5px;
 }
 /*********imagen linea 3************/
 .publicacion_linea3{
@@ -171,7 +166,6 @@ main{
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2%;
-
 }
 .publicacion_linea3 p{
     font-family: var(--font1);
@@ -294,6 +288,12 @@ main{
     justify-content: space-between;
     margin-bottom: 2%;
 }
+.publicacion_linea2b p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--verde);
+}
 .publicacion_linea1b p{
     font-family: var(--font1);
     font-size: 1.4rem;
@@ -305,4 +305,18 @@ main{
     display: flex;
     justify-content: flex-end;
     height: 25px;
+}
+.publicacion_linea3b{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+.publicacion_linea3b p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--verde);
 }
