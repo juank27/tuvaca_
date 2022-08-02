@@ -26,8 +26,9 @@
             </div>
             <div class="datos">
                 <div class="herramientas">
-                    <a class="uno" href="/crearAcarreo"></a>
-                    <div class="dos"></div>
+                    <a class="uno" href="/misacarreos" title="Mis Acarreos"></a>
+                    <div class="dos" title="Ajustes"></div>
+                    <a class="tres" href="/logout" title="Cerrar Sesión"></a>
                 </div>
                 <p>Nayibe Casas</p>
                 <p>nayibepelaez03@gmail.com</p>
@@ -86,14 +87,116 @@
                         </div>
                     </div>
                 </section>
+            </section>
         </form>
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p>nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div>
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div>
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+                <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p>nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div>
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div>
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
     </section>
-    </section>
+    <!--modal publicaciones-->
     <section class="modal_container_p ">
         <section class="modal_p modal_cerrado_p">
             <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
-            <iframe id="framer" src="/modalpublicaciones"></iframe>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
         </section>
     </section>
     <!--modal fotografia-->
@@ -112,8 +215,8 @@
                 <div class="contraseña">
                     <p>Contraseña</p>
                     <form action="">
-                        <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña Actual" minlength="7"
-                            required>
+                        <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña Actual"
+                            minlength="7" required>
                         <input type="password" name="newpasswordd" id="passwordd" placeholder="Nueva Contraseña"
                             minlength="7" required>
                         <input type="password" name="confirmPassword" id="confirmPassword"

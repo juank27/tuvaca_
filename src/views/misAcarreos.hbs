@@ -18,10 +18,16 @@
 </head>
 
 <body class="body_publicaciones">
-    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+    <div class="atras">
+        <a href="/crearAcarreo">Crear Publicación</a>
+        <a href="/crearAcarreo" class="atrasI"></a>
+    </div>
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST" >
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
+        <div class="publicacion_mas">
+            <span></span>
+        </div>
         <!--En esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
             <img src="./usuarios/menu/images/camioneta.jpg" alt="">
@@ -92,12 +98,26 @@
                 {{datos.descripcion}}
             </p>
         </div>
-
+        <section class="modal_container_t ">
+            <section class="modal_t modal_cerrado_t">
+                <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                <div class="modal_Cuerpot">
+                    <div>
+                        <a href="/crearPublicacion">Editar</a>
+                    </div>
+                    <div>
+                        <a>Elminar</a>
+                    </div>
+                </div>
+            </section>
+        </section>
     </form>
-        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
+        <div class="publicacion_mas">
+            <span></span>
+        </div>
         <!--En esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
             <img src="./usuarios/menu/images/camioneta.jpg" alt="">
@@ -168,12 +188,26 @@
                 {{datos.descripcion}}
             </p>
         </div>
-
+        <section class="modal_container_t ">
+            <section class="modal_t modal_cerrado_t">
+                <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                <div class="modal_Cuerpot">
+                    <div>
+                        <a href="/crearPublicacion">Editar</a>
+                    </div>
+                    <div>
+                        <a>Elminar</a>
+                    </div>
+                </div>
+            </section>
+        </section>
     </form>
-    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
+        <div class="publicacion_mas">
+            <span></span>
+        </div>
         <!--En esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
             <img src="./usuarios/menu/images/camioneta.jpg" alt="">
@@ -244,8 +278,21 @@
                 {{datos.descripcion}}
             </p>
         </div>
-
+        <section class="modal_container_t ">
+            <section class="modal_t modal_cerrado_t">
+                <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                <div class="modal_Cuerpot">
+                    <div>
+                        <a href="/crearPublicacion">Editar</a>
+                    </div>
+                    <div>
+                        <a>Elminar</a>
+                    </div>
+                </div>
+            </section>
+        </section>
     </form>
+    <script src="./usuarios/publicaciones/JS/index2.js"></script>
 
 </body>
 

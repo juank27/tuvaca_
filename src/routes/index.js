@@ -290,6 +290,18 @@ router.get('/acarreos', async (req, res) => {
 		//...
 	});
 });
+router.get('/seleccionacarreos', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'seleccionA', 'index', datos = '', () => {
+		//...
+	});
+});
+router.get('/misacarreos', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'misAcarreos', 'index', datos = '', () => {
+		//...
+	});
+});
 
 router.get('/perfil', async (req, res) => {
 	//res.render('perfil');

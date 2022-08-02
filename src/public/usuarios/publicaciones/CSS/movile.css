@@ -264,7 +264,7 @@ main{
     margin-bottom: 2%;
 }
 .publicacion_imagen2 img{
-    width: auto;
+    width: 80%;
     max-width: 100%;
     height: auto;
     max-height: 50vh;
@@ -315,12 +315,175 @@ main{
     height: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 2%;
+    margin-top: 5%;
+    margin-left: 5%;
 }
-.publicacion_linea3b p{
+.publicacion_linea3b ul{
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;
+}
+.publicacion_linea3b table{
+    width: 80%;
+}
+.publicacion_linea3b tr{
+    border:1px solid var(--verde);
+}
+.publicacion_linea3b td{
+    border:1px solid var(--verde);
+    width: 50%;
+    height: 20px;
+    text-align: center;
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;;
+}
+.publicacion_linea4b{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.publicacion_linea4b p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: justify;
+    color:dimgrey;
+    line-height: 2rem;
+}
+/*********tres puntos**************/
+.publicacion_mas{
+    width: 90%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.publicacion_mas span{
+    background-image: url("../../menu/icons/puntos.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+.publicacion_mas span:hover{
+    background-image: url("../../menu/icons/puntos2.png");
+}
+/***************modal tres puntos**********/
+.modal_container_t {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 9;
+    width: 50%;
+    height: 35%;
+    top: 2%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 2s;
+}
+
+.modal_t {
+    width: 90%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+}
+
+.modal_Contendort{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+.cerrar_modal_t {
+    background-image: url(../../../principal/icons/Cancel.png);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.cerrar_modal_t:hover {
+    background-image: url(../../../principal/icons/Cancel-1.png);
+}
+
+.modal_Cuerpot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+.modal_Cuerpot div{
+    width: 80%;
+    background-color: white;
+    height: 20px;
+    margin-bottom: 5%;
+    text-align: center;
+}
+.modal_Cuerpot div:hover,.modal_Cuerpot a:hover{
+    background-color: var(--cafe);
+    color: white;
+}
+.modal_Cuerpot a{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: var(--font2);
+    color: var(--gris_oscuro);
+    font-weight: bold;
+}
+.atras{
+    margin-top:2%;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.atras a{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: var(--font2);
     color: var(--verde);
+    font-weight: bold;
+}
+.atrasI{
+    background-image: url("../../menu/icons/Sum.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.atras a:hover{
+    color: var(--cafe);
+}
+.atrasI:hover{
+    background-image: url("../../menu/icons/Sum2.png");
 }

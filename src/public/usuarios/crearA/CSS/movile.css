@@ -33,10 +33,15 @@ html {
     justify-content: space-around;
 }
 .body_crearP p{
-    font-size: 1.3rem;
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;
     margin-bottom: 2%;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .body_crearP span{
     font-size: 1.3rem;
@@ -62,10 +67,11 @@ form{
     border-radius: 5px;
 }
 form p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
     font-weight: bold;
-    font-size: var(--font2);
-    color: var(--gris_oscuro);
-    text-align: left;
+    color:dimgrey;
+    line-height: 2rem;;
 }
 .imagen{
     width: 80%;
@@ -109,11 +115,11 @@ input{
 }
 input:focus, select:focus, textarea:focus {
     outline: 0 none;
+    box-shadow: 0px 9px 10px -7px var(--cafe);
     border-bottom: 1px solid var(--cafe);
     border-top:none ;
     border-left:none ;
     border-right:none ;
-    box-shadow: 2px 2px 8px 0 var(--cafe);
 }
 input[type=submit]{
     margin-bottom: 5%;
@@ -149,9 +155,12 @@ label input{
 .texto{
     font-weight: bold;
     width: 45%;
-    font-size: var(--font1);
     border: 1px solid var(--verde);
-    color: var(--gris_oscuro);
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;;
     height: 20px;
     display: flex;
     align-items: center;
@@ -249,4 +258,48 @@ input[type=number]::-webkit-outer-spin-button {
     flex-wrap: wrap;
     height: auto;
     width: 100%;
+}
+/***********botones selectores******/
+.selector{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.selector a {
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    background-color: #4B8325;
+    border: none;
+    font-size: var(--font1);
+    color: var(--blanco);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+.selector a:hover{
+    color: var(--verde);
+    background-color: var(--gris_claro);
+}
+.atras{
+    width: 100%;
+    height: 30px;
+}
+.atrasI{
+    background-image: url("../../menu/icons/atras.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+}
+.atrasI:hover{
+    background-image: url("../../menu/icons/atras2.png");
 }

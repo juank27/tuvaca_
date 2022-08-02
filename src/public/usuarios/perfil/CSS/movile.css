@@ -328,7 +328,7 @@ main{
 .fijar{
     width: 100%;
     border-bottom: 1px solid var(--gris_oscuro);
-    box-shadow: 0px 15px 10px -15px var(--gris_oscuro)
+    box-shadow: 0px 15px 10px -15px var(--gris_oscuro);
 }
 .datos_usuario{
     width: 100%;
@@ -399,7 +399,7 @@ main{
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-right: 2%;
+    margin-right: 5%;
 }
 .uno:hover{
     background-image: url("../../menu/icons/Truck2.png");
@@ -415,6 +415,19 @@ main{
     width: 20px;
     height: 20px;
     cursor: pointer;
+    margin-right: 5%;
+}
+.tres{
+    background-image: url("../../menu/icons/Logout.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.tres:hover{
+    background-image: url("../../menu/icons/Logout2.png");
 }
 .datos p{
     width: 100%;
@@ -426,12 +439,13 @@ main{
 }
 .publicaciones{
     width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
     z-index: 8;
     margin-top: 5%;
+    flex-wrap: wrap;
 }
 /***************modal tres puntos**********/
 .modal_container_t {

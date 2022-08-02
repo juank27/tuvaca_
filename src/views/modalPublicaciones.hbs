@@ -20,9 +20,6 @@
 <body class="body_modal">
     <section class="modal_p2 ">
         <div class="modal_Cuerpo">
-            <div class="publicacion_mas">
-                <span></span>
-            </div>
             <!--En esta division esta la imagen del bovino a vender-->
             <div class="publicacion_imagen2">
                 <img src="./usuarios/menu/images/vacas.jpg" alt="">
@@ -49,15 +46,16 @@
                 </div>
                 <div class="publicacion_linea3b">
                     <ul>
-                        <li>{{datos.categoria}}</li>
-                        <li>{{datos.edad}}</li>
-                        <li>{{datos.raza}}</li>
-                        <li>{{datos.producto}}</li>
-                        <li>{{datos.precio}}</li>
+                        <li>Categoria: {{datos.categoria}}</li>
+                        <li> Edad: {{datos.edad}}</li>
+                        <li>Raza: {{datos.raza}}</li>
+                        <li>Tipo de Producción:{{datos.producto}}</li>
+                        <li>Precio:{{datos.precio}}</li>
                     </ul>
                 </div>
                 <div class="publicacion_linea4b">
                     <p>
+                    Sin descripcion
                     {{datos.descripcion}} <br>
                     {{datos.prenada}} <br>
                     {{datos.tipoprenada}} <br>
