@@ -461,7 +461,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 2s;
+    transition: 1s;
 }
 
 .modal_t {
@@ -511,8 +511,12 @@ main{
     margin-bottom: 5%;
     text-align: center;
 }
-.modal_Cuerpot div:hover,.modal_Cuerpot a:hover{
+.editar:hover,.editar a:hover{
     background-color: var(--cafe);
+    color: white;
+}
+.borrar:hover,.borrar a:hover{
+    background-color: red;
     color: white;
 }
 .modal_Cuerpot a{

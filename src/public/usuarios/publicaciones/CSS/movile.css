@@ -46,6 +46,7 @@ main{
 }
 /************************section***********************************/
 .publicacion{
+    position: relative;
     margin-top: 2%;
     width: 90%;
     height: auto;
@@ -387,14 +388,14 @@ main{
     visibility: hidden;
     z-index: 9;
     width: 50%;
-    height: 35%;
+    height: 15%;
     top: 2%;
     left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 2s;
+    transition: 1s;
 }
 
 .modal_t {
@@ -444,8 +445,12 @@ main{
     margin-bottom: 5%;
     text-align: center;
 }
-.modal_Cuerpot div:hover,.modal_Cuerpot a:hover{
+.editar:hover,.editar a:hover{
     background-color: var(--cafe);
+    color: white;
+}
+.borrar:hover,.borrar a:hover{
+    background-color: red;
     color: white;
 }
 .modal_Cuerpot a{
