@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/crearA/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/crearA/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/crearA/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_crearP">
+    <form action="">
+        <div class="atras">
+            <div class="atrasI"></div>
+        </div>
+        <div class="imagen">
+            <img src="./usuarios/menu/images/camioneta.jpg" alt="">
+            <div class="fotos"></div>
+        </div>
+        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Vehiculo"
+            required>
+        <datalist id="municipios">
+            <option value="Ubaté"></option>
+            <option value="Carmen de Carupa"></option>
+            <option value="Tausa"></option>
+            <option value="Suta"></option>
+            <option value="Lenguazaque"></option>
+            <option value="Guacheta"></option>
+            <option value="Cucunuba"></option>
+            <option value="Simijaca"></option>
+            <option value="Susa"></option>
+        </datalist>
+        <input type="text" name="tipoveh" id="tipoveh" placeholder="Tipo de Vehiculo" required>
+        <p>Tarifas de Acarreos</p>
+        <label for="">
+            <span class="texto">Ubaté</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Carupa</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Tausa</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Suta</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Lenguazaque</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Guacheta</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Simijaca</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Susa</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <label for="">
+            <span class="texto">Cucunuba</span>
+            <input type="number" placeholder="Tarifa" value="0">
+        </label>
+        <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
+
+        <input type="submit" value="Subir Publicación">
+    </form>
+    <section class="modal_container_f ">
+        <section class="modal_f modal_cerrado_f">
+            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
+            <div class="modal_Cuerpo">
+
+            </div>
+        </section>
+    </section>
+    <script src="./usuarios/crearP/JS/index2.js"></script>
+</body>
+
+</html>

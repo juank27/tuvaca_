@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,247 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="./usuarios/menu/CSS/movile.css">
-    <link rel="stylesheet" href="./usuarios/menu/CSS/tablet.css" media="screen and (min-width:600px)">
-    <link rel="stylesheet" href="./usuarios/menu/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
     <title>tuVaca.com</title>
 </head>
-<!--Header-->
-    <h1>Perfil</h1>
+
+<body class="body_perfil">
+    <section class="fijar">
+        <section class="datos_usuario">
+            <div class="foto">
+                <div class="foto_perfil" style="background-image: url(./usuarios/menu/images/mar.jpg)"></div>
+                <div class="foto_selector"></div>
+            </div>
+            <div class="datos">
+                <div class="herramientas">
+                    <a class="uno" href="/misacarreos" title="Mis Acarreos"></a>
+                    <div class="dos" title="Ajustes"></div>
+                    <a class="tres" href="/logout" title="Cerrar Sesión"></a>
+                </div>
+                <p>Nayibe Casas</p>
+                <p>nayibepelaez03@gmail.com</p>
+                <p>3168707559</p>
+                <p>Ubtaé</p>
+            </div>
+        </section>
+    </section>
+    <section class="publicaciones">
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p>nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div>
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div>
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p>nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div>
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div>
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+                <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p>nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div>
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div>
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+    </section>
+    <!--modal publicaciones-->
+    <section class="modal_container_p ">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
+    <!--modal fotografia-->
+    <section class="modal_container_f ">
+        <section class="modal_f modal_cerrado_f">
+            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
+            <div class="modal_Cuerpo">
+            </div>
+        </section>
+    </section>
+    <!--modal ajustes-->
+    <section class="modal_container_h ">
+        <section class="modal_h modal_cerrado_h">
+            <div class="modal_Contendorh"><span class="cerrar_modal_h"></span></div>
+            <div class="modal_Cuerpoh">
+                <div class="contraseña">
+                    <p>Contraseña</p>
+                    <form action="">
+                        <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña Actual"
+                            minlength="7" required>
+                        <input type="password" name="newpasswordd" id="passwordd" placeholder="Nueva Contraseña"
+                            minlength="7" required>
+                        <input type="password" name="confirmPassword" id="confirmPassword"
+                            placeholder="Verificar Contraseña" minlength="7" required>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                </div>
+                <div class="datosP">
+                    <p>Datos Personales</p>
+                    <form action="">
+                        <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
+                        <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000"
+                            max="9999999999" required>
+                        <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required>
+                        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio"
+                            required>
+                        <datalist id="municipios">
+                            <option value="Ubaté"></option>
+                            <option value="Carmen de Carupa"></option>
+                            <option value="Tausa"></option>
+                            <option value="Suta"></option>
+                            <option value="Lenguazaque"></option>
+                            <option value="Guacheta"></option>
+                            <option value="Cucunuba"></option>
+                            <option value="Simijaca"></option>
+                            <option value="Susa"></option>
+                        </datalist>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="./usuarios/perfil/JS/index.js"></script>
+</body>
+
 </html>
