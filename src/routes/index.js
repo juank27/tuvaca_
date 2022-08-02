@@ -42,12 +42,21 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback) {
 		res.render(ruta2, { layout: false });
 	}
 }
+
+// ------------------------------------ Rutas iniciales --------------------------------------------------//
+// ruta principal de la pagina
 router.get('/', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
-			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
-				//...
-			});
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
@@ -68,7 +77,8 @@ router.use('/logout', async (req, res, next) => {
 		// An error happened.
 	});
 });
-// ----------------- register ----------------- //
+
+// -------------------------------------------- register ------------------------------------------ //
 // new user email
 router.post('/new-user-email', async (req, res) => {
 	console.log('hola dentro de ');
@@ -163,7 +173,8 @@ router.post('/register-facebook', async (req, res) => {
 			});
 	});
 });
-//-------------------- Logins ----------------------//
+
+//------------------------------------------------- Logins ----------------------------------------------//
 //login user email
 router.post('/login-email', async (req, res) => {
 	let { email, password } = req.body;
@@ -250,19 +261,23 @@ router.post('/login-facebook', async (req, res) => {
 	}
 });
 
-// ------------------- other actions ----------------------//
-router.get('/iniciosesion', async (req, res) => {
+//---------------------------------------------- other actions --------------------------------------------//
+router.get('/iniciosesion', async(req, res) => {
 	//res.render('InicioSesion');
 	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
 		//...
 	});
 });
-router.get('/registro', async (req, res) => {
+
+// formulario de registro y solicitudes en la pagina de inicio
+router.get('/registro', async(req, res) => {
 	verificarEstado(res, 'publicaciones', 'registro', datos = '', () => {
 		//...
 	});
 });
-router.get('/publicacioness', async (req, res) => {
+
+//ruta inicial para renderizar publicaciones
+router.get('/publicacioness', async(req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
 			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
@@ -284,7 +299,8 @@ router.get('/crearAcarreo', async (req, res) => {
 	});
 });
 
-router.get('/acarreos', async (req, res) => {
+// rufa de los acarreos
+router.get('/acarreos', async(req, res) => {
 	//res.render('acarreos');
 	verificarEstado(res, 'acarreos', 'index', datos = '', () => {
 		//...
@@ -303,59 +319,16 @@ router.get('/misacarreos', async (req, res) => {
 	});
 });
 
-router.get('/perfil', async (req, res) => {
+// ruta del perfil
+router.get('/perfil', async(req, res) => {
 	//res.render('perfil');
-	//verificarEstado(res, 'perfil', 'index');
+	//verificarEstado (res, 'perfil', 'index');
 	verificarEstado(res, 'perfil', 'index', datos = '', () => {
 		console.log('Estoy dentro del perfil con un callback');
 	});
 });
 
-
-router.get('/consulta', async (req, res) => {
-	let users = db.collection('users');
-	//consulta con la condicion
-	let querySnapshot = await users.where('email', '==', 'nayibepelaez03@gmail.com').get();
-	console.log('imprimiendo contenido');
-	//obtener los datos de la consulta en un nuevo objeto
-	let userRegister = querySnapshot.docs.map((doc) => ({
-		id: doc.id,
-		...doc.data(),
-	}));
-	console.log(typeof (userRegister));//-> salida: object
-	console.log(userRegister);//-> Estructura de datos
-	if (userRegister.length > 0) {
-		console.log('existe');
-		res.send(userRegister[0].email);
-	} else {
-		console.log('no existe');
-		res.send('no existe');
-	}
-	//[
-	// 	{
-	// 		id: 'SWf7jxis7lSTY7sd87RpZ2eN8B63',
-	// 			phone: '3112465403',
-	// 				email: 'camilo@gmail.com',
-	// 					ubication: 'Carmen de Carupa',
-	// 						name: 'Camilo Ruiz'
-	// 	}
-	// ]
-	// para acceder a los datos del objeto
-	//res.send(userRegister[0].email);
-});
-//usuarios
-router.get('/consulta2', async (req, res) => {
-	Users()
-		.then((publicaciones) => { res.send(publicaciones); })
-		.catch((error) => { console.log("No hay publicaiones", error); });
-});
-//publicaciones
-router.get('/consulta3', async (req, res) => {
-	publicaciones()
-		.then((publicaciones) => { res.send(publicaciones); })
-		.catch((error) => { console.log("No hay publicaiones", error); });
-});
-//unir publicacion con usuario
+//unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
@@ -371,6 +344,8 @@ router.get('/publicaciones', async (req, res) => {
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
 });
+
+//abrir publicaciones detalladas en otra ventana
 router.post('/abrir-publicaciones', async (req, res) => {
 	let { id_p } = req.body;
 	console.log(id_p);
@@ -383,12 +358,8 @@ router.post('/abrir-publicaciones', async (req, res) => {
 					let buscar = publicacion.find(function (element) {
 						return element.id == id_p;
 					});
-					//console.log(buscar);
-					//res.send(a);
-					// verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
-					// 	//...
-					// });
 					buscarGlobal = buscar;
+					console.log(buscar);
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
@@ -482,5 +453,62 @@ function unir(publicaciones, user) {
 	});
 	return publicacionesUser;
 }
+
+//------------------------------Esto es una prueba -------------------------------------------------------
+router.get('/consulta', async (req, res) => {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.where('email', '==', 'nayibepelaez03@gmail.com').get();
+	console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(typeof (userRegister));//-> salida: object
+	console.log(userRegister);//-> Estructura de datos
+	if (userRegister.length > 0) {
+		console.log('existe');
+		res.send(userRegister[0].email);
+	} else {
+		console.log('no existe');
+		res.send('no existe');
+	}
+	//[
+	// 	{
+	// 		id: 'SWf7jxis7lSTY7sd87RpZ2eN8B63',
+	// 			phone: '3112465403',
+	// 				email: 'camilo@gmail.com',
+	// 					ubication: 'Carmen de Carupa',
+	// 						name: 'Camilo Ruiz'
+	// 	}
+	// ]
+	// para acceder a los datos del objeto
+	//res.send(userRegister[0].email);
+});
+//subida de imagenes
+router.get('/img', async(req, res) =>{
+	res.render('imagenes', {layout: false});
+});
+const {ref, uploadString} = require('firebase/storage');
+//subir imagnes	a la base de datos
+router.post('/storage', async (req, res) => {
+	let { file } = req.body;
+	console.log(file);
+	console.log(typeof (file));
+	let img = ref(storage,`${file}`);
+	await uploadString(img, 'imagenes/file.png')
+		.then((snapshot) => {
+			console.log(snapshot);
+			res.send('subido');
+		});
+});
+
+router.get('/storage', async (req, res) => {
+	res.render('error', {layout: false});
+});
+
+
+
 
 module.exports = router;
