@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +10,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="./usuarios/menu/CSS/movile.css">
-    <link rel="stylesheet" href="./usuarios/menu/CSS/tablet.css" media="screen and (min-width:600px)">
-    <link rel="stylesheet" href="./usuarios/menu/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="stylesheet" href="./usuarios/crearP/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/crearP/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/crearP/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
     <title>tuVaca.com</title>
 </head>
-<body>
-    <!--Header-->
-    <h1>Crear Publicacion</h1>
+
+<body class="body_crearP">
+    <form action="">
+        <div class="imagen">
+            <img src="./usuarios/menu/images/vacas.jpg" alt="">
+            <div class="fotos"></div>
+        </div>
+        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Bovino"
+            required>
+        <datalist id="municipios">
+            <option value="Ubaté"></option>
+            <option value="Carmen de Carupa"></option>
+            <option value="Tausa"></option>
+            <option value="Suta"></option>
+            <option value="Lenguazaque"></option>
+            <option value="Guacheta"></option>
+            <option value="Cucunuba"></option>
+            <option value="Simijaca"></option>
+            <option value="Susa"></option>
+        </datalist>
+        <select name="categoria" id="categoria" required>
+            <option value="">Categoria</option>
+            <option value="Ternera">Ternera</option>
+            <option value="Ternero">Ternero</option>
+            <option value="Novilla">Novilla</option>
+            <option value="Novillo">Novillo</option>
+            <option value="Vaca">Vaca</option>
+            <option value="Toro">Toro</option>
+        </select>
+        <input type="text" name="edad" id="edad" placeholder="Edad del Bovino" title="specifique si es años o meses"
+            required>
+        <input type="text" name="raza" id="raza" placeholder="Raza del Bovino" required>
+        <select name="producto" id="producto" required>
+            <option value="">Tipo de Produccion</option>
+            <option value="Carnico">Producccion Carnica</option>
+            <option value="Lechero">Produccion Lechera</option>
+            <option value="engorde">Para Engorde</option>
+        </select>
+        <input type="number" name="precio" id="precio" placeholder="Precio" required>
+        <select name="prenada" id="prenada">
+            <option value="">¿Esta preñada?</option>
+            <option value="Esta preñada">Si esta preñada</option>
+            <option value="No esta preñada">No esta preñada</option>
+        </select>
+        <select name="tipoprenada" id="tipoprenada">
+            <option value="">¿Comó quedo preñada? </option>
+            <option value="Inseminacion">Inseminación</option>
+            <option value="Natural">Natural</option>
+        </select>
+        <input type="text" name="toro" id="toro" placeholder="Raza del Toro">
+        <input type="number" name="semanas" id="semanas" placeholder="Meses de preñada">
+        <select name="primeriza" id="primeriza">
+            <option value="">¿Es primeriza?</option>
+            <option value="Si es primeriza">Si es primeriza</option>
+            <option value="No es primeriza">No es primeriza</option>
+        </select>
+        <input type="number" name="nprenadas" id="nprenada" placeholder="Numero de Embarazos">
+
+        <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
+
+        <input type="submit" value="Subir Publicación">
+    </form>
+    <section class="modal_container_f ">
+        <section class="modal_f modal_cerrado_f">
+            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
+            <div class="modal_Cuerpo">
+
+            </div>
+        </section>
+    </section>
+    <script src="./usuarios/crearP/JS/index.js"></script>
 </body>
 
 </html>

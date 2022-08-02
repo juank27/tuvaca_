@@ -19,16 +19,12 @@
 
 <body class="body_publicaciones">
     {{#each datos}}
-    <form class="publicacion" id="publicacion" target="_blanck"  action="/abrir-publicaciones" method="POST">
-        <input value={{id}}  type="text" class="id" style="display:none;">
-        <input  name="id_p" type="text" id="id2" value="" style="display:none;">
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+        <input value={{id}} type="text" class="id" style="display:none;">
+        <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
-        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
-        <div class="publicacion_mas">
-            <span></span>
-        </div>
         <!--En esta division esta la imagen del bovino a vender-->
-        <div class="publicacion_imagen" onclick="posicion({{@index}})">
+        <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
             <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
         </div>
         <!--En esta división esta la fecha, los me gusta y el chat-->
@@ -36,7 +32,6 @@
             <p>21/julio/2022</p>
             <div>
                 <div class="chat"></div>
-                <div class="me_gusta"></div>
             </div>
         </div>
         <!--En esta división esta:-->
@@ -47,14 +42,12 @@
                 <!--nombre del publicador-->
                 <p>{{name}}</p>
             </div>
-            <!--calificación de la publicacion-->
-            <div class="publicación_cal">
+            <!--ubicación del bovino-->
+            <p>{{ubication}}</p>
 
-            </div>
+        </div>
         </div>
         <div class="publicacion_linea3">
-            <!--precio del bovino-->
-            <p>{{ubication}}</p>
             <!--precio del bovino-->
             <p>{{precio}}</p>
             <!--tipo de bovino-->
@@ -62,8 +55,12 @@
         </div>
     </form>
     {{/each}}
-    <script src="./usuarios/publicaciones/JS/index.js"></script>
-
+    <section class="modal_container_p ">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
 </body>
 <script src="./usuarios/publicaciones/JS/index.js"></script>
 
