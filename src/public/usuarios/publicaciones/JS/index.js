@@ -30,5 +30,5 @@ cerrarSesion.addEventListener("click", function () {
         modalSesion.style.opacity = "0";
         modalSesion.style.visibility = "hidden";
         id.value="";
-    }, 900)
+    },500)
 })
