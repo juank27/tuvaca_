@@ -79,6 +79,7 @@ main{
     width: 90%;
     height: auto;
     cursor: pointer;
+    margin-top: 5%;
 }
 .publicacion_imagen img{
     width: 100%;
@@ -114,6 +115,9 @@ main{
     width: 25px;
     height: 25px;
     cursor: pointer;
+}
+.chat:hover{
+    background-image: url("../../menu/icons/chat1.png");
 }
 .me_gusta{
     background-image: url("../../menu/icons/Cow-1.png");

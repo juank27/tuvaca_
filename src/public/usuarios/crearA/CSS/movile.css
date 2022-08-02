@@ -35,6 +35,8 @@ html {
 .body_crearP p{
     font-size: 1.3rem;
     margin-bottom: 2%;
+    width: 100%;
+    text-align: center;
 }
 .body_crearP span{
     font-size: 1.3rem;

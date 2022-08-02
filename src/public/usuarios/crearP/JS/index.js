@@ -18,7 +18,7 @@ categoria.addEventListener("click", function () {
     }
 })
 prenada.addEventListener("click", function () {
-    if (prenada.value === "Vaca preñada" ) {
+    if (prenada.value === "Esta preñada" ) {
         tipoprenada.style.display = "flex";
         toro.style.display = "flex";
         semanas.style.display = "flex";

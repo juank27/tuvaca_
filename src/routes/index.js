@@ -277,6 +277,12 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
+router.get('/crearAcarreo', async (req, res) => {
+	//res.render('crearPublicacion');
+	verificarEstado(res, 'crearAcarreo', 'index', datos = '', () => {
+		//...
+	});
+});
 
 router.get('/acarreos', async (req, res) => {
 	//res.render('acarreos');

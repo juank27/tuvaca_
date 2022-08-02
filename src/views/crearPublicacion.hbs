@@ -23,7 +23,8 @@
             <img src="./usuarios/menu/images/vacas.jpg" alt="">
             <div class="fotos"></div>
         </div>
-        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Bovino" >
+        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Bovino"
+            required>
         <datalist id="municipios">
             <option value="Ubaté"></option>
             <option value="Carmen de Carupa"></option>
@@ -35,7 +36,7 @@
             <option value="Simijaca"></option>
             <option value="Susa"></option>
         </datalist>
-        <select name="categoria" id="categoria">
+        <select name="categoria" id="categoria" required>
             <option value="">Categoria</option>
             <option value="Ternera">Ternera</option>
             <option value="Ternero">Ternero</option>
@@ -44,43 +45,44 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="text" name="edad" id="edad" placeholder="Edad del Bovino">
-        <input type="text" name="raza" id="raza" placeholder="Raza del Bovino">
-        <select name="producto" id="producto">
+        <input type="text" name="edad" id="edad" placeholder="Edad del Bovino" title="specifique si es años o meses"
+            required>
+        <input type="text" name="raza" id="raza" placeholder="Raza del Bovino" required>
+        <select name="producto" id="producto" required>
             <option value="">Tipo de Produccion</option>
             <option value="Carnico">Producccion Carnica</option>
             <option value="Lechero">Produccion Lechera</option>
             <option value="engorde">Para Engorde</option>
         </select>
-        <input type="number" name="precio" id="precio" placeholder="Precio">
+        <input type="number" name="precio" id="precio" placeholder="Precio" required>
         <select name="prenada" id="prenada">
-            <option value="">Preñada</option>
-            <option value="Vaca preñada">Vaca preñada</option>
+            <option value="">¿Esta preñada?</option>
+            <option value="Esta preñada">Si esta preñada</option>
             <option value="No esta preñada">No esta preñada</option>
         </select>
         <select name="tipoprenada" id="tipoprenada">
-            <option value="">Tipo</option>
+            <option value="">¿Comó quedo preñada? </option>
             <option value="Inseminacion">Inseminación</option>
             <option value="Natural">Natural</option>
         </select>
         <input type="text" name="toro" id="toro" placeholder="Raza del Toro">
-        <input type="text" name="semanas" id="semanas" placeholder="Semanas de cargada">
+        <input type="number" name="semanas" id="semanas" placeholder="Meses de cargada">
         <select name="primeriza" id="primeriza">
-            <option value="">Primeriza</option>
-            <option value="Es primeriza">Es primeriza</option>
+            <option value="">¿Es primeriza?</option>
+            <option value="Si es primeriza">Si es primeriza</option>
             <option value="No es primeriza">No es primeriza</option>
         </select>
         <input type="text" name="nprenadas" id="nprenada" placeholder="Numero de Embarazos">
 
         <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
 
-        <input  type="submit" value="Subir Publicación">
+        <input type="submit" value="Subir Publicación">
     </form>
-        <section class="modal_container_f ">
+    <section class="modal_container_f ">
         <section class="modal_f modal_cerrado_f">
             <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
             <div class="modal_Cuerpo">
-            
+
             </div>
         </section>
     </section>
