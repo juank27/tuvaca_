@@ -17,22 +17,25 @@ router.get('/imga', (req, res) => {
 });
 
 router.post('/imagen', upload.array('imagen[]', 3),  async (req, res) =>{
-	console.log(req.files);
-	console.log('--------------');
-	console.log(typeof(req.files[0]));
 	let files = req.files;
-	const storageRef = ref(storage, 'images/'+files[0].originalname);
-	console.log('holaaa');
-	console.log(storageRef);
-	uploadBytes(storageRef, req.files[0].buffer)
-		.then((snapshot) => {
-			console.log('Uploaded a blob or file!');
-			res.send('enviado');
-		})
-		.catch((error) => {
-			console.log(error);
-			res.send('error');
-		});
+	for (let index = 0; index < files.length; index++) {
+		const storageRef = ref(
+			storage,
+			'images/' + new Date().getTime() + files[index].originalname
+		);
+		const metadata = {
+			contentType: files[index].mimetype,
+		};
+		uploadBytes(storageRef, req.files[index].buffer, metadata)
+			.then((snapshot) => {
+				console.log('Uploaded a blob or file!');
+			})
+			.catch((error) => {
+				console.log(error);
+				res.send('error');
+			});
+	}
+		res.send('enviado');
 });
 
 module.exports = router;
