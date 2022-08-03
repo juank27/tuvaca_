@@ -38,7 +38,7 @@
         </section>
     </section>
     <section class="publicaciones">
-        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST" style="-webkit-transform-style: preserve-3d;">
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
@@ -91,7 +91,7 @@
         </form>
     </section>
     <!--modal publicaciones-->
-    <section class="modal_container_p " style="-webkit-perspective: 1000; -webkit-backface-visibility: hidden;">
+    <section class="modal_container_p">
         <section class="modal_p modal_cerrado_p">
             <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
             <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
