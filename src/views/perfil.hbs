@@ -38,7 +38,7 @@
         </section>
     </section>
     <section class="publicaciones">
-        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST" style="-webkit-transform-style: preserve-3d">
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
@@ -91,7 +91,7 @@
         </form>
     </section>
     <!--modal publicaciones-->
-    <section class="modal_container_p " style="-webkit-perspective: 1000">
+    <section class="modal_container_p">
         <section class="modal_p modal_cerrado_p">
             <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
             <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
@@ -101,7 +101,11 @@
     <section class="modal_container_f ">
         <section class="modal_f modal_cerrado_f">
             <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
-            <div class="modal_Cuerpo">
+            <div class="modal_Cuerpof">
+                <div class="insert_Foto"></div>
+                <input type="file" name="foto_publicacion[]" id="foto_publicacion" multiple accept="image/png, .jpeg, .jpg, image/mp4">
+                <input type="file" name="foto_publicacion2[]" id="foto_publicacion2" multiple accept="image/png, .jpeg, .jpg, image/mp4">
+
             </div>
         </section>
     </section>
@@ -148,6 +152,7 @@
             </div>
         </section>
     </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>
 </body>
 

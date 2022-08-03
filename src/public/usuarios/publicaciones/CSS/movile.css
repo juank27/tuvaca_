@@ -263,6 +263,7 @@ main{
     justify-content: center;
     border-radius: 5px;
     margin-bottom: 2%;
+    margin-top: 50px;
 }
 .publicacion_imagen2 img{
     width: 80%;

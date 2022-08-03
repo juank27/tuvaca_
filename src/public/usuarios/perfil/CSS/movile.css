@@ -262,6 +262,7 @@ main{
     justify-content: center;
     border-radius: 5px;
     margin-bottom: 2%;
+    margin-top: 50px;
 }
 .publicacion_imagen2 img{
     width: auto;
@@ -529,8 +530,8 @@ main{
 }
 /***************modal fotos**********/
 .modal_container_f {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     position: fixed;
     z-index: 9;
     width: 100%;
@@ -547,7 +548,7 @@ main{
 .modal_f {
     width: 90%;
     background-color: rgb(229, 229, 229);
-    height: 70%;
+    height: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -556,14 +557,15 @@ main{
     transform: translateY(0%);
     transition: transform 1s;
 }
-.modal_cerrado_f {
+/* .modal_cerrado_f {
     transform: translateY(-200%);
-}
+} */
 .modal_Contendorf{
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 5px;
+    margin-bottom: 5%;
 }
 .cerrar_modal_f {
     background-image: url(../../../principal/icons/Cancel.png);
@@ -710,4 +712,51 @@ main{
     outline: 0 none;
     border: 1px solid var(--cafe);
     box-shadow: 2px 2px 8px 0 var(--cafe);
+}
+
+/************insertar fotografia******/
+.modal_Cuerpof {
+    display: flex;
+    height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.insert_Foto{
+    width: 100px;
+    height: 100px;
+    border: 5px dashed var(--verde);
+    background-image: url(../../menu/icons/Camera.png);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    cursor: pointer;
+}
+#foto_publicacion{
+    display: none;
+}
+.imagen{
+    width: 100px;
+    height: 100px;
+}
+.cont_img{
+    width: 120px;
+    height: 150px;
+    display: flex;
+    margin-bottom: 5%;
+}
+.cerrar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.cerrar2{
+    background-image: url(../../../principal/icons/Cancel.png);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
