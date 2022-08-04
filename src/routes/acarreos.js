@@ -10,11 +10,11 @@ router.get('/imga', (req, res) => {
 	res.render('img', {layout: false});
 });
 
-router.post('/imagen', upload.array('imagen[]', 3),  function (req, res) {
+router.post('/imagen', upload.array('foto_publicacion[]', 5),  function (req, res) {
 	console.log(req.files);
 	console.log('--------------');
 	console.log(req.files[1]);
-	res.send('enviado');
+	res.render("crearPublicacion");
 });
 
 module.exports = router;

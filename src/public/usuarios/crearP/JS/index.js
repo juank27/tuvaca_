@@ -37,21 +37,53 @@ primeriza.addEventListener("click", function () {
         nprenada.style.display = "none";
     }
 })
-let abrirSesion = document.querySelectorAll(".fotos")[0];
-let cerrarSesion = document.querySelectorAll(".cerrar_modal_f")[0];
-let modalSesion = document.querySelectorAll(".modal_container_f")[0];
-let modalSesion2 = document.querySelectorAll(".modal_f")[0];
+/************seleccionar fotos******/
+let elegir = document.querySelectorAll(".insert_Foto")[0];
+let imagen = document.querySelectorAll(".imagen")[0];
+let limite = document.querySelectorAll(".limite")[0];
+let filesI = document.getElementById("foto_publicacion");
+let foto = document.querySelectorAll(".fotos")[0];
+let modalf = document.querySelectorAll(".modal_f")[0];
+var valor=false;
+foto.addEventListener("click", function () {
+    modalf.style.display="flex";
+})
+elegir.addEventListener("click", function () {
+    filesI.disabled=valor;
+    filesI.click();
+})
+let contador = 0;
+let contador2 = 0;
+var element2 ;
+filesI.addEventListener("change", function () {
+    console.log(this.files);
+    var files = this.files;
+    var element;
+    for (var i = 0; i < files.length; i++) {
+        element = files[i];
+        element2=this.files;
+        console.log(element2);
 
-abrirSesion.addEventListener("click", function () {
-    modalSesion.style.opacity = "1";
-    modalSesion.style.visibility = "visible";
-    modalSesion2.classList.toggle("modal_cerrado_f")
+        if (files.length > 5 || contador === 5) {
+        } else {
+            createPreview(element);
+            contador = contador + 1;
+        }
+    }
+    if (files.length > 5 || contador===5) {
+        valor=true;
+        limite.innerText="El limite son 5 imagenes,si quiere subir otra tendra que eliminar una de las que ya selecciono";
+    }
 })
 
-cerrarSesion.addEventListener("click", function () {
-    modalSesion2.classList.toggle("modal_cerrado_f");
-    setTimeout(function () {
-        modalSesion.style.opacity = "0";
-        modalSesion.style.visibility = "hidden";
-    }, 900)
-})
+function createPreview(file) {
+    var imgCodified = URL.createObjectURL(file);
+    var img = $('<div class="cont_img"> <img src="' + imgCodified + '" class="imagen2""><div class="cerrar"><div class="cerrar2"></div></div></div>');
+    $(img).insertBefore(".insert_Foto");
+}
+$(document).on("click", ".cont_img", function (e) {
+    $(this).remove();
+    contador = contador - 1;
+    valor=false;
+    limite.innerText="";
+});

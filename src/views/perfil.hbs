@@ -103,9 +103,19 @@
             <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
             <div class="modal_Cuerpof">
                 <div class="insert_Foto"></div>
-                <input type="file" name="foto_publicacion[]" id="foto_publicacion" multiple accept="image/png, .jpeg, .jpg, image/mp4">
-                <input type="file" name="foto_publicacion2[]" id="foto_publicacion2" multiple accept="image/png, .jpeg, .jpg, image/mp4">
-
+                <input type="file" name="foto_publicacion[]" id="foto_publicacion" multiple
+                    accept="image/png, .jpeg, .jpg, image/mp4">
+                <button class="boton">enviar</button>
+                <form action="/imagen" method="POST" , enctype="multipart/form-data">
+                    <input type="file" name="imagen[]" multiple id="prueba">
+                    <input type="submit" value="Enviar">
+                </form>
+                <button class="probar">comprobar</button>
+                {{!-- <form action="/imagen" method="POST" , enctype="multipart/form-data">
+                    <input type="file" name="foto_publicacion2[]" id="foto_publicacion2" multiple
+                        accept="image/png, .jpeg, .jpg, image/mp4" style="display:none ;">
+                    <input type="submit" value="Enviar" class="boton">
+                </form> --}}
             </div>
         </section>
     </section>
@@ -152,7 +162,8 @@
             </div>
         </section>
     </section>
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>
 </body>
 
