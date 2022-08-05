@@ -25,26 +25,18 @@ router.post('/imagenPrueba', (req, res) => {
 	const { text } = req.body;
 	//console.log(text);
 	// --------------------------------
-	// let a = text.split(';');
-	// let modifi = a[0].replace('data:', ''); //tenemos el tipo de imagen
-	// console.log(modifi);
-	// const storageRef = ref(
-	// 	storage,
-	// 	'images/' + new Date().getTime()
-	// );
-	// uploadString(storageRef, text, 'base64url')
-	// 	.then((snapshot) => {
-	// 		res.send("listo");
-	// 	});
-	//---------------------------------
+	//let a = text.split(';');
+	//let modifi = a[0].replace('data:', ''); //tenemos el tipo de imagen
+	//console.log(modifi);
 	const storageRef = ref(
 		storage,
 		'images/' + new Date().getTime()
 	);
-	uploadBytes(storageRef, text).then((snapshot) => {
-		console.log('Uploaded a blob or file!');
-		res.send('envio')
-	});
+	uploadString(storageRef, text, 'base64url')
+		.then((snapshot) => {
+			res.send("listo");
+		});
+	//---------------------------------
 });
 
 // funciones para guardar imagenes en firebase storage

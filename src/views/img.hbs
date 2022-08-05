@@ -21,11 +21,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
 		$("#imagen").on("change", function(){
-			
 			var imagen = $(this)[0].files[0];
-			var imagen2= $(this).files[0];
-			let a = URL.createObjectURL(imagen);
-			console.log(imagen2);
 			var fileReader = new FileReader();
 			fileReader.readAsDataURL(imagen);
 			//console.log(typeof(fileReader.data));
@@ -35,7 +31,7 @@
 				//console.log(e.target.result);
 				console.log(fileReader.result);
 				const text = document.getElementById("text");
-				text.value = a;
+				text.value = fileReader.result;
 			}
 		});
 	</script>
