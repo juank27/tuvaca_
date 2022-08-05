@@ -78,6 +78,7 @@ filesI.addEventListener("change", function () {
 
 function createPreview(file) {
     var imgCodified = URL.createObjectURL(file);
+    console.log(imgCodified);
     var img = $('<div class="cont_img"> <img src="' + imgCodified + '" class="imagen2""><div class="cerrar"><div class="cerrar2"></div></div></div>');
     $(img).insertBefore(".insert_Foto");
 }
