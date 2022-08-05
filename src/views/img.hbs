@@ -12,7 +12,16 @@
 		<input type="file" name="imagen[]" multiple>
 		<input type="submit" value="Enviar">
 	</form>
-	<form action="/imagenPrueba" method="POST">
+	<h1>Segundo formulario de prueba</h1>
+	<form action="/multiple_input" method="POST" , enctype="multipart/form-data">
+		<input type="file" name="input0">
+		<input type="file" name="input1">
+		<input type="file" name="input2">
+		<input type="file" name="input3">
+		<input type="file" name="input4">
+		<input type="submit" value="Enviar">
+	</form>
+	{{!-- <form action="/imagenPrueba" method="POST">
 		<label for="">Segundo formulario</label>
 		<input type="file" name="imagen" id="imagen">
 		<input type="text" id="text" name="text">
@@ -34,6 +43,6 @@
 				text.value = fileReader.result;
 			}
 		});
-	</script>
+	</script> --}}
 </body>
 </html>
