@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const multer = require('multer')
 const { storage } = require('../firebaseCloud');//importar la base de datos
-const { ref, uploadBytes, getDownloadURL } = require ("firebase/storage");
+const { ref, uploadBytes, getDownloadURL, uploadString } = require ("firebase/storage");
 const { db, } = require('../firebase');//importar la base de datos
 
 const router = Router();
@@ -17,41 +17,37 @@ router.get('/imga', (req, res) => {
 // envio de imagenes al servidor en firebase storage
 router.post('/imagen', upload.array('imagen[]', 3),  async (req, res) =>{
 	let files = req.files;
-	// for (let index = 0; index < files.length; index++) {
-	// 	const storageRef = ref(
-	// 		storage,
-	// 		'images/' + new Date().getTime() + files[index].originalname
-	// 	);
-	// 	const metadata = {
-	// 		contentType: files[index].mimetype,
-	// 	};
-	// 	uploadBytes(storageRef, req.files[index].buffer, metadata)
-	// 		.then((snapshot) => {
-	// 			console.log('Uploaded a blob or file!');
-	// 			console.log(snapshot.metadata.fullPath);
-	// 			getDownloadURL(ref(storage, snapshot.metadata.fullPath))
-	// 				.then((url) => {
-	// 					console.log(url);
-	// 				})
-	// 				.catch((error) => {
-	// 					console.log(error);
-	// 				});
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error);
-	// 			res.send('error');
-	// 		});
-	// }
-	// sendImages(files, 1)
-	// 	.then((links) => {
-	// 		console.log('dentro de la funcioooon');
-	// 		console.log(links);
-	// 	});
-	//sendImages(files, enviar);
 	sendImages(files, enviar);
 	res.send('enviado');
 });
+//imagen prueba con seleccion de imagenes data_url
+router.post('/imagenPrueba', (req, res) => {
+	const { text } = req.body;
+	//console.log(text);
+	// --------------------------------
+	// let a = text.split(';');
+	// let modifi = a[0].replace('data:', ''); //tenemos el tipo de imagen
+	// console.log(modifi);
+	// const storageRef = ref(
+	// 	storage,
+	// 	'images/' + new Date().getTime()
+	// );
+	// uploadString(storageRef, text, 'base64url')
+	// 	.then((snapshot) => {
+	// 		res.send("listo");
+	// 	});
+	//---------------------------------
+	const storageRef = ref(
+		storage,
+		'images/' + new Date().getTime()
+	);
+	uploadBytes(storageRef, text).then((snapshot) => {
+		console.log('Uploaded a blob or file!');
+		res.send('envio')
+	});
+});
 
+// funciones para guardar imagenes en firebase storage
 function sendImages(files, callback) {
 	for (let index = 0; index < files.length; index++) {
 		const storageRef = ref(
