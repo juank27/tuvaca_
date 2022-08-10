@@ -28,13 +28,41 @@ let multpleInput = upload.fields([
 ]);
 
 //envio post de imagenes con multer y firebase storage
-router.post('/multiple_input', multpleInput, (req, res) => {
+router.post('/new_publication', multpleInput, (req, res) => {
 	let files = req.files;
-	let {text1, text2} = req.body;
-	console.log(typeof (text1), 'Este es el texto 1');
+	let data = {
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		primeriza,
+		nprenadas,
+		descripcion,
+	} = req.body;
+	data.toro = 'Con toro ' + toro;
+	data.meses = meses + ' Meses';
+	data.nprenadas = nprenadas + ' Embarazos';
+	let publication = {
+		iduser : globalThis.idUser,
+		...data,
+		input0: '',
+		input1: '',
+		input2: '',
+		input3: '',
+		input4: '',
+	};
+	console.log(publication);
+	//guardar publicaciones en firebase database
+	enviarPublication(publication);
 	//-> files[inputt][0].originalname forma para ingresar a los datos
 	//Object.keys(files).length -> longitud de los archivos que se subieron
-	sendImages(files, enviar, text1, text2);
+	//sendImages(files, enviar, text1, text2);
 	res.send('recibidos');
 });
 // -------------------------- Funciones necesarias -------------------------------------
@@ -70,12 +98,8 @@ function sendImages(files, callback, text1, text2) {
 }
 
 //funcion para guardar publicaciones
-function enviar(url, text1, text2) {
-	db.collection('publications').doc().set({
-		text1,
-		text2,
-		url,
-	});
+function enviarPublication(data) {
+	db.collection('publications').doc().set(data);
 }
 
 //extraer datos de la promesa con la URL de la imagen

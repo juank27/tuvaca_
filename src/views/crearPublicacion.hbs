@@ -18,10 +18,10 @@
 </head>
 
 <body class="body_crearP">
-    <form action="/" method="POST" >
+    <form action="/new_publication" novalidate method="POST" enctype="multipart/form-data">
         <div class="imagen">
             <div class="fotos"></div>
-            <img class="img_p" src="./usuarios/menu/icons/camera.png" alt="">
+            <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
         </div>
         <section class="modal_f ">
             <div class="modal_Cuerpof">
@@ -32,7 +32,7 @@
                 <div class="separador"></div>
                 <!--Inpur file 2-->
                 <div class="insert_Foto IF_2"></div>
-                <input type="file" name="input1" class="foto_publicacion f2" accept="image/png, .jpeg, .jpg, image/mp4">
+                <input type="file" name="input1" class="foto_publicacion f2" accept="image/png, .jpeg, .jpg, video/*">
                 <div class="cont_img ct_2">
                     <img src="" class="imagenes im_2">
                     <div class=" cerrando">
@@ -41,7 +41,7 @@
                 </div>
                 <!--Inpur file 3-->
                 <div class="insert_Foto IF_3"></div>
-                <input type="file" name="input2" class="foto_publicacion f3" accept="image/png, .jpeg, .jpg, image/mp4">
+                <input type="file" name="input2" class="foto_publicacion f3" accept="image/png, .jpeg, .jpg, video/*">
                 <div class="cont_img ct_3">
                     <img src="" class="imagenes im_3">
                     <div class=" cerrando">
@@ -50,7 +50,7 @@
                 </div>
                 <!--Inpur file 4-->
                 <div class="insert_Foto IF_4"></div>
-                <input type="file" name="input3" class="foto_publicacion f4" accept="image/png, .jpeg, .jpg, image/mp4">
+                <input type="file" name="input3" class="foto_publicacion f4" accept="image/png, .jpeg, .jpg, video/*">
                 <div class="cont_img ct_4">
                     <img src="" class="imagenes im_4">
                     <div class=" cerrando">
@@ -59,7 +59,7 @@
                 </div>
                 <!--Inpur file 5-->
                 <div class="insert_Foto IF_5"></div>
-                <input type="file" name="input4" class="foto_publicacion f5" accept="image/png, .jpeg, .jpg, image/mp4">
+                <input type="file" name="input4" class="foto_publicacion f5" accept="image/png, .jpeg, .jpg, video/*">
                 <div class="cont_img ct_5">
                     <img src="" class="imagenes im_5">
                     <div class=" cerrando">
@@ -113,7 +113,7 @@
             <option value="Natural">Natural</option>
         </select>
         <input type="text" name="toro" id="toro" placeholder="Raza del Toro">
-        <input type="number" name="semanas" id="semanas" placeholder="Meses de preñada">
+        <input type="number" name="meses" id="semanas" placeholder="Meses de preñada">
         <select name="primeriza" id="primeriza">
             <option value="">¿Es primeriza?</option>
             <option value="Si es primeriza">Si es primeriza</option>
