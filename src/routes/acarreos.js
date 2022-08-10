@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const multer = require('multer')
 const { storage } = require('../firebaseCloud');//importar la base de datos
+//import { idUser } from "../routes/index";
+//let id = require('../routes/index');//importar el id del usuario
 const { ref, uploadBytes, getDownloadURL } = require ("firebase/storage");
 const { db, } = require('../firebase');//importar la base de datos
 
@@ -10,6 +12,9 @@ const upload = multer({ storage: storageLocal });
 
 //ruta del render para la prueba con imagenes
 router.get('/imga', (req, res) => {
+	console.log('------------------------------------');
+	//console.log(id.getUser());
+	console.log(globalThis.idUser);
 	res.render('img', {layout: false});
 });
 
@@ -25,14 +30,16 @@ let multpleInput = upload.fields([
 //envio post de imagenes con multer y firebase storage
 router.post('/multiple_input', multpleInput, (req, res) => {
 	let files = req.files;
+	let {text1, text2} = req.body;
+	console.log(typeof (text1), 'Este es el texto 1');
 	//-> files[inputt][0].originalname forma para ingresar a los datos
 	//Object.keys(files).length -> longitud de los archivos que se subieron
-	sendImages(files, enviar);
+	sendImages(files, enviar, text1, text2);
 	res.send('recibidos');
 });
 // -------------------------- Funciones necesarias -------------------------------------
 // funciones para guardar imagenes en firebase storage
-function sendImages(files, callback) {
+function sendImages(files, callback, text1, text2) {
 	console.log(files);
 	for (let index = 0; index < Object.keys(files).length; index++) {
 		let inputt = "input" + index; //name del input
@@ -50,7 +57,7 @@ function sendImages(files, callback) {
 				getDownloadURL(ref(storage, snapshot.metadata.fullPath))
 					.then((url) => {
 						//envio de datos a la funcion callback para guardar en firebase
-						callback(url);
+						//callback(url, text1, text2);
 					})
 					.catch((error) => {
 						console.log(error);
@@ -63,11 +70,17 @@ function sendImages(files, callback) {
 }
 
 //funcion para guardar publicaciones
-function enviar(url) {
-	db.collection('nuevo').doc().set({
-		hola: 'hola',
+function enviar(url, text1, text2) {
+	db.collection('publications').doc().set({
+		text1,
+		text2,
 		url,
 	});
+}
+
+//extraer datos de la promesa con la URL de la imagen
+function extraer(url) {
+	return url;
 }
 
 module.exports = router;

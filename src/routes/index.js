@@ -19,6 +19,8 @@ let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
 let estado = false; //estado de la sesion
 let modal = true;
+var _idUser = ''; //id del usuario
+globalThis.idUser = _idUser;
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', callback) {
 	//console.log(mensaje);
@@ -70,6 +72,7 @@ router.use('/logout', async (req, res, next) => {
 		// Sign-out successful.
 		estado = false;
 		buscarGlobal="";
+		globalThis.idUser = '';
 		console.log('logout');
 		//next();
 		res.redirect('/');
@@ -188,6 +191,7 @@ router.post('/login-email', async (req, res) => {
 					// Signed in
 					const user = userCredential.user;
 					console.log('Login exitoso');
+					globalThis.idUser = user.uid; //id user global
 					estado = true;
 					mensaje = undefined;
 					res.redirect('/publicaciones');
@@ -223,7 +227,6 @@ router.post('/login-email', async (req, res) => {
 //login with google
 router.post('/login-google', async (req, res) => {
 	let { emailb } = req.body;
-
 	let users = db.collection('users');
 	let verific = await users.where('email', '==', emailb).get();
 	if (verific.empty) {
@@ -234,6 +237,10 @@ router.post('/login-google', async (req, res) => {
 	} else {
 		estado = true;
 		mensaje = undefined;
+		//recuperar el id del usuario
+		verific.forEach((doc) => {
+			globalThis.idUser = doc.id;
+		});
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
 				res.redirect('/publicaciones');
@@ -254,6 +261,10 @@ router.post('/login-facebook', async (req, res) => {
 	} else {
 		estado = true;
 		mensaje = undefined;
+		//recuperar el id del usuario
+		verific.forEach((doc) => {
+			globalThis.idUser = doc.id;
+		});
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
 				res.redirect('/publicaciones');
@@ -507,6 +518,5 @@ router.post('/storage', async (req, res) => {
 router.get('/storage', async (req, res) => {
 	res.render('error', {layout: false});
 });
-
 
 module.exports = router;
