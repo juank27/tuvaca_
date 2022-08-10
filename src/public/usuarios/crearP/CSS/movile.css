@@ -42,7 +42,7 @@ html {
 main{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     height: auto;
@@ -51,7 +51,7 @@ form{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 80%;
-    height: 90%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -69,32 +69,33 @@ form p{
     width: 80%;
     height: auto;
     margin-top: 5%;
-    position: relative;
     margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .imagen div{
-    background-color: var(--gris_claro);
-    background-image: url("../../menu/icons/Camera.png");
+    background-image: url("../../../principal/icons/Cancel.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     width: 25px;
     height: 25px;
+    margin-left: 100%;
     cursor: pointer;
-    top: calc(100% - 30px);
-    left: calc(100% - 30px);
-    position: absolute;
     border-radius: 5px;
-    cursor: pointer;
+    display: none;
 }
 .imagen div:hover{
-    background-image: url("../../menu/icons/Camera2.png");
+    background-image: url("../../../principal/icons/Cancel-1.png");
 }
-img{
+.img_p{
     width: auto;
     max-width: 100%;
     height: auto;
     max-height: 100vh;
+    cursor: pointer;
 }
 input{
     width: 80%;
@@ -190,55 +191,20 @@ input[type=number]::-webkit-outer-spin-button {
     display: none;
 }
 /***************modal**********/
-.modal_container_f {
-    opacity: 0;
-    visibility: hidden;
-    position: fixed;
-    z-index: 9;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color:  rgb(248, 248, 248,.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .modal_f {
     width: 90%;
     background-color: rgb(229, 229, 229);
     height: 70%;
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     border-radius: 5px;
     position: relative;
     transform: translateY(0%);
     transition: transform 1s;
-}
-.modal_cerrado_f {
-    transform: translateY(-200%);
-}
-.modal_Contendorf{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 5px;
-}
-.cerrar_modal_f {
-    background-image: url(../../../principal/icons/Cancel.png);
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.cerrar_modal_f:hover {
-    background-image: url(../../../principal/icons/Cancel-1.png);
+    margin-bottom: 5%;
 }
 
 .modal_Cuerpo {
@@ -247,4 +213,92 @@ input[type=number]::-webkit-outer-spin-button {
     flex-wrap: wrap;
     height: auto;
     width: 100%;
+}
+/************insertar fotografia******/
+.modal_Cuerpof {
+    display: flex;
+    height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.insert_Foto{
+    width: 100px;
+    height: 100px;
+    border: 5px dashed var(--verde);
+    background-image: url(../../menu/icons/Camera.png);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.mas{
+    width: 20px;
+    height: 20px;
+    background-image: url(../../menu/icons/Sum.png);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.foto_publicacion{
+    display: none;
+}
+.IF_2, .IF_3, .IF_4, .IF_5{
+    display: none;
+}
+.imagenes{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100vh;
+}
+.cont_img{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    display: none;
+}
+.cerrando{
+    width: 10%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.cerrar{
+    background-image: url(../../../principal/icons/Cancel.png);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.requerido{
+    color: var(--verde);
+    text-align: center;
+    width: 50%;
+    margin-top: 10%;
+}
+.limite{
+    margin-top: 5%;
+    color: var(--verde);
+    text-align: center;
+}
+.separador{
+    width: 100%;
+    border: 1px solid var(--verde);
 }

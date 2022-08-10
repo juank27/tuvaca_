@@ -18,11 +18,58 @@
 </head>
 
 <body class="body_crearP">
-    <form action="">
+    <form action="/" method="POST" >
         <div class="imagen">
-            <img src="./usuarios/menu/images/vacas.jpg" alt="">
             <div class="fotos"></div>
+            <img class="img_p" src="./usuarios/menu/icons/camera.png" alt="">
         </div>
+        <section class="modal_f ">
+            <div class="modal_Cuerpof">
+                <!--Inpur file 1-->
+                <div class="insert_Foto IF_1"></div>
+                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg" required>
+                <p class="requerido">Requerida: <br> Esta primer imagen sera la portada de la publicacion</p>
+                <div class="separador"></div>
+                <!--Inpur file 2-->
+                <div class="insert_Foto IF_2"></div>
+                <input type="file" name="input1" class="foto_publicacion f2" accept="image/png, .jpeg, .jpg, image/mp4">
+                <div class="cont_img ct_2">
+                    <img src="" class="imagenes im_2">
+                    <div class=" cerrando">
+                        <div class="cerrar c_2"></div>
+                    </div>
+                </div>
+                <!--Inpur file 3-->
+                <div class="insert_Foto IF_3"></div>
+                <input type="file" name="input2" class="foto_publicacion f3" accept="image/png, .jpeg, .jpg, image/mp4">
+                <div class="cont_img ct_3">
+                    <img src="" class="imagenes im_3">
+                    <div class=" cerrando">
+                        <div class="cerrar c_3"></div>
+                    </div>
+                </div>
+                <!--Inpur file 4-->
+                <div class="insert_Foto IF_4"></div>
+                <input type="file" name="input3" class="foto_publicacion f4" accept="image/png, .jpeg, .jpg, image/mp4">
+                <div class="cont_img ct_4">
+                    <img src="" class="imagenes im_4">
+                    <div class=" cerrando">
+                        <div class="cerrar c_4"></div>
+                    </div>
+                </div>
+                <!--Inpur file 5-->
+                <div class="insert_Foto IF_5"></div>
+                <input type="file" name="input4" class="foto_publicacion f5" accept="image/png, .jpeg, .jpg, image/mp4">
+                <div class="cont_img ct_5">
+                    <img src="" class="imagenes im_5">
+                    <div class=" cerrando">
+                        <div class="cerrar c_5"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="limite">Clic aqui para agregar archivos multimedia</p>
+            <div class="mas"></div>
+        </section>
         <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Bovino"
             required>
         <datalist id="municipios">
@@ -76,7 +123,7 @@
 
         <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
 
-        <input type="submit" value="Subir Publicación">
+        <input type="submit" value="Subir Publicación" class="subir">
     </form>
     <section class="modal_container_f ">
         <section class="modal_f modal_cerrado_f">
@@ -86,6 +133,8 @@
             </div>
         </section>
     </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/crearP/JS/index.js"></script>
 </body>
 

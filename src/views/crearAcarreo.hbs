@@ -23,9 +23,11 @@
             <div class="atrasI"></div>
         </div>
         <div class="imagen">
-            <img src="./usuarios/menu/images/camioneta.jpg" alt="">
             <div class="fotos"></div>
+            <img class="img_p" src="./usuarios/menu/icons/camera.png" alt="">
+            <input type="file" class="img_f" value="Guardar Cambios" accept="image/png, .jpeg, .jpg, image/mp4" required>
         </div>
+        <p class="requerido"></p>
         <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Vehiculo"
             required>
         <datalist id="municipios">
@@ -79,16 +81,8 @@
         </label>
         <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
 
-        <input type="submit" value="Subir Publicación">
+        <input type="submit" value="Subir Publicación" class="subir">
     </form>
-    <section class="modal_container_f ">
-        <section class="modal_f modal_cerrado_f">
-            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
-            <div class="modal_Cuerpo">
-
-            </div>
-        </section>
-    </section>
     <script src="./usuarios/crearP/JS/index2.js"></script>
 </body>
 

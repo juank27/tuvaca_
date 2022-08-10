@@ -21,8 +21,12 @@
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
-                <div class="foto_perfil" style="background-image: url(./usuarios/menu/images/mar.jpg)"></div>
-                <div class="foto_selector"></div>
+                <div class="foto_perfil" style="background-image: url(./usuarios/menu/icons/perfil.png)"></div>
+                <form action="">
+                    <div class="foto_selector"></div>
+                    <input class="perfil" type="file" name="perfil" accept="image/png, .jpeg, .jpg">
+                    <input type="submit" class="subir" value="Guardar Cambios">
+                </form>
             </div>
             <div class="datos">
                 <div class="herramientas">
@@ -97,14 +101,6 @@
             <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
         </section>
     </section>
-    <!--modal fotografia-->
-    <section class="modal_container_f ">
-        <section class="modal_f modal_cerrado_f">
-            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
-            <div class="modal_Cuerpo">
-            </div>
-        </section>
-    </section>
     <!--modal ajustes-->
     <section class="modal_container_h ">
         <section class="modal_h modal_cerrado_h">
@@ -148,6 +144,8 @@
             </div>
         </section>
     </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>
 </body>
 
