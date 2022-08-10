@@ -69,32 +69,33 @@ form p{
     width: 80%;
     height: auto;
     margin-top: 5%;
-    position: relative;
     margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .imagen div{
-    background-color: var(--gris_claro);
-    background-image: url("../../menu/icons/Camera.png");
+    background-image: url("../../../principal/icons/Cancel.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     width: 25px;
     height: 25px;
+    margin-left: 100%;
     cursor: pointer;
-    top: calc(100% - 30px);
-    left: calc(100% - 30px);
-    position: absolute;
     border-radius: 5px;
-    cursor: pointer;
+    display: none;
 }
 .imagen div:hover{
-    background-image: url("../../menu/icons/Camera2.png");
+    background-image: url("../../../principal/icons/Cancel-1.png");
 }
-img{
+.img_p{
     width: auto;
     max-width: 100%;
     height: auto;
     max-height: 100vh;
+    cursor: pointer;
 }
 input{
     width: 80%;
@@ -234,28 +235,50 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-#foto_publicacion{
+.mas{
+    width: 20px;
+    height: 20px;
+    background-image: url(../../menu/icons/Sum.png);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.foto_publicacion{
     display: none;
 }
-.imagen2{
-    width: 100px;
-    height: 100px;
+.IF_2, .IF_3, .IF_4, .IF_5{
+    display: none;
+}
+.imagenes{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100vh;
 }
 .cont_img{
-    width: 120px;
-    height: 150px;
+    width: 80%;
+    height: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 5%;
     margin-bottom: 5%;
     margin-right: 5%;
     margin-left: 5%;
+    display: none;
 }
-.cerrar{
-    width: 100%;
+.cerrando{
+    width: 10%;
+    height: auto;
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
 }
-.cerrar2{
+.cerrar{
     background-image: url(../../../principal/icons/Cancel.png);
     width: 20px;
     height: 20px;
@@ -264,6 +287,18 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: center;
     background-size: contain;
 }
-.modal_f p{
-    color: red;
+.requerido{
+    color: var(--verde);
+    text-align: center;
+    width: 50%;
+    margin-top: 10%;
+}
+.limite{
+    margin-top: 5%;
+    color: var(--verde);
+    text-align: center;
+}
+.separador{
+    width: 100%;
+    border: 1px solid var(--verde);
 }

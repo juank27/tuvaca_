@@ -369,7 +369,7 @@ main{
     height: 80px;
     border-radius: 50px;
     margin-right: 2%;
-    background-color: var(--gris_oscuro);
+    border: 1px solid var(--verde);
 
 }
 .datos{
@@ -759,4 +759,22 @@ main{
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+.perfil{
+    display: none;
+}
+.subir{
+    border-radius: 5px;
+    background-color: var(--verde);
+    margin-top: 5%;
+    border: none;
+    width: auto;
+    padding: 2%;
+    color: var(--gris_claro);
+    display: none;
+}
+.subir:hover{
+    color: var(--verde);
+    background-color: var(--gris_claro);
+
 }

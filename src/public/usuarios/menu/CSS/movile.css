@@ -120,7 +120,7 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color: var(--gris_oscuro);
+    border: 1px solid var(--verde);
     cursor: pointer;
 }
 

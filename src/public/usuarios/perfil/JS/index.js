@@ -32,25 +32,7 @@ cerrarSesion.addEventListener("click", function () {
         id.value = "";
     }, 900)
 })
-/************modal fotografias******/
-let abrirSesion2 = document.querySelectorAll(".foto_selector")[0];
-let cerrarSesion2 = document.querySelectorAll(".cerrar_modal_f")[0];
-let modalSesion2a = document.querySelectorAll(".modal_container_f")[0];
-let modalSesion22 = document.querySelectorAll(".modal_f")[0];
 
-abrirSesion2.addEventListener("click", function () {
-    modalSesion2a.style.opacity = "1";
-    modalSesion2a.style.visibility = "visible";
-    modalSesion22.classList.toggle("modal_cerrado_f")
-})
-
-cerrarSesion2.addEventListener("click", function () {
-    modalSesion22.classList.toggle("modal_cerrado_f");
-    setTimeout(function () {
-        modalSesion2a.style.opacity = "0";
-        modalSesion2a.style.visibility = "hidden";
-    }, 900)
-})
 /************modal tres puntos******/
 let abrirSesiona = document.querySelectorAll(".publicacion_mas")[0];
 let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[0];
@@ -88,46 +70,24 @@ cerrarSesionb.addEventListener("click", function () {
     }, 900)
 })
 
-/************seleccionar fotos******/
-let elegir = document.querySelectorAll(".insert_Foto")[0];
-let imagen = document.querySelectorAll(".imagen")[0];
-let filesI = document.getElementById("foto_publicacion");
+/****elegir foto de perfil */
+let f5 = document.querySelectorAll(".foto_selector")[0];
+let c_5 = document.querySelectorAll(".perfil")[0];
+let ct_5 = document.querySelectorAll(".foto_perfil")[0];
+let guardar= document.querySelectorAll(".subir")[0];
 
-
-
-elegir.addEventListener("click", function () {
-    filesI.click();
+/****input 5******/
+f5.addEventListener("click", function () {
+    c_5.click();
 })
-let contador = 0;
-let contador2 = 0;
-var element2 ;
-filesI.addEventListener("change", function () {
-    console.log(this.files);
+c_5.addEventListener("change", function () {
     var files = this.files;
-    var element;
-    for (var i = 0; i < files.length; i++) {
-        element = files[i];
-        element2=this.files;
-        console.log(element2);
-
-        if (files.length > 5 || contador === 5) {
-        } else {
-            createPreview(element);
-            contador = contador + 1;
-            filesI.disabled = false;
-        }
-    }
-    if (files.length > 5 || contador === 5) {
-        alert("solo puede subir 5 imagenes")
-    }
+    visualizar(files[0]);
 })
 
-function createPreview(file) {
+/*******funciones*******/
+function visualizar(file) {
     var imgCodified = URL.createObjectURL(file);
-    var img = $('<div class="cont_img"> <img src="' + imgCodified + '" class="imagen2""><div class="cerrar"><div class="cerrar2"></div></div></div>');
-    $(img).insertBefore(".insert_Foto");
+    ct_5.style.backgroundImage =`url(${imgCodified})`;
+    guardar.style.display="flex";
 }
-$(document).on("click", ".cont_img", function (e) {
-    $(this).remove();
-    contador = contador - 1;
-});

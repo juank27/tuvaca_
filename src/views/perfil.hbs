@@ -21,8 +21,12 @@
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
-                <div class="foto_perfil" style="background-image: url(./usuarios/menu/images/mar.jpg)"></div>
-                <div class="foto_selector"></div>
+                <div class="foto_perfil" style="background-image: url(./usuarios/menu/icons/perfil.png)"></div>
+                <form action="">
+                    <div class="foto_selector"></div>
+                    <input class="perfil" type="file" name="perfil" accept="image/png, .jpeg, .jpg">
+                    <input type="submit" class="subir" value="Guardar Cambios">
+                </form>
             </div>
             <div class="datos">
                 <div class="herramientas">
@@ -95,28 +99,6 @@
         <section class="modal_p modal_cerrado_p">
             <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
             <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
-        </section>
-    </section>
-    <!--modal fotografia-->
-    <section class="modal_container_f ">
-        <section class="modal_f modal_cerrado_f">
-            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
-            <div class="modal_Cuerpof">
-                <div class="insert_Foto"></div>
-                <input type="file" name="foto_publicacion[]" id="foto_publicacion" multiple
-                    accept="image/png, .jpeg, .jpg, image/mp4">
-                <button class="boton">enviar</button>
-                <form action="/imagen" method="POST" , enctype="multipart/form-data">
-                    <input type="file" name="imagen[]" multiple id="prueba">
-                    <input type="submit" value="Enviar">
-                </form>
-                <button class="probar">comprobar</button>
-                {{!-- <form action="/imagen" method="POST" , enctype="multipart/form-data">
-                    <input type="file" name="foto_publicacion2[]" id="foto_publicacion2" multiple
-                        accept="image/png, .jpeg, .jpg, image/mp4" style="display:none ;">
-                    <input type="submit" value="Enviar" class="boton">
-                </form> --}}
-            </div>
         </section>
     </section>
     <!--modal ajustes-->
