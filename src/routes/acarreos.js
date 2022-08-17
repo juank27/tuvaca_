@@ -40,7 +40,7 @@ let multpleInput = upload.fields([
 ]);
 
 //envio post de imagenes con multer y firebase storage
-router.post('/new_publication', multpleInput, (req, res) => {
+router.post('/new_publication', multpleInput,  (req, res) => {
 	let files = req.files;
 	let data = {
 		ubication,
@@ -57,9 +57,13 @@ router.post('/new_publication', multpleInput, (req, res) => {
 		nprenadas,
 		descripcion,
 	} = req.body;
-	data.toro = 'Con toro ' + toro;
-	data.meses = meses + ' Meses';
-	data.nprenadas = nprenadas + ' Embarazos';
+	console.log(data);
+	data.precio = "$" + data.precio;
+	if (data['prenada'] === 'Esta preñada'){
+		data.toro = 'Con toro ' + toro;
+		data.meses = meses + ' Meses';
+		data.nprenadas = nprenadas + ' Embarazos';
+	}
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {
 		createdAt : fecha,
@@ -82,11 +86,15 @@ router.post('/new_publication', multpleInput, (req, res) => {
 			//obtengo el id de la publicacion
 			console.log("Document written with ID: ", docRef);
 			sendImages(files,updateImage, docRef);
+			//redireccion al momento de subir la publicacion
+			//utiliza tiempo para alcanzar a cargar la informacion
+			setTimeout(() => {
+				res.redirect('/publicaciones');
+			}, 2300);
 		})
 		.catch(function (error) {
 			console.log('Ocurrio un error');
 		});
-	res.send('recibidos');
 });
 // -------------------------- Funciones necesarias -------------------------------------
 // funciones para guardar imagenes en firebase storage

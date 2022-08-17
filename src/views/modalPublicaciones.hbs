@@ -22,12 +22,12 @@
         <div class="modal_Cuerpo">
             <!--En esta division esta la imagen del bovino a vender-->
             <div class="publicacion_imagen2">
-                <img src="./usuarios/menu/images/vacas.jpg" alt="">
+                <img src={{datos.input0}} alt="">
             </div>
             <div class="publicacion_descripcion">
                 <!--En esta división esta la fecha, los me gusta y el chat-->
                 <div class="publicacion_linea1b">
-                    <p>21/julio/2022</p>
+                    <p>{{datos.updatedAt}}</p>
                     <div>
                         <div class="chat"></div>
                     </div>
@@ -55,13 +55,12 @@
                 </div>
                 <div class="publicacion_linea4b">
                     <p>
-                    Sin descripcion
                     {{datos.descripcion}} <br>
                     {{datos.prenada}} <br>
                     {{datos.tipoprenada}} <br>
                     {{datos.toro}} <br>
-                    {{datos.semanas}} <br>
-                    {{datos.nprenada}}
+                    {{datos.meses}} <br>
+                    {{datos.nprenadas}}
                     </p>
                 </div>
             </div>

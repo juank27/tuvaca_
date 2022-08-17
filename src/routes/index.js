@@ -347,9 +347,11 @@ router.get('/publicaciones', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
-						//...
-					});
+					setTimeout(() => {
+						verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+							//...
+						});
+					}, 500);
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
