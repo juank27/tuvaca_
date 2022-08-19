@@ -18,17 +18,18 @@
 </head>
 
 <body class="body_publicaciones">
+    {{#each datos}}
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
         <!--En esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
-            <img src="./usuarios/menu/images/camioneta.jpg" alt="">
+            <img src={{url}} alt="">
         </div>
         <!--En esta división esta la fecha, los me gusta y el chat-->
         <div class="publicacion_linea1">
-            <p>21/julio/2022</p>
+            <p>{{updatedAt}}</p>
             <div>
                 <div class="chat"></div>
             </div>
@@ -49,204 +50,50 @@
             <table class="">
                 <tr>
                     <td>Ubaté</td>
-                    <td>{{datos}}</td>
+                    <td>{{ubate}}</td>
                 </tr>
                 <tr>
                     <td>Carupa</td>
-                    <td>{{datos}}</td>
+                    <td>{{carupa}}</td>
                 </tr>
                 <tr>
                     <td>Tausa</td>
-                    <td>{{datos}}</td>
+                    <td>{{tausa}}</td>
                 </tr>
                 <tr>
                     <td>Suta</td>
-                    <td>{{datos}}</td>
+                    <td>{{suta}}</td>
                 </tr>
                 <tr>
                     <td>Lenguazaque</td>
-                    <td>{{datos}}</td>
+                    <td>{{lenguazaque}}</td>
                 </tr>
                 <tr>
                     <td>Guacheta</td>
-                    <td>{{datos}}</td>
+                    <td>{{guacheta}}</td>
                 </tr>
                 <tr>
                     <td>Simijaca</td>
-                    <td>{{datos}}</td>
+                    <td>{{simijaca}}</td>
                 </tr>
                 <tr>
                     <td>Susa</td>
-                    <td>{{datos}}</td>
+                    <td>{{susa}}</td>
                 </tr>
                 <tr>
                     <td>Cucunuba</td>
-                    <td>{{datos}}</td>
+                    <td>{{cucunuba}}</td>
                 </tr>
 
             </table>
         </div>
         <div class="publicacion_linea4b" style="justify-content:center ;">
             <p>
-                Sin descripcion
-                {{datos.descripcion}}
+                {{descripcion}}
             </p>
         </div>
-
     </form>
-        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
-        <input value={{id}} type="text" class="id" style="display:none;">
-        <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
-        <!--En esta division esta la imagen del bovino a vender-->
-        <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
-            <img src="./usuarios/menu/images/camioneta.jpg" alt="">
-        </div>
-        <!--En esta división esta la fecha, los me gusta y el chat-->
-        <div class="publicacion_linea1">
-            <p>21/julio/2022</p>
-            <div>
-                <div class="chat"></div>
-            </div>
-        </div>
-        <!--En esta división esta:-->
-        <div class="publicacion_linea2">
-            <div class="publicacion_perfil">
-                <!--foto de perfil del publicador-->
-                <div style="background-image: url({{photo}})"></div>
-                <!--nombre del publicador-->
-                <p>{{name}}</p>
-            </div>
-            <!--ubicación del bovino-->
-            <p>{{ubication}}</p>
-
-        </div>
-        <div class="publicacion_linea3b" style="justify-content:center ;">
-            <table class="">
-                <tr>
-                    <td>Ubaté</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Carupa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Tausa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Suta</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Lenguazaque</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Guacheta</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Simijaca</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Susa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Cucunuba</td>
-                    <td>{{datos}}</td>
-                </tr>
-
-            </table>
-        </div>
-        <div class="publicacion_linea4b" style="justify-content:center ;">
-            <p>
-                Sin descripcion
-                {{datos.descripcion}}
-            </p>
-        </div>
-
-    </form>
-    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
-        <input value={{id}} type="text" class="id" style="display:none;">
-        <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
-        <!--En esta division esta la imagen del bovino a vender-->
-        <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
-            <img src="./usuarios/menu/images/camioneta.jpg" alt="">
-        </div>
-        <!--En esta división esta la fecha, los me gusta y el chat-->
-        <div class="publicacion_linea1">
-            <p>21/julio/2022</p>
-            <div>
-                <div class="chat"></div>
-            </div>
-        </div>
-        <!--En esta división esta:-->
-        <div class="publicacion_linea2">
-            <div class="publicacion_perfil">
-                <!--foto de perfil del publicador-->
-                <div style="background-image: url({{photo}})"></div>
-                <!--nombre del publicador-->
-                <p>{{name}}</p>
-            </div>
-            <!--ubicación del bovino-->
-            <p>{{ubication}}</p>
-
-        </div>
-        <div class="publicacion_linea3b" style="justify-content:center ;">
-            <table class="">
-                <tr>
-                    <td>Ubaté</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Carupa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Tausa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Suta</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Lenguazaque</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Guacheta</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Simijaca</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Susa</td>
-                    <td>{{datos}}</td>
-                </tr>
-                <tr>
-                    <td>Cucunuba</td>
-                    <td>{{datos}}</td>
-                </tr>
-
-            </table>
-        </div>
-        <div class="publicacion_linea4b" style="justify-content:center ;">
-            <p>
-                Sin descripcion
-                {{datos.descripcion}}
-            </p>
-        </div>
-
-    </form>
-
+    {{/each}}
 </body>
 
 </html>

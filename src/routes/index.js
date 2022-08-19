@@ -312,10 +312,24 @@ router.get('/crearAcarreo', async (req, res) => {
 
 // rufa de los acarreos
 router.get('/acarreos', async(req, res) => {
-	//res.render('acarreos');
-	verificarEstado(res, 'acarreos', 'index', datos = '', () => {
-		//...
-	});
+	publicaciones('acarreos')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					setTimeout(() => {
+						verificarEstado(res, 'acarreos', 'index', publicacion, () => {
+							//...
+						});
+					}, 500);
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
+	// verificarEstado(res, 'acarreos', 'index', datos = '', () => {
+	// 	//...
+	// });
 });
 router.get('/seleccionacarreos', async (req, res) => {
 	//res.render('acarreos');
@@ -341,7 +355,7 @@ router.get('/perfil', async(req, res) => {
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
-	publicaciones()
+	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
@@ -363,7 +377,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 	let { id_p } = req.body;
 	console.log(id_p);
 	console.log('abri publicaciones');
-	publicaciones()
+	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
@@ -424,8 +438,8 @@ async function Users() {
 	}
 }
 //traer publicaciones
-async function publicaciones() {
-	let publications = db.collection('publications');
+async function publicaciones(dataBase) {
+	let publications = db.collection(dataBase);
 	//consulta con la condicion
 	let querySnapshot = await publications.get();
 	//console.log('imprimiendo contenido');
