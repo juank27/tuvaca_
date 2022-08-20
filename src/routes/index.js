@@ -48,7 +48,7 @@ function verificarEstado(res, ruta, ruta2, datos = '', callback) {
 // ------------------------------------ Rutas iniciales --------------------------------------------------//
 // ruta principal de la pagina
 router.get('/', async (req, res) => {
-	publicaciones()
+	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
@@ -439,6 +439,9 @@ async function Users() {
 }
 //traer publicaciones
 async function publicaciones(dataBase) {
+	console.log('imprimiendo contenido');
+	console.log(dataBase);
+	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
 	let querySnapshot = await publications.get();
