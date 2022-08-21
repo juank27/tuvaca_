@@ -18,6 +18,7 @@
 </head>
 
 <body class="body_publicaciones">
+    <a class="buscando" href="/buscarPublicaciones">Buscar</a>
     {{#each datos}}
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">

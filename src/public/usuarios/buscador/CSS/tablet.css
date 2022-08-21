@@ -1,0 +1,26 @@
+.regresar {
+    width: 80%;
+}
+
+.buscador {
+    width: 80%;
+}
+.regresar p{
+    font-size: 1.8rem;;
+}
+.regresar div{
+    width: 30px;
+    height: 30px;
+}
+::placeholder {
+    margin-left: 5px;
+    font-family: var(--font2);
+    color: var(--gris_oscuro);
+    font-size: 1.6rem;
+}
+.busqueda{
+    display: flex;
+    width: 40%;}
+    .texto{
+        font-size: 1.8rem;
+    }

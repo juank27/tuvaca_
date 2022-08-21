@@ -22,7 +22,13 @@
         <div class="modal_Cuerpo">
             <!--En esta division esta la imagen del bovino a vender-->
             <div class="publicacion_imagen2">
-                <img src={{datos.input0}} alt="">
+                <span class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</span>
+                <img class="centro fade bajo" id="centro" src={{datos.input0}}>
+                <img class="centro fade" id="centro" src={{datos.input1}}>
+                <img class="centro fade" id="centro" src={{datos.input2}}>
+                <img class="centro fade" id="centro" src={{datos.input3}}>
+                <img class="centro fade" id="centro" src={{datos.input4}}>
+                <span class="next" id="next" onclick="plusSlides(1)">&#10095;</span>
             </div>
             <div class="publicacion_descripcion">
                 <!--En esta división esta la fecha, los me gusta y el chat-->
@@ -46,28 +52,40 @@
                 </div>
                 <div class="publicacion_linea3b">
                     <ul>
-                        <li>Categoria: {{datos.categoria}}</li>
+                        <li id="c">Categoria: {{datos.categoria}}</li>
                         <li> Edad: {{datos.edad}}</li>
                         <li>Raza: {{datos.raza}}</li>
                         <li>Tipo de Producción:{{datos.producto}}</li>
                         <li>Precio:{{datos.precio}}</li>
                     </ul>
+                    <ul id="opcion1">
+                        <li id="op2">{{datos.prenada}}</li>
+                    </ul>
+                    <ul id="opcion2">
+                        <li >Metodo:{{datos.tipoprenada}}</li>
+                        <li >{{datos.toro}}</li>
+                        <li >Tiene {{datos.meses}} </li>
+                    </ul>
+                    <ul id="opcion3">
+                        <li id="op5">{{datos.primeriza}}</li>
+                    </ul>
+                    <ul id="opcion4">
+                        <li id="op6">{{datos.nprenadas}} <br></li>
+                    </ul>
+                    <p>
                 </div>
                 <div class="publicacion_linea4b">
                     <p>
-                    {{datos.descripcion}} <br>
-                    {{datos.prenada}} <br>
-                    {{datos.tipoprenada}} <br>
-                    {{datos.toro}} <br>
-                    {{datos.meses}} <br>
-                    {{datos.nprenadas}}
+                        {{datos.descripcion}}
                     </p>
                 </div>
             </div>
         </div>
         <!--en esta division estan los tres punticos para borrar y editar la publicación-->
     </section>
-
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/publicaciones/JS/index3.js"></script>
 </body>
 
 </html>

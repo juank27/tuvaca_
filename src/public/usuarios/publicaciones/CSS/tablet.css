@@ -5,8 +5,12 @@
 
 .modal_p {
     width: 70%;
+    flex-direction: row;
 }
-
+.modal_Contendorp {
+    width: 10%;
+    height: 100vh;
+}
 .publicacion {
     width: 48%;
 }
@@ -48,5 +52,10 @@
     margin-top: 80px;
 }
 .modal_p iframe{
-    height: 90vh;
+    height: 100vh;
 }
+.prev, .next{
+    position:static;
+    left: 0;
+}
+
