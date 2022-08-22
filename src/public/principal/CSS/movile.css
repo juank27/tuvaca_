@@ -63,11 +63,6 @@ body {
     background-size: contain;
     background-image: url("../images/error3.png");
 }
-.error{
-    color: #4B8325;
-    font-size: var(--font1);
-    margin-bottom: 5%;
-}
 /************************header***********************************/
 .header {
     width: 100%;
@@ -455,7 +450,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .modal_Cuerpo h1{
     font-size: var(--font2);
-    color: #4B8325;
+    color: red;
     font-size: 1.6rem;
     margin-bottom: 5%;
     font-weight: bold;

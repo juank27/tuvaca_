@@ -48,7 +48,7 @@ cerrarSesiona.addEventListener("click", function () {
     setTimeout(function () {
         modalSesion2b.style.opacity = "0";
         modalSesion2b.style.visibility = "hidden";
-    }, 900)
+    }, 200)
 })
 /************modal ajustes******/
 let abrirSesionb = document.querySelectorAll(".dos")[0];
@@ -91,3 +91,62 @@ function visualizar(file) {
     ct_5.style.backgroundImage =`url(${imgCodified})`;
     guardar.style.display="flex";
 }
+
+/************modal elimar******/
+let abrirEliminar = document.querySelectorAll(".eliminar")[0];
+let modalElimar = document.querySelectorAll(".modal_container_e")[0];
+let elimar = document.querySelectorAll(".si")[0];
+let no= document.querySelectorAll(".no")[0];
+let subir= document.getElementById("subido");
+
+
+abrirEliminar.addEventListener("click", function () {
+    modalElimar.style.opacity = "1";
+    modalElimar.style.visibility = "visible";
+})
+elimar.addEventListener("click", function () {
+    subir.submit();
+    console.log("subir");
+})
+no.addEventListener("click", function () {
+    console.log("no");
+    window.location="/perfil"
+})
+
+/************modal estado******/
+let abrirEstado = document.querySelectorAll(".estado")[0];
+let cerrarEstadoa = document.querySelectorAll(".cerrar_modal_s")[0];
+let modalEstado2b = document.querySelectorAll(".modal_container_s")[0];
+let modalEstado22b = document.querySelectorAll(".modal_s")[0];
+let elimar2 = document.querySelectorAll(".si2")[0];
+let no2= document.querySelectorAll(".no2")[0];
+
+abrirEstado.addEventListener("click", function () {
+    modalEstado2b.style.opacity = "1";
+    modalEstado2b.style.visibility = "visible";
+    modalEstado22b.classList.toggle("modal_cerrado_s");
+})
+
+cerrarSesiona.addEventListener("click", function () {
+    modalEstado22b.classList.toggle("modal_cerrado_s");
+    setTimeout(function () {
+        modalEstado2b.style.opacity = "0";
+        modalEstado2b.style.visibility = "hidden";
+    }, 900)
+})
+elimar2.addEventListener("click", function () {
+    modalEstado22b.classList.toggle("modal_cerrado_s");
+    setTimeout(function () {
+        modalEstado2b.style.opacity = "0";
+        modalEstado2b.style.visibility = "hidden";
+    }, 900)
+    modalElimar.style.opacity = "1";
+    modalElimar.style.visibility = "visible";
+})
+no2.addEventListener("click", function () {
+    modalEstado22b.classList.toggle("modal_cerrado_s");
+    setTimeout(function () {
+        modalEstado2b.style.opacity = "0";
+        modalEstado2b.style.visibility = "hidden";
+    }, 900)
+})

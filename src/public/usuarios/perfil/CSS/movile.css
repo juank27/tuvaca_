@@ -455,14 +455,14 @@ main{
     visibility: hidden;
     z-index: 9;
     width: 50%;
-    height: 35%;
+    height: 40%;
     top: 2%;
     left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .modal_t {
@@ -516,10 +516,15 @@ main{
     background-color: var(--cafe);
     color: white;
 }
-.borrar:hover,.borrar a:hover{
+.estado:hover,.estado a:hover{
+    background-color: var(--cafe);
+    color: white;
+}
+.eliminar:hover,.eliminar a:hover{
     background-color: red;
     color: white;
 }
+
 .modal_Cuerpot a{
     cursor: pointer;
     text-decoration: none;
@@ -777,4 +782,145 @@ main{
     color: var(--verde);
     background-color: var(--gris_claro);
 
+}
+/************************modal eleminar***********************************/
+.modal_container_e {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color:  rgb(248, 248, 248,.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal_e {
+    background-color: var(--gris_claro);
+    width: 90%;
+    height: 50%;
+    justify-content: centerslateY(0%);
+    transition: transform 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.modal_e p{
+    width: 80%;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: var(--verde);
+    font-family: var(--font2);
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.no{
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--verde);
+    font-size: 1.4rem;
+    width: 100px;
+    height: 40px;
+    color: var(--blanco);
+    cursor: pointer;
+}
+.si{
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    background-color: red;
+    font-size: 1.4rem;
+    width: 100px;
+    height: 40px;
+    color: var(--blanco);
+    cursor: pointer;
+}
+.subir{
+    display: none;
+}
+/************************modal estado***********************************/
+.no2{
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--verde);
+    font-size: 1.4rem;
+    width: 100px;
+    height: 40px;
+    color: var(--blanco);
+    cursor: pointer;
+}
+.si2{
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    background-color: red;
+    font-size: 1.4rem;
+    width: 100px;
+    height: 40px;
+    color: var(--blanco);
+    cursor: pointer;
+}
+.modal_container_s {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color:  rgb(248, 248, 248,.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal_s {
+    width: 90%;
+    height: 50%;
+    background-color: var(--gris_claro);
+    justify-content: centerslateY(0%);
+    transition: transform 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.modal_cerrado_s {
+    transform: translateY(-200%);
+}
+
+.cerrar_modal_s {
+    background-image: url(../../../principal/icons/Cancel-1.png);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.cerrar_modal_s:hover {
+    background-image: url(../../../principal/icons/Cancel-1.png);
+}
+
+.modal_s p{
+    width: 80%;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: var(--verde);
+    font-family: var(--font2);
+    font-weight: bold;
+    margin-bottom: 5%;
 }

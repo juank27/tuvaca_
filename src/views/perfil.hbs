@@ -86,7 +86,10 @@
                         <div class="editar">
                             <a href="/crearPublicacion">Editar</a>
                         </div>
-                        <div class="borrar">
+                        <div class="estado">
+                            <a>Estado</a>
+                        </div>
+                        <div class="eliminar">
                             <a>Elminar</a>
                         </div>
                     </div>
@@ -142,6 +145,31 @@
                     </form>
                 </div>
             </div>
+        </section>
+    </section>
+    <!--modal eliminar-->
+    <section class="modal_container_e">
+        <section class="modal_e ">
+            <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
+            <div>
+                <button class="no">No Eliminar</button>
+                <button class="si">Eliimar</button>
+            </div>
+            <form id="subido" action="/buscando" method="POST">
+            </form>
+        </section>
+    </section>
+    <!--modal estado-->
+    <section class="modal_container_s">
+        <section class="modal_s modal_cerrado_s">
+            <div class="modal_Contendors"><span class="cerrar_modal_s"></span></div>
+            <p>Recuerde que debe Actualizar el estado de su publicación o sera eliminada ¿Su publicación ya esta vendida?</p>
+            <div>
+                <button class="no2">No Vendida</button>
+                <button class="si2">Vendida</button>
+            </div>
+            <form id="subido" action="/buscando" method="POST">
+            </form>
         </section>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"

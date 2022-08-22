@@ -355,11 +355,7 @@ router.get('/buscarAcarreos', async (req, res) => {
 		//...
 	});
 });
-router.post('/buscando', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'index', datos = '', () => {
-		//...
-	});
-})
+
 // ruta del perfil
 router.get('/perfil', async(req, res) => {
 	//res.render('perfil');

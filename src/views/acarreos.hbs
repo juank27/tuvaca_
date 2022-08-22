@@ -18,6 +18,10 @@
 </head>
 
 <body class="body_publicaciones">
+    <div title="bucar" class="buscando">
+        <div title="buscar" class="buscando2"></div>
+        <p>Buscar</p>
+    </div>
     {{#each datos}}
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
@@ -31,6 +35,7 @@
         <div class="publicacion_linea1">
             <p>{{updatedAt}}</p>
             <div>
+                <p>{{phone}}</p>
                 <div class="chat"></div>
             </div>
         </div>
@@ -46,7 +51,7 @@
             <p>{{ubication}}</p>
 
         </div>
-        <p class="textoA" >Tipo de Vehiculo: {{tipoveh}}</p>
+        <p class="textoA">Tipo de Vehiculo: {{tipoveh}}</p>
         <div class="publicacion_linea3b" style="justify-content:center; align-items: center;">
             <table class="">
                 <tr>
@@ -95,6 +100,8 @@
         </div>
     </form>
     {{/each}}
+<script src="./usuarios/publicaciones/JS/index4.js"></script>
+
 </body>
 
 </html>

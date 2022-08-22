@@ -18,13 +18,13 @@ html {
     font-size: 62.5%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     scroll-behavior: smooth;
     scroll-padding: 10vh;
 }
 
-.body_publicaciones{
-    background-color:  #F8F8F8;
+.body_publicaciones {
+    background-color: #F8F8F8;
     width: 100%;
     min-width: 320px;
     display: flex;
@@ -32,27 +32,79 @@ html {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.body_modal{
+
+.body_modal {
     width: 100%;
     height: 100vh;
+
 }
-main{
+
+main {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     height: auto;
+
 }
+
 /************************section***********************************/
-.textoA{
-    font-size:1.6rem; 
-    color:#4B8325;
-     margin-bottom:2%;
-     font-family: var(--font1);
-     font-weight: bold;
+.buscando{
+    position: fixed;
+    cursor: pointer;
+    z-index: 9;
+    top: 7.5vh;
+    left: calc(100% - 60px);
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: var(--verde);
+    transition: 1s;
 }
-.publicacion{
+.buscando:hover{
+    transition: 1s;
+    left: calc(100% - 130px);
+    width: 130px;
+    justify-content: flex-start;
+    padding: 2%;
+}
+.buscando p{
+    font-size: 1.6rem;
+    color: var(--blanco);
+    font-family: var(--font1);
+    font-weight: bold;
+}
+.buscando2 {
+    background-image: url("../../menu/icons/buscar3.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.celular{
+    font-size: 1.4rem;
+    color: #4B8325;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    font-family: var(--font1);
+    font-weight: bold;
+}
+.textoA {
+    font-size: 1.6rem;
+    color: #4B8325;
+    margin-bottom: 2%;
+    font-family: var(--font1);
+    font-weight: bold;
+}
+
+.publicacion {
     position: relative;
     margin-top: 2%;
     width: 90%;
@@ -65,15 +117,17 @@ main{
     border-radius: 5px;
     margin-bottom: 2%;
 }
+
 /*********tres puntos**************/
-.publicacion_mas{
+.publicacion_mas {
     width: 90%;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-.publicacion_mas span{
+
+.publicacion_mas span {
     background-image: url("../../menu/icons/puntos.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -82,20 +136,23 @@ main{
     height: 25px;
     cursor: pointer;
 }
+
 /*********imagen publicacion************/
-.publicacion_imagen{
+.publicacion_imagen {
     width: 90%;
     height: auto;
     cursor: pointer;
     margin-top: 5%;
 }
-.publicacion_imagen img{
+
+.publicacion_imagen img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
+
 /*********imagen linea 1************/
-.publicacion_linea1{
+.publicacion_linea1 {
     width: 90%;
     height: auto;
     display: flex;
@@ -103,19 +160,23 @@ main{
     justify-content: space-between;
     margin-bottom: 2%;
 }
-.publicacion_linea1 p{
+
+.publicacion_linea1 p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
 }
-.publicacion_linea1 div{
+
+.publicacion_linea1 div {
     width: 35%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     height: 25px;
 }
-.chat{
+
+.chat {
     background-image: url("../../menu/icons/chat.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -123,11 +184,14 @@ main{
     width: 25px;
     height: 25px;
     cursor: pointer;
+    margin-left: 2%;
 }
-.chat:hover{
+
+.chat:hover {
     background-image: url("../../menu/icons/chat1.png");
 }
-.me_gusta{
+
+.me_gusta {
     background-image: url("../../menu/icons/Cow-1.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -136,8 +200,9 @@ main{
     height: 25px;
     cursor: pointer;
 }
+
 /*********imagen linea 2************/
-.publicacion_linea2{
+.publicacion_linea2 {
     width: 90%;
     height: auto;
     display: flex;
@@ -146,16 +211,18 @@ main{
     margin-bottom: 3%;
 
 }
-.publicacion_perfil{
+
+.publicacion_perfil {
     width: 45%;
     height: auto;
     display: flex;
     align-items: center;
 }
-.publicacion_perfil div{
+
+.publicacion_perfil div {
     background-repeat: no-repeat;
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     width: 30px;
     height: 30px;
     border-radius: 50px;
@@ -164,14 +231,15 @@ main{
     cursor: pointer;
 }
 
-.publicacion_linea2 p{
+.publicacion_linea2 p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
 }
+
 /*********imagen linea 3************/
-.publicacion_linea3{
+.publicacion_linea3 {
     width: 90%;
     height: auto;
     display: flex;
@@ -179,12 +247,14 @@ main{
     justify-content: space-between;
     margin-bottom: 2%;
 }
-.publicacion_linea3 p{
+
+.publicacion_linea3 p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
 }
+
 /************************modal***********************************/
 .modal_container_p {
     opacity: 0;
@@ -195,12 +265,13 @@ main{
     height: 100vh;
     top: 0;
     left: 0;
-    background-color:  rgb(248, 248, 248,.4);
+    background-color: rgb(248, 248, 248, .4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .modal_p {
     width: 90%;
     height: 100%;
@@ -213,7 +284,8 @@ main{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.modal_p iframe{
+
+.modal_p iframe {
     border: none;
     width: 100%;
     height: 95vh;
@@ -221,6 +293,7 @@ main{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
 .modal_p2 {
     width: 100%;
     height: 100%;
@@ -233,18 +306,21 @@ main{
     position: relative;
     border: none;
 }
+
 .modal_cerrado_p {
     transform: translateY(-200%);
 }
+
 .modal_Contendorp {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 5px;
-    background-color:rgb(229, 229, 229) ;
+    background-color: rgb(229, 229, 229);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+
 .cerrar_modal_p {
     background-image: url(../../../principal/icons/Cancel.png);
     width: 25px;
@@ -266,7 +342,8 @@ main{
     height: auto;
     width: 100%;
 }
-.publicacion_imagen2{
+
+.publicacion_imagen2 {
     width: auto;
     height: auto;
     display: flex;
@@ -276,8 +353,9 @@ main{
     margin-bottom: 2%;
     position: relative;
 }
+
 .centro {
-    width:auto;
+    width: auto;
     max-width: 100%;
     height: auto;
     max-height: 50vh;
@@ -285,9 +363,10 @@ main{
     display: none;
     padding: 2%;
 }
+
 .prev {
     position: absolute;
-    background-color: rgb(248, 248, 248,.4);
+    background-color: rgb(248, 248, 248, .4);
     color: var(--verde);
     font-weight: bold;
     left: 2%;
@@ -303,7 +382,7 @@ main{
 
 .next {
     position: absolute;
-    background-color: rgb(248, 248, 248,.4);
+    background-color: rgb(248, 248, 248, .4);
     color: var(--verde);
     font-weight: bold;
     left: 88%;
@@ -316,28 +395,35 @@ main{
     transition: 0.6s ease;
     cursor: pointer;
 }
-.prev:hover, .next:hover{
+
+.prev:hover,
+.next:hover {
     background-color: var(--verde);
     color: var(--gris_claro);
 }
+
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
 }
+
 @keyframes fade {
     from {
         opacity: .4
     }
+
     to {
         opacity: 1
     }
 }
-.publicacion_descripcion{
+
+.publicacion_descripcion {
     width: 90%;
     height: auto;
 }
+
 /*********imagen linea 1************/
-.publicacion_linea1b{
+.publicacion_linea1b {
     margin-top: 2%;
     width: 100%;
     height: auto;
@@ -346,7 +432,8 @@ main{
     justify-content: space-between;
     margin-bottom: 2%;
 }
-.publicacion_linea2b{
+
+.publicacion_linea2b {
     width: 100%;
     height: auto;
     display: flex;
@@ -354,25 +441,30 @@ main{
     justify-content: space-between;
     margin-bottom: 2%;
 }
-.publicacion_linea2b p{
+
+.publicacion_linea2b p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
 }
-.publicacion_linea1b p{
+
+.publicacion_linea1b p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
 }
-.publicacion_linea1b div{
+
+.publicacion_linea1b div {
     width: 35%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     height: 25px;
 }
-.publicacion_linea3b{
+
+.publicacion_linea3b {
     width: 100%;
     height: auto;
     display: flex;
@@ -382,34 +474,44 @@ main{
     margin-top: 5%;
     margin-left: 5%;
 }
-.publicacion_linea3b ul{
+
+.publicacion_linea3b ul {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
-    color:dimgrey;
+    color: dimgrey;
     line-height: 1.6rem;
 }
-#opcion1, #opcion2, #opcion3, #opcion4{
+
+#opcion1,
+#opcion2,
+#opcion3,
+#opcion4 {
     display: none;
 }
-.publicacion_linea3b table{
+
+.publicacion_linea3b table {
     width: 80%;
 }
-.publicacion_linea3b tr{
-    border:1px solid var(--verde);
+
+.publicacion_linea3b tr {
+    border: 1px solid var(--verde);
 }
-.publicacion_linea3b td{
-    border:1px solid var(--verde);
+
+.publicacion_linea3b td {
+    border: 1px solid var(--verde);
     width: 50%;
     height: 20px;
     text-align: center;
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
-    color:dimgrey;
-    line-height: 2rem;;
+    color: dimgrey;
+    line-height: 2rem;
+    ;
 }
-.publicacion_linea4b{
+
+.publicacion_linea4b {
     width: 100%;
     height: auto;
     display: flex;
@@ -418,24 +520,26 @@ main{
     margin-top: 5%;
 }
 
-.publicacion_linea4b p{
+.publicacion_linea4b p {
     font-family: var(--font1);
     font-size: 1.4rem;
     font-weight: bold;
     text-align: justify;
-    color:dimgrey;
+    color: dimgrey;
     line-height: 2rem;
     text-align: justify;
 }
+
 /*********tres puntos**************/
-.publicacion_mas{
+.publicacion_mas {
     width: 90%;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-.publicacion_mas span{
+
+.publicacion_mas span {
     background-image: url("../../menu/icons/puntos.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -444,9 +548,11 @@ main{
     height: 25px;
     cursor: pointer;
 }
-.publicacion_mas span:hover{
+
+.publicacion_mas span:hover {
     background-image: url("../../menu/icons/puntos2.png");
 }
+
 /***************modal tres puntos**********/
 .modal_container_t {
     opacity: 0;
@@ -475,13 +581,14 @@ main{
     position: relative;
 }
 
-.modal_Contendort{
+.modal_Contendort {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 5px;
 }
+
 .cerrar_modal_t {
     background-image: url(../../../principal/icons/Cancel.png);
     width: 25px;
@@ -504,22 +611,28 @@ main{
     height: auto;
     width: 100%;
 }
-.modal_Cuerpot div{
+
+.modal_Cuerpot div {
     width: 80%;
     background-color: white;
     height: 20px;
     margin-bottom: 5%;
     text-align: center;
 }
-.editar:hover,.editar a:hover{
+
+.editar:hover,
+.editar a:hover {
     background-color: var(--cafe);
     color: white;
 }
-.borrar:hover,.borrar a:hover{
+
+.borrar:hover,
+.borrar a:hover {
     background-color: red;
     color: white;
 }
-.modal_Cuerpot a{
+
+.modal_Cuerpot a {
     cursor: pointer;
     text-decoration: none;
     font-size: 1.4rem;
@@ -527,15 +640,17 @@ main{
     color: var(--gris_oscuro);
     font-weight: bold;
 }
-.atras{
-    margin-top:2%;
+
+.atras {
+    margin-top: 2%;
     width: 100%;
     height: 30px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.atras a{
+
+.atras a {
     cursor: pointer;
     text-decoration: none;
     font-size: 1.4rem;
@@ -543,7 +658,8 @@ main{
     color: var(--verde);
     font-weight: bold;
 }
-.atrasI{
+
+.atrasI {
     background-image: url("../../menu/icons/Sum.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -552,10 +668,12 @@ main{
     height: 25px;
     cursor: pointer;
 }
-.atras a:hover{
+
+.atras a:hover {
     color: var(--cafe);
 }
-.atrasI:hover{
+
+.atrasI:hover {
     background-image: url("../../menu/icons/Sum2.png");
 }
 
