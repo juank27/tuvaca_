@@ -113,6 +113,7 @@ $(document).on("click", " .cerrar1", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput1");
     comparado(imput)
     $(imput).remove();
@@ -127,6 +128,7 @@ $(document).on("click", " .cerrar2", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput2");
     comparado(imput)
     $(imput).remove();
@@ -141,6 +143,7 @@ $(document).on("click", " .cerrar3", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput3");
     comparado(imput)
     $(imput).remove();

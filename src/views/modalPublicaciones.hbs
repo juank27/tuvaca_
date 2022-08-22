@@ -21,14 +21,15 @@
     <section class="modal_p2 ">
         <div class="modal_Cuerpo">
             <!--En esta division esta la imagen del bovino a vender-->
+            <p class="e">{{datos.input0}}</p>
+            <p class="e">{{datos.input1}}</p>
+            <p class="e">{{datos.input2}}</p>
+            <p class="e">{{datos.input3}}</p>
+            <p class="e">{{datos.input4}}</p>
             <div class="publicacion_imagen2">
                 <span class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</span>
-                <img class="centro fade bajo" id="centro" src={{datos.input0}}>
-                <img class="centro fade" id="centro" src={{datos.input1}}>
-                <img class="centro fade" id="centro" src={{datos.input2}}>
-                <img class="centro fade" id="centro" src={{datos.input3}}>
-                <img class="centro fade" id="centro" src={{datos.input4}}>
-                <span class="next" id="next" onclick="plusSlides(1)">&#10095;</span>
+                <p id="cambiar"></p>
+                <span class="next" id="next vid" onclick="plusSlides(1)">&#10095;</span>
             </div>
             <div class="publicacion_descripcion">
                 <!--En esta división esta la fecha, los me gusta y el chat-->

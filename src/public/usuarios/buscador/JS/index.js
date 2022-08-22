@@ -178,6 +178,7 @@ $(document).on("click", " .cerrar1", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     comparado(imput)
     $(imput).remove();
     $(this).parent().remove();
@@ -190,7 +191,8 @@ $(document).on("click", " .cerrar2", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
-    } filtrado.innerHTML = "";
+    }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput2");
     comparado(imput)
     $(imput).remove();
@@ -205,6 +207,7 @@ $(document).on("click", " .cerrar3", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput3");
     comparado(imput)
     $(imput).remove();
@@ -219,6 +222,7 @@ $(document).on("click", " .cerrar4", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput4");
     comparado(imput)
     $(imput).remove();
@@ -233,6 +237,7 @@ $(document).on("click", " .cerrar5", function (e) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
     }
+    filtrado.innerHTML = "";
     let imput = document.getElementById("imput5");
     comparado(imput)
     $(imput).remove();

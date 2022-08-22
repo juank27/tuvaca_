@@ -677,4 +677,6 @@ main {
     background-image: url("../../menu/icons/Sum2.png");
 }
 
-/***Buscador***/
+.e{
+    display: none;
+}
