@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_perfil">
+    <section class="fijar">
+        <section class="datos_usuario">
+            <div class="foto">
+                <div class="foto_perfil" style="background-image: url(./usuarios/menu/icons/perfil.png)"></div>
+            </div>
+            <div class="datos">
+                <p>Nayibe Casas</p>
+                <p>nayibepelaez03@gmail.com</p>
+                <p>3168707559</p>
+                <p>Ubtaé</p>
+            </div>
+        </section>
+    </section>
+    <section class="publicaciones">
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción" style="margin-top: 2%;">
+                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>21/julio/2022</p>
+                <div>
+                    <div class="chat"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div id="foto" style="background-image: url()"></div>
+                    <!--nombre del publicador-->
+                    <p id="nombre">nayibe</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>ubate</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>50.000</p>
+                <!--tipo de bovino-->
+                <p>holstein</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                    <div class="modal_Cuerpot">
+                        <div class="editar">
+                            <a href="/crearPublicacion">Editar</a>
+                        </div>
+                        <div class="estado">
+                            <a>Estado</a>
+                        </div>
+                        <div class="eliminar">
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+    </section>
+    <!--modal publicaciones-->
+    <section class="modal_container_p">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
+        <!--Formulario para dirigirse al perfil-->
+    <form style="display:none ;" action="" >
+        <input type="text" value="{{id}}">
+        <input type="submit" value="" class="perfilS">
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/perfil/JS/index.js"></script>
+</body>
+
+</html>

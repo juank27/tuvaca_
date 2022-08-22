@@ -236,6 +236,8 @@ main {
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
+    cursor: pointer;
+
 }
 
 /*********imagen linea 3************/

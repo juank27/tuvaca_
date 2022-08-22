@@ -65,9 +65,9 @@
             <div class="publicacion_linea2">
                 <div class="publicacion_perfil">
                     <!--foto de perfil del publicador-->
-                    <div style="background-image: url()"></div>
+                    <div id="foto" style="background-image: url()"></div>
                     <!--nombre del publicador-->
-                    <p>nayibe</p>
+                    <p id="nombre">nayibe</p>
                 </div>
                 <!--ubicación del bovino-->
                 <p>ubate</p>
@@ -172,6 +172,11 @@
             </form>
         </section>
     </section>
+    <!--Formulario para dirigirse al perfil-->
+    <form style="display:none ;" action="" >
+        <input type="text" value="{{id}}">
+        <input type="submit" value="" class="perfilS">
+    </form>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>

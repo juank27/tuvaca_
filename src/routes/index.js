@@ -337,6 +337,12 @@ router.get('/seleccionacarreos', async (req, res) => {
 		//...
 	});
 });
+router.get('/perfilUsuarios', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'perfilUsuarios', 'index', datos = '', () => {
+		//...
+	});
+});
 router.get('/misacarreos', async (req, res) => {
 	//res.render('acarreos');
 	verificarEstado(res, 'misAcarreos', 'index', datos = '', () => {

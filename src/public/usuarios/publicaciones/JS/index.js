@@ -36,3 +36,14 @@ cerrarSesion.addEventListener("click", function () {
         id.value="";
     },500)
 })
+/***perfil */
+let foto=document.getElementById("foto");
+let nombre=document.getElementById("nombre");
+let perfils = document.querySelectorAll(".perfilS")[0];
+
+foto.addEventListener("click", function () {
+    perfils.click();
+})
+nombre.addEventListener("click", function () {
+    perfils.click();
+})

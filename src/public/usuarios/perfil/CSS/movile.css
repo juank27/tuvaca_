@@ -161,6 +161,7 @@ main{
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--verde);
+    cursor: pointer;
 }
 /*********imagen linea 3************/
 .publicacion_linea3{
@@ -202,14 +203,16 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .modal_p iframe{
     border: none;
     width: 100%;
-    height: 80vh;
+    height: 95vh;
     background-color: #4B8325;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .modal_p2 {
     width: 100%;
@@ -220,7 +223,6 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 5px;
     position: relative;
     border: none;
 }
@@ -232,6 +234,9 @@ main{
     display: flex;
     justify-content: flex-end;
     padding: 5px;
+    background-color: rgb(229, 229, 229);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .cerrar_modal_p {
     background-image: url(../../../principal/icons/Cancel.png);
@@ -263,6 +268,7 @@ main{
     border-radius: 5px;
     margin-bottom: 2%;
     margin-top: 50px;
+    position: relative;
 }
 .publicacion_imagen2 img{
     width: auto;
@@ -275,6 +281,69 @@ main{
     width: 90%;
     height: auto;
 }
+.centro {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 50vh;
+    border-radius: 5px;
+    display: none;
+    padding: 2%;
+}
+
+.prev {
+    position: absolute;
+    background-color: rgb(248, 248, 248, .4);
+    color: var(--verde);
+    font-weight: bold;
+    left: 2%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    font-size: 1.6rem;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+.next {
+    position: absolute;
+    background-color: rgb(248, 248, 248, .4);
+    color: var(--verde);
+    font-weight: bold;
+    left: 88%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    font-size: 1.6rem;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: var(--verde);
+    color: var(--gris_claro);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
 /*********imagen linea 1************/
 .publicacion_linea1b{
     margin-top: 2%;

@@ -42,9 +42,9 @@
         <div class="publicacion_linea2">
             <div class="publicacion_perfil">
                 <!--foto de perfil del publicador-->
-                <div style="background-image: url({{photo}})"></div>
+                <div id="foto" style="background-image: url({{photo}})"></div>
                 <!--nombre del publicador-->
-                <p>{{name}}</p>
+                <p id="nombre">{{name}}</p>
             </div>
             <!--ubicación del bovino-->
             <p>{{ubication}}</p>
@@ -65,6 +65,11 @@
             <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
         </section>
     </section>
+        <!--Formulario para dirigirse al perfil-->
+    <form style="display:none ;" action="" >
+        <input type="text" value="{{id}}">
+        <input type="submit" value="" class="perfilS">
+    </form>
 </body>
 <script src="./usuarios/publicaciones/JS/index.js"></script>
 
