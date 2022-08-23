@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/buscador/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/buscador/CSS//tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/buscador/CSS//web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_buscador">
+    <section class="regresar">
+        <div title="Volver"  class="volver"></div>
+        <p>Filtrado de Busquedas</p>
+    </section>
+    <section class="buscador">
+        <form action="">
+            <input class="usuario" id="usuarios" type="text" placeholder="Buscar por usuario">
+            <div class="usuario1" id="usuarios1">
+                <div id="ruta"></div>
+            </div>
+            <div class="subir"></div>
+            <p class="filtrado"></p>
+            <div class="selectores">
+                <select class="selector" type="text" name="razas" id="razas">
+                    <option value="">Raza</option>
+                    <option value="Holstein">Holstein</option>
+                </select>
+                <select class="selector" type="text" name="categorias" id="categorias">
+                    <option value="">Categoria</option>
+                    <option value="Ternera">Ternera</option>
+                    <option value="Ternero">Ternero</option>
+                    <option value="Novilla">Novilla</option>
+                    <option value="Novillo">Novillo</option>
+                    <option value="Vaca">Vaca</option>
+                    <option value="Toro">Toro</option>
+                </select>
+                <select class="selector" type="text" name="edad_" id="edad_" l>
+                    <option value="">Edad</option>
+                    <option value="12 años">12 años</option>
+                </select>
+                <select class="selector" type="text" name="ubication" id="ubication">
+                    <option value="">Municipio</option>
+                    <option value="Ubaté">Ubaté</option>
+                    <option value="Carupa">Carupa</option>
+                    <option value="Tausa">Tausa</option>
+                    <option value="Suta">Suta</option>
+                    <option value="Lenguazaque">Lenguazaque</option>
+                    <option value="Guacheta">Guacheta</option>
+                    <option value="Cucunuba">Cucunuba</option>
+                    <option value="Simijaca">Simijaca</option>
+                    <option value="Susa">Susa</option>
+                </select>
+                <select class="selector" type="number" name="precios" id="precios">
+                    <option value="">Precio</option>
+                    <option value="12.500">12.500</option>
+                </select>
+            </div>
+        </form>
+        <form action="/buscando" method="POST" class="oculto">
+            <input type="text" name="usuario" id="usuario">
+            <input type="submit" class="submit">
+        </form>
+    </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="./usuarios/buscador/JS/index.js"></script>
+
+</html>

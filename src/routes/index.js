@@ -343,6 +343,18 @@ router.get('/misacarreos', async (req, res) => {
 		//...
 	});
 });
+router.get('/buscarPublicaciones', async (req, res) => {
+	modal=false;
+	verificarEstado(res, 'buscarPublicaciones', 'index', datos = '', () => {
+		//...
+	});
+});
+router.get('/buscarAcarreos', async (req, res) => {
+	modal=false;
+	verificarEstado(res, 'buscarAcarreos', 'index', datos = '', () => {
+		//...
+	});
+});
 
 // ruta del perfil
 router.get('/perfil', async (req, res) => {
@@ -355,6 +367,7 @@ router.get('/perfil', async (req, res) => {
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
+	modal=true;
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
@@ -399,6 +412,7 @@ router.get('/modalpublicaciones', async (req, res) => {
 		//...
 	});
 });
+
 //funcion para verificar el email
 async function verficEmail(res, email, callback) {
 	let users = db.collection('users');

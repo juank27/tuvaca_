@@ -18,6 +18,10 @@
 </head>
 
 <body class="body_publicaciones">
+    <div title="bucar" class="buscando">
+        <div title="buscar" class="buscando2" ></div>
+        <p>Buscar</p>
+    </div>
     {{#each datos}}
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">

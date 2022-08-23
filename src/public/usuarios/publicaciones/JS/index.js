@@ -3,12 +3,16 @@
 let abrirSesion;
 let id;
 let cerrarSesion = document.querySelectorAll(".cerrar_modal_p")[0];
+let buscando = document.querySelectorAll(".buscando")[0];
 let modalSesion = document.querySelectorAll(".modal_container_p")[0];
 let modalSesion2 = document.querySelectorAll(".modal_p")[0];
 let publicación=document.getElementById("publicacion");
 let id2=document.getElementById("id2");
 let framer=document.getElementById("framer");
 
+buscando.addEventListener("click", function () {
+    window.location="/buscarPublicaciones";
+})
 function posicion(valor){
     framer.contentDocument.location.reload(true);
     id=document.querySelectorAll(".id")[valor].value;
