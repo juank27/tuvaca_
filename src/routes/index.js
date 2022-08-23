@@ -71,7 +71,7 @@ router.use('/logout', async (req, res, next) => {
 	auth.signOut().then(() => {
 		// Sign-out successful.
 		estado = false;
-		buscarGlobal="";
+		buscarGlobal = "";
 		globalThis.idUser = '';
 		console.log('logout');
 		//next();
@@ -273,7 +273,7 @@ router.post('/login-facebook', async (req, res) => {
 });
 
 //---------------------------------------------- other actions --------------------------------------------//
-router.get('/iniciosesion', async(req, res) => {
+router.get('/iniciosesion', async (req, res) => {
 	//res.render('InicioSesion');
 	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
 		//...
@@ -281,14 +281,14 @@ router.get('/iniciosesion', async(req, res) => {
 });
 
 // formulario de registro y solicitudes en la pagina de inicio
-router.get('/registro', async(req, res) => {
+router.get('/registro', async (req, res) => {
 	verificarEstado(res, 'publicaciones', 'registro', datos = '', () => {
 		//...
 	});
 });
 
 //ruta inicial para renderizar publicaciones
-router.get('/publicacioness', async(req, res) => {
+router.get('/publicacioness', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
 			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
@@ -311,7 +311,7 @@ router.get('/crearAcarreo', async (req, res) => {
 });
 
 // rufa de los acarreos
-router.get('/acarreos', async(req, res) => {
+router.get('/acarreos', async (req, res) => {
 	publicaciones('acarreos')
 		.then((publicaciones) => {
 			Users()
@@ -345,7 +345,7 @@ router.get('/misacarreos', async (req, res) => {
 });
 
 // ruta del perfil
-router.get('/perfil', async(req, res) => {
+router.get('/perfil', async (req, res) => {
 	//res.render('perfil');
 	//verificarEstado (res, 'perfil', 'index');
 	verificarEstado(res, 'perfil', 'index', datos = '', () => {
@@ -432,9 +432,9 @@ async function Users() {
 		return userRegister;
 		//res.send(userRegister[0].email);
 	} else {
-		console.log('no existen mas publicaciones');
+		console.log('No hay usuarios');
 		//res.send('no existen publicaciones');
-		return 'No hay publicaciones';
+		return 'No hay usuarios';
 	}
 }
 //traer publicaciones
@@ -483,6 +483,37 @@ function unir(publicaciones, user) {
 	});
 	return publicacionesUser;
 }
+// --------------- Probando la seccion traer datos del perfil ----------------------
+async function data_perfil(idUser) {
+	let users = db.collection('users');
+	//consulta con la condicion
+	let querySnapshot = await users.doc(idUser).get();
+	return querySnapshot;
+}
+// //traer todos los usuarios
+// async function Users() {
+// 	let users = db.collection('users');
+// 	//consulta con la condicion
+// 	let querySnapshot = await users.get();
+// 	//console.log('imprimiendo contenido');
+// 	//obtener los datos de la consulta en un nuevo objeto
+// 	let userRegister = querySnapshot.docs.map((doc) => ({
+// 		id: doc.id,
+// 		...doc.data(),
+// 	}));
+// 	console.log(typeof (userRegister));//-> salida: object
+// 	//console.log(userRegister);//-> Estructura de datos
+// 	if (userRegister.length > 0) {
+// 		console.log('existe');
+// 		return userRegister;
+// 		//res.send(userRegister[0].email);
+// 	} else {
+// 		console.log('No hay usuarios');
+// 		//res.send('no existen publicaciones');
+// 		return 'No hay usuarios';
+// 	}
+// }
+
 
 //------------------------------Esto es una prueba -------------------------------------------------------
 router.get('/consulta', async (req, res) => {
@@ -517,16 +548,25 @@ router.get('/consulta', async (req, res) => {
 	//res.send(userRegister[0].email);
 });
 //subida de imagenes
-router.get('/img', async(req, res) =>{
-	res.render('imagenes', {layout: false});
+router.get('/img', async (req, res) => {
+	let id = _idUser;
+	console.log(id);
+	data_perfil(id)
+		.then((snapshot) => {
+			console.log(snapshot);
+		})
+		.catch((error) => {
+			console.log("No se encontro info ", error);
+		})
+	res.render('imagenes', { layout: false });
 });
-const {ref, uploadString} = require('firebase/storage');
+const { ref, uploadString } = require('firebase/storage');
 //subir imagnes	a la base de datos
 router.post('/storage', async (req, res) => {
 	let { file } = req.body;
 	console.log(file);
 	console.log(typeof (file));
-	let img = ref(storage,`${file}`);
+	let img = ref(storage, `${file}`);
 	await uploadString(img, 'imagenes/file.png')
 		.then((snapshot) => {
 			console.log(snapshot);
@@ -535,7 +575,8 @@ router.post('/storage', async (req, res) => {
 });
 
 router.get('/storage', async (req, res) => {
-	res.render('error', {layout: false});
+	res.render('error', { layout: false });
 });
+
 
 module.exports = router;
