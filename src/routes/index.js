@@ -15,6 +15,7 @@ const { createUserWithEmailAndPassword,
 const { async } = require('@firebase/util');
 
 const router = Router();
+let a ;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
 let estado = false; //estado de la sesion
@@ -22,14 +23,16 @@ let modal = true;
 var _idUser = ''; //id del usuario
 globalThis.idUser = _idUser;
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2, datos = '', callback) {
+function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 	//console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
 		if (modal) {
-			res.render(ruta, { datos });
+			console.log("$$$$$$$$$$$$$$$$$$");
+			console.log(data);
+			res.render(ruta, {datos, data});
 		} else {
 			res.render(ruta, { layout: false, datos });
 			modal = true;
@@ -54,7 +57,7 @@ router.get('/', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+					verificarEstado(res, 'publicaciones', 'index', publicacion, data = '',() => {
 						//...
 					});
 				})
@@ -275,14 +278,14 @@ router.post('/login-facebook', async (req, res) => {
 //---------------------------------------------- other actions --------------------------------------------//
 router.get('/iniciosesion', async (req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', () => {
+	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', data = '', () => {
 		//...
 	});
 });
 
 // formulario de registro y solicitudes en la pagina de inicio
 router.get('/registro', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'registro', datos = '', () => {
+	verificarEstado(res, 'publicaciones', 'registro', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -291,7 +294,7 @@ router.get('/registro', async (req, res) => {
 router.get('/publicacioness', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
-			verificarEstado(res, 'publicaciones', 'index', publicaciones, () => {
+			verificarEstado(res, 'publicaciones', 'index', publicaciones, data = '', () => {
 				//...
 			});
 		})
@@ -299,13 +302,13 @@ router.get('/publicacioness', async (req, res) => {
 });
 router.get('/crearPublicacion', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index', datos = '', () => {
+	verificarEstado(res, 'crearPublicacion', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearAcarreo', 'index', datos = '', () => {
+	verificarEstado(res, 'crearAcarreo', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -319,7 +322,7 @@ router.get('/acarreos', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'acarreos', 'index', publicacion, () => {
+						verificarEstado(res, 'acarreos', 'index', publicacion, data = '', () => {
 							//...
 						});
 					}, 500);
@@ -333,25 +336,25 @@ router.get('/acarreos', async (req, res) => {
 });
 router.get('/seleccionacarreos', async (req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'seleccionA', 'index', datos = '', () => {
+	verificarEstado(res, 'seleccionA', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/misacarreos', async (req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'misAcarreos', 'index', datos = '', () => {
+	verificarEstado(res, 'misAcarreos', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/buscarPublicaciones', async (req, res) => {
-	modal=false;
-	verificarEstado(res, 'buscarPublicaciones', 'index', datos = '', () => {
+	modal = false;
+	verificarEstado(res, 'buscarPublicaciones', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/buscarAcarreos', async (req, res) => {
-	modal=false;
-	verificarEstado(res, 'buscarAcarreos', 'index', datos = '', () => {
+	modal = false;
+	verificarEstado(res, 'buscarAcarreos', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -360,14 +363,32 @@ router.get('/buscarAcarreos', async (req, res) => {
 router.get('/perfil', async (req, res) => {
 	//res.render('perfil');
 	//verificarEstado (res, 'perfil', 'index');
-	verificarEstado(res, 'perfil', 'index', datos = '', () => {
-		console.log('Estoy dentro del perfil con un callback');
-	});
+	let id = globalThis.idUser;
+	data_perfil(id)
+		.then((data) => {
+			publicaciones_propias("publications", id)
+				.then((result) => {
+					console.log("---------------------------------");
+					// //result.push(data)
+					// console.log(result);
+					let unir_publicaciones = unir(result, data);
+					console.log(unir_publicaciones);
+					verificarEstado(res, 'perfil', 'index', unir_publicaciones, data[0], () => {
+						console.log('Estoy dentro del perfil con un callback');
+					});
+				}).catch((error) => {
+					console.log(error);
+				});
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+
 });
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
-	modal=true;
+	modal = true;
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
@@ -375,7 +396,7 @@ router.get('/publicaciones', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'publicaciones', 'index', publicacion, () => {
+						verificarEstado(res, 'publicaciones', 'index', publicacion, data = '', () => {
 							//...
 						});
 					}, 500);
@@ -408,7 +429,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 router.get('/modalpublicaciones', async (req, res) => {
 	modal = false;
 	console.log(buscarGlobal);
-	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, () => {
+	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, data = '', () => {
 		//...
 	});
 });
@@ -443,6 +464,7 @@ async function Users() {
 	//console.log(userRegister);//-> Estructura de datos
 	if (userRegister.length > 0) {
 		console.log('existe');
+		console.log(userRegister);
 		return userRegister;
 		//res.send(userRegister[0].email);
 	} else {
@@ -475,6 +497,32 @@ async function publicaciones(dataBase) {
 		return 'No hay publicaciones';
 	}
 }
+//traer publicaciones propias
+async function publicaciones_propias(dataBase, idUser) {
+	console.log('imprimiendo contenido');
+	console.log(dataBase);
+	console.log(typeof (dataBase));//-> salida: string
+	let publications = db.collection(dataBase);
+	//consulta con la condicion
+	let querySnapshot = await publications.get();
+	//console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	//console.log(typeof (userRegister));//-> salida: object
+	//console.log(userRegister);//-> Estructura de datos
+	let data_publications = [];
+	let aux = 0;
+	userRegister.forEach(element => {
+		if (element.iduser === idUser) {
+			data_publications.push(element);
+		}
+		aux++;
+	});
+	return data_publications;
+}
 
 //funion para obtener las publicaciones
 function unir(publicaciones, user) {
@@ -495,39 +543,36 @@ function unir(publicaciones, user) {
 			}
 		})
 	});
+	//console.log("**********************************");
+	//console.log(publicacionesUser);
 	return publicacionesUser;
 }
 // --------------- Probando la seccion traer datos del perfil ----------------------
+//traer todos los usuarios
 async function data_perfil(idUser) {
 	let users = db.collection('users');
 	//consulta con la condicion
-	let querySnapshot = await users.doc(idUser).get();
-	return querySnapshot;
+	let querySnapshot = await users.get();
+	//console.log('imprimiendo contenido');
+	//obtener los datos de la consulta en un nuevo objeto
+	let userRegister = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	//console.log(typeof (userRegister));//-> salida: object
+	//console.log(userRegister);//-> Estructura de datos
+	let element_perfil = [];
+	userRegister.forEach(element => {
+		if (element.id == idUser) {
+			console.log('entre en el for each');
+			//console.log(element);
+			element_perfil.push(element);
+		}
+	});
+	//console.log("**********************************");
+	//console.log(element_perfil);
+	return element_perfil;
 }
-// //traer todos los usuarios
-// async function Users() {
-// 	let users = db.collection('users');
-// 	//consulta con la condicion
-// 	let querySnapshot = await users.get();
-// 	//console.log('imprimiendo contenido');
-// 	//obtener los datos de la consulta en un nuevo objeto
-// 	let userRegister = querySnapshot.docs.map((doc) => ({
-// 		id: doc.id,
-// 		...doc.data(),
-// 	}));
-// 	console.log(typeof (userRegister));//-> salida: object
-// 	//console.log(userRegister);//-> Estructura de datos
-// 	if (userRegister.length > 0) {
-// 		console.log('existe');
-// 		return userRegister;
-// 		//res.send(userRegister[0].email);
-// 	} else {
-// 		console.log('No hay usuarios');
-// 		//res.send('no existen publicaciones');
-// 		return 'No hay usuarios';
-// 	}
-// }
-
 
 //------------------------------Esto es una prueba -------------------------------------------------------
 router.get('/consulta', async (req, res) => {
@@ -563,12 +608,15 @@ router.get('/consulta', async (req, res) => {
 });
 //subida de imagenes
 router.get('/img', async (req, res) => {
-	let id = _idUser;
+	let id = globalThis.idUser;
+	console.log("Este es el ID ");
 	console.log(id);
 	data_perfil(id)
-		.then((snapshot) => {
-			console.log(snapshot);
-		})
+		.then(result => {
+			console.log('Este es el resultado');
+			console.log(result);
+		}
+		)
 		.catch((error) => {
 			console.log("No se encontro info ", error);
 		})
