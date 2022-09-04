@@ -2,9 +2,21 @@ let categoria = document.getElementById("categoria");
 let prenada = document.getElementById("prenada");
 let tipoprenada = document.getElementById("tipoprenada");
 let toro = document.getElementById("toro");
+let raza = document.getElementById("raza");
+let otro_R = document.getElementById("otro_R");
+let otro_T = document.getElementById("otro_T");
 let semanas = document.getElementById("semanas");
-let primeriza = document.getElementById("primeriza");
 let nprenada = document.getElementById("nprenada");
+let edad_es = document.getElementById("edad_es");
+let foto_perfil = document.getElementById("foto_perfil");
+function cargar(){
+    per.style.backgroundImage=(`url(${foto_perfil.value})`);
+}
+function cargar(){
+    console.log("aqui");
+    per.style.backgroundImage=" url(./usuarios/menu/icons/atras2.png)";
+    crear.style.backgroundImage=" url(./usuarios/menu/icons/Sum2.png)";
+}
 categoria.addEventListener("click", function () {
     if (categoria.value === "Vaca" || categoria.value === "Novilla") {
         prenada.style.display = "flex";
@@ -15,14 +27,17 @@ categoria.addEventListener("click", function () {
         tipoprenada.style.display = "none";
         toro.style.display = "none";
         semanas.style.display = "none";
-        primeriza.style.display = "none";
         nprenada.style.display = "none";
         tipoprenada.required = false;
         toro.required = false;
         semanas.required = false;
-        primeriza.required = false;
         nprenada.required = false;
-
+    }
+    if(categoria.value === "Toro"||categoria.value === "Vaca"){
+        edad_es.disabled = true;
+        edad_es.value="años"
+    }else{
+        edad_es.disabled=false;
     }
 })
 prenada.addEventListener("click", function () {
@@ -30,11 +45,11 @@ prenada.addEventListener("click", function () {
         tipoprenada.style.display = "flex";
         toro.style.display = "flex";
         semanas.style.display = "flex";
-        primeriza.style.display = "flex";
+        nprenada.style.display = "flex";
         tipoprenada.required = true;
         toro.required = true;
         semanas.required = true;
-        primeriza.required = true;
+        nprenada.required = true;
     } if (prenada.value === "No esta preñada" || prenada.value === "") {
         tipoprenada.style.display = "none";
         toro.style.display = "none";
@@ -43,17 +58,30 @@ prenada.addEventListener("click", function () {
         tipoprenada.required = false;
         toro.required = false;
         semanas.required = false;
-        primeriza.required = false;
         nprenada.required = false;
+        otro_R.required = false;
     }
 })
-primeriza.addEventListener("click", function () {
-    if (primeriza.value === "No es primeriza") {
-        nprenada.style.display = "flex";
-        nprenada.required = true;
-    } if (primeriza.value === "Si es primeriza" || primeriza.value === "") {
-        nprenada.style.display = "none";
-        nprenada.required = false;
+raza.addEventListener("click", function () {
+    if (raza.value === "Otra") {
+        otro_R.style.display = "flex";
+        otro_R.required = true;
+        raza.required = false;
+    }else{
+        otro_R.style.display = "none";
+        otro_R.required = false;
+        raza.required = true;
+    }
+})
+toro.addEventListener("click", function () {
+    if (toro.value === "Otra") {
+        otro_T.style.display = "flex";
+        otro_T.required = true;
+        toro.required = false;
+    }else{
+        otro_T.style.display = "none";
+        otro_T.required = false;
+        toro.required = true;
     }
 })
 /************seleccionar fotos******/

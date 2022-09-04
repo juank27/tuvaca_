@@ -17,7 +17,8 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_crearP">
+<body class="body_crearP" onload="cargar()">
+    <input type="text" style="display: none;" id="foto_perfil" value={{foto_perfil}} >
     <form action="/new-acarreo" method="POST" enctype="multipart/form-data">
         <div class="atras">
             <div class="atrasI"></div>
@@ -25,59 +26,148 @@
         <div class="imagen">
             <div class="fotos"></div>
             <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
-            <input type="file" class="img_f" name="vehiculo" value="Guardar Cambios" accept="image/png, .jpeg, .jpg, image/mp4" required>
+            <input type="file" class="img_f" name="vehiculo" value="Guardar Cambios"
+                accept="image/png, .jpeg, .jpg, image/mp4" required>
         </div>
         <p class="requerido"></p>
-        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Vehiculo"
-            required>
-        <datalist id="municipios">
-            <option value="Ubaté"></option>
-            <option value="Carmen de Carupa"></option>
-            <option value="Tausa"></option>
-            <option value="Suta Tausa"></option>
-            <option value="Lenguazaque"></option>
-            <option value="Guacheta"></option>
-            <option value="Cucunuba"></option>
-            <option value="Simijaca"></option>
-            <option value="Susa"></option>
-        </datalist>
-        <input type="text" name="tipoveh" id="tipoveh" placeholder="Tipo de Vehiculo" required>
+        <select name="ubication" id="ubication" required>
+            <option value="">Ubicación del Bovino</option>
+            <option value="Ubaté">Ubaté</option>
+            <option value="Carmen de Carupa">Carmen de Carupa</option>
+            <option value="Tausa">Tausa</option>
+            <option value="Suta">Suta</option>
+            <option value="Lenguazaque">Lenguazaque</option>
+            <option value="Guacheta">Guacheta</option>
+            <option value="Cucunuba">Cucunuba</option>
+            <option value="Simijaca">Simijaca</option>
+            <option value="Susa">Susa</option>
+        </select>
+        <select name="tipoveh" id="tipoveh" required>
+            <option value="">Tipo de Vehiculo</option>
+            <option value="Turbo de estacas">Furgon de estacas</option>
+            <option value="Camioneta de estacas">Camioneta de estacas</option>
+            <option value="Camioneta de platon">Camioneta de platon</option>
+            <option value="Frugon">Frugon</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <input type="text" placeholder="¿Qué vehiculo?" id="otro_R" name="otro_R">
         <p>Tarifas de Acarreos</p>
         <label for="">
             <span class="texto">Ubaté</span>
-            <input type="number" name="ubate" placeholder="Tarifa" value="0">
+            <select type="number" name="ubate">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Carupa</span>
-            <input type="number" name="carupa" placeholder="Tarifa" value="0">
+            <select type="number" name="carupa">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Tausa</span>
-            <input type="number" name="tausa" placeholder="Tarifa" value="0">
+            <select type="number" name="tausa">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Suta Tausa</span>
-            <input type="number" name="suta" placeholder="Tarifa" value="0">
+            <select type="number" name="suta">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Lenguazaque</span>
-            <input type="number" name="lenguazaque" placeholder="Tarifa" value="0">
+            <select type="number" name="lenguazaque">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Guacheta</span>
-            <input type="number" name="guacheta" placeholder="Tarifa" value="0">
+            <select type="number" name="guacheta">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Simijaca</span>
-            <input type="number" name="simijaca" placeholder="Tarifa" value="0">
+            <select type="number" name="simijaca">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Susa</span>
-            <input type="number" name="susa" placeholder="Tarifa" value="0">
+            <select type="number" name="susa">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <label for="">
             <span class="texto">Cucunuba</span>
-            <input type="number" name="cucunuba" placeholder="Tarifa" value="0">
+            <select type="number" name="cucunuba">
+                <option value="">Precio</option>
+                <option value="No">No</option>
+                <option value="$20.000-$50.000">$20.000-$50.000</option>
+                <option value="$50.000-$80.000">$50.000-$80.000</option>
+                <option value="$80.000-$100.000">$80.000-$100.000</option>
+                <option value="$100.000-$150.000">$100.000-$150.000</option>
+                <option value="$150.000-$200.000">$150.000-$200.000</option>
+                <option value="$200.000-mas">$200.000-mas</option>
+            </select>
         </label>
         <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
 

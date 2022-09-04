@@ -35,15 +35,6 @@ router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 		cucunuba,
 		descripcion,
 	} = req.body;
-	data.ubate = "$" + data.ubate;
-	data.carupa = "$" + data.carupa;
-	data.tausa = "$" + data.tausa;
-	data.suta = "$" + data.suta;
-	data.lenguazaque = "$" + data.lenguazaque;
-	data.guacheta = "$" + data.guacheta;
-	data.simijaca = "$" + data.simijaca;
-	data.susa = "$" + data.susa;
-	data.cucunuba = "$" + data.cucunuba;
 	console.log("-------------------");
 	console.log(data);
 	console.log("-------------------");

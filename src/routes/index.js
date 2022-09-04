@@ -340,6 +340,28 @@ router.get('/seleccionacarreos', async (req, res) => {
 		//...
 	});
 });
+router.get('/perfilUsuarios', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'perfilUsuarios', 'index', datos = '', () => {
+		//...
+	});
+});
+router.get('/perfilAcarreos', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'perfilAcarreos', 'index', datos = '', () => {
+		//...
+	});
+});
+router.post('/perfilU', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	res.render('perfilUsuarios')
+});
+router.post('/perfilA', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	res.render('perfilAcarreos')
+});
 router.get('/misacarreos', async (req, res) => {
 	//res.render('acarreos');
 	verificarEstado(res, 'misAcarreos', 'index', datos = '', data = '', () => {

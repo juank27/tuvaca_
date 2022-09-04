@@ -5,12 +5,11 @@
 
 .modal_p {
     width: 70%;
-    flex-direction: row;
 }
-.modal_Contendorp {
+/* .modal_Contendorp {
     width: 10%;
     height: 100vh;
-}
+} */
 .publicacion {
     width: 48%;
 }

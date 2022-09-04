@@ -17,7 +17,8 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_perfil">
+<body class="body_perfil" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{foto_perfil}} >
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
@@ -66,9 +67,9 @@
             <div class="publicacion_linea2">
                 <div class="publicacion_perfil">
                     <!--foto de perfil del publicador-->
-                    <div style="background-image: url({{photo}})"></div>
+                    <div id="foto" style="background-image: url({{photo}})"></div>
                     <!--nombre del publicador-->
-                    <p>{{name}}</p>
+                    <p id="nombre">{{name}}</p>
                 </div>
                 <!--ubicación del bovino-->
                 <p>{{ubication}}</p>
@@ -111,25 +112,18 @@
         <section class="modal_h modal_cerrado_h">
             <div class="modal_Contendorh"><span class="cerrar_modal_h"></span></div>
             <div class="modal_Cuerpoh">
-                <div class="contraseña">
-                    <p>Contraseña</p>
-                    <form action="">
-                        <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña Actual"
-                            minlength="7" required>
-                        <input type="password" name="newpasswordd" id="passwordd" placeholder="Nueva Contraseña"
-                            minlength="7" required>
-                        <input type="password" name="confirmPassword" id="confirmPassword"
-                            placeholder="Verificar Contraseña" minlength="7" required>
-                        <button id="boton" type="submit">Guardar Cambios</button>
-                    </form>
-                </div>
                 <div class="datosP">
                     <p>Datos Personales</p>
                     <form action="">
                         <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                    <form action="">
                         <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000"
                             max="9999999999" required>
-                        <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                    <form action="">
                         <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio"
                             required>
                         <datalist id="municipios">
@@ -165,7 +159,8 @@
     <section class="modal_container_s">
         <section class="modal_s modal_cerrado_s">
             <div class="modal_Contendors"><span class="cerrar_modal_s"></span></div>
-            <p>Recuerde que debe Actualizar el estado de su publicación o sera eliminada ¿Su publicación ya esta vendida?</p>
+            <p>Recuerde que debe Actualizar el estado de su publicación o sera eliminada ¿Su publicación ya esta
+                vendida?</p>
             <div>
                 <button class="no2">No Vendida</button>
                 <button class="si2">Vendida</button>
@@ -174,6 +169,11 @@
             </form>
         </section>
     </section>
+    <!--Formulario para dirigirse al perfil-->
+    <form style="display:none ;" action="">
+        <input type="text" value="{{id}}">
+        <input type="submit" value="" class="perfilS">
+    </form>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>

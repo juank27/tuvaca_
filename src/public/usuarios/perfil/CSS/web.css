@@ -6,6 +6,9 @@
 .modal_p {
     width: 80%;
 }
+.modal_p iframe{
+    height: 90vh;
+}
 .publicacion{width: 45%;}
 .publicacion_imagen2{
     width: auto;
@@ -109,3 +112,7 @@
         background-color: var(--gris_claro);
         width: 50%;}
     
+        .modal_Contendorp {
+            width: 5%;
+            height: 90vh;
+        }
