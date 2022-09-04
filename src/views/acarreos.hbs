@@ -17,7 +17,8 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_publicaciones">
+<body class="body_publicaciones"  onload="cargar()">
+    <input type="text" id="foto_perfil" value={{foto_perfil}} style="display: none;">
     <div title="bucar" class="buscando">
         <div title="buscar" class="buscando2"></div>
         <p>Buscar</p>
@@ -43,9 +44,9 @@
         <div class="publicacion_linea2">
             <div class="publicacion_perfil">
                 <!--foto de perfil del publicador-->
-                <div style="background-image: url({{photo}})"></div>
+                <div onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
                 <!--nombre del publicador-->
-                <p>{{name}}</p>
+                <p onclick="posicion2({{@index}})">{{name}}</p>
             </div>
             <!--ubicación del bovino-->
             <p>{{ubication}}</p>
@@ -98,6 +99,11 @@
                 {{descripcion}}
             </p>
         </div>
+    </form>
+            <!--Formulario para dirigirse al perfil-->
+    <form style="display:none;" action="/perfilA" method="POST" class="perfilS">
+        <input name="id_p"  type="text" value="{{id}}">
+        {{!-- <input  type="submit" value="" class="perfilS"> --}}
     </form>
     {{/each}}
 <script src="./usuarios/publicaciones/JS/index4.js"></script>

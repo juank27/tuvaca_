@@ -148,7 +148,7 @@ label{
     justify-content: space-around;
     margin-bottom: 5%;
 }
-label input{
+label select{
     width: 45%;
     border: 1px solid var(--verde);
     margin-bottom: 0;
@@ -199,7 +199,7 @@ input[type=number]::-webkit-outer-spin-button {
     color: var(--gris_oscuro);
     font-size: 1.3rem;
 }
-#prenada,#tipoprenada,#toro,#semanas,#primeriza,#nprenada{
+#otro_R{
     display: none;
 }
 

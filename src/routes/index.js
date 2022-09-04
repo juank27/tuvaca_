@@ -343,6 +343,22 @@ router.get('/perfilUsuarios', async (req, res) => {
 		//...
 	});
 });
+router.get('/perfilAcarreos', async (req, res) => {
+	//res.render('acarreos');
+	verificarEstado(res, 'perfilAcarreos', 'index', datos = '', () => {
+		//...
+	});
+});
+router.post('/perfilU', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	res.render('perfilUsuarios')
+});
+router.post('/perfilA', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	res.render('perfilAcarreos')
+});
 router.get('/misacarreos', async (req, res) => {
 	//res.render('acarreos');
 	verificarEstado(res, 'misAcarreos', 'index', datos = '', () => {
@@ -350,13 +366,13 @@ router.get('/misacarreos', async (req, res) => {
 	});
 });
 router.get('/buscarPublicaciones', async (req, res) => {
-	modal=false;
+	modal = false;
 	verificarEstado(res, 'buscarPublicaciones', 'index', datos = '', () => {
 		//...
 	});
 });
 router.get('/buscarAcarreos', async (req, res) => {
-	modal=false;
+	modal = false;
 	verificarEstado(res, 'buscarAcarreos', 'index', datos = '', () => {
 		//...
 	});
@@ -373,7 +389,7 @@ router.get('/perfil', async (req, res) => {
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
-	modal=true;
+	modal = true;
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()

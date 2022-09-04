@@ -7,9 +7,7 @@
 .modal_p {
     width: 80%;
 }
-.modal_p {
-    width: 80%;
-}
+
 .publicacion{
     width: 30%;
 }
@@ -37,10 +35,10 @@
     position:static;
     left: 0;
 }
-.modal_Contendorp {
+/* .modal_Contendorp {
     width: 5%;
     height: 90vh;
-}
+} */
 .modal_p iframe{
     height: 90vh;
 }

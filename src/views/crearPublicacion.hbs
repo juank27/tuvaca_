@@ -17,7 +17,8 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_crearP">
+<body class="body_crearP" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{foto_perfil}} >
     <form action="/new_publication" method="POST" enctype="multipart/form-data">
         <div class="imagen">
             <div class="fotos"></div>
@@ -74,19 +75,18 @@
             <p class="limite">Clic aqui para agregar archivos multimedia</p>
             <div class="mas"></div>
         </section>
-        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Ubicación del Bovino"
-            required>
-        <datalist id="municipios">
-            <option value="Ubaté"></option>
-            <option value="Carmen de Carupa"></option>
-            <option value="Tausa"></option>
-            <option value="Suta"></option>
-            <option value="Lenguazaque"></option>
-            <option value="Guacheta"></option>
-            <option value="Cucunuba"></option>
-            <option value="Simijaca"></option>
-            <option value="Susa"></option>
-        </datalist>
+        <select name="ubication" id="ubication" required>
+            <option value="">Ubicación del Bovino</option>
+            <option value="Ubaté">Ubaté</option>
+            <option value="Carmen de Carupa">Carmen de Carupa</option>
+            <option value="Tausa">Tausa</option>
+            <option value="Suta">Suta</option>
+            <option value="Lenguazaque">Lenguazaque</option>
+            <option value="Guacheta">Guacheta</option>
+            <option value="Cucunuba">Cucunuba</option>
+            <option value="Simijaca">Simijaca</option>
+            <option value="Susa">Susa</option>
+        </select>
         <select name="categoria" id="categoria" required>
             <option value="">Categoria</option>
             <option value="Ternera">Ternera</option>
@@ -96,16 +96,45 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="text" name="edad" id="edad" placeholder="Edad del Bovino" title="specifique si es años o meses"
-            required>
-        <input type="text" name="raza" id="raza" placeholder="Raza del Bovino" required>
+        <input type="number" name="edad" id="edad" placeholder="Edad del Bovino" required>
+        {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
+        <select name="edad_es" id="edad_es" required>
+            <option value="">Indique meses o años</option>
+            <option value="meses">meses</option>
+            <option value="años">años</option>
+        </select>
+        <select name="raza" id="raza" required>
+            <option value="">Raza</option>
+            <option value="Angus">Angus</option>
+            <option value="Brahman">Brahman</option>
+            <option value="Gyr">Gyr</option>
+            <option value="Holstein">Holstein</option>
+            <option value="Ayrshire">Ayrshire</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Simental">Simental</option>
+            <option value="Normando">Normando</option>
+            <option value="Pardo Suizo">Pardo Suizo</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Otra">Otro</option>
+        </select>
+        <input type="text" placeholder="¿Qué raza?" id="otro_R" name="otro_R">
         <select name="producto" id="producto" required>
             <option value="">Tipo de Produccion</option>
             <option value="Carnico">Producccion Carnica</option>
             <option value="Lechero">Produccion Lechera</option>
             <option value="engorde">Para Engorde</option>
         </select>
-        <input type="number" name="precio" id="precio" placeholder="Precio" required>
+        <select name="precio" id="precio">
+            <option value="">Precio</option>
+            <option value="$70.000-$500.000">$70.000-$500.000</option>
+            <option value="$500.000-$1´000.000">$500.000-$1´000.000</option>
+            <option value="$1´000.000-$2´000.000">$1´000.000-$2´000.000</option>
+            <option value="$2´000.000-$3´000.000">$2´000.000-$3´000.000</option>
+            <option value="$3´000.000-$4´000.000">$3´000.000-$4´000.000</option>
+            <option value="$4´000.000-$5´000.000">$4´000.000-$5´000.000</option>
+            <option value="$5´000.000-$6´000.000">$5´000.000-$6´000.000</option>
+            <option value="$6´000.000-mas">$6´000.000-mas</option>
+        </select>
         <select name="prenada" id="prenada">
             <option value="">¿Esta preñada?</option>
             <option value="Esta preñada">Si esta preñada</option>
@@ -116,14 +145,44 @@
             <option value="Inseminacion">Inseminación</option>
             <option value="Natural">Natural</option>
         </select>
-        <input type="text" name="toro" id="toro" placeholder="Raza del Toro">
-        <input type="number" name="meses" id="semanas" placeholder="Meses de preñada">
-        <select name="primeriza" id="primeriza">
-            <option value="">¿Es primeriza?</option>
-            <option value="Si es primeriza">Si es primeriza</option>
-            <option value="No es primeriza">No es primeriza</option>
+        <select name="toro" id="toro" required>
+            <option value="">Toro</option>
+            <option value="Angus">Angus</option>
+            <option value="Brahman">Brahman</option>
+            <option value="Gyr">Gyr</option>
+            <option value="Holstein">Holstein</option>
+            <option value="Ayrshire">Ayrshire</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Simental">Simental</option>
+            <option value="Normando">Normando</option>
+            <option value="Pardo Suizo">Pardo Suizo</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Otra">Otro</option>
+            <input type="text" placeholder="¿Qué raza?" id="otro_T" name="otro_T">
         </select>
-        <input type="number" name="nprenadas" id="nprenada" placeholder="Numero de Embarazos">
+        <select name="meses" id="semanas">
+            <option value="">Meses de preñada</option>
+            <option value="1 mes">1</option>
+            <option value="2 meses">2</option>
+            <option value="3 meses">3</option>
+            <option value="4 meses">4</option>
+            <option value="5 meses">5</option>
+            <option value="6 meses">6</option>
+            <option value="7 meses">7</option>
+            <option value="8 meses">8</option>
+            <option value="9 meses">9</option>
+        </select>
+        <select name="nprenadas" id="nprenada">
+            <option value="">Número de parto</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
 
         <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
 

@@ -1,5 +1,4 @@
 
-
 let abrirSesion;
 let id;
 let cerrarSesion = document.querySelectorAll(".cerrar_modal_p")[0];
@@ -8,6 +7,10 @@ let modalSesion2 = document.querySelectorAll(".modal_p")[0];
 let publicación = document.getElementById("publicacion");
 let id2 = document.getElementById("id2");
 let framer = document.getElementById("framer");
+let foto_perfil = document.getElementById("foto_perfil");
+function cargar(){
+    per.style.backgroundImage=(`url(${foto_perfil.value})`);
+}
 
 function posicion(valor) {
     // framer.contentDocument.location.reload(true);

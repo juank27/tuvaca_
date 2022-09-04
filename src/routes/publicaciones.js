@@ -42,6 +42,7 @@ let multpleInput = upload.fields([
 //envio post de imagenes con multer y firebase storage
 router.post('/new_publication', multpleInput,  (req, res) => {
 	let files = req.files;
+
 	let data = {
 		ubication,
 		categoria,
@@ -53,16 +54,23 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		tipoprenada,
 		toro,
 		meses,
-		primeriza,
 		nprenadas,
 		descripcion,
+		edad_es,
+		otro_R,
+		otro_T
 	} = req.body;
 	console.log(data);
-	data.precio = "$" + data.precio;
+	data.edad=edad+' '+ edad_es;
 	if (data['prenada'] === 'Esta preñada'){
 		data.toro = 'Con toro ' + toro;
-		data.meses = meses + ' Meses';
-		data.nprenadas = nprenadas + ' Embarazos';
+		data.meses = meses;
+	}
+	if(data['raza'] === 'Otra'){
+		data.raza=otro_R;
+	}
+	if(data['toro'] === 'Otra'){
+		data.raza=otro_T;
 	}
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {

@@ -1,7 +1,7 @@
 let submit = document.querySelectorAll(".submit")[0];
 let subir = document.querySelectorAll(".subir")[0];
 let filtrado = document.querySelectorAll(".filtrado")[0];
-let volver = document.querySelectorAll(".volver")[0];
+// let volver = document.querySelectorAll(".volver")[0];
 let usuario = document.getElementById("usuarios");
 let usuarios = document.getElementById("usuario");
 let usuario1 = document.getElementById("usuarios1");
@@ -10,7 +10,11 @@ let categoria = document.getElementById("categorias");
 let edad = document.getElementById("edad_");
 let municipio = document.getElementById("ubication");
 let precio = document.getElementById("precios");
-
+// let foto_perfil = document.getElementById("foto_perfil");
+// function cargar(){
+//     per.style.backgroundImage=(`url(${foto_perfil.value})`);
+//     pub.style.backgroundImage=" url(./usuarios/menu/icons/Cow.png)";
+// }
 let datos = [];
 let palabras = 0;
 let valor = 0;
@@ -19,9 +23,9 @@ subir.addEventListener("click", function () {
     usuarios.value=usuario.value;
     submit.click();
 })
-volver.addEventListener("click", function () {
-    window.location = "/publicaciones";
-})
+// volver.addEventListener("click", function () {
+//     window.location = "/publicaciones";
+// })
 categoria.addEventListener("click", function () {
     let encontrar = datos.includes(categoria.value);
     if (encontrar === false && categoria.value !== "") {
