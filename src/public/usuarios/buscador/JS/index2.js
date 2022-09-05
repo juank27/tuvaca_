@@ -1,7 +1,7 @@
 let submit = document.querySelectorAll(".submit")[0];
 let subir = document.querySelectorAll(".subir")[0];
 let filtrado = document.querySelectorAll(".filtrado")[0];
-// let volver = document.querySelectorAll(".volver")[0];
+let volver = document.querySelectorAll(".volver")[0];
 let usuario = document.getElementById("usuarios");
 let usuarios = document.getElementById("usuario");
 let usuario1 = document.getElementById("usuarios1");
@@ -21,9 +21,9 @@ subir.addEventListener("click", function () {
     usuarios.value=usuario.value;
     submit.click();
 })
-// volver.addEventListener("click", function () {
-//     window.location = "/acarreos";
-// })
+volver.addEventListener("click", function () {
+    window.location = "/acarreos";
+})
 vehiculo.addEventListener("click", function () {
     let encontrar = datos.includes(vehiculo.value);
 
