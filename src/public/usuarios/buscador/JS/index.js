@@ -23,9 +23,9 @@ subir.addEventListener("click", function () {
     usuarios.value=usuario.value;
     submit.click();
 })
-// volver.addEventListener("click", function () {
-//     window.location = "/publicaciones";
-// })
+volver.addEventListener("click", function () {
+    window.location = "/publicaciones";
+})
 categoria.addEventListener("click", function () {
     let encontrar = datos.includes(categoria.value);
     if (encontrar === false && categoria.value !== "") {
