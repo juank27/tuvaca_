@@ -13,6 +13,7 @@ const { createUserWithEmailAndPassword,
 	GoogleAuthProvider,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
+const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
 
 const router = Router();
 let a ;
@@ -533,7 +534,24 @@ router.get('/perfil', async (req, res) => {
 		.catch((error) => {
 			console.log(error);
 		});
+});
 
+//actualizar perfil
+router.post('/update_data_personal', async (req, res) => {
+	let { name, phone, ubication} = req.body;
+	data = {
+		name,
+		phone,
+		ubication,
+	}
+	console.log(data);
+	update_data("users", globalThis.idUser, data)
+		.then((result) => {
+			res.redirect('/perfil');
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
@@ -725,6 +743,11 @@ async function data_perfil(idUser) {
 	return element_perfil;
 }
 
+//actualizar datos de una coleccion
+async function update_data(bdatos, id, dataUpdate) {
+	const data = db.collection(bdatos).doc(id);
+	await data.update(dataUpdate);
+}
 //------------------------------Esto es una prueba -------------------------------------------------------
 router.get('/consulta', async (req, res) => {
 	let users = db.collection('users');
