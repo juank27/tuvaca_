@@ -86,7 +86,7 @@
                     <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
                     <div class="modal_Cuerpot">
                         <div class="editar" onclick="posicion2({{@index}})">
-                            <a >Editar</a>
+                            <a>Editar</a>
                         </div>
                         <div class="estado">
                             <a>Estado</a>
@@ -119,18 +119,13 @@
             <div class="modal_Cuerpoh">
                 <div class="datosP">
                     <p>Datos Personales</p>
-                    <form action="">
-                        <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
-                        <button id="boton" type="submit">Guardar Cambios</button>
-                    </form>
-                    <form action="">
-                        <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000"
-                            max="9999999999" required>
-                        <button id="boton" type="submit">Guardar Cambios</button>
-                    </form>
-                    <form action="">
-                        <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio"
+                    <form action="/update_data_personal" method="POST">
+                        <input type="text" value="{{data.name}}" name="name" id="name" placeholder="Nombre Completo"
                             required>
+                        <input type="number" value="{{data.phone}}" name="phone" id="phone"
+                            placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                        <input type="text" value="{{data.ubication}}" name="ubication" id="ubication" list="municipios"
+                            placeholder="Municipio" required>
                         <datalist id="municipios">
                             <option value="Ubaté"></option>
                             <option value="Carmen de Carupa"></option>
@@ -144,6 +139,33 @@
                         </datalist>
                         <button id="boton" type="submit">Guardar Cambios</button>
                     </form>
+                    {{!--
+                    <form action="/updateName" method="POST">
+                        <input type="text" value="{{data.name}}" name="name" id="name" placeholder="Nombre Completo"
+                            required>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                    <form action="">
+                        <input type="number" value="{{data.phone}}" name="phone" id="phone"
+                            placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                    <form action="">
+                        <input type="text" value="{{data.ubication}}" name="ubication" id="ubication" list="municipios"
+                            placeholder="Municipio" required>
+                        <datalist id="municipios">
+                            <option value="Ubaté"></option>
+                            <option value="Carmen de Carupa"></option>
+                            <option value="Tausa"></option>
+                            <option value="Suta"></option>
+                            <option value="Lenguazaque"></option>
+                            <option value="Guacheta"></option>
+                            <option value="Cucunuba"></option>
+                            <option value="Simijaca"></option>
+                            <option value="Susa"></option>
+                        </datalist>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form> --}}
                 </div>
             </div>
         </section>
@@ -154,7 +176,7 @@
             <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
             <div>
                 <button class="no">No Eliminar</button>
-                <button class="si">Eliimar</button>
+                <button class="si">Eliminar</button>
             </div>
             <form id="subido" action="/buscando" method="POST">
             </form>
