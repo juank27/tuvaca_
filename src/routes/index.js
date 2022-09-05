@@ -450,6 +450,26 @@ router.post('/perfilA', async (req, res) => {
 	// console.log(id_p);
 	// res.render('perfilAcarreos')
 });
+
+router.post('/visualizarPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	publicaciones('publications')
+		.then((publicaciones) => {
+			let idusuarioverr=[];
+			publicaciones.forEach((doc) => {
+				if (doc.id === id_p) {
+					idusuarioverr.push(doc);
+				}
+			})
+			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], globalThis.photo, () => {
+				console.log('Estoy dentro del perfil con un callback');
+			});
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error)
+		});
+});
+
 router.get('/misacarreos', async (req, res) => {
 	let id = globalThis.idUser;
 	data_perfil(id)
