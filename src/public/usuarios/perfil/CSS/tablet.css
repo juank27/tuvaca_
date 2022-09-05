@@ -5,13 +5,9 @@
 
 .modal_p {
     width: 70%;
-    flex-direction: row;
 
 }
-.modal_Contendorp {
-    width: 10%;
-    height: 100vh;
-}
+
 
 .publicacion_imagen2 {
     width: auto;

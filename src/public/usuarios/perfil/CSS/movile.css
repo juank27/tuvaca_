@@ -79,6 +79,7 @@ main{
     width: 90%;
     height: auto;
     cursor: pointer;
+    margin-top: 5%;
     margin-bottom: 2%;
 }
 .publicacion_imagen img{
@@ -996,6 +997,7 @@ main{
     font-size: 1.6rem;
     color: #4B8325;
     margin-bottom: 2%;
+    margin-top: 5%;
     font-family: var(--font1);
     font-weight: bold;
 }

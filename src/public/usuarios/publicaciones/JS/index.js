@@ -8,6 +8,7 @@ let modalSesion = document.querySelectorAll(".modal_container_p")[0];
 let modalSesion2 = document.querySelectorAll(".modal_p")[0];
 let publicación = document.getElementById("publicacion");
 let id2 = document.getElementById("id2");
+let id3 = document.getElementById("id3");
 let framer = document.getElementById("framer");
 let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
@@ -28,10 +29,13 @@ function posicion(valor) {
 }
 let perfils = document.querySelectorAll(".perfilS")[0];
 function posicion2(valor) {
-    console.log("entre");
+    id = document.querySelectorAll(".id")[valor].value;
+    id3.value = id;
     perfils.submit();
 }
 function posicion3(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id3.value = id;
     perfils.submit();
 }
 

@@ -6,6 +6,7 @@ let modalSesion22b = document.querySelectorAll(".modal_t")[0];
 let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
+    per.style.boxShadow="0px 4px 4px 0px #A96224"
 }
 abrirSesiona.addEventListener("click", function () {
     modalSesion2b.style.opacity = "1";

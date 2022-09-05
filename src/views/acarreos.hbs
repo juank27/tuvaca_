@@ -18,7 +18,7 @@
 </head>
 
 <body class="body_publicaciones"  onload="cargar()">
-    <input type="text" id="foto_perfil" value={{data}} style="display: none;">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data}} >
     <div title="bucar" class="buscando">
         <div title="buscar" class="buscando2"></div>
         <p>Buscar</p>
@@ -102,7 +102,7 @@
     </form>
             <!--Formulario para dirigirse al perfil-->
     <form style="display:none;" action="/perfilA" method="POST" class="perfilS">
-        <input name="id_p"  type="text" value="{{id}}">
+        <input name="id_p" id="id3"  type="text" value="">
         {{!-- <input  type="submit" value="" class="perfilS"> --}}
     </form>
     {{/each}}

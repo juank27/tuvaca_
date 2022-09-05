@@ -305,7 +305,13 @@ router.get('/publicacioness', async (req, res) => {
 });
 router.get('/crearPublicacion', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index', datos = '', globalThis.photo, () => {
+	verificarEstado(res, 'crearPublicacion', 'index', datos = '', vaca, () => {
+		//...
+	});
+});
+router.get('/editarPublicacion', async (req, res) => {
+	//res.render('crearPublicacion');
+	verificarEstado(res, 'editarPublicaciones', 'index', datos = '', globalThis.photo, () => {
 		//...
 	});
 });

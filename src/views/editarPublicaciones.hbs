@@ -10,15 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="./usuarios/crearP/CSS/movile.css">
-    <link rel="stylesheet" href="./usuarios/crearP/CSS/tablet.css" media="screen and (min-width:600px)">
-    <link rel="stylesheet" href="./usuarios/crearP/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
     <title>tuVaca.com</title>
 </head>
 
 <body class="body_crearP" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{data}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data}}>
     <form action="/new_publication" method="POST" enctype="multipart/form-data">
         <div class="imagen">
             <div class="fotos"></div>
@@ -140,7 +140,7 @@
             <option value="Esta preñada">Si esta preñada</option>
             <option value="No esta preñada">No esta preñada</option>
         </select>
-        <select name="tipoprenada" id="tipoprenada" >
+        <select name="tipoprenada" id="tipoprenada">
             <option value="">¿Comó quedo preñada? </option>
             <option value="Inseminacion">Inseminación</option>
             <option value="Natural">Natural</option>
@@ -198,7 +198,7 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <script src="./usuarios/crearP/JS/index.js"></script>
+    <script src="./usuarios/editarP/JS/index.js"></script>
 </body>
 
 </html>

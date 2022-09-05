@@ -10,13 +10,14 @@ let framer = document.getElementById("framer");
 let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
+    per.style.boxShadow="0px 4px 4px 0px #A96224"
 }
 
 function posicion(valor) {
-    // framer.contentDocument.location.reload(true);
-    // id=document.querySelectorAll(".id")[valor].value;
-    // id2.value=id;
-    // publicación.submit();
+    framer.contentDocument.location.reload(true);
+    id=document.querySelectorAll(".id")[valor].value;
+    id2.value=id;
+    publicación.submit();
     setTimeout(function () {
         modal()
     }, 1000);
@@ -153,14 +154,11 @@ no2.addEventListener("click", function () {
         modalEstado2b.style.visibility = "hidden";
     }, 900)
 })
-/***perfil */
-let foto=document.getElementById("foto");
-let nombre=document.getElementById("nombre");
-let perfils = document.querySelectorAll(".perfilS")[0];
 
-foto.addEventListener("click", function () {
-    perfils.click();
-})
-nombre.addEventListener("click", function () {
-    perfils.click();
-})
+/************/
+let perfils = document.querySelectorAll(".perfilS")[0];
+function posicion2(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id3.value = id;
+    perfils.submit();
+}
