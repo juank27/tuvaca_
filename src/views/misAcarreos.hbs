@@ -27,7 +27,10 @@
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
+        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+        <div onclick="posicion5({{@index}})" class="publicacion_mas">
+            <span></span>
+        </div>
         <!--En esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
             <img src={{url}} alt="">
@@ -97,31 +100,41 @@
         </div>
         <section class="modal_container_t ">
             <section class="modal_t modal_cerrado_t">
-                <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
+                <div class="modal_Contendort"><span class="cerrar_modal_t" onclick="posicion6({{@index}})"></span></div>
                 <div class="modal_Cuerpot">
-                    <div class="editar">
-                        <a href="/crearAcarreo">Editar</a>
+                    <div class="editar" onclick="posicion2({{@index}})">
+                        <a>Editar</a>
                     </div>
-                    <div class="eliminar">
+                    <div class="eliminar" >
                         <a>Elminar</a>
                     </div>
                 </div>
             </section>
         </section>
-    </form>
-    {{/each}}
     <!--modal eliminar-->
     <section class="modal_container_e">
         <section class="modal_e ">
             <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
             <div>
                 <button class="no">No Eliminar</button>
-                <button class="si">Eliimar</button>
+                <button class="si" onclick="posicionE({{@index}})">Eliimar</button>
             </div>
             <form id="subido" action="/buscando" method="POST">
             </form>
         </section>
     </section>
+        <!--Formulario para dirigirse a editar-->
+        <form style="display:none;" action="/editarAcarreo" method="POST" class="perfilS">
+            <input name="id_p" id="id3" type="text" value="">
+            {{!-- <input type="submit" value="" class="perfilS"> --}}
+        </form>
+        <!--Formulario para dirigirse a eliminar-->
+        <form style="display:none;" action="/eliminarAcarreo" method="POST" class="perfilE">
+            <input name="id_p" id="id4" type="text" value="">
+            {{!-- <input type="submit" value="" class="perfilS"> --}}
+        </form>
+    </form>
+    {{/each}}
     <script src="./usuarios/publicaciones/JS/index2.js"></script>
 
 </body>

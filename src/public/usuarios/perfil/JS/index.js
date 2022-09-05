@@ -51,22 +51,23 @@ cerrarSesion.addEventListener("click", function () {
 })
 
 /************modal tres puntos******/
-let abrirSesiona = document.querySelectorAll(".publicacion_mas")[0];
-let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[0];
-let modalSesion2b = document.querySelectorAll(".modal_container_t")[0];
-let modalSesion22b = document.querySelectorAll(".modal_t")[0];
-
-abrirSesiona.addEventListener("click", function () {
+function posicion5(valor) {
+    let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[valor];
+    let modalSesion2b = document.querySelectorAll(".modal_container_t")[valor];
+    let modalSesion22b = document.querySelectorAll(".modal_t")[valor];
     modalSesion2b.style.opacity = "1";
     modalSesion2b.style.visibility = "visible";
-})
-
-cerrarSesiona.addEventListener("click", function () {
+}
+function posicion6(valor) {
+    let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[valor];
+    let modalSesion2b = document.querySelectorAll(".modal_container_t")[valor];
+    let modalSesion22b = document.querySelectorAll(".modal_t")[valor];
     setTimeout(function () {
         modalSesion2b.style.opacity = "0";
         modalSesion2b.style.visibility = "hidden";
     }, 200)
-})
+}
+
 /************modal ajustes******/
 let abrirSesionb = document.querySelectorAll(".dos")[0];
 let cerrarSesionb = document.querySelectorAll(".cerrar_modal_h")[0];
@@ -121,10 +122,7 @@ abrirEliminar.addEventListener("click", function () {
     modalElimar.style.opacity = "1";
     modalElimar.style.visibility = "visible";
 })
-elimar.addEventListener("click", function () {
-    subir.submit();
-    console.log("subir");
-})
+
 no.addEventListener("click", function () {
     console.log("no");
     window.location="/perfil"
@@ -160,13 +158,7 @@ elimar2.addEventListener("click", function () {
     modalElimar.style.opacity = "1";
     modalElimar.style.visibility = "visible";
 })
-no2.addEventListener("click", function () {
-    modalEstado22b.classList.toggle("modal_cerrado_s");
-    setTimeout(function () {
-        modalEstado2b.style.opacity = "0";
-        modalEstado2b.style.visibility = "hidden";
-    }, 900)
-})
+
 
 /************/
 let perfils = document.querySelectorAll(".perfilS")[0];
@@ -174,4 +166,16 @@ function posicion2(valor) {
     id = document.querySelectorAll(".id")[valor].value;
     id3.value = id;
     perfils.submit();
+}
+let perfile = document.querySelectorAll(".perfilE")[0];
+function posicionE(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id4.value = id;
+    perfile.submit();
+}
+let perfiles = document.querySelectorAll(".perfilEs")[0];
+function posicionEs(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id5.value = id;
+    perfile.submit();
 }
