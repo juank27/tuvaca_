@@ -6,6 +6,7 @@ let modalSesion = document.querySelectorAll(".modal_container_p")[0];
 let modalSesion2 = document.querySelectorAll(".modal_p")[0];
 let publicación = document.getElementById("publicacion");
 let id2 = document.getElementById("id2");
+let id3 = document.getElementById("id3");
 let framer = document.getElementById("framer");
 let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
