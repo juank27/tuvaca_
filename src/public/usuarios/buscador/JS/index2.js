@@ -21,9 +21,9 @@ subir.addEventListener("click", function () {
     usuarios.value=usuario.value;
     submit.click();
 })
-// volver.addEventListener("click", function () {
-//     window.location = "/acarreos";
-// })
+volver.addEventListener("click", function () {
+    window.location = "/acarreos";
+})
 vehiculo.addEventListener("click", function () {
     let encontrar = datos.includes(vehiculo.value);
 
