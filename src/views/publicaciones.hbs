@@ -29,19 +29,22 @@
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
         <!--ocultos -->
-        {{!-- <input id="phone" type="text" value="{{phone}}" style="display:none;">
-        <input id="categoria" type="text" value="{{categoria}}" style="display:none;"> --}}
-        <p id="phone" type="text"  style="display:none;">{{phone}}</p>
-        <p id="categoria" type="text" style="display:none;">{{categoria}}</p>
+        <input class="phone" type="text" value="{{phone}}" style="display:none;">
+        <input class="categoria" type="text" value="{{categoria}}" style="display:none;">
+        <input class="updateAt" type="text" value="{{updatedAt}}" style="display:none;">
+        <input class="raza" type="text" value="{{raza}}" style="display:none;">
+        <input class="precio" type="text" value="{{precio}}" style="display:none;">
+        <input class="nombre" type="text" value="{{name}}" style="display:none;">
+
         <!--En  esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
             <img src={{input0}} alt="">
         </div>
         <!--En esta división esta la fecha, los me gusta y el chat-->
         <div class="publicacion_linea1">
-            <p id="updateAt">{{updatedAt}}</p>
+            <p id="updateAt" >{{updatedAt}}</p>
             <div>
-                <div id="chat" class="chat"></div>
+                <div onclick="posicion4({{@index}})" class="chat"></div>
             </div>
         </div>
         <!--En esta división esta:-->
@@ -50,7 +53,7 @@
                 <!--foto de perfil del publicador-->
                 <div id="foto" onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
                 <!--nombre del publicador-->
-                <p id="nombre"  onclick="posicion2({{@index}})">{{name}}</p>
+                <p  id="nombre"  onclick="posicion2({{@index}})">{{name}}</p>
             </div>
             <!--ubicación del bovino-->
             <p>{{ubication}}</p>
@@ -59,9 +62,9 @@
         </div>
         <div class="publicacion_linea3">
             <!--precio del bovino-->
-            <p id="precio" >{{precio}}</p>
+            <p  id="precio" >{{precio}}</p>
             <!--tipo de bovino-->
-            <p id="raza" >{{raza}}</p>
+            <p  id="raza" >{{raza}}</p>
         </div>
     </form>
         <!--Formulario para dirigirse al perfil-->

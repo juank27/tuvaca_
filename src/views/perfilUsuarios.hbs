@@ -18,6 +18,8 @@
 </head>
 
 <body class="body_perfil" onload="cargar()">
+    <p id="yo" style="display: none;">{{data.name}} </p>
+
     <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}} >
     <section class="fijar">
         <section class="datos_usuario">
@@ -34,9 +36,17 @@
     </section>
     <section class="publicaciones">
         {{#each datos}}
+
         <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
+                <!--ocultos -->
+                <input class="phone" type="text" value="{{phone}}" style="display:none;">
+                <input class="categoria" type="text" value="{{categoria}}" style="display:none;">
+                <input class="updateAt" type="text" value="{{updatedAt}}" style="display:none;">
+                <input class="raza" type="text" value="{{raza}}" style="display:none;">
+                <input class="precio" type="text" value="{{precio}}" style="display:none;">
+                <input class="nombre" type="text" value="{{name}}" style="display:none;">
             <!--En esta division esta la imagen del bovino a vender-->
             <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción"
                 style="margin-top: 2%;">
@@ -46,7 +56,7 @@
             <div class="publicacion_linea1">
                 <p>{{updatedAt}}</p>
                 <div>
-                    <div class="chat"></div>
+                    <div onclick="posicion4({{@index}})" class="chat"></div>
                 </div>
             </div>
             <!--En esta división esta:-->
@@ -91,6 +101,9 @@
             per.style.backgroundImage = (`url(${foto_perfil.value})`);
             pub.style.backgroundImage = " url(./usuarios/menu/icons/Cow.png)";
         }
+        /***recuperando datos para el chat *****/
+
+
     </script>
 </body>
 

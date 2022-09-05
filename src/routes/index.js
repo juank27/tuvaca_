@@ -393,8 +393,10 @@ router.post('/perfilU', async (req, res) => {
 							let unir_publicaciones = unir(result, data);
 							//console.log(unir_publicaciones);
 							data[0]['photoprincipal'] = globalThis.photo;
+							data[0]['name_us'] = globalThis.name;
 							console.log("#####################################");
 							console.log(data);
+
 							verificarEstado(res, 'perfilUsuarios', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
@@ -599,6 +601,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 						return element.id == id_p;
 					});
 					buscarGlobal = buscar;
+					buscarGlobal['name_User'] = globalThis.name;
 					console.log(buscar);
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
@@ -608,7 +611,12 @@ router.post('/abrir-publicaciones', async (req, res) => {
 router.get('/modalpublicaciones', async (req, res) => {
 	modal = false;
 	console.log(buscarGlobal);
-	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, data = '', () => {
+	let info = {
+		photo: globalThis.photo,
+		name: globalThis.name,
+	}
+	console.log(info);
+	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, info, () => {
 		//...
 	});
 });
