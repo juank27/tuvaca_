@@ -24,6 +24,7 @@ let modal = true;
 var _idUser = ''; //id del usuario
 globalThis.idUser = _idUser;
 globalThis.photo = '';
+globalThis.name = '';
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 	//console.log(mensaje);
@@ -59,6 +60,7 @@ router.get('/', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
+					
 					verificarEstado(res, 'publicaciones', 'index', publicacion, data = '',() => {
 						//...
 					});
@@ -246,6 +248,8 @@ router.post('/login-google', async (req, res) => {
 		verific.forEach((doc) => {
 			console.log("Lllllllllllllllllll");
 			globalThis.photo = doc._fieldsProto.photo.stringValue;
+			console.log(doc);
+			globalThis.name = doc._fieldsProto.name.stringValue;
 			globalThis.idUser = doc.id;
 		});
 		setPersistence(auth, browserSessionPersistence)
@@ -462,6 +466,8 @@ router.post('/visualizarPublicacion', async (req, res) => {
 					idusuarioverr.push(doc);
 				}
 			})
+			console.log("llllllllllllllllllll");
+			console.log(idusuarioverr[0].edad);
 			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], globalThis.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
@@ -564,8 +570,12 @@ router.get('/publicaciones', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-
-						verificarEstado(res, 'publicaciones', 'index', publicacion, globalThis.photo, () => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						console.log("el nomnbre es: ", info.name);
+						verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
 							//...
 						});
 					}, 500);

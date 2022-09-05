@@ -75,7 +75,7 @@
             <p class="limite">Clic aqui para agregar archivos multimedia</p>
             <div class="mas"></div>
         </section>
-        <select name="ubication" id="ubication" required>
+        <select name="ubication" id="ubication"  value="{{datos.ubication}}" required>
             <option value="">Ubicación del Bovino</option>
             <option value="Ubaté">Ubaté</option>
             <option value="Carmen de Carupa">Carmen de Carupa</option>
@@ -96,7 +96,7 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="number" name="edad" id="edad" placeholder="Edad del Bovino" required>
+        <input type="text" name="edad" value="{{datos.edad}}" id="edad" placeholder="Edad del Bovino" required>
         {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
         <select name="edad_es" id="edad_es" required>
             <option value="">Indique meses o años</option>

@@ -18,7 +18,8 @@
 </head>
 
 <body class="body_publicaciones" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{data}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}} >
+    <p id="yo" style="display: none;" >{{data.name}} </p>
     <div title="bucar" class="buscando">
         <div title="buscar" class="buscando2" ></div>
         <p>Buscar</p>
@@ -27,16 +28,20 @@
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
-        <!--En esta division esta la imagen del bovino a vender-->
+        <!--ocultos -->
+        {{!-- <input id="phone" type="text" value="{{phone}}" style="display:none;">
+        <input id="categoria" type="text" value="{{categoria}}" style="display:none;"> --}}
+        <p id="phone" type="text"  style="display:none;">{{phone}}</p>
+        <p id="categoria" type="text" style="display:none;">{{categoria}}</p>
+        <!--En  esta division esta la imagen del bovino a vender-->
         <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
             <img src={{input0}} alt="">
         </div>
         <!--En esta división esta la fecha, los me gusta y el chat-->
         <div class="publicacion_linea1">
-            <p>{{updatedAt}}</p>
+            <p id="updateAt">{{updatedAt}}</p>
             <div>
-                <div class="chat"></div>
+                <div id="chat" class="chat"></div>
             </div>
         </div>
         <!--En esta división esta:-->
@@ -54,9 +59,9 @@
         </div>
         <div class="publicacion_linea3">
             <!--precio del bovino-->
-            <p >{{precio}}</p>
+            <p id="precio" >{{precio}}</p>
             <!--tipo de bovino-->
-            <p>{{raza}}</p>
+            <p id="raza" >{{raza}}</p>
         </div>
     </form>
         <!--Formulario para dirigirse al perfil-->
