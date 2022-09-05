@@ -18,21 +18,22 @@
 </head>
 
 <body class="body_perfil" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{foto_perfil}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}} >
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
-                <div class="foto_perfil" style="background-image: url(./usuarios/menu/icons/perfil.png)"></div>
+                <div class="foto_perfil" style="background-image: url({{data.photo}})"></div>
             </div>
             <div class="datos">
-                <p>Nayibe Casas</p>
-                <p>nayibepelaez03@gmail.com</p>
-                <p>3168707559</p>
-                <p>Ubtaé</p>
+                <p>{{data.name}}</p>
+                <p>{{data.email}}</p>
+                <p>{{data.phone}}</p>
+                <p>{{data.ubication}}</p>
             </div>
         </section>
     </section>
     <section class="publicaciones">
+        {{#each datos}}
         <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
@@ -109,6 +110,7 @@
                 </p>
             </div>
         </form>
+        {{/each}}
     </section>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>

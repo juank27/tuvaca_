@@ -18,32 +18,33 @@
 </head>
 
 <body class="body_perfil" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{foto_perfil}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}} >
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
-                <div class="foto_perfil" style="background-image: url(./usuarios/menu/icons/perfil.png)"></div>
+                <div class="foto_perfil" style="background-image: url({{data.photo}})"></div>
             </div>
             <div class="datos">
-                <p>Nayibe Casas</p>
-                <p>nayibepelaez03@gmail.com</p>
-                <p>3168707559</p>
-                <p>Ubtaé</p>
+                <p>{{data.name}}</p>
+                <p>{{data.email}}</p>
+                <p>{{data.phone}}</p>
+                <p>{{data.ubication}}</p>
             </div>
         </section>
     </section>
     <section class="publicaciones">
+        {{#each datos}}
         <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
             <!--En esta division esta la imagen del bovino a vender-->
-            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción"
+            <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción"
                 style="margin-top: 2%;">
-                <img src="./principal/images/vacas/vaca6-G.jpg" alt="">
+                <img src="{{input0}}" alt="">
             </div>
             <!--En esta división esta la fecha, los me gusta y el chat-->
             <div class="publicacion_linea1">
-                <p>21/julio/2022</p>
+                <p>{{updatedAt}}</p>
                 <div>
                     <div class="chat"></div>
                 </div>
@@ -52,37 +53,22 @@
             <div class="publicacion_linea2">
                 <div class="publicacion_perfil">
                     <!--foto de perfil del publicador-->
-                    <div id="foto" style="background-image: url()"></div>
+                    <div id="foto" style="background-image: url({{photo}})"></div>
                     <!--nombre del publicador-->
-                    <p id="nombre">nayibe</p>
+                    <p id="nombre">{{name}}</p>
                 </div>
                 <!--ubicación del bovino-->
-                <p>ubate</p>
+                <p>{{ubication}}</p>
             </div>
             </div>
             <div class="publicacion_linea3">
                 <!--precio del bovino-->
-                <p>50.000</p>
+                <p>{{precio}}</p>
                 <!--tipo de bovino-->
-                <p>holstein</p>
+                <p>{{raza}}</p>
             </div>
-            <section class="modal_container_t ">
-                <section class="modal_t modal_cerrado_t">
-                    <div class="modal_Contendort"><span class="cerrar_modal_t"></span></div>
-                    <div class="modal_Cuerpot">
-                        <div class="editar">
-                            <a href="/crearPublicacion">Editar</a>
-                        </div>
-                        <div class="estado">
-                            <a>Estado</a>
-                        </div>
-                        <div class="eliminar">
-                            <a>Elminar</a>
-                        </div>
-                    </div>
-                </section>
-            </section>
         </form>
+        {{/each}}
     </section>
     <!--modal publicaciones-->
     <section class="modal_container_p">

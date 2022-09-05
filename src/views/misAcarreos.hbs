@@ -18,13 +18,13 @@
 </head>
 
 <body class="body_publicaciones" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{foto_perfil}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}}>
     <div class="atras">
         <a href="/crearAcarreo">Crear Publicación</a>
         <a href="/crearAcarreo" class="atrasI"></a>
     </div>
-    {{!-- {{#each datos}} --}}
-<form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+    {{#each datos}}
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
         <input value={{id}} type="text" class="id" style="display:none;">
         <input name="id_p" type="text" id="id2" value="" style="display:none;">
 
@@ -113,7 +113,7 @@
             </section>
         </section>
     </form>
-    {{!-- {{/each}} --}}
+    {{/each}}
     <!--modal eliminar-->
     <section class="modal_container_e">
         <section class="modal_e ">

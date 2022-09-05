@@ -22,6 +22,7 @@ let estado = false; //estado de la sesion
 let modal = true;
 var _idUser = ''; //id del usuario
 globalThis.idUser = _idUser;
+globalThis.photo = '';
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 	//console.log(mensaje);
@@ -242,6 +243,8 @@ router.post('/login-google', async (req, res) => {
 		mensaje = undefined;
 		//recuperar el id del usuario
 		verific.forEach((doc) => {
+			console.log("Lllllllllllllllllll");
+			globalThis.photo = doc._fieldsProto.photo.stringValue;
 			globalThis.idUser = doc.id;
 		});
 		setPersistence(auth, browserSessionPersistence)
@@ -302,13 +305,13 @@ router.get('/publicacioness', async (req, res) => {
 });
 router.get('/crearPublicacion', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index', datos = '', data = '', () => {
+	verificarEstado(res, 'crearPublicacion', 'index', datos = '', globalThis.photo, () => {
 		//...
 	});
 });
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearAcarreo', 'index', datos = '', data = '', () => {
+	verificarEstado(res, 'crearAcarreo', 'index', datos = '', globalThis.photo, () => {
 		//...
 	});
 });
@@ -322,7 +325,7 @@ router.get('/acarreos', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'acarreos', 'index', publicacion, data = '', () => {
+						verificarEstado(res, 'acarreos', 'index', publicacion, globalThis.photo, () => {
 							//...
 						});
 					}, 500);
@@ -355,18 +358,117 @@ router.get('/perfilAcarreos', async (req, res) => {
 router.post('/perfilU', async (req, res) => {
 	let { id_p } = req.body;
 	console.log(id_p);
-	res.render('perfilUsuarios')
+	console.log('abri publicaciones');
+	publicaciones('publications')
+		.then((publicaciones) => {
+			let idusuariover;
+			publicaciones.forEach((doc) => {
+				console.log(doc);
+				if (doc.id === id_p) {
+					console.log("entre al ifffff");
+					console.log(doc.iduser);
+					idusuariover = doc.iduser;
+				}
+			});
+			console.log('1111111111111111111111111111111111111111');
+			console.log(idusuariover);
+			data_perfil(idusuariover)
+				.then((data) => {
+					publicaciones_propias("publications", idusuariover)
+						.then((result) => {
+							//console.log("---------------------------------");
+							// //result.push(data)
+							// console.log(result);
+							let unir_publicaciones = unir(result, data);
+							//console.log(unir_publicaciones);
+							data[0]['photoprincipal'] = globalThis.photo;
+							console.log("#####################################");
+							console.log(data);
+							verificarEstado(res, 'perfilUsuarios', 'index', unir_publicaciones, data[0], () => {
+								console.log('Estoy dentro del perfil con un callback');
+							});
+						}).catch((error) => {
+							console.log(error);
+						});
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
+	// let { id_p } = req.body;
+	// console.log(id_p);
+	// res.render('perfilUsuarios')
 });
 router.post('/perfilA', async (req, res) => {
 	let { id_p } = req.body;
 	console.log(id_p);
-	res.render('perfilAcarreos')
+	console.log('abri publicaciones');
+	publicaciones('acarreos')
+		.then((publicaciones) => {
+			let idusuariover;
+			publicaciones.forEach((doc) => {
+				console.log(doc);
+				if (doc.id === id_p) {
+					console.log("entre al ifffff");
+					console.log(doc.iduser);
+					idusuariover = doc.iduser;
+				}
+			});
+			console.log('1111111111111111111111111111111111111111');
+			console.log(idusuariover);
+			data_perfil(idusuariover)
+				.then((data) => {
+					publicaciones_propias("acarreos", idusuariover)
+						.then((result) => {
+							//console.log("---------------------------------");
+							// //result.push(data)
+							// console.log(result);
+							console.log("&&&&&&&&&&&&&&&&&&&&&&&&&");
+							console.log(result);
+							let unir_publicaciones = unir(result, data);
+							console.log(unir_publicaciones);
+							data[0]['photoprincipal'] = globalThis.photo;
+							verificarEstado(res, 'perfilAcarreos', 'index', unir_publicaciones, data[0], () => {
+								console.log('Estoy dentro del perfil con un callback');
+							});
+						}).catch((error) => {
+							console.log(error);
+						});
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		})
+	// let { id_p } = req.body;
+	// console.log(id_p);
+	// res.render('perfilAcarreos')
 });
 router.get('/misacarreos', async (req, res) => {
+	let id = globalThis.idUser;
+	data_perfil(id)
+		.then((data) => {
+			publicaciones_propias("acarreos", id)
+				.then((result) => {
+					console.log("---------------------------------");
+					// //result.push(data)
+					// console.log(result);
+					let unir_publicaciones = unir(result, data);
+					console.log(unir_publicaciones);
+					verificarEstado(res, 'misAcarreos', 'index', unir_publicaciones, data[0], () => {
+						console.log('Estoy dentro del perfil con un callback');
+					});
+				}).catch((error) => {
+					console.log(error);
+				});
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 	//res.render('acarreos');
-	verificarEstado(res, 'misAcarreos', 'index', datos = '', data = '', () => {
-		//...
-	});
+	// verificarEstado(res, 'misAcarreos', 'index', datos = '', data = '', () => {
+	// 	//...
+	// });
 });
 router.get('/buscarPublicaciones', async (req, res) => {
 	modal = false;
@@ -418,7 +520,8 @@ router.get('/publicaciones', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'publicaciones', 'index', publicacion, data = '', () => {
+
+						verificarEstado(res, 'publicaciones', 'index', publicacion, globalThis.photo, () => {
 							//...
 						});
 					}, 500);

@@ -12,11 +12,7 @@ let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
 }
-function cargar(){
-    console.log("aqui");
-    per.style.backgroundImage=" url(./usuarios/menu/icons/atras2.png)";
-    crear.style.backgroundImage=" url(./usuarios/menu/icons/Sum2.png)";
-}
+
 categoria.addEventListener("click", function () {
     if (categoria.value === "Vaca" || categoria.value === "Novilla") {
         prenada.style.display = "flex";
