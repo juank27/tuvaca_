@@ -24,6 +24,26 @@
             <div class="fotos"></div>
             <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
         </div>
+        <!--Datos ocultos-->
+        <div style="display: none;">
+        <input type="text" value="{{datos.ubication}}" id="ubicationr">
+        <input type="text" value="{{datos.categoria}}" id="categoriar">
+        <input type="text" value="{{datos.edad}}" id="edadr">
+        <input type="text" value="{{datos.raza}}" id="razar">
+        <input type="text" value="{{datos.producto}}" id="productor">
+        <input type="text" value="{{datos.prenada}}" id="prenadan">
+        <input type="text" value="{{datos.precio}}" id="precior">
+        <input type="text" value="{{datos.tipoprenada}}" id="tipoprenadar">
+        <input type="text" value="{{datos.toro}}" id="toror">
+        <input type="text" value="{{datos.nprenadas}}" id="nprenadasr">
+        <input type="text" value="{{datos.meses}}" id="mesesr">
+        <input type="text" value="{{datos.input0}}" id="principal">
+        <input type="text" value="{{datos.input1}}" class="multi">
+        <input type="text" value="{{datos.input2}}" class="multi">
+        <input type="text" value="{{datos.input3}}" class="multi">
+        <input type="text" value="{{datos.input4}}" class="multi">
+
+        </div>
         <section class="modal_f ">
             <div class="modal_Cuerpof">
                 <!--Inpur file 1-->
@@ -75,7 +95,7 @@
             <p class="limite">Clic aqui para agregar archivos multimedia</p>
             <div class="mas"></div>
         </section>
-        <select name="ubication" id="ubication"  value="{{datos.ubication}}" required>
+        <select name="ubication" id="ubication"  required>
             <option value="">Ubicación del Bovino</option>
             <option value="Ubaté">Ubaté</option>
             <option value="Carmen de Carupa">Carmen de Carupa</option>
@@ -96,7 +116,7 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="text" name="edad" value="{{datos.edad}}" id="edad" placeholder="Edad del Bovino" required>
+        <input type="text" name="edad"  id="edad" placeholder="Edad del Bovino" required>
         {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
         <select name="edad_es" id="edad_es" required>
             <option value="">Indique meses o años</option>

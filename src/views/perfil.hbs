@@ -86,10 +86,10 @@
                         <div class="editar" onclick="posicion2({{@index}})">
                             <a>Editar</a>
                         </div>
-                        <div class="estado">
+                        <div class="estado" onclick="estado({{@index}})">
                             <a>Estado</a>
                         </div>
-                        <div class="eliminar">
+                        <div class="eliminar" onclick="eliminar({{@index}})">
                             <a>Elminar</a>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
             <section class="modal_e ">
                 <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
                 <div>
-                    <button class="no">No Eliminar</button>
+                    <button class="no" onclick="eliminarS({{@index}})">No Eliminar</button>
                     <button class="si" onclick="posicionE({{@index}})">Eliminar</button>
                 </div>
                 <form id="subido" action="/buscando" method="POST">
@@ -116,26 +116,26 @@
                     vendida?</p>
                 <div>
                     <button class="no2" onclick="posicionEs({{@index}})">No Vendida</button>
-                    <button class="si2" >Vendida</button>
+                    <button class="si2" onclick="estadoc({{@index}})">Vendida</button>
                 </div>
                 <form id="subido" action="/buscando" method="POST">
                 </form>
             </section>
         </section>
         <!--Formulario para dirigirse a editar-->
-        <form style="display:none;" action="/visualizarPublicacion" method="POST" class="perfilS">
+        <form style="display:none;" action="/visualizarPublicacion" method="POST" >
             <input name="id_p" id="id3" type="text" value="">
-            {{!-- <input type="submit" value="" class="perfilS"> --}}
+            <input type="submit" value="" id="perfilS">
         </form>
         <!--Formulario para dirigirse a eliminar-->
-        <form style="display:none;" action="/eliminarAcarreo" method="POST" class="perfilE">
+        <form style="display:none;" action="/eliminarPublicacion" method="POST" >
             <input name="id_p" id="id4" type="text" value="">
-            {{!-- <input type="submit" value="" class="perfilS"> --}}
+            <input type="submit" value="" id="perfilE">
         </form>
         <!--Formulario para dirigirse a estado-->
-        <form style="display:none;" action="/estadoAcarreo" method="POST" class="perfilEs">
+        <form style="display:none;" action="/estadoPublicacion" method="POST" >
             <input name="id_p" id="id5" type="text" value="">
-            {{!-- <input type="submit" value="" class="perfilS"> --}}
+            <input type="submit" value="" id="perfilEs">
         </form>
         {{/each}}
     </section>

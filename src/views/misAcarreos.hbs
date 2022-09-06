@@ -100,40 +100,43 @@
         </div>
         <section class="modal_container_t ">
             <section class="modal_t modal_cerrado_t">
-                <div class="modal_Contendort"><span class="cerrar_modal_t" onclick="posicion6({{@index}})"></span></div>
+                <div class="modal_Contendort"><span class="cerrar_modal_t" onclick="posicion6({{@index}})"></span>
+                </div>
                 <div class="modal_Cuerpot">
                     <div class="editar" onclick="posicion2({{@index}})">
                         <a>Editar</a>
                     </div>
-                    <div class="eliminar" >
+                    <div class="eliminar" onclick="eliminar({{@index}})">
                         <a>Elminar</a>
                     </div>
                 </div>
+
+    </form>
             </section>
         </section>
-    <!--modal eliminar-->
-    <section class="modal_container_e">
-        <section class="modal_e ">
-            <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
-            <div>
-                <button class="no">No Eliminar</button>
-                <button class="si" onclick="posicionE({{@index}})">Eliimar</button>
-            </div>
-            <form id="subido" action="/buscando" method="POST">
-            </form>
+        <!--modal eliminar-->
+        <section class="modal_container_e">
+            <section class="modal_e ">
+                <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
+                <div>
+                    <button class="no" onclick="eliminarS({{@index}})">No Eliminar</button>
+                    <button class="si" onclick="posicionE({{@index}})">Eliminar</button>
+                </div>
+                <form id="subido" action="/buscando" method="POST">
+                </form>
+            </section>
         </section>
-    </section>
+
         <!--Formulario para dirigirse a editar-->
-        <form style="display:none;" action="/editarAcarreo" method="POST" class="perfilS">
+        <form style="display:none;" action="/visualizarAcarreos" method="POST">
             <input name="id_p" id="id3" type="text" value="">
-            {{!-- <input type="submit" value="" class="perfilS"> --}}
+            <input type="submit" value="" id="perfilS">
         </form>
         <!--Formulario para dirigirse a eliminar-->
-        <form style="display:none;" action="/eliminarAcarreo" method="POST" class="perfilE">
+        <form style="display:none;" action="/eliminarA" method="POST">
             <input name="id_p" id="id4" type="text" value="">
-            {{!-- <input type="submit" value="" class="perfilS"> --}}
+            <input type="submit" value="" id="perfilE">
         </form>
-    </form>
     {{/each}}
     <script src="./usuarios/publicaciones/JS/index2.js"></script>
 

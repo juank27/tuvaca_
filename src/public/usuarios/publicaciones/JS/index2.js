@@ -3,6 +3,8 @@ function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
     per.style.boxShadow="0px 4px 4px 0px #A96224"
 }
+/****tres puntos */
+/**abrir */
 function posicion5(valor) {
     let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[valor];
     let modalSesion2b = document.querySelectorAll(".modal_container_t")[valor];
@@ -10,6 +12,7 @@ function posicion5(valor) {
     modalSesion2b.style.opacity = "1";
     modalSesion2b.style.visibility = "visible";
 }
+/**cerrar */
 function posicion6(valor) {
     let cerrarSesiona = document.querySelectorAll(".cerrar_modal_t")[valor];
     let modalSesion2b = document.querySelectorAll(".modal_container_t")[valor];
@@ -19,32 +22,27 @@ function posicion6(valor) {
         modalSesion2b.style.visibility = "hidden";
     }, 200)
 }
-/************modal elimar******/
-let abrirEliminar = document.querySelectorAll(".eliminar")[0];
-let modalElimar = document.querySelectorAll(".modal_container_e")[0];
-let elimar = document.querySelectorAll(".si")[0];
-let no= document.querySelectorAll(".no")[0];
-let subir= document.getElementById("subido");
-
-
-abrirEliminar.addEventListener("click", function () {
+/****opcion editar */
+function posicion2(valor) {
+    let perfils = document.getElementById("perfilS");
+    id = document.querySelectorAll(".id")[valor].value;
+    console.log(id);
+    id3.value = id;
+    perfils.click();
+}
+/******opcion eliminar */
+function eliminar(valor) {
+    let modalElimar = document.querySelectorAll(".modal_container_e")[valor];
     modalElimar.style.opacity = "1";
     modalElimar.style.visibility = "visible";
-})
-
-no.addEventListener("click", function () {
-    console.log("no");
-    window.location="/misacarreos"
-})
-let perfils = document.querySelectorAll(".perfilS")[0];
-function posicion2(valor) {
-    id = document.querySelectorAll(".id")[valor].value;
-    id3.value = id;
-    perfils.submit();
 }
-let perfile = document.querySelectorAll(".perfilE")[0];
 function posicionE(valor) {
+    let perfile = document.getElementById("perfilE");
     id = document.querySelectorAll(".id")[valor].value;
+    console.log("aqui");
     id4.value = id;
-    perfile.submit();
+    perfile.click();
+}
+function eliminarS(valor) {
+    window.location="/misacarreos"
 }

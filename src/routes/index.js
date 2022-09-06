@@ -336,7 +336,11 @@ router.get('/acarreos', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'acarreos', 'index', publicacion, globalThis.photo, () => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						verificarEstado(res, 'acarreos', 'index', publicacion, info, () => {
 							//...
 						});
 					}, 500);
@@ -442,6 +446,7 @@ router.post('/perfilA', async (req, res) => {
 							let unir_publicaciones = unir(result, data);
 							console.log(unir_publicaciones);
 							data[0]['photoprincipal'] = globalThis.photo;
+							data[0]['name_us'] = globalThis.name;
 							verificarEstado(res, 'perfilAcarreos', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
