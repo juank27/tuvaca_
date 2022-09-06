@@ -60,8 +60,11 @@ router.get('/', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					
-					verificarEstado(res, 'publicaciones', 'index', publicacion, data = '',() => {
+					let info = {
+						name : globalThis.name,
+						photo : globalThis.photo,
+					}
+					verificarEstado(res, 'publicaciones', 'index', publicacion, info,() => {
 						//...
 					});
 				})
@@ -565,6 +568,32 @@ router.post('/update_data_personal', async (req, res) => {
 		.catch((error) => {
 			console.log(error);
 		});
+});
+
+//eliminar publicacion
+router.post('/eliminarPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("publications").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/perfil');
+});
+
+//elimiinar acarreo
+router.post('/eliminarA', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("acarreos").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/misacarreos');
 });
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio

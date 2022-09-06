@@ -39,7 +39,7 @@ function eliminar(valor) {
 function posicionE(valor) {
     let perfile = document.getElementById("perfilE");
     id = document.querySelectorAll(".id")[valor].value;
-    console.log("aqui");
+    let id4 = document.getElementById("id4");
     id4.value = id;
     perfile.click();
 }

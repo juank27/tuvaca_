@@ -66,7 +66,9 @@ function eliminar(valor) {
 function posicionE(valor) {
     let perfile = document.getElementById("perfilE");
     id = document.querySelectorAll(".id")[valor].value;
+    let id4 = document.getElementById("id4");
     id4.value = id;
+    console.log(id);
     perfile.click();
 }
 function eliminarS(valor) {
@@ -83,7 +85,7 @@ function posicion2(valor) {
 /***opcion estado */
 function estado(valor) {
     let modalEstado2b = document.querySelectorAll(".modal_container_s")[valor];
-let modalEstado22b = document.querySelectorAll(".modal_s")[va];
+let modalEstado22b = document.querySelectorAll(".modal_s")[valor];
     modalEstado2b.style.opacity = "1";
     modalEstado2b.style.visibility = "visible";
     modalEstado22b.classList.toggle("modal_cerrado_s");
