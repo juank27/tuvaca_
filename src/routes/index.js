@@ -14,8 +14,10 @@ const { createUserWithEmailAndPassword,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
 const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
+const envioImg = require('../functions');
 
 const router = Router();
+var imagen = new envioImg();
 let a ;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
@@ -562,6 +564,24 @@ router.post('/update_data_personal', async (req, res) => {
 	}
 	console.log(data);
 	update_data("users", globalThis.idUser, data)
+		.then((result) => {
+			res.redirect('/perfil');
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+});
+
+//actualizar estado de publicacion
+router.post('/estadoPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	let data = imagen.getDate();
+	data = {
+		updatedAt : data,
+	}
+	console.log(data);
+	console.log(id_p);
+	update_data("publications", id_p, data)
 		.then((result) => {
 			res.redirect('/perfil');
 		})

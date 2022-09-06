@@ -95,6 +95,7 @@ let modalEstado22b = document.querySelectorAll(".modal_s")[valor];
 function posicionEs(valor) {
     let perfiles = document.getElementById("perfilEs");
     id = document.querySelectorAll(".id")[valor].value;
+    let id5 = document.getElementById("id5");
     id5.value = id;
     perfiles.click();
 }
