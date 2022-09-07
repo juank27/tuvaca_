@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const multer = require('multer')
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
 const { createUserWithEmailAndPassword,
@@ -18,6 +19,8 @@ const envioImg = require('../functions');
 
 const router = Router();
 var imagen = new envioImg();
+const storageLocal = multer.memoryStorage();
+const upload = multer({ storage: storageLocal });
 let a ;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
@@ -588,6 +591,13 @@ router.post('/estadoPublicacion', async (req, res) => {
 		.catch((error) => {
 			console.log(error);
 		});
+});
+
+//actualizar imagen de perfil
+router.post('/actualizar_img', upload.single('perfil'),  async (req, res) => {
+	let img = req.file;
+	imagen.sendImagesPerfil(img, globalThis.idUser, update_data);
+	res.redirect('/perfil');
 });
 
 //eliminar publicacion
