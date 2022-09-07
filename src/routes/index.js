@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const multer = require('multer')
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
 const { createUserWithEmailAndPassword,
@@ -14,8 +15,12 @@ const { createUserWithEmailAndPassword,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
 const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
+const envioImg = require('../functions');
 
 const router = Router();
+var imagen = new envioImg();
+const storageLocal = multer.memoryStorage();
+const upload = multer({ storage: storageLocal });
 let a ;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
@@ -24,6 +29,7 @@ let modal = true;
 var _idUser = ''; //id del usuario
 globalThis.idUser = _idUser;
 globalThis.photo = '';
+globalThis.name = '';
 //verificando estados de la sesion con las rutas
 function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 	//console.log(mensaje);
@@ -59,7 +65,11 @@ router.get('/', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					verificarEstado(res, 'publicaciones', 'index', publicacion, data = '',() => {
+					let info = {
+						name : globalThis.name,
+						photo : globalThis.photo,
+					}
+					verificarEstado(res, 'publicaciones', 'index', publicacion, info,() => {
 						//...
 					});
 				})
@@ -246,6 +256,8 @@ router.post('/login-google', async (req, res) => {
 		verific.forEach((doc) => {
 			console.log("Lllllllllllllllllll");
 			globalThis.photo = doc._fieldsProto.photo.stringValue;
+			console.log(doc);
+			globalThis.name = doc._fieldsProto.name.stringValue;
 			globalThis.idUser = doc.id;
 		});
 		setPersistence(auth, browserSessionPersistence)
@@ -332,7 +344,11 @@ router.get('/acarreos', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-						verificarEstado(res, 'acarreos', 'index', publicacion, globalThis.photo, () => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						verificarEstado(res, 'acarreos', 'index', publicacion, info, () => {
 							//...
 						});
 					}, 500);
@@ -389,8 +405,10 @@ router.post('/perfilU', async (req, res) => {
 							let unir_publicaciones = unir(result, data);
 							//console.log(unir_publicaciones);
 							data[0]['photoprincipal'] = globalThis.photo;
+							data[0]['name_us'] = globalThis.name;
 							console.log("#####################################");
 							console.log(data);
+
 							verificarEstado(res, 'perfilUsuarios', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
@@ -436,6 +454,7 @@ router.post('/perfilA', async (req, res) => {
 							let unir_publicaciones = unir(result, data);
 							console.log(unir_publicaciones);
 							data[0]['photoprincipal'] = globalThis.photo;
+							data[0]['name_us'] = globalThis.name;
 							verificarEstado(res, 'perfilAcarreos', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
@@ -462,6 +481,8 @@ router.post('/visualizarPublicacion', async (req, res) => {
 					idusuarioverr.push(doc);
 				}
 			})
+			console.log("llllllllllllllllllll");
+			console.log(idusuarioverr[0].edad);
 			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], globalThis.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
@@ -554,6 +575,57 @@ router.post('/update_data_personal', async (req, res) => {
 		});
 });
 
+//actualizar estado de publicacion
+router.post('/estadoPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	let data = imagen.getDate();
+	data = {
+		updatedAt : data,
+	}
+	console.log(data);
+	console.log(id_p);
+	update_data("publications", id_p, data)
+		.then((result) => {
+			res.redirect('/perfil');
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+});
+
+//actualizar imagen de perfil
+router.post('/actualizar_img', upload.single('perfil'),  async (req, res) => {
+	let img = req.file;
+	imagen.sendImagesPerfil(img, globalThis.idUser, update_data);
+	res.redirect('/perfil');
+});
+
+//eliminar publicacion
+router.post('/eliminarPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("publications").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/perfil');
+});
+
+//elimiinar acarreo
+router.post('/eliminarA', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("acarreos").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/misacarreos');
+});
+
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio
 router.get('/publicaciones', async (req, res) => {
 	modal = true;
@@ -564,8 +636,12 @@ router.get('/publicaciones', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					setTimeout(() => {
-
-						verificarEstado(res, 'publicaciones', 'index', publicacion, globalThis.photo, () => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						console.log("el nomnbre es: ", info.name);
+						verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
 							//...
 						});
 					}, 500);
@@ -589,6 +665,7 @@ router.post('/abrir-publicaciones', async (req, res) => {
 						return element.id == id_p;
 					});
 					buscarGlobal = buscar;
+					buscarGlobal['name_User'] = globalThis.name;
 					console.log(buscar);
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
@@ -598,7 +675,12 @@ router.post('/abrir-publicaciones', async (req, res) => {
 router.get('/modalpublicaciones', async (req, res) => {
 	modal = false;
 	console.log(buscarGlobal);
-	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, data = '', () => {
+	let info = {
+		photo: globalThis.photo,
+		name: globalThis.name,
+	}
+	console.log(info);
+	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, info, () => {
 		//...
 	});
 });

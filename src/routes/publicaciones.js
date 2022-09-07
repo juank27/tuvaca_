@@ -30,6 +30,7 @@ router.get('/imga', (req, res) => {
 	res.render('img', {layout: false});
 });
 
+
 //imagen prueba con seleccion de imagenes con multer
 let multpleInput = upload.fields([
 	{ name: 'input0' },

@@ -20,6 +20,15 @@
 <body class="body_modal">
     <section class="modal_p2 ">
         <div class="modal_Cuerpo">
+            <!--ocultos -->
+            <p id="yo"  style="display: none;">{{datos.name}} </p>
+            <input class="phone" type="text" value="{{datos.phone}}" style="display:none;">
+            <input class="categoria" type="text" value="{{datos.categoria}}" style="display:none;">
+            <input class="updateAt" type="text" value="{{datos.updatedAt}}" style="display:none;">
+            <input class="raza" type="text" value="{{datos.raza}}" style="display:none;">
+            <input class="precio" type="text" value="{{datos.precio}}" style="display:none;">
+            <input class="nombre" type="text" value="{{datos.name}}" style="display:none;">
+
             <!--En esta division esta la imagen del bovino a vender-->
             <p class="e">{{datos.input0}}</p>
             <p class="e">{{datos.input1}}</p>
@@ -37,16 +46,16 @@
                     <p>{{datos.updatedAt}}</p>
                     <div>
                         <p>{{datos.phone}}</p>
-                        <div class="chat"></div>
+                        <div onclick="posicion4()" class="chat"></div>
                     </div>
                 </div>
                 <!--En esta división esta:-->
                 <div class="publicacion_linea2b">
                     <div class="publicacion_perfil">
                         <!--foto de perfil del publicador-->
-                        <div   style=" background-image: url({{datos.photo}})"></div>
+                        <div style=" background-image: url({{datos.photo}})"></div>
                         <!--nombre del publicador-->
-                        <p >{{datos.name}}</p>
+                        <p>{{datos.name}}</p>
                         </p>
                     </div>
                     <!--municipio del bovino-->

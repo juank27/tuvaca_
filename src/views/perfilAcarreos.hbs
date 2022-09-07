@@ -18,7 +18,8 @@
 </head>
 
 <body class="body_perfil" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}} >
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}}>
+    <p id="yo" style="display: none;">{{data.name_us}} </p>
     <section class="fijar">
         <section class="datos_usuario">
             <div class="foto">
@@ -37,7 +38,10 @@
         <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
             <input value={{id}} type="text" class="id" style="display:none;">
             <input name="id_p" type="text" id="id2" value="" style="display:none;">
-
+            <!--ocultos -->
+            <input class="phone" type="text" value="{{phone}}" style="display:none;">
+            <input class="categoria" type="text" value="{{tipoveh}}" style="display:none;">
+            <input class="nombre" type="text" value="{{name}}" style="display:none;">
             <!--En esta division esta la imagen del bovino a vender-->
             <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
                 <img src={{url}} alt="">
@@ -47,7 +51,7 @@
                 <p>{{updatedAt}}</p>
                 <div>
                     <p>{{phone}}</p>
-                    <div class="chat"></div>
+                    <div class="chat" onclick="posicionA({{@index}})"></div>
                 </div>
             </div>
             <!--En esta división esta:-->
@@ -116,6 +120,7 @@
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="./usuarios/perfil/JS/index.js"></script>
     <script>
+
         let foto_perfil = document.getElementById("foto_perfil");
         function cargar() {
             per.style.backgroundImage = (`url(${foto_perfil.value})`);

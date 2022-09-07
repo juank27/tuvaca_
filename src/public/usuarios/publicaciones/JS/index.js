@@ -54,3 +54,17 @@ cerrarSesion.addEventListener("click", function () {
     }, 500)
 })
 
+/***recuperando datos para el chat *****/
+
+function posicion4(valor) {
+    let _name = document.querySelectorAll(".nombre")[valor].value;
+    let phone = document.querySelectorAll(".phone")[valor].value;
+    let updateAt = document.querySelectorAll(".updateAt")[valor].value;
+    let raza = document.querySelectorAll(".raza")[valor].value;
+    let categoria = document.querySelectorAll(".categoria")[valor].value;
+    let precio = document.querySelectorAll(".precio")[valor].value;
+    let yo = document.getElementById("yo");
+
+    let url = "https://api.whatsapp.com/send?phone=57" + phone + "&text=Hola%20" + _name + ",%20yo%20soy%20" + yo.innerHTML + "%20y%20estoy%20interesado%20en%20la%20publicación%20que%20realizo%20el%20" + updateAt + ",%20el%20cual%20es%20" + categoria + "%20de%20raza%20" + raza + "%20con%20precio%20" + precio + ",%20me%20gustaría%20tener%20más%20información,%20muchas%20gracias.";
+    window.open(url);
+}
