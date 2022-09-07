@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const multer = require('multer')
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
 const { createUserWithEmailAndPassword,
@@ -14,8 +15,12 @@ const { createUserWithEmailAndPassword,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
 const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
+const envioImg = require('../functions');
 
 const router = Router();
+var imagen = new envioImg();
+const storageLocal = multer.memoryStorage();
+const upload = multer({ storage: storageLocal });
 let a ;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
@@ -60,8 +65,11 @@ router.get('/', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					
-					verificarEstado(res, 'publicaciones', 'index', publicacion, data = '',() => {
+					let info = {
+						name : globalThis.name,
+						photo : globalThis.photo,
+					}
+					verificarEstado(res, 'publicaciones', 'index', publicacion, info,() => {
 						//...
 					});
 				})
@@ -565,6 +573,57 @@ router.post('/update_data_personal', async (req, res) => {
 		.catch((error) => {
 			console.log(error);
 		});
+});
+
+//actualizar estado de publicacion
+router.post('/estadoPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	let data = imagen.getDate();
+	data = {
+		updatedAt : data,
+	}
+	console.log(data);
+	console.log(id_p);
+	update_data("publications", id_p, data)
+		.then((result) => {
+			res.redirect('/perfil');
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+});
+
+//actualizar imagen de perfil
+router.post('/actualizar_img', upload.single('perfil'),  async (req, res) => {
+	let img = req.file;
+	imagen.sendImagesPerfil(img, globalThis.idUser, update_data);
+	res.redirect('/perfil');
+});
+
+//eliminar publicacion
+router.post('/eliminarPublicacion', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("publications").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/perfil');
+});
+
+//elimiinar acarreo
+router.post('/eliminarA', async (req, res) => {
+	let { id_p } = req.body;
+	console.log(id_p);
+	db.collection("acarreos").doc(id_p).delete().then(() => {
+		console.log("Document successfully deleted!");
+	}).catch((error) => {
+		console.error("Error removing document: ", error);
+	});
+	//await deleteDoc(doc(db, "publications", id_p));
+	res.redirect('/misacarreos');
 });
 
 //unir publicacion con usuario y mostrarlas publicaciones pgina de inicio

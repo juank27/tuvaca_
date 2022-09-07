@@ -23,7 +23,7 @@
         <section class="datos_usuario">
             <div class="foto">
                 <div class="foto_perfil" style="background-image: url({{data.photo}})"></div>
-                <form action="">
+                <form action="/actualizar_img" method="POST" enctype="multipart/form-data">
                     <div class="foto_selector"></div>
                     <input class="perfil" type="file" name="perfil" accept="image/png, .jpeg, .jpg">
                     <input type="submit" class="subir" value="Guardar Cambios">
