@@ -731,7 +731,7 @@ async function publicaciones(dataBase) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.get();
+	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
@@ -755,7 +755,7 @@ async function publicaciones_propias(dataBase, idUser) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.get();
+	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
