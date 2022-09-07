@@ -7,12 +7,13 @@ let otro_R = document.getElementById("otro_R");
 let otro_T = document.getElementById("otro_T");
 let semanas = document.getElementById("semanas");
 let nprenada = document.getElementById("nprenada");
+let ubication = document.getElementById("ubication");
 let edad_es = document.getElementById("edad_es");
+let descripcion = document.getElementById("descripcion");
+let edad = document.getElementById("edad");
+let producto = document.getElementById("producto");
+let precio = document.getElementById("precio");
 let foto_perfil = document.getElementById("foto_perfil");
-function cargar(){
-    per.style.backgroundImage=(`url(${foto_perfil.value})`);
-    crear.style.backgroundImage="url(./usuarios/menu/icons/Sum2.png)";
-}
 
 categoria.addEventListener("click", function () {
     if (categoria.value === "Vaca" || categoria.value === "Novilla") {
@@ -30,11 +31,17 @@ categoria.addEventListener("click", function () {
         semanas.required = false;
         nprenada.required = false;
     }
-    if(categoria.value === "Toro"||categoria.value === "Vaca"){
-        edad_es.disabled = true;
-        edad_es.value="años"
-    }else{
-        edad_es.disabled=false;
+    if (categoria.value === "Toro" || categoria.value === "Vaca") {
+        anos.style.display = "flex";
+        anos.value = "años"
+        edad_es.required = false;
+        anos.disabled = true;
+        edad_es.style.display = "none";
+        edad_es.value = "años"
+    } else {
+        edad_es.style.display = "flex";
+        anos.style.display = "none";
+        edad_es.required = true;
     }
 })
 prenada.addEventListener("click", function () {
@@ -64,7 +71,7 @@ raza.addEventListener("click", function () {
         otro_R.style.display = "flex";
         otro_R.required = true;
         raza.required = false;
-    }else{
+    } else {
         otro_R.style.display = "none";
         otro_R.required = false;
         raza.required = true;
@@ -75,7 +82,7 @@ toro.addEventListener("click", function () {
         otro_T.style.display = "flex";
         otro_T.required = true;
         toro.required = false;
-    }else{
+    } else {
         otro_T.style.display = "none";
         otro_T.required = false;
         toro.required = true;
@@ -83,7 +90,7 @@ toro.addEventListener("click", function () {
 })
 /************seleccionar fotos******/
 let principal = document.querySelectorAll(".img_p")[0];
-let subir = document.querySelectorAll(".subir")[0];
+let subir = document.querySelectorAll(".actualizar")[0];
 let foto = document.querySelectorAll(".fotos")[0];
 let requerido = document.querySelectorAll(".requerido")[0];
 let separador = document.querySelectorAll(".separador")[0];
@@ -126,6 +133,129 @@ let ct_5 = document.querySelectorAll(".ct_5")[0];
 let im5 = document.querySelectorAll(".im_5")[0];
 let vd5 = document.querySelectorAll(".vd_5")[0];
 let limite = document.querySelectorAll(".limite")[0];
+
+/*******datos rescatados***** */
+let ubicationr = document.getElementById("ubicationr")
+let categoriar = document.getElementById("categoriar")
+let edadr = document.getElementById("edadr")
+let razar = document.getElementById("razar")
+let productor = document.getElementById("productor")
+let prenadar = document.getElementById("prenadar")
+let tipoprenadar = document.getElementById("tipoprenadar")
+let precior= document.getElementById("precior")
+let toror = document.getElementById("toror")
+let nprenadasr = document.getElementById("nprenadasr")
+let mesesr = document.getElementById("mesesr")
+let multi = document.getElementsByClassName("multi")
+let descripcionr = document.getElementById("descripcionr");
+let input0= document.getElementById("principal");
+let razas = ['Angus', 'Brahman', 'Gyr', 'Holstein', 'Ayrshire', 'Jersey', 'Simental', 'Normando', 'Pardo Suizo', 'Cebu']
+let es = true;
+function cargar() {
+    /**pefil */
+    per.style.backgroundImage = (`url(${foto_perfil.value})`);
+    crear.style.backgroundImage = "url(./usuarios/menu/icons/Sum2.png)";
+
+    /**editar datos */
+    for (var i = 0; i < razas.length; i++) {
+        if (razar.value === razas[i]) {
+            es = false
+        }
+    }
+    if (es) {
+        otro_R.style.display = "flex";
+        otro_R.required = true;
+        otro_R.value = razar.value
+    } else {
+        raza.value = razar.value
+
+    }
+    ubication.value = ubicationr.value;
+    categoria.value = categoriar.value
+    precio.value=precior.value
+    let text=edadr.value
+    let toros=toror.value
+    let dividirE = text.split(" ");
+    let div2= toros.split("Con toro ")
+    if (categoria.value === "Toro" || categoria.value === "Vaca") {
+        anos.style.display = "flex";
+        anos.value = "años"
+        edad_es.required = false;
+        anos.disabled = true;
+        edad_es.style.display = "none";
+        edad_es.value = "años"
+    } else {
+        edad_es.style.display = "flex";
+        anos.style.display = "none";
+        edad_es.value=dividirE[1]
+        edad_es.required = true;
+    }
+    edad.value = dividirE[0]
+    producto.value = productor.value
+    if(descripcionr.value!==""){
+        descripcion.value=descripcionr.value
+    }
+    precio.value = precio.value
+    if (categoriar.value === "Vaca" || categoriar.value === "Novilla") {
+        console.log("aqui");
+        prenada.style.display = "block";
+        prenada.value = prenadar.value
+        if (prenadar.value == "Esta preñada") {
+            console.log("aquie");
+            tipoprenada.style.display = "flex";
+            for (var i = 0; i < razas.length; i++) {
+                if (div2[1] === razas[i]) {
+                    es = false
+                }
+            }
+            if (es) {
+                otro_T.style.display = "flex";
+                otro_T.required = true;
+                otro_T.value = div2[1]
+            } else {
+                toro.value = div2[1]
+            }
+            semanas.style.display = "flex";
+            nprenada.style.display = "flex";
+            tipoprenada.value = tipoprenadar.value;
+            toro.value = toror.value;
+            semanas.value = mesesr.value;
+            nprenada.value = nprenadasr.value;
+        }
+    }
+    modalf.style.display = "flex";
+    separador.style.display = "none";
+    requerido.style.display = "none";
+    IF_1.style.display = "none";
+    foto.style.display = "flex";
+    principal.src=input0.value
+    let num=0
+    if(multi[0].value!==""){
+        console.log(1);
+        f22(multi[0].value)
+    }
+    if (multi[1].value!=="") {
+        console.log(2);
+        f33(multi[1].value)
+    }
+    if (multi[2].value!=="") {
+        console.log(3);
+        f44(multi[2].value)
+    }
+    if (multi[3].value!=="") {
+        console.log(4);
+        f55(multi[3].value)
+    }
+    // console.log(multi.length);
+    // for(var j=0;j<multi.length;j++){
+    //     console.log("for");
+    //     if(multi[j].value!==""){
+    //         console.log("entre");
+    //         num++
+    //         metodo(num,multi[j].value)
+    //     }
+    // }
+}
 
 /*******posicion***** */
 let array1 = [1, 2, 3, 4];
@@ -182,11 +312,17 @@ mas.addEventListener("click", function () {
 IF_2.addEventListener("click", function () {
     f2.click();
 })
-f2.addEventListener("change", function () {
-    var files = this.files;
+function f22(datos){
     array2[0] = 1;
     array1[0] = 0;
-    visualizar(files[0], IF_2, ct_2, im2,vd2);
+    visualizar3(datos, IF_2, ct_2, im2, vd2);
+}
+f2.addEventListener("change", function () {
+    var files = this.files;
+
+    array2[0] = 1;
+    array1[0] = 0;
+    visualizar(files[0], IF_2, ct_2, im2, vd2);
 })
 c_2.addEventListener("click", function () {
     IF_2.style.display = "none";
@@ -200,11 +336,16 @@ c_2.addEventListener("click", function () {
 IF_3.addEventListener("click", function () {
     f3.click();
 })
+function f33(datos){
+    array2[1] = 2;
+    array1[1] = 0;
+    visualizar3(datos, IF_3, ct_3, im3, vd3);
+}
 f3.addEventListener("change", function () {
     var files = this.files;
     array2[1] = 2;
     array1[1] = 0;
-    visualizar(files[0], IF_3, ct_3, im3,vd3);
+    visualizar(files[0], IF_3, ct_3, im3, vd3);
 })
 c_3.addEventListener("click", function () {
     IF_3.style.display = "none";
@@ -218,11 +359,16 @@ c_3.addEventListener("click", function () {
 IF_4.addEventListener("click", function () {
     f4.click();
 })
+function f44(datos){
+    array2[2] = 3;
+    array1[2] = 0;
+    visualizar3(datos, IF_4, ct_4, im4, vd4);
+}
 f4.addEventListener("change", function () {
     var files = this.files;
     array2[2] = 3;
     array1[2] = 0;
-    visualizar(files[0], IF_4, ct_4, im4,vd4);
+    visualizar(files[0], IF_4, ct_4, im4, vd4);
 })
 c_4.addEventListener("click", function () {
     IF_4.style.display = "none";
@@ -236,11 +382,16 @@ c_4.addEventListener("click", function () {
 IF_5.addEventListener("click", function () {
     f5.click();
 })
+function f55(datos){
+    array2[0] = 1;
+    array1[0] = 0;
+    visualizar3(datos, IF_5, ct_5, im5, vd5);
+}
 f5.addEventListener("change", function () {
     var files = this.files;
     array2[3] = 4;
     array1[3] = 0;
-    visualizar(files[0], IF_5, ct_5, im5,vd5);
+    visualizar(files[0], IF_5, ct_5, im5, vd5);
 })
 c_5.addEventListener("click", function () {
     IF_5.style.display = "none";
@@ -253,21 +404,21 @@ c_5.addEventListener("click", function () {
 
 
 /*******funciones*******/
-function visualizar(file, input, foto, imagen,video) {
+function visualizar(file, input, foto, imagen, video) {
     var imgCodified = URL.createObjectURL(file);
 
     if (file.type === "video/mp4") {
-        video.style.display="flex";
-        video.src=imgCodified;
+        video.style.display = "flex";
+        video.src = imgCodified;
         foto.style.display = "flex";
         input.style.display = "none";
-        imagen.style.display="none";
+        imagen.style.display = "none";
     } else {
-        imagen.style.display="flex";
-        imagen.src=imgCodified;
+        imagen.style.display = "flex";
+        imagen.src = imgCodified;
         foto.style.display = "flex";
         input.style.display = "none";
-        video.style.display="none";
+        video.style.display = "none";
     }
 }
 function visualizar2(file, imagen2) {
@@ -279,12 +430,35 @@ function visualizar2(file, imagen2) {
     principal.src = imgCodified;
 
 }
+function url_tipo(url) {
+    let div = url.split("?");
+    let div2 = div[0].split(".");
+    let tipo = div2[div2.length - 1];
+    return tipo;
+}
+function visualizar3(datos, input, foto, imagen, video) {
+    let tipo=url_tipo(datos)
+    if (tipo === "mp4") {
+        video.style.display = "flex";
+        video.src = datos;
+        foto.style.display = "flex";
+        input.style.display = "none";
+        imagen.style.display = "none";
+    } else {
+        imagen.style.display = "flex";
+        imagen.src = datos;
+        foto.style.display = "flex";
+        input.style.display = "none";
+        video.style.display = "none";
+    }
+}
 foto.addEventListener("click", function () {
     foto.style.display = "none";
     separador.style.display = "flex";
     requerido.style.display = "flex";
     IF_1.style.display = "flex";
     principal.src = "./usuarios/menu/icons/camera.png";
+    f1.required=true
 
 })
 subir.addEventListener("click", function () {
@@ -293,5 +467,51 @@ subir.addEventListener("click", function () {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";
         IF_1.style.border = "5px dashed red";
+    }
+    if(ubication.value!== ubicationr.value && ubication.value!==""){
+        ubicationr.value=ubication.value
+    }
+    if(categoria.value!== categoriar.value && categoria.value!==""){
+        categoriar.value=categoria.value
+        if(categoria.value === "Vaca" || categoria.value === "Novilla"){
+            if(prenada.value!== prenadar.value && prenada.value!==""){
+                prenadar.value=prenada.value
+                if(prenada.value === "Esta preñada"){
+                    if(tipoprenada.value!== tipoprenadar.value && tipoprenada.value!==""){
+                        tipoprenadar.value=tipoprenada.value
+                    }
+                    if(toro.value!== toror.value && toro.value!==""){
+                        toror.value=toro.value
+                    }
+                    if(semanas.value!== mesesr.value && semanas.value!==""){
+                        mesesr.value=semanas.value
+                    }
+                    if(nprenada.value!== nprenadasr.value && nprenada.value!==""){
+                        nprenadasr.value=nprenada.value
+                    }
+                }
+            }
+        }else{
+            prenadar.value="";
+            tipoprenadar.value=""
+            toro.value=""
+            mesesr.value=""
+            nprenadasr.value=""
+        }
+    }
+    if(edad.value!== edadr.value && edad.value!==""){
+        edadr.value=edad.value
+    }
+    if(raza.value!== razar.value && raza.value!==""){
+        razar.value=raza.value
+    }
+    if(producto.value!== productor.value && producto.value!==""){
+        productor.value=producto.value
+    }
+    if(precio.value!== precior.value && precio.value!==""){
+        precior.value=precio.value
+    }
+    if(descripcion.value!== descripcionr.value && descripcion.value!==""){
+        descripcionr.value=descripcion.value
     }
 })

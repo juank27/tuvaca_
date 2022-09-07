@@ -8,6 +8,7 @@ let otro_T = document.getElementById("otro_T");
 let semanas = document.getElementById("semanas");
 let nprenada = document.getElementById("nprenada");
 let edad_es = document.getElementById("edad_es");
+let anos= document.getElementById("anos");
 let foto_perfil = document.getElementById("foto_perfil");
 function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
@@ -31,10 +32,16 @@ categoria.addEventListener("click", function () {
         nprenada.required = false;
     }
     if(categoria.value === "Toro"||categoria.value === "Vaca"){
-        edad_es.disabled = true;
+        anos.style.display = "flex";
+        anos.value="años"
+        edad_es.required=false;
+        anos.disabled=true;
+        edad_es.style.display = "none";
         edad_es.value="años"
     }else{
-        edad_es.disabled=false;
+        edad_es.style.display = "flex";
+        anos.style.display = "none";
+        edad_es.required=true;
     }
 })
 prenada.addEventListener("click", function () {
