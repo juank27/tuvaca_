@@ -58,6 +58,7 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		nprenadas,
 		descripcion,
 		edad_es,
+		anos,
 		otro_R,
 		otro_T
 	} = req.body;
@@ -72,6 +73,9 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 	}
 	if(data['toro'] === 'Otra'){
 		data.raza=otro_T;
+	}
+	if(data['edad_es'==='']){
+		data.edad_es=anos;
 	}
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {

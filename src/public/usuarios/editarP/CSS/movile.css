@@ -114,7 +114,7 @@ input:focus, select:focus, textarea:focus {
     border-left:none ;
     border-right:none ;
 }
-input[type=submit]{
+.actualizar{
     margin-bottom: 5%;
     margin-top: 5%;
     width: 50%;
@@ -128,7 +128,7 @@ input[type=submit]{
     font-size: 1.3rem;
     font-weight: bold;
 }
-input[type=submit]:hover{
+.actualizar:hover{
     color: var(--verde);
     background-color: var(--gris_claro);
 }

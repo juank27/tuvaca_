@@ -19,36 +19,17 @@
 
 <body class="body_crearP" onload="cargar()">
     <input type="text" id="foto_perfil" style="display: none;" value={{data}}>
-    <form action="/new_publication" method="POST" enctype="multipart/form-data">
+    <form action="/" method="POST" enctype="multipart/form-data">
         <div class="imagen">
             <div class="fotos"></div>
             <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
         </div>
-        <!--Datos ocultos-->
-        <div style="display: none;">
-        <input type="text" value="{{datos.ubication}}" id="ubicationr">
-        <input type="text" value="{{datos.categoria}}" id="categoriar">
-        <input type="text" value="{{datos.edad}}" id="edadr">
-        <input type="text" value="{{datos.raza}}" id="razar">
-        <input type="text" value="{{datos.producto}}" id="productor">
-        <input type="text" value="{{datos.prenada}}" id="prenadan">
-        <input type="text" value="{{datos.precio}}" id="precior">
-        <input type="text" value="{{datos.tipoprenada}}" id="tipoprenadar">
-        <input type="text" value="{{datos.toro}}" id="toror">
-        <input type="text" value="{{datos.nprenadas}}" id="nprenadasr">
-        <input type="text" value="{{datos.meses}}" id="mesesr">
-        <input type="text" value="{{datos.input0}}" id="principal">
-        <input type="text" value="{{datos.input1}}" class="multi">
-        <input type="text" value="{{datos.input2}}" class="multi">
-        <input type="text" value="{{datos.input3}}" class="multi">
-        <input type="text" value="{{datos.input4}}" class="multi">
 
-        </div>
         <section class="modal_f ">
             <div class="modal_Cuerpof">
                 <!--Inpur file 1-->
                 <div class="insert_Foto IF_1"></div>
-                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg" required>
+                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg" >
                 <p class="requerido">Requerida: <br> Esta primer imagen sera la portada de la publicacion</p>
                 <div class="separador"></div>
                 <!--Inpur file 2-->
@@ -95,7 +76,27 @@
             <p class="limite">Clic aqui para agregar archivos multimedia</p>
             <div class="mas"></div>
         </section>
-        <select name="ubication" id="ubication"  required>
+                <!--Datos ocultos-->
+        <div style="display: none;">
+            <input type="text" name="ubication" value="{{datos.ubication}}" id="ubicationr">
+            <input type="text" name="descripcion" value="{{datos.descripcion}}" id="descripcionr">
+            <input type="text" name="categoria" value="{{datos.categoria}}" id="categoriar">
+            <input type="text" name="edad" value="{{datos.edad}}" id="edadr">
+            <input type="text" name="raza" value="{{datos.raza}}" id="razar">
+            <input type="text" name="producto" value="{{datos.producto}}" id="productor">
+            <input type="text" name="prenada" value="{{datos.prenada}}" id="prenadar">
+            <input type="text" name="precio" value="{{datos.precio}}" id="precior">
+            <input type="text" name="tipoprenada" value="{{datos.tipoprenada}}" id="tipoprenadar">
+            <input type="text" name="toro" value="{{datos.toro}}" id="toror">
+            <input type="text" name="nprenadas" value="{{datos.nprenadas}}" id="nprenadasr">
+            <input type="text" name="meses" value="{{datos.meses}}" id="mesesr">
+            <input type="text" value="{{datos.input0}}" id="principal">
+            <input type="text" value="{{datos.input1}}" class="multi">
+            <input type="text" value="{{datos.input2}}" class="multi">
+            <input type="text" value="{{datos.input3}}" class="multi">
+            <input type="text" value="{{datos.input4}}" class="multi">
+        </div>
+        <select  id="ubication" required>
             <option value="">Ubicación del Bovino</option>
             <option value="Ubaté">Ubaté</option>
             <option value="Carmen de Carupa">Carmen de Carupa</option>
@@ -107,7 +108,7 @@
             <option value="Simijaca">Simijaca</option>
             <option value="Susa">Susa</option>
         </select>
-        <select name="categoria" id="categoria" required>
+        <select  id="categoria" required>
             <option value="">Categoria</option>
             <option value="Ternera">Ternera</option>
             <option value="Ternero">Ternero</option>
@@ -116,13 +117,15 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="text" name="edad"  id="edad" placeholder="Edad del Bovino" required>
+        <input type="text"  id="edad" placeholder="Edad del Bovino" required>
         {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
         <select name="edad_es" id="edad_es" required>
             <option value="">Indique meses o años</option>
             <option value="meses">meses</option>
             <option value="años">años</option>
         </select>
+        <input type="text" id="anos" name="anos" value="" style="display:none ;">
+
         <select name="raza" id="raza" required>
             <option value="">Raza</option>
             <option value="Angus">Angus</option>
@@ -165,7 +168,7 @@
             <option value="Inseminacion">Inseminación</option>
             <option value="Natural">Natural</option>
         </select>
-        <select name="toro" id="toro" required>
+        <select name="toro" id="toro" >
             <option value="">Toro</option>
             <option value="Angus">Angus</option>
             <option value="Brahman">Brahman</option>
@@ -204,9 +207,8 @@
             <option value="8">8</option>
         </select>
 
-        <textarea name="descripcion" id="descripcion" placeholder="Descripción Adicional"></textarea>
-
-        <input type="submit" value="Subir Publicación" class="subir">
+        <textarea  id="descripcion" placeholder="Descripción Adicional"></textarea>
+        <input type="submit" value="Subir Publicación" class="actualizar">
     </form>
     <section class="modal_container_f ">
         <section class="modal_f modal_cerrado_f">
