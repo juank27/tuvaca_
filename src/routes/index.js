@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const multer = require('multer')
+const multer = require('multer');
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
 const { createUserWithEmailAndPassword,
@@ -14,14 +14,14 @@ const { createUserWithEmailAndPassword,
 	GoogleAuthProvider,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
-const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
+const { doc, deleteDoc, updateDoc, setDoc } = require('firebase/firestore'); //crud
 const envioImg = require('../functions');
 
 const router = Router();
 var imagen = new envioImg();
 const storageLocal = multer.memoryStorage();
 const upload = multer({ storage: storageLocal });
-let a ;
+let a;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
 let estado = false; //estado de la sesion
@@ -31,7 +31,7 @@ globalThis.idUser = _idUser;
 globalThis.photo = '';
 globalThis.name = '';
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
+function verificarEstado(res, ruta, ruta2, datos = '', data = '', callback) {
 	//console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
@@ -40,7 +40,7 @@ function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 		if (modal) {
 			console.log("$$$$$$$$$$$$$$$$$$");
 			console.log(data);
-			res.render(ruta, {datos, data});
+			res.render(ruta, { datos, data });
 		} else {
 			res.render(ruta, { layout: false, datos });
 			modal = true;
@@ -66,10 +66,10 @@ router.get('/', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					let info = {
-						name : globalThis.name,
-						photo : globalThis.photo,
+						name: globalThis.name,
+						photo: globalThis.photo,
 					}
-					verificarEstado(res, 'publicaciones', 'index', publicacion, info,() => {
+					verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
 						//...
 					});
 				})
@@ -475,7 +475,7 @@ router.post('/visualizarPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	publicaciones('publications')
 		.then((publicaciones) => {
-			let idusuarioverr=[];
+			let idusuarioverr = [];
 			publicaciones.forEach((doc) => {
 				if (doc.id === id_p) {
 					idusuarioverr.push(doc);
@@ -559,7 +559,7 @@ router.get('/perfil', async (req, res) => {
 
 //actualizar perfil
 router.post('/update_data_personal', async (req, res) => {
-	let { name, phone, ubication} = req.body;
+	let { name, phone, ubication } = req.body;
 	data = {
 		name,
 		phone,
@@ -580,7 +580,7 @@ router.post('/estadoPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	let data = imagen.getDate();
 	data = {
-		updatedAt : data,
+		updatedAt: data,
 	}
 	console.log(data);
 	console.log(id_p);
@@ -594,7 +594,7 @@ router.post('/estadoPublicacion', async (req, res) => {
 });
 
 //actualizar imagen de perfil
-router.post('/actualizar_img', upload.single('perfil'),  async (req, res) => {
+router.post('/actualizar_img', upload.single('perfil'), async (req, res) => {
 	let img = req.file;
 	imagen.sendImagesPerfil(img, globalThis.idUser, update_data);
 	res.redirect('/perfil');
@@ -685,6 +685,35 @@ router.get('/modalpublicaciones', async (req, res) => {
 	});
 });
 
+//Busqueda bovinos
+router.post('/busquedaBovina', async (req, res) => {
+	let { razas, categorias, edad_, ubication, precios } = req.body;
+});
+
+//busquda de usuarios
+router.post('/buscando', async (req, res) => {
+	let { usuario } = req.body;
+	usuario = usuario.toLowerCase();
+	Users()
+		.then((users) => {
+			let busqueda = filtrar(users, usuario);
+			res.send(busqueda);
+		})
+		.catch((error) => {
+			console.log("No hay Usuarios", error);
+		});
+});
+//filtrar las busquedas
+function filtrar(info, busqueda) {
+	let encontro = [];
+	info.forEach((dataUser) => {
+		if (((dataUser.name).toLowerCase()).includes(busqueda)) {
+			encontro.push(dataUser);
+		}
+	})
+	return encontro;
+}
+
 //funcion para verificar el email
 async function verficEmail(res, email, callback) {
 	let users = db.collection('users');
@@ -731,7 +760,7 @@ async function publicaciones(dataBase) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.get();
+	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
@@ -755,7 +784,7 @@ async function publicaciones_propias(dataBase, idUser) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.get();
+	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
