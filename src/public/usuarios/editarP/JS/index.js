@@ -330,6 +330,7 @@ c_2.addEventListener("click", function () {
     array2[0] = 0;
     array1[0] = 1;
     limite.innerHTML = "";
+    multi[0].value=""
 })
 
 /****input 3******/
@@ -353,6 +354,7 @@ c_3.addEventListener("click", function () {
     array2[1] = 0;
     array1[1] = 2;
     limite.innerHTML = "";
+    multi[1].value="";
 })
 
 /****input 4******/
@@ -376,6 +378,7 @@ c_4.addEventListener("click", function () {
     array2[2] = 0;
     array1[2] = 3;
     limite.innerHTML = "";
+    multi[2].value="";
 })
 
 /****input 5******/
@@ -399,6 +402,7 @@ c_5.addEventListener("click", function () {
     array2[3] = 0;
     array1[3] = 4;
     limite.innerHTML = "";
+    multi[4].value="";
 
 })
 

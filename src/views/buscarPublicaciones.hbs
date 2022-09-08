@@ -95,6 +95,63 @@
             <input type="submit" class="submit">
         </form>
     </section>
+
+    <!--publicaciones-->
+    {{#each datos}}
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+        <input value={{id}} type="text" class="id" style="display:none;">
+        <input name="id_p" type="text" id="id2" value="" style="display:none;">
+        <!--ocultos -->
+        <input class="phone" type="text" value="{{phone}}" style="display:none;">
+        <input class="categoria" type="text" value="{{categoria}}" style="display:none;">
+        <input class="updateAt" type="text" value="{{updatedAt}}" style="display:none;">
+        <input class="raza" type="text" value="{{raza}}" style="display:none;">
+        <input class="precio" type="text" value="{{precio}}" style="display:none;">
+        <input class="nombre" type="text" value="{{name}}" style="display:none;">
+
+        <!--En  esta division esta la imagen del bovino a vender-->
+        <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
+            <img src={{input0}} alt="">
+        </div>
+        <!--En esta división esta la fecha, los me gusta y el chat-->
+        <div class="publicacion_linea1">
+            <p id="updateAt" >{{updatedAt}}</p>
+            <div>
+                <div onclick="posicion4({{@index}})" class="chat"></div>
+            </div>
+        </div>
+        <!--En esta división esta:-->
+        <div class="publicacion_linea2">
+            <div class="publicacion_perfil">
+                <!--foto de perfil del publicador-->
+                <div id="foto" onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
+                <!--nombre del publicador-->
+                <p  id="nombre"  onclick="posicion2({{@index}})">{{name}}</p>
+            </div>
+            <!--ubicación del bovino-->
+            <p>{{ubication}}</p>
+
+        </div>
+        </div>
+        <div class="publicacion_linea3">
+            <!--precio del bovino-->
+            <p  id="precio" >{{precio}}</p>
+            <!--tipo de bovino-->
+            <p  id="raza" >{{raza}}</p>
+        </div>
+    </form>
+        <!--Formulario para dirigirse al perfil-->
+    <form style="display:none;" action="/perfilU" method="POST" class="perfilS">
+        <input name="id_p"  id="id3" type="text"  value="">
+        {{!-- <input  type="submit" value="" class="perfilS"> --}}
+    </form>
+    {{/each}}
+    <section class="modal_container_p ">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"
     integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
