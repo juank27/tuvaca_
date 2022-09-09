@@ -95,7 +95,9 @@
             <input type="submit" class="submit">
         </form>
     </section>
-
+    {{#each b}}
+    <p>{{name}}</p>
+    {{/each}}
     <!--publicaciones-->
     {{#each datos}}
     <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
