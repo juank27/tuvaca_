@@ -698,8 +698,8 @@ router.get('/modalpublicaciones', async (req, res) => {
 router.post('/busquedaBovina', async (req, res) => {
 	let { razas, categorias, edad_, ubication, precios } = req.body;
 	buscador = {
-		raza: 'Holstein',
-		categoria: 'Vaca',
+		raza: razas,
+		categoria: categorias,
 		edad: edad_,
 		ubicacion: ubication,
 		precio: precios,
@@ -877,13 +877,23 @@ async function publicaciones(dataBase) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
+	let querySnapshot = await publications.get();
+
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
 		id: doc.id,
 		...doc.data(),
 	}));
+	userRegister.sort(function (x, y) {
+		a = x.updatedAt;
+		a = a.split('/');
+		a = a[2] + a[1] + a[0];
+		let b = y.updatedAt;
+		b = b.split('/');
+		b = b[2] + b[1] + b[0];
+		return b - a;
+	});
 	console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
 	if (userRegister.length > 0) {
@@ -910,6 +920,15 @@ async function publicaciones_propias(dataBase, idUser) {
 	}));
 	//console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
+	userRegister.sort(function (x, y) {
+		a = x.updatedAt;
+		a = a.split('/');
+		a = a[2] + a[1] + a[0];
+		let b = y.updatedAt;
+		b = b.split('/');
+		b = b[2] + b[1] + b[0];
+		return b - a;
+	});
 	let data_publications = [];
 	let aux = 0;
 	userRegister.forEach(element => {
