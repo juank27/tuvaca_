@@ -716,7 +716,11 @@ router.post('/buscando', async (req, res) => {
 				let info = dataNull(dataEncontrada);
 				let org = organizares(info);
 				//res.render('buscarPublicaciones', { layout: false, dataEncontrada: org });
-				verificarEstado(res, 'buscarPublicaciones', 'index', org, a = '', () => {
+				let infoPerfil = {
+					photo: globalThis.photo,
+					name: globalThis.name,
+				}
+				verificarEstado(res, 'buscarPublicaciones', 'index', org, infoPerfil, () => {
 					//...
 				});
 			}, 2000);
