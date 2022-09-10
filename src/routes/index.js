@@ -697,9 +697,9 @@ router.get('/modalpublicaciones', async (req, res) => {
 //Busqueda bovinos
 router.post('/busquedaBovina', async (req, res) => {
 	let { razas, categorias, edad_, ubication, precios } = req.body;
-	busca = {
-		raza: razas,
-		categoria: categorias,
+	buscador = {
+		raza: 'Holstein',
+		categoria: 'Vaca',
 		edad: edad_,
 		ubicacion: ubication,
 		precio: precios,
@@ -709,13 +709,17 @@ router.post('/busquedaBovina', async (req, res) => {
 			Users()
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
-					let buscar = buscarBovino(publicacion, busca);
-					console.log(buscar);
+					nullB= dataNullBovino(buscador);
+					let buscar = filtrarBovinos(publicacion, nullB);
+					console.log("Buscaaaaaaaaaaaaaaaaaaaaaar");
+					//console.log(publicacion);
+					console.log(nullB);
 					let info = {
 						photo: globalThis.photo,
 						name: globalThis.name,
 					}
-					verificarEstado(res, 'busquedaBovina', 'index', buscar, info, () => {
+					//res.render('buscarPublicaciones.hbs', datos = buscar);
+					verificarEstado(res, 'buscarPublicaciones', 'index', buscar, info, () => {
 						//...
 					});
 				})
@@ -786,6 +790,17 @@ function dataNull(data) {
 	}
 	return info;
 }
+//validar datos no llenos
+function dataNullBovino(data) {
+	let info = []
+	for (let key in data) {
+		if (data[key] !== "") {
+			info.push(key);
+			info.push(data[key]);
+		}
+	}
+	return info;
+}
 //filtrar las busquedas
 function filtrar(info, busqueda) {
 	let encontro = [];
@@ -800,12 +815,16 @@ function filtrar(info, busqueda) {
 //filtrar las busquedas
 function filtrarBovinos(info, busqueda) {
 	let encontro = [];
+	i = 0;
 	info.forEach((dataUser) => {
-		if (dataUser.raza === busqueda.raza ||
-			dataUser.categoria === busqueda.categoria ||
-			dataUser.ubicacion === busqueda.ubicacion ||
-			dataUser.precio === busqueda.precio ||
-			dataUser.edad === busqueda.edad) {
+		// if (dataUser.raza === busqueda.raza ||
+		// 	dataUser.categoria === busqueda.categoria ||
+		// 	dataUser.ubicacion === busqueda.ubicacion ||
+		// 	dataUser.precio === busqueda.precio ||
+		// 	dataUser.edad === busqueda.edad) {
+		// 	encontro.push(dataUser);
+		// }
+		if (dataUser[busqueda[i]] === busqueda[i+1]) {
 			encontro.push(dataUser);
 		}
 	})
