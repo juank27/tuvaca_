@@ -20,6 +20,11 @@ function cargar() {
 let datos = [];
 let palabras = 0;
 let valor = 0;
+let cat;
+let pre;
+let ra;
+let mu;
+let ed
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type=text]').forEach(node => node.addEventListener('keypress', e => {
         if (e.keyCode == 13) {
@@ -32,7 +37,12 @@ subir.addEventListener("click", function () {
     submit.click();
 })
 subir2.addEventListener("click", function () {
-    form.submit()
+    categoria.value=cat
+    precio.value=pre
+    raza.value=ra
+    municipio.value=mu
+    edad.value=ed
+    form.submit();
 })
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";
@@ -47,6 +57,7 @@ categoria.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="categoria" id="imput' + valor + '" value="' + categoria.value + '">')
         $(inpu).insertBefore(".submit");
+        cat=categoria.value
         categoria.value = "";
         categoria.disabled = true;
     }
@@ -78,6 +89,7 @@ raza.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="raza" id="imput' + valor + '" value="' + raza.value + '">')
         $(inpu).insertBefore(".submit");
+        ra=raza.value
         raza.value = "";
         raza.disabled = true;
     }
@@ -108,6 +120,7 @@ municipio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="municipio" id="imput' + valor + '" value="' + municipio.value + '">')
         $(inpu).insertBefore(".submit");
+        mu=municipio.value
         municipio.value = "";
         municipio.disabled = true;
     }
@@ -138,6 +151,7 @@ edad.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="edad" id="imput' + valor + '" value="' + edad.value + '">')
         $(inpu).insertBefore(".submit");
+        ed=edad.value
         edad.value = "";
         edad.disabled = true;
     }
@@ -168,6 +182,7 @@ precio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="number" name="precio" id="imput' + valor + '" value="' + precio.value + '">')
         $(inpu).insertBefore(".submit");
+        pre=precio.value
         precio.value = "";
         precio.disabled = true;
     }
