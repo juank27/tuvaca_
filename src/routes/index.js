@@ -88,6 +88,8 @@ router.use('/logout', async (req, res, next) => {
 		estado = false;
 		buscarGlobal = "";
 		globalThis.idUser = '';
+		globalThis.photo = '';
+		globalThis.name = '';
 		console.log('logout');
 		//next();
 		res.redirect('/');
@@ -209,7 +211,14 @@ router.post('/login-email', async (req, res) => {
 					globalThis.idUser = user.uid; //id user global
 					estado = true;
 					mensaje = undefined;
-					res.redirect('/publicaciones');
+					data_perfil(user.uid)
+						.then((data) => {
+							setTimeout(() => {
+								globalThis.photo = data[0].photo;
+								globalThis.name = data[0].name;
+								res.redirect('/publicaciones');
+							}, 1000);
+						})
 				})
 				.catch((error) => {
 					const errorCode = error.code;
@@ -688,6 +697,33 @@ router.get('/modalpublicaciones', async (req, res) => {
 //Busqueda bovinos
 router.post('/busquedaBovina', async (req, res) => {
 	let { razas, categorias, edad_, ubication, precios } = req.body;
+	busca = {
+		raza: razas,
+		categoria: categorias,
+		edad: edad_,
+		ubicacion: ubication,
+		precio: precios,
+	}
+	publicaciones('publications')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					let buscar = buscarBovino(publicacion, busca);
+					console.log(buscar);
+					let info = {
+						photo: globalThis.photo,
+						name: globalThis.name,
+					}
+					verificarEstado(res, 'busquedaBovina', 'index', buscar, info, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error);
+		});
 });
 
 //busquda de usuarios
@@ -755,6 +791,21 @@ function filtrar(info, busqueda) {
 	let encontro = [];
 	info.forEach((dataUser) => {
 		if (((dataUser.name).toLowerCase()).includes(busqueda)) {
+			encontro.push(dataUser);
+		}
+	})
+	return encontro;
+}
+
+//filtrar las busquedas
+function filtrarBovinos(info, busqueda) {
+	let encontro = [];
+	info.forEach((dataUser) => {
+		if (dataUser.raza === busqueda.raza ||
+			dataUser.categoria === busqueda.categoria ||
+			dataUser.ubicacion === busqueda.ubicacion ||
+			dataUser.precio === busqueda.precio ||
+			dataUser.edad === busqueda.edad) {
 			encontro.push(dataUser);
 		}
 	})

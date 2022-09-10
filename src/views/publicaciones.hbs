@@ -18,10 +18,10 @@
 </head>
 
 <body class="body_publicaciones" onload="cargar()">
-    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}} >
-    <p id="yo" style="display: none;" >{{data.name}} </p>
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}}>
+    <p id="yo" style="display: none;">{{data.name}} </p>
     <div title="bucar" class="buscando">
-        <div title="buscar" class="buscando2" ></div>
+        <div title="buscar" class="buscando2"></div>
         <p>Buscar</p>
     </div>
     {{#each datos}}
@@ -42,7 +42,7 @@
         </div>
         <!--En esta división esta la fecha, los me gusta y el chat-->
         <div class="publicacion_linea1">
-            <p id="updateAt" >{{updatedAt}}</p>
+            <p id="updateAt">{{updatedAt}}</p>
             <div>
                 <div onclick="posicion4({{@index}})" class="chat"></div>
             </div>
@@ -53,7 +53,7 @@
                 <!--foto de perfil del publicador-->
                 <div id="foto" onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
                 <!--nombre del publicador-->
-                <p  id="nombre"  onclick="posicion2({{@index}})">{{name}}</p>
+                <p id="nombre" onclick="posicion2({{@index}})">{{name}}</p>
             </div>
             <!--ubicación del bovino-->
             <p>{{ubication}}</p>
@@ -62,15 +62,15 @@
         </div>
         <div class="publicacion_linea3">
             <!--precio del bovino-->
-            <p  id="precio" >{{precio}}</p>
+            <p id="precio">{{precio}}</p>
             <!--tipo de bovino-->
-            <p  id="raza" >{{raza}}</p>
+            <p id="raza">{{raza}}</p>
         </div>
     </form>
-        <!--Formulario para dirigirse al perfil-->
+    <!--Formulario para dirigirse al perfil-->
     <form style="display:none;" action="/perfilU" method="POST" class="perfilS">
-        <input name="id_p"  id="id3" type="text"  value="">
-        {{!-- <input  type="submit" value="" class="perfilS"> --}}
+        <input name="id_p" id="id3" type="text" value="">
+        {{!-- <input type="submit" value="" class="perfilS"> --}}
     </form>
     {{/each}}
     <section class="modal_container_p ">
@@ -81,5 +81,7 @@
     </section>
 </body>
 <script src="./usuarios/publicaciones/JS/index.js"></script>
-
+<script
+    src=" https :// cdnjs . cloudflare . com / ajax / libs / handlebars . js / 3 . 0 . 1 / handlebars . min . js "></script>
+<script src="/try/examples/js/handlebars_helpers_if_eq.js"></script>
 </html>
