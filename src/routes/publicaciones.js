@@ -64,15 +64,15 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 	} = req.body;
 	console.log(data);
 	data.edad=edad+' '+ edad_es;
-	if (data['prenada'] === 'Esta preñada'){
-		data.toro = 'Con toro ' + toro;
-		data.meses = meses;
-	}
 	if(data['raza'] === 'Otra'){
 		data.raza=otro_R;
 	}
-	if(data['toro'] === 'Otra'){
-		data.raza=otro_T;
+	if(data['toro'] === 'Otro'){
+		data.toro=otro_T;
+	}
+	if (data['prenada'] === 'Esta preñada'){
+		data.toro = 'Con toro ' + toro;
+		data.meses = meses;
 	}
 	if(data['edad_es'==='']){
 		data.edad_es=anos;
