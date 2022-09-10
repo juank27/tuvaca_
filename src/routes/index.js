@@ -697,12 +697,55 @@ router.post('/buscando', async (req, res) => {
 	Users()
 		.then((users) => {
 			let busqueda = filtrar(users, usuario);
-			res.send(busqueda);
+			b = busqueda;
+			console.log("----------------------------------------------");
+			console.log(b);
+			console.log("esta es la busqueda de data");
+			console.log(busqueda.length);
+			//console.log(busqueda.length(), "longitudddd");
+			//publicaciones_propias('publications', id)
+			let dataEncontrada = [];
+			for (let index = 0; index < busqueda.length; index++) {
+				publicaciones_propias('publications', busqueda[index].id)
+					.then((publicaciones) => {
+						let u = unir(publicaciones, users);
+						dataEncontrada.push(u);
+					})
+			}
+			setTimeout(() => {
+				let info = dataNull(dataEncontrada);
+				let org = organizares(info);
+				//res.render('buscarPublicaciones', { layout: false, dataEncontrada: org });
+				verificarEstado(res, 'buscarPublicaciones', 'index', org, a = '', () => {
+					//...
+				});
+			}, 2000);
 		})
 		.catch((error) => {
 			console.log("No hay Usuarios", error);
 		});
 });
+//organizar datos
+function organizares(data) {
+	let dataOrganizada = [];
+	for (let index = 0; index < data.length; index++) {
+		for (let i = 0; i < data[index].length; i++) {
+			dataOrganizada.push(data[index][i]);
+		}
+	}
+	return dataOrganizada;
+}
+
+//validar datos no encontrados
+function dataNull(data) {
+	let info = []
+	for (let index = 0; index < data.length; index++) {
+		if (data[index].length !== 0) {
+			info.push(data[index]);
+		}
+	}
+	return info;
+}
 //filtrar las busquedas
 function filtrar(info, busqueda) {
 	let encontro = [];
