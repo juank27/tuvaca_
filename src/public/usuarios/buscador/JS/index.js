@@ -10,11 +10,11 @@ let categoria = document.getElementById("categorias");
 let edad = document.getElementById("edad_");
 let municipio = document.getElementById("ubication");
 let precio = document.getElementById("precios");
-// let foto_perfil = document.getElementById("foto_perfil");
-// function cargar(){
-//     per.style.backgroundImage=(`url(${foto_perfil.value})`);
-//     pub.style.backgroundImage=" url(./usuarios/menu/icons/Cow.png)";
-// }
+let foto_perfil = document.getElementById("foto_perfil");
+function cargar(){
+    per.style.backgroundImage=(`url(${foto_perfil.value})`);
+    pub.style.backgroundImage=" url(./usuarios/menu/icons/Cow.png)";
+}
 let datos = [];
 let palabras = 0;
 let valor = 0;
@@ -262,9 +262,6 @@ let id2 = document.getElementById("id2");
 let id3 = document.getElementById("id3");
 let framer = document.getElementById("framer");
 
-buscando.addEventListener("click", function () {
-    window.location = "/buscarPublicaciones";
-})
 function posicion(valor) {
     framer.contentDocument.location.reload(true);
     id = document.querySelectorAll(".id")[valor].value;
@@ -304,6 +301,7 @@ cerrarSesion.addEventListener("click", function () {
 /***recuperando datos para el chat *****/
 
 function posicion4(valor) {
+    console.log("dentro");
     let _name = document.querySelectorAll(".nombre")[valor].value;
     let phone = document.querySelectorAll(".phone")[valor].value;
     let updateAt = document.querySelectorAll(".updateAt")[valor].value;

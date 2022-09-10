@@ -17,7 +17,9 @@
     <title>tuVaca.com</title>
 </head>
 
-<body class="body_buscador" >
+<body class="body_buscador" onload="cargar()">
+        <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}} >
+    <p id="yo" style="display: none;" >{{data.name}} </p>
     <section class="regresar">
         <div title="Volver" class="volver"></div>
         <p>Filtrado de Busquedas</p>
