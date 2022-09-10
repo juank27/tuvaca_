@@ -107,6 +107,20 @@ main {
 .subir:hover{
     background-image: url(../../menu/icons/buscar2.png);
 }
+.subir2{
+    background-image: url(../../menu/icons/buscar.png);
+    width: 15px;
+    height: 5vh;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    display: none;
+}
+.subir2:hover{
+    background-image: url(../../menu/icons/buscar2.png);
+}
 .cerrar{
     background-image: url(../../../principal/icons/Cancel.png);
     width: 20px;

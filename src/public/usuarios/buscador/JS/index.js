@@ -1,8 +1,10 @@
 let submit = document.querySelectorAll(".submit")[0];
 let subir = document.querySelectorAll(".subir")[0];
+let subir2 = document.querySelectorAll(".subir2")[0];
 let filtrado = document.querySelectorAll(".filtrado")[0];
 let volver = document.querySelectorAll(".volver")[0];
 let usuario = document.getElementById("usuarios");
+let form = document.getElementById("form");
 let usuarios = document.getElementById("usuario");
 let usuario1 = document.getElementById("usuarios1");
 let raza = document.getElementById("razas");
@@ -10,18 +12,27 @@ let categoria = document.getElementById("categorias");
 let edad = document.getElementById("edad_");
 let municipio = document.getElementById("ubication");
 let precio = document.getElementById("precios");
-// let foto_perfil = document.getElementById("foto_perfil");
-// function cargar(){
-//     per.style.backgroundImage=(`url(${foto_perfil.value})`);
-//     pub.style.backgroundImage=" url(./usuarios/menu/icons/Cow.png)";
-// }
+let foto_perfil = document.getElementById("foto_perfil");
+function cargar() {
+    per.style.backgroundImage = (`url(${foto_perfil.value})`);
+    pub.style.backgroundImage = " url(./usuarios/menu/icons/Cow.png)";
+}
 let datos = [];
 let palabras = 0;
 let valor = 0;
-
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type=text]').forEach(node => node.addEventListener('keypress', e => {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    }))
+});
 subir.addEventListener("click", function () {
-    usuarios.value=usuario.value;
+    usuarios.value = usuario.value;
     submit.click();
+})
+subir2.addEventListener("click", function () {
+    form.submit()
 })
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";
@@ -47,9 +58,13 @@ categoria.addEventListener("click", function () {
     if (palabras == 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario1.style.display = "flex";
         usuario.style.display = "none";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 raza.addEventListener("click", function () {
@@ -73,9 +88,13 @@ raza.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 municipio.addEventListener("click", function () {
@@ -99,9 +118,13 @@ municipio.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 edad.addEventListener("click", function () {
@@ -125,9 +148,13 @@ edad.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 precio.addEventListener("click", function () {
@@ -151,9 +178,13 @@ precio.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 function comparado(texto) {
@@ -181,6 +212,8 @@ $(document).on("click", " .cerrar1", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     comparado(imput)
@@ -195,6 +228,8 @@ $(document).on("click", " .cerrar2", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput2");
@@ -210,6 +245,8 @@ $(document).on("click", " .cerrar3", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput3");
@@ -225,6 +262,8 @@ $(document).on("click", " .cerrar4", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput4");
@@ -240,6 +279,8 @@ $(document).on("click", " .cerrar5", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput5");
@@ -262,9 +303,6 @@ let id2 = document.getElementById("id2");
 let id3 = document.getElementById("id3");
 let framer = document.getElementById("framer");
 
-buscando.addEventListener("click", function () {
-    window.location = "/buscarPublicaciones";
-})
 function posicion(valor) {
     framer.contentDocument.location.reload(true);
     id = document.querySelectorAll(".id")[valor].value;
@@ -304,6 +342,7 @@ cerrarSesion.addEventListener("click", function () {
 /***recuperando datos para el chat *****/
 
 function posicion4(valor) {
+    console.log("dentro");
     let _name = document.querySelectorAll(".nombre")[valor].value;
     let phone = document.querySelectorAll(".phone")[valor].value;
     let updateAt = document.querySelectorAll(".updateAt")[valor].value;

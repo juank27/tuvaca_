@@ -2,7 +2,9 @@
     width: 80%;
     margin-bottom: 1%;
 }
-
+.body_buscador{
+    width: 80%;
+}
 .buscador {
     width: 80%;
 }
@@ -14,6 +16,10 @@
     height: 35px;
 }
 .subir{
+    width: 25px;
+    height: 25px;
+}
+.subir2{
     width: 25px;
     height: 25px;
 }
