@@ -189,23 +189,24 @@ function cargar() {
     let toros=toror.value
     let dividirE = text.split(" ");
     let div2= toros.split("Con toro ")
-    console.log(div2[1]);
-    if (categoria.value === "Toro" || categoria.value === "Vaca") {
-        anos.style.display = "flex";
-        anos.value = "años"
-        edad_es.required = false;
-        anos.disabled = true;
-        edad_es.style.display = "none";
-    }if(categoria.value === "Ternera"||categoria.value === "Ternero"){
-        anos.style.display = "flex";
-        anos.value="meses"
-        edad_es.required=false;
-        anos.disabled=true;
-        edad_es.style.display = "none";
+    if (categoria.value === "Toro" || categoria.value === "Vaca" || categoria.value === "Ternera" || categoria.value === "Ternero") {
+        if (categoria.value === "Ternera" || categoria.value === "Ternero") {
+                anos.style.display = "flex";
+                anos.value="meses"
+                edad_es.required=false;
+                anos.disabled=true;
+                edad_es.style.display = "none";
+        }else{
+
+            anos.style.display = "flex";
+            anos.value = "años"
+            edad_es.required = false;
+            anos.disabled = true;
+            edad_es.style.display = "none";
+        }
     } else {
         edad_es.style.display = "flex";
         anos.style.display = "none";
-        edad_es.value=dividirE[1]
         edad_es.required = true;
     }
     edad.value = dividirE[0]
@@ -215,7 +216,6 @@ function cargar() {
     }
     precio.value = precio.value
     if (categoriar.value === "Vaca" || categoriar.value === "Novilla") {
-        console.log("aqui");
         prenada.style.display = "block";
         prenada.value = prenadar.value
         if (prenadar.value == "Esta preñada") {
@@ -227,16 +227,18 @@ function cargar() {
                 }
             }
             if (es2) {
+                
                 otro_T.style.display = "flex";
                 otro_T.required = true;
                 otro_T.value = div2[1]
             } else {
-                toro.value = "div2[1]"
+                console.log(typeof(div2[1]));
+                toro.value =div2[1]
+                console.log(toro.value);
             }
             semanas.style.display = "flex";
             nprenada.style.display = "flex";
             tipoprenada.value = tipoprenadar.value;
-            toro.value = toror.value;
             semanas.value = mesesr.value;
             nprenada.value = nprenadasr.value;
         }
@@ -493,6 +495,7 @@ subir.addEventListener("click", function () {
     }
     if(ubication.value!== ubicationr.value && ubication.value!==""){
         ubicationr.value=ubication.value
+        console.log(ubicationr.value);
     }
     if(categoria.value!== categoriar.value && categoria.value!==""){
         categoriar.value=categoria.value

@@ -337,6 +337,34 @@ router.get('/editarPublicacion', async (req, res) => {
 		//...
 	});
 });
+router.post('/editarPublicacion', async (req, res) => {
+	//res.render('crearPublicacion');
+	// let data = {
+	// 	ubication,
+	// 	categoria,
+	// 	edad,
+	// 	raza,
+	// 	producto,
+	// 	precio,
+	// 	prenada,
+	// 	tipoprenada,
+	// 	toro,
+	// 	meses,
+	// 	nprenadas,
+	// 	descripcion,
+	// 	edad_es,
+	// 	anos,
+	// 	otro_R,
+	// 	otro_T,
+	// } = req.body;
+	let {ubication} = req.body;
+	console.log(ubication)
+	res.send(ubication)
+	// console.log("🚀 ~ file: index.js ~ line 337 ~ router.get ~ data", data)
+	// verificarEstado(res, 'perfil', 'index', datos = '', globalThis.photo, () => {
+	// 	//...
+	// });
+});
 router.get('/editarAcarreos', async (req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {

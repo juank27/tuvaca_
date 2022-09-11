@@ -187,7 +187,7 @@ input[type=number]::-webkit-outer-spin-button {
     color: var(--gris_oscuro);
     font-size: 1.3rem;
 }
-#prenada,#tipoprenada,#toro,#semanas,#primeriza,#nprenada,#otro_T,#otro_R{
+#prenada,#tipoprenada,#semanas,#primeriza,#nprenada,#otro_T,#otro_R{
     display: none;
 }
 /***************modal**********/
