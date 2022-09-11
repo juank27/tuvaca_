@@ -87,6 +87,11 @@ class envioImg {
 		console.log(publication.id);
 		return publication.id;
 	}
+	//funcion para guardar publicaciones
+	async editData(id, url) {
+		const dataupdate = db.collection("acarreos").doc(id);
+		await dataupdate.update({url: url});
+	}
 	precio(data) {
 		for(ubication of data){
 			if (Object.ubication === "ubication" || Object.ubication === "tipoveh" || Object.ubication === "descripcion"){

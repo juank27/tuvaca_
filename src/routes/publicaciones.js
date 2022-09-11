@@ -114,7 +114,6 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 //editar publicaciones
 router.post('/editarPublicacion', multpleInput, async (req, res) => {
 	let files = req.files;
-	console.log("🚀 ~ file: index.js ~ line 345 ~ router.post ~ files", files)
 	let data = {
 		input0e,
 		input1e,

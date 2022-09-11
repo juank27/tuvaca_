@@ -340,12 +340,12 @@ let multpleInput = upload.fields([
 	{ name: 'input4' }
 ]);
 
-router.get('/editarAcarreos', async (req, res) => {
-	//res.render('crearPublicacion');
-	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {
-		//...
-	});
-});
+// router.get('/editarAcarreos', async (req, res) => {
+// 	//res.render('crearPublicacion');
+// 	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {
+// 		//...
+// 	});
+// });
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearAcarreo', 'index', datos = '', globalThis.photo, () => {
@@ -505,8 +505,26 @@ router.post('/perfilA', async (req, res) => {
 	// res.render('perfilAcarreos')
 });
 router.post('/visualizarAcarreos', async (req, res) => {
-
+	let { id_p } = req.body;
+	console.log("🚀 ~ file: index.js ~ line 509 ~ router.post ~ id_p", id_p)
+	publicaciones('acarreos')
+		.then((publicaciones) => {
+			let idusuarioverr = [];
+			publicaciones.forEach((doc) => {
+				if (doc.id === id_p) {
+					idusuarioverr.push(doc);
+				}
+			})
+			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
+			verificarEstado(res, 'editarAcarreos', 'index', idusuarioverr[0], globalThis.photo, () => {
+				console.log('Estoy dentro del perfil con un callback');
+			});
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error)
+		});
 });
+
 router.post('/visualizarPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	publicaciones('publications')

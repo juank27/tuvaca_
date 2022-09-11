@@ -52,7 +52,7 @@ function cargar(){
         tipoveh.value = tipovehr.value
 
     }
-    ubication.value=ubicationr
+    ubication.value=ubicationr.value
     ubate.value=ubater.value
     susa.value=susar.value
     suta.value=sutar.value
@@ -61,6 +61,7 @@ function cargar(){
     simijaca.value=simijacar.value
     guacheta.value=guachetar.value
     susa.value=susar.value
+    lenguazaque.value=lenguazaquer.value
     cucunuba.value=cucunubar.value
     if(descripcionr.value!==""){
         descripcion.value=descripcionr.value
@@ -107,10 +108,47 @@ subir.addEventListener("click", function () {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";
     }
+    if (ubication.value !== ubicationr.value && ubication.value !== "") {
+        ubicationr.value = ubication.value
+    }
+    if (tipoveh.value !== tipovehr.value && tipoveh.value !== "") {
+        tipovehr.value = tipoveh.value
+    }
+    if (descripcion.value !== descripcionr.value && descripcion.value !== "") {
+        descripcionr.value = descripcion.value
+    }
+    if (ubate.value !== ubater.value && ubate.value !== "") {
+        ubater.value = ubate.value
+    }
+    if (carupa.value !== carupar.value && carupa.value !== "") {
+        carupar.value = carupa.value
+    }
+    if (tausa.value !== tausar.value && tausa.value !== "") {
+        tausar.value = tausa.value
+    }
+    if (suta.value !== sutar.value && suta.value !== "") {
+        sutar.value = suta.value
+    }
+    if (lenguazaque.value !== lenguazaquer.value && lenguazaque.value !== "") {
+        lenguazaquer.value = lenguazaque.value
+    }
+    if (guacheta.value !== guachetar.value && guacheta.value !== "") {
+        guachetar.value = guacheta.value
+    }
+    if (simijaca.value !== simijacar.value && simijaca.value !== "") {
+        simijacar.value = simijaca.value
+    }
+    if (susa.value !== susar.value && susa.value !== "") {
+        susar.value = susa.value
+    }
+    if (cucunuba.value !== cucunubar.value && cucunuba.value !== "") {
+        cucunubar.value = cucunuba.value
+    }
+
 })
 foto.addEventListener("click", function () {
     foto.style.display = "none";
-    f5.src = "./usuarios/menu/icons/camera.png";
+    f5.src = "./usuarios/menu/icons/Camera.png";
     input0.value=""
 
 })

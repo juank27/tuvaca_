@@ -55,6 +55,6 @@ subir.addEventListener("click", function () {
 })
 foto.addEventListener("click", function () {
     foto.style.display = "none";
-    f5.src = "./usuarios/menu/icons/camera.png";
+    f5.src = "./usuarios/menu/icons/Camera.png";
 
 })

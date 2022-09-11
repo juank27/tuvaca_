@@ -19,7 +19,7 @@
 
 <body class="body_crearP" onload="cargar()">
 	<input type="text" style="display: none;" id="foto_perfil" value={{data}}>
-	<form action="/new-acarreo" method="POST" enctype="multipart/form-data">
+	<form action="/edit-acarreo" method="POST" enctype="multipart/form-data">
 		<div class="atras">
 			<div class="atrasI"></div>
 		</div>
@@ -33,8 +33,9 @@
 		<div style="display: none;">
 			<input type="text" name="ubication" value="{{datos.ubication}}" id="ubicationr">
 			<input type="text" name="tipoveh" value="{{datos.tipoveh}}" id="tipovehr">
-			<input type="text"  value="{{datos.vehiculo}}" id="principal">
+			<input type="text" name="vehiculof" value="{{datos.url}}" id="principal">
             <input type="text" name="descripcion" value="{{datos.descripcion}}" id="descripcionr">
+				<input type="text" name="id" value="{{datos.id}}">
 
 			<input type="text" name="ubate" value="{{datos.ubate}}" id="ubater">
 			<input type="text" name="suta" value="{{datos.suta}}" id="sutar">
@@ -45,7 +46,7 @@
 			<input type="text" name="simijaca" value="{{datos.simijaca}}" id="simijacar">
 			<input type="text" name="susa" value="{{datos.susa}}" id="susar">
 			<input type="text" name="cucunuba" value="{{datos.cucunuba}}" id="cucunubar">
-
+	</div>
 
 			<select  id="ubication" required>
 				<option value="">Ubicación del Bovino</option>
@@ -71,7 +72,7 @@
 			<p>Tarifas de Acarreos</p>
 			<label for="">
 				<span class="texto">Ubaté</span>
-				<select type="number" name="ubate" id="ubate">
+				<select type="number"  id="ubate">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -84,7 +85,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Carupa</span>
-				<select type="number" name="carupa" id="carupa">
+				<select type="number"  id="carupa">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -97,7 +98,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Tausa</span>
-				<select type="number" name="tausa" id="tausa">
+				<select type="number"  id="tausa">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -110,7 +111,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Suta Tausa</span>
-				<select type="number" name="suta" id="suta">
+				<select type="number"  id="suta">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -123,7 +124,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Lenguazaque</span>
-				<select type="number" name="lenguazaque" id="lenguazaque">
+				<select type="number"  id="lenguazaque">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -136,7 +137,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Guacheta</span>
-				<select type="number" name="guacheta" id="guacheta">
+				<select type="number"  id="guacheta">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -149,7 +150,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Simijaca</span>
-				<select type="number" name="simijaca" id="simijaca">
+				<select type="number"  id="simijaca">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -162,7 +163,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Susa</span>
-				<select type="number" name="susa" id="susa">
+				<select type="number"  id="susa">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
@@ -175,7 +176,7 @@
 			</label>
 			<label for="">
 				<span class="texto">Cucunuba</span>
-				<select type="number" name="cucunuba" id="cucunuba">
+				<select type="number"  id="cucunuba">
 					<option value="">Precio</option>
 					<option value="No">No</option>
 					<option value="$20.000-$50.000">$20.000-$50.000</option>
