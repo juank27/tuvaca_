@@ -331,38 +331,15 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
-router.post('/editarPublicacion', async (req, res) => {
-	res.render('crearPublicacion');
-	let data = {
-		input0e,
-		input1e,
-		input2e,
-		input3e,
-		input4e,
-		id,
-		ubication,
-		categoria,
-		edad,
-		raza,
-		producto,
-		precio,
-		prenada,
-		tipoprenada,
-		toro,
-		meses,
-		nprenadas,
-		descripcion,
-		edad_es,
-		anos,
-		otro_R,
-		otro_T,
-	} = req.body;
-	// console.log("🚀 ~ file: index.js ~ line 355 ~ router.post ~ edad", ubication)
-	console.log("🚀 ~ file: index.js ~ line 337 ~ router.get ~ data", data)
-	verificarEstado(res, 'perfil', 'index', datos = '', globalThis.photo, () => {
-		//...
-	});
-});
+
+let multpleInput = upload.fields([
+	{ name: 'input0' },
+	{ name: 'input1' },
+	{ name: 'input2' },
+	{ name: 'input3' },
+	{ name: 'input4' }
+]);
+
 router.get('/editarAcarreos', async (req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {

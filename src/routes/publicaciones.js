@@ -110,6 +110,62 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 			console.log('Ocurrio un error');
 		});
 });
+
+//editar publicaciones
+router.post('/editarPublicacion', multpleInput, async (req, res) => {
+	let files = req.files;
+	console.log("🚀 ~ file: index.js ~ line 345 ~ router.post ~ files", files)
+	let data = {
+		input0e,
+		input1e,
+		input2e,
+		input3e,
+		input4e,
+		id,
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		nprenadas,
+		descripcion,
+		edad_es,
+		otro_R,
+		otro_T,
+	} = req.body;
+	let modifData = {
+		'input0' : input0e,
+		'input1': input1e,
+		'input2': input2e,
+		'input3': input3e,
+		'input4': input4e,
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		nprenadas,
+		descripcion,
+		edad_es,
+		otro_R,
+		otro_T,
+		'updatedAt' : getDate(),
+	}
+	const dataupdate = db.collection("publications").doc(id);
+	await dataupdate.update(modifData);
+	sendImages(files, updateImage, id);
+	res.redirect('/perfil');
+});
 // -------------------------- Funciones necesarias -------------------------------------
 // funciones para guardar imagenes en firebase storage
 function sendImages(files, callback, id) {

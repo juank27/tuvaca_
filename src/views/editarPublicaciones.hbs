@@ -19,7 +19,7 @@
 
 <body class="body_crearP" onload="cargar()">
     <input type="text" id="foto_perfil" style="display: none;" value={{data}}>
-    <form action="/editarPublicacion" method="POST" >
+    <form action="/editarPublicacion" method="POST" enctype="multipart/form-data">
         <div class="imagen">
             <div class="fotos"></div>
             <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
@@ -29,7 +29,7 @@
             <div class="modal_Cuerpof">
                 <!--Inpur file 1-->
                 <div class="insert_Foto IF_1"></div>
-                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg" >
+                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg">
                 <p class="requerido">Requerida: <br> Esta primer imagen sera la portada de la publicacion</p>
                 <div class="separador"></div>
                 <!--Inpur file 2-->
@@ -76,8 +76,9 @@
             <p class="limite">Clic aqui para agregar archivos multimedia</p>
             <div class="mas"></div>
         </section>
-                <!--Datos ocultos-->
+        <!--Datos ocultos-->
         <div style="display: none;">
+            <input type="text" name="id" value="{{datos.id}}">
             <input type="text" name="ubication" value="{{datos.ubication}}" id="ubicationr">
             <input type="text" name="descripcion" value="{{datos.descripcion}}" id="descripcionr">
             <input type="text" name="categoria" value="{{datos.categoria}}" id="categoriar">
@@ -89,17 +90,17 @@
             <input type="text" name="precio" value="{{datos.precio}}" id="precior">
             <input type="text" name="tipoprenada" value="{{datos.tipoprenada}}" id="tipoprenadar">
             <input type="text" name="toro" value="{{datos.toro}}" id="toror">
-            <input type="text" value="{{datos.otro_R}}" id="toror">
-            <input type="text" value="{{datos.otro_T}}" id="toror">
+            <input type="text" value="{{datos.otro_R}}" >
+            <input type="text" value="{{datos.otro_T}}">
             <input type="text" name="nprenadas" value="{{datos.nprenadas}}" id="nprenadasr">
             <input type="text" name="meses" value="{{datos.meses}}" id="mesesr">
-            <input type="text" value="{{datos.input0}}" id="principal">
-            <input type="text" value="{{datos.input1}}" class="multi">
-            <input type="text" value="{{datos.input2}}" class="multi">
-            <input type="text" value="{{datos.input3}}" class="multi">
-            <input type="text" value="{{datos.input4}}" class="multi">
+            <input type="text" name="input0e" value="{{datos.input0}}" id="principal">
+            <input type="text" name="input1e" value="{{datos.input1}}" class="multi">
+            <input type="text" name="input2e" value="{{datos.input2}}" class="multi">
+            <input type="text" name="input3e" value="{{datos.input3}}" class="multi">
+            <input type="text" name="input4e" value="{{datos.input4}}" class="multi">
         </div>
-        <select  id="ubication" required>
+        <select id="ubication" required>
             <option value="">Ubicación del Bovino</option>
             <option value="Ubaté">Ubaté</option>
             <option value="Carmen de Carupa">Carmen de Carupa</option>
@@ -111,7 +112,7 @@
             <option value="Simijaca">Simijaca</option>
             <option value="Susa">Susa</option>
         </select>
-        <select  id="categoria" required>
+        <select id="categoria" required>
             <option value="">Categoria</option>
             <option value="Ternera">Ternera</option>
             <option value="Ternero">Ternero</option>
@@ -120,16 +121,16 @@
             <option value="Vaca">Vaca</option>
             <option value="Toro">Toro</option>
         </select>
-        <input type="text"  id="edad" placeholder="Edad del Bovino" required>
+        <input type="text" id="edad" placeholder="Edad del Bovino" required>
         {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
         <select name="edad_es" id="edad_es" required>
             <option value="">Indique meses o años</option>
             <option value="meses">meses</option>
             <option value="años">años</option>
         </select>
-        <input type="text" id="anos" name="anos" value="" style="display:none ;">
+        <input type="text" id="anos" name="annos" style="display:none ;">
 
-        <select  id="raza" required>
+        <select id="raza" required>
             <option value="">Raza</option>
             <option value="Angus">Angus</option>
             <option value="Brahman">Brahman</option>
@@ -144,13 +145,13 @@
             <option value="Otra">Otro</option>
         </select>
         <input type="text" placeholder="¿Qué raza?" id="otro_R" name="otro_R">
-        <select  id="producto" required>
+        <select id="producto" required>
             <option value="">Tipo de Produccion</option>
             <option value="Carnico">Producccion Carnica</option>
             <option value="Lechero">Produccion Lechera</option>
             <option value="engorde">Para Engorde</option>
         </select>
-        <select  id="precio">
+        <select id="precio">
             <option value="">Precio</option>
             <option value="$70.000-$500.000">$70.000-$500.000</option>
             <option value="$500.000-$1´000.000">$500.000-$1´000.000</option>
@@ -161,17 +162,18 @@
             <option value="$5´000.000-$6´000.000">$5´000.000-$6´000.000</option>
             <option value="$6´000.000-mas">$6´000.000-mas</option>
         </select>
-        <select  id="prenada">
+        <select id="prenada">
             <option value="">¿Esta preñada?</option>
             <option value="Esta preñada">Si esta preñada</option>
             <option value="No esta preñada">No esta preñada</option>
         </select>
-        <select  id="tipoprenada">
+        <select id="tipoprenada">
             <option value="">¿Comó quedo preñada? </option>
             <option value="Inseminacion">Inseminación</option>
             <option value="Natural">Natural</option>
         </select>
-        <select id="toro" >
+
+        <select id="toro">
             <option value="">Toro</option>
             <option value="Angus">Angus</option>
             <option value="Brahman">Brahman</option>
@@ -185,8 +187,8 @@
             <option value="Cebu">Cebu</option>
             <option value="Otra">Otro</option>
         </select>
-            <input type="text" placeholder="¿Qué raza?" id="otro_T" name="otro_T">
-        <select  id="semanas">
+        <input type="text" placeholder="¿Qué raza?" id="otro_T" name="otro_T">
+        <select id="semanas">
             <option value="">Meses de preñada</option>
             <option value="1 mes">1</option>
             <option value="2 meses">2</option>
@@ -198,7 +200,7 @@
             <option value="8 meses">8</option>
             <option value="9 meses">9</option>
         </select>
-        <select  id="nprenada">
+        <select id="nprenada">
             <option value="">Número de parto</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -210,7 +212,7 @@
             <option value="8">8</option>
         </select>
 
-        <textarea  id="descripcion" placeholder="Descripción Adicional"></textarea>
+        <textarea id="descripcion" placeholder="Descripción Adicional"></textarea>
         <input type="submit" value="Subir Publicación" class="actualizar">
     </form>
     <section class="modal_container_f ">
