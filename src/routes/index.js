@@ -331,9 +331,28 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
-router.get('/editarPublicacion', async (req, res) => {
+router.post('/editarPublicacion', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'editarPublicaciones', 'index', datos = '', globalThis.photo, () => {
+	let data = {
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		nprenadas,
+		descripcion,
+		edad_es,
+		anos,
+		otro_R,
+		otro_T,
+	} = req.body;
+	console.log("🚀 ~ file: index.js ~ line 337 ~ router.get ~ data", data)
+	verificarEstado(res, 'perfil', 'index', datos = '', globalThis.photo, () => {
 		//...
 	});
 });
