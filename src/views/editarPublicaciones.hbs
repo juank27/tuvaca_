@@ -19,7 +19,7 @@
 
 <body class="body_crearP" onload="cargar()">
     <input type="text" id="foto_perfil" style="display: none;" value={{data}}>
-    <form action="/editarPublicacion" method="POST" enctype="multipart/form-data">
+    <form action="/editarPublicacion" method="POST" >
         <div class="imagen">
             <div class="fotos"></div>
             <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
@@ -89,8 +89,8 @@
             <input type="text" name="precio" value="{{datos.precio}}" id="precior">
             <input type="text" name="tipoprenada" value="{{datos.tipoprenada}}" id="tipoprenadar">
             <input type="text" name="toro" value="{{datos.toro}}" id="toror">
-            <input type="text" name="otro_R" value="{{datos.otro_R}}" id="toror">
-            <input type="text" name="otro_T" value="{{datos.otro_T}}" id="toror">
+            <input type="text" value="{{datos.otro_R}}" id="toror">
+            <input type="text" value="{{datos.otro_T}}" id="toror">
             <input type="text" name="nprenadas" value="{{datos.nprenadas}}" id="nprenadasr">
             <input type="text" name="meses" value="{{datos.meses}}" id="mesesr">
             <input type="text" value="{{datos.input0}}" id="principal">

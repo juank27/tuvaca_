@@ -332,8 +332,14 @@ router.get('/crearPublicacion', async (req, res) => {
 	});
 });
 router.post('/editarPublicacion', async (req, res) => {
-	//res.render('crearPublicacion');
+	res.render('crearPublicacion');
 	let data = {
+		input0e,
+		input1e,
+		input2e,
+		input3e,
+		input4e,
+		id,
 		ubication,
 		categoria,
 		edad,
@@ -351,6 +357,7 @@ router.post('/editarPublicacion', async (req, res) => {
 		otro_R,
 		otro_T,
 	} = req.body;
+	// console.log("🚀 ~ file: index.js ~ line 355 ~ router.post ~ edad", ubication)
 	console.log("🚀 ~ file: index.js ~ line 337 ~ router.get ~ data", data)
 	verificarEstado(res, 'perfil', 'index', datos = '', globalThis.photo, () => {
 		//...
@@ -535,6 +542,7 @@ router.post('/visualizarPublicacion', async (req, res) => {
 			})
 			console.log("llllllllllllllllllll");
 			console.log(idusuarioverr[0].edad);
+			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
 			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], globalThis.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
