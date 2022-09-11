@@ -60,23 +60,24 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		edad_es,
 		anos,
 		otro_R,
-		otro_T
+		otro_T,
 	} = req.body;
 	console.log(data);
-	data.edad=edad+' '+ edad_es;
 	if(data['raza'] === 'Otra'){
-		data.raza=otro_R;
+		data.raza=data.otro_R;
 	}
-	if(data['toro'] === 'Otro'){
-		data.toro=otro_T;
+	if(data['toro'] === 'Otra'){
+		console.log("cambiando toro");
+		data.toro=data.otro_T;
 	}
 	if (data['prenada'] === 'Esta preñada'){
-		data.toro = 'Con toro ' + toro;
+		data.toro = 'Con toro ' + data.toro;
 		data.meses = meses;
 	}
-	if(data['edad_es'==='']){
-		data.edad_es=anos;
-	}
+	// if(data['edad_es'==='']){
+	// 	data.edad_es=data.anos;
+	// }
+	data.edad=data.edad+' '+ data.edad_es;
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {
 		createdAt : fecha,

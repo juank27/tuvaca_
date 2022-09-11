@@ -86,7 +86,7 @@ raza.addEventListener("click", function () {
     }
 })
 toro.addEventListener("click", function () {
-    if (toro.value === "Otro") {
+    if (toro.value === "Otra") {
         otro_T.style.display = "flex";
         otro_T.required = true;
         toro.required = false;
@@ -303,6 +303,7 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
+    edad_es.value=anos.value
     if (valor === 0) {
         modalf.style.display = "flex";
         requerido.style.color = "red";

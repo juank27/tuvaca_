@@ -1,0 +1,257 @@
+:root {
+    --verde: #4B8325;
+    --blanco: #ffff;
+    --gris_claro: #E5E5E5;
+    --gris_oscuro: #A6A6A6;
+    --cafe: #A96224;
+    --font1: 'Port Lligat Sans', sans-serif;
+    --font2: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: smooth;
+    scroll-padding: 10vh;
+}
+
+.body_crearP{
+    background-color:  #F8F8F8;
+    width: 100%;
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.body_crearP p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;
+    margin-bottom: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.body_crearP span{
+    font-size: 1.3rem;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+form{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 2px solid var(--verde);
+    border-radius: 5px;
+}
+form p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;;
+}
+.imagen{
+    width: 80%;
+    height: auto;
+    margin-top: 5%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+.imagen div{
+    background-image: url("../../../principal/icons/Cancel.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    margin-left: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+}
+.imagen div:hover{
+    background-image: url("../../../principal/icons/Cancel-1.png");
+}
+.img_p{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100vh;
+    cursor: pointer;
+}
+input{
+    width: 80%;
+    margin-bottom: 5%;
+    border-bottom:2px solid var(--verde) ;
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+    background-color: transparent;
+}
+input:focus, select:focus, textarea:focus {
+    outline: 0 none;
+    box-shadow: 0px 9px 10px -7px var(--cafe);
+    border-bottom: 1px solid var(--cafe);
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+}
+input[type=submit]{
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    background-color: #4B8325;
+    border: none;
+    font-size: var(--font1);
+    color: var(--blanco);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+input[type=submit]:hover{
+    color: var(--verde);
+    background-color: var(--gris_claro);
+}
+label{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+label select{
+    width: 45%;
+    border: 1px solid var(--verde);
+    margin-bottom: 0;
+    padding: 0 5px;
+}
+.texto{
+    font-weight: bold;
+    width: 45%;
+    border: 1px solid var(--verde);
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+select{
+    background-color: transparent;
+    width: 80%;
+    margin-bottom: 5%;
+    border-bottom:2px solid var(--verde) ;
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+}
+textarea{
+    width: 80%;
+    margin-bottom: 5%;
+    height: 100px;
+    border-bottom:2px solid var(--verde) ;
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+    background-color: transparent;
+
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+::placeholder {
+    margin-left: 5px;
+    font-family: var(--font2);
+    color: var(--gris_oscuro);
+    font-size: 1.3rem;
+}
+#otro_R{
+    display: none;
+}
+
+/***********botones selectores******/
+.selector{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.selector a {
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    background-color: #4B8325;
+    border: none;
+    font-size: var(--font1);
+    color: var(--blanco);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+.selector a:hover{
+    color: var(--verde);
+    background-color: var(--gris_claro);
+}
+.atras{
+    width: 100%;
+    height: 30px;
+}
+.atrasI{
+    background-image: url("../../menu/icons/atras.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+}
+.atrasI:hover{
+    background-image: url("../../menu/icons/atras2.png");
+}
+.requerido{
+    color: var(--verde);
+    text-align: center;
+    width: 100%;
+}
+.img_f{
+    display: none;
+}

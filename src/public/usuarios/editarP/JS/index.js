@@ -161,6 +161,8 @@ let otro_Tr = document.getElementById("otro_Tr");
 let input0= document.getElementById("principal");
 let razas = ['Angus', 'Brahman', 'Gyr', 'Holstein', 'Ayrshire', 'Jersey', 'Simental', 'Normando', 'Pardo Suizo', 'Cebu']
 let es = true;
+let es2 = true;
+
 function cargar() {
     /**pefil */
     per.style.backgroundImage = (`url(${foto_perfil.value})`);
@@ -187,6 +189,7 @@ function cargar() {
     let toros=toror.value
     let dividirE = text.split(" ");
     let div2= toros.split("Con toro ")
+    console.log(div2[1]);
     if (categoria.value === "Toro" || categoria.value === "Vaca") {
         anos.style.display = "flex";
         anos.value = "años"
@@ -220,10 +223,10 @@ function cargar() {
             tipoprenada.style.display = "flex";
             for (var i = 0; i < razas.length; i++) {
                 if (div2[1] === razas[i]) {
-                    es = false
+                    es2 = false
                 }
             }
-            if (es) {
+            if (es2) {
                 otro_T.style.display = "flex";
                 otro_T.required = true;
                 otro_T.value = div2[1]
@@ -478,6 +481,7 @@ foto.addEventListener("click", function () {
     IF_1.style.display = "flex";
     principal.src = "./usuarios/menu/icons/camera.png";
     f1.required=true
+    principal.value=""
 
 })
 subir.addEventListener("click", function () {
