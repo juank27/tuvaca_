@@ -17,13 +17,13 @@ check.addEventListener("click", function () {
     if (check.checked) {
         boton.disabled = false;
         boton.style.background = "#4B8325"
-        // google.style.pointerEvents = "auto";
-        // facebook.style.pointerEvents = "auto";"
+        google.style.pointerEvents = "auto";
+        facebook.style.pointerEvents = "auto";
     } else {
         boton.disabled = true;
         boton.style.background = "#A6A6A6"
-        // google.style.pointerEvents = "none";
-        // facebook.style.pointerEvents = "auto";
+        google.style.pointerEvents = "none";
+        facebook.style.pointerEvents = "none";
     }
 
 })
