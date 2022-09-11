@@ -116,6 +116,7 @@ abrirRegistro.addEventListener("click", function () {
     modalRegistro.style.visibility = "visible";
     modalRegistro2.classList.toggle("modal_cerrado_R")
 })
+
 cerrarRegistro.addEventListener("click", function () {
     modalRegistro2.classList.toggle("modal_cerrado_R");
     setTimeout(function () {
@@ -490,3 +491,4 @@ B1.addEventListener("click", function () {
     C.style.height = "0px";
 })
 
+/***check */

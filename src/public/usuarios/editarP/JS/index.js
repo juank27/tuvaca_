@@ -31,13 +31,21 @@ categoria.addEventListener("click", function () {
         semanas.required = false;
         nprenada.required = false;
     }
-    if (categoria.value === "Toro" || categoria.value === "Vaca") {
-        anos.style.display = "flex";
-        anos.value = "años"
-        edad_es.required = false;
-        anos.disabled = true;
-        edad_es.style.display = "none";
-        edad_es.value = "años"
+    if (categoria.value === "Toro" || categoria.value === "Vaca" || categoria.value === "Ternera" || categoria.value === "Ternero") {
+        if (categoria.value === "Ternera" || categoria.value === "Ternero") {
+                anos.style.display = "flex";
+                anos.value="meses"
+                edad_es.required=false;
+                anos.disabled=true;
+                edad_es.style.display = "none";
+        }else{
+
+            anos.style.display = "flex";
+            anos.value = "años"
+            edad_es.required = false;
+            anos.disabled = true;
+            edad_es.style.display = "none";
+        }
     } else {
         edad_es.style.display = "flex";
         anos.style.display = "none";
@@ -148,9 +156,13 @@ let nprenadasr = document.getElementById("nprenadasr")
 let mesesr = document.getElementById("mesesr")
 let multi = document.getElementsByClassName("multi")
 let descripcionr = document.getElementById("descripcionr");
+let otro_Rr = document.getElementById("otro_Rr");
+let otro_Tr = document.getElementById("otro_Tr");
 let input0= document.getElementById("principal");
 let razas = ['Angus', 'Brahman', 'Gyr', 'Holstein', 'Ayrshire', 'Jersey', 'Simental', 'Normando', 'Pardo Suizo', 'Cebu']
 let es = true;
+let es2 = true;
+
 function cargar() {
     /**pefil */
     per.style.backgroundImage = (`url(${foto_perfil.value})`);
@@ -177,13 +189,19 @@ function cargar() {
     let toros=toror.value
     let dividirE = text.split(" ");
     let div2= toros.split("Con toro ")
+    console.log(div2[1]);
     if (categoria.value === "Toro" || categoria.value === "Vaca") {
         anos.style.display = "flex";
         anos.value = "años"
         edad_es.required = false;
         anos.disabled = true;
         edad_es.style.display = "none";
-        edad_es.value = "años"
+    }if(categoria.value === "Ternera"||categoria.value === "Ternero"){
+        anos.style.display = "flex";
+        anos.value="meses"
+        edad_es.required=false;
+        anos.disabled=true;
+        edad_es.style.display = "none";
     } else {
         edad_es.style.display = "flex";
         anos.style.display = "none";
@@ -205,15 +223,15 @@ function cargar() {
             tipoprenada.style.display = "flex";
             for (var i = 0; i < razas.length; i++) {
                 if (div2[1] === razas[i]) {
-                    es = false
+                    es2 = false
                 }
             }
-            if (es) {
+            if (es2) {
                 otro_T.style.display = "flex";
                 otro_T.required = true;
                 otro_T.value = div2[1]
             } else {
-                toro.value = div2[1]
+                toro.value = "div2[1]"
             }
             semanas.style.display = "flex";
             nprenada.style.display = "flex";
@@ -463,6 +481,7 @@ foto.addEventListener("click", function () {
     IF_1.style.display = "flex";
     principal.src = "./usuarios/menu/icons/camera.png";
     f1.required=true
+    principal.value=""
 
 })
 subir.addEventListener("click", function () {

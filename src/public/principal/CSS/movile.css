@@ -480,6 +480,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 5px;
     font-weight: bold;
 }
+l
 .modal_formulario button:hover {
     background-color: var(--gris_claro);
     color: #4B8325;
@@ -1942,4 +1943,22 @@ input[type=number]::-webkit-outer-spin-button {
 /************************Animación***********************************/
 .animate__animated{
     animation-iteration-count: infinite;
+}
+.check{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+.check input{
+    width: 15px;
+    height: 15px;
+}
+.check a{
+    color: #4B8325;
+    font-size: 1.2rem;
+    font-family: var(--font2);
+    margin-left: 2%;
 }

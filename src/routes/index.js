@@ -337,6 +337,12 @@ router.get('/editarPublicacion', async (req, res) => {
 		//...
 	});
 });
+router.get('/editarAcarreos', async (req, res) => {
+	//res.render('crearPublicacion');
+	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {
+		//...
+	});
+});
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearAcarreo', 'index', datos = '', globalThis.photo, () => {
@@ -495,7 +501,9 @@ router.post('/perfilA', async (req, res) => {
 	// console.log(id_p);
 	// res.render('perfilAcarreos')
 });
+router.post('/visualizarAcarreos', async (req, res) => {
 
+});
 router.post('/visualizarPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	publicaciones('publications')

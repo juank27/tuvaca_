@@ -8,11 +8,11 @@ let otro_T = document.getElementById("otro_T");
 let semanas = document.getElementById("semanas");
 let nprenada = document.getElementById("nprenada");
 let edad_es = document.getElementById("edad_es");
-let anos= document.getElementById("anos");
+let anos = document.getElementById("anos");
 let foto_perfil = document.getElementById("foto_perfil");
-function cargar(){
-    per.style.backgroundImage=(`url(${foto_perfil.value})`);
-    crear.style.backgroundImage="url(./usuarios/menu/icons/Sum2.png)";
+function cargar() {
+    per.style.backgroundImage = (`url(${foto_perfil.value})`);
+    crear.style.backgroundImage = "url(./usuarios/menu/icons/Sum2.png)";
 }
 
 categoria.addEventListener("click", function () {
@@ -31,17 +31,25 @@ categoria.addEventListener("click", function () {
         semanas.required = false;
         nprenada.required = false;
     }
-    if(categoria.value === "Toro"||categoria.value === "Vaca"){
-        anos.style.display = "flex";
-        anos.value="años"
-        edad_es.required=false;
-        anos.disabled=true;
-        edad_es.style.display = "none";
-        edad_es.value="años"
-    }else{
+    if (categoria.value === "Toro" || categoria.value === "Vaca" || categoria.value === "Ternera" || categoria.value === "Ternero") {
+        if (categoria.value === "Ternera" || categoria.value === "Ternero") {
+                anos.style.display = "flex";
+                anos.value="meses"
+                edad_es.required=false;
+                anos.disabled=true;
+                edad_es.style.display = "none";
+        }else{
+
+            anos.style.display = "flex";
+            anos.value = "años"
+            edad_es.required = false;
+            anos.disabled = true;
+            edad_es.style.display = "none";
+        }
+    } else {
         edad_es.style.display = "flex";
         anos.style.display = "none";
-        edad_es.required=true;
+        edad_es.required = true;
     }
 })
 prenada.addEventListener("click", function () {
@@ -71,7 +79,7 @@ raza.addEventListener("click", function () {
         otro_R.style.display = "flex";
         otro_R.required = true;
         raza.required = false;
-    }else{
+    } else {
         otro_R.style.display = "none";
         otro_R.required = false;
         raza.required = true;
@@ -82,7 +90,7 @@ toro.addEventListener("click", function () {
         otro_T.style.display = "flex";
         otro_T.required = true;
         toro.required = false;
-    }else{
+    } else {
         otro_T.style.display = "none";
         otro_T.required = false;
         toro.required = true;
@@ -193,7 +201,7 @@ f2.addEventListener("change", function () {
     var files = this.files;
     array2[0] = 1;
     array1[0] = 0;
-    visualizar(files[0], IF_2, ct_2, im2,vd2);
+    visualizar(files[0], IF_2, ct_2, im2, vd2);
 })
 c_2.addEventListener("click", function () {
     IF_2.style.display = "none";
@@ -211,7 +219,7 @@ f3.addEventListener("change", function () {
     var files = this.files;
     array2[1] = 2;
     array1[1] = 0;
-    visualizar(files[0], IF_3, ct_3, im3,vd3);
+    visualizar(files[0], IF_3, ct_3, im3, vd3);
 })
 c_3.addEventListener("click", function () {
     IF_3.style.display = "none";
@@ -229,7 +237,7 @@ f4.addEventListener("change", function () {
     var files = this.files;
     array2[2] = 3;
     array1[2] = 0;
-    visualizar(files[0], IF_4, ct_4, im4,vd4);
+    visualizar(files[0], IF_4, ct_4, im4, vd4);
 })
 c_4.addEventListener("click", function () {
     IF_4.style.display = "none";
@@ -247,7 +255,7 @@ f5.addEventListener("change", function () {
     var files = this.files;
     array2[3] = 4;
     array1[3] = 0;
-    visualizar(files[0], IF_5, ct_5, im5,vd5);
+    visualizar(files[0], IF_5, ct_5, im5, vd5);
 })
 c_5.addEventListener("click", function () {
     IF_5.style.display = "none";
@@ -260,21 +268,21 @@ c_5.addEventListener("click", function () {
 
 
 /*******funciones*******/
-function visualizar(file, input, foto, imagen,video) {
+function visualizar(file, input, foto, imagen, video) {
     var imgCodified = URL.createObjectURL(file);
 
     if (file.type === "video/mp4") {
-        video.style.display="flex";
-        video.src=imgCodified;
+        video.style.display = "flex";
+        video.src = imgCodified;
         foto.style.display = "flex";
         input.style.display = "none";
-        imagen.style.display="none";
+        imagen.style.display = "none";
     } else {
-        imagen.style.display="flex";
-        imagen.src=imgCodified;
+        imagen.style.display = "flex";
+        imagen.src = imgCodified;
         foto.style.display = "flex";
         input.style.display = "none";
-        video.style.display="none";
+        video.style.display = "none";
     }
 }
 function visualizar2(file, imagen2) {
@@ -295,6 +303,7 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
+    edad_es.value=anos.value
     if (valor === 0) {
         modalf.style.display = "flex";
         requerido.style.color = "red";

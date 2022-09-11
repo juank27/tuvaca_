@@ -43,6 +43,7 @@ subir2.addEventListener("click", function () {
     municipio.value=mu
     edad.value=ed
     form.submit();
+    console.log(raza.value)
 })
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";
