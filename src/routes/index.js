@@ -352,12 +352,31 @@ router.get('/acarreos', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
+					let publicacion2 = publicacion.sort(function (x, y) {
+						let a = x.updatedAt;
+						a = a.split('/');
+						let d ;
+						if (a[1].length === 1){
+							d = a[2] + +"0" + a[1] + a[0];
+						} else {
+							d = a[2] + a[1] + a[0];
+						}
+						let b = y.updatedAt;
+						b = b.split('/');
+						let c;
+						if (b[1].length === 1) {
+							c = b[2] + +"0" + b[1] + b[0];
+						} else {
+							c = b[2] + b[1] + b[0];
+						}
+						return parseInt(c) - parseInt(d);
+					});
 					setTimeout(() => {
 						let info = {
 							photo: globalThis.photo,
 							name: globalThis.name,
 						}
-						verificarEstado(res, 'acarreos', 'index', publicacion, info, () => {
+						verificarEstado(res, 'acarreos', 'index', publicacion2, info, () => {
 							//...
 						});
 					}, 500);
@@ -365,9 +384,6 @@ router.get('/acarreos', async (req, res) => {
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
-	// verificarEstado(res, 'acarreos', 'index', datos = '', () => {
-	// 	//...
-	// });
 });
 router.get('/seleccionacarreos', async (req, res) => {
 	//res.render('acarreos');
