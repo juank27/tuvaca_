@@ -16,30 +16,34 @@ class envioImg {
 	// funciones para guardar imagenes en firebase storage
 	sendImages(files, callback, data) {
 		//console.log(files);
+
+		console.log(files);
 		//ref de la imagen y asignacion de nombre unico
-		const storageRef = ref(
-			storage,
-			'acarreos/' + new Date().getTime() + files.originalname
-		);
-		const metadata = {
-			contentType: files.mimetype,
-		};
-		uploadBytes(storageRef, files.buffer, metadata)
-			.then((snapshot) => {
-				//generar url de descarga de la imagen
-				getDownloadURL(ref(storage, snapshot.metadata.fullPath))
-					.then((url) => {
-						//envio de datos a la funcion callback para guardar en firebase
-						//callback(url, text1, text2);
-						callback(data, url);
-					})
-					.catch((error) => {
-						console.log(error);
-					});
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		if(files!==undefined){
+			const storageRef = ref(
+				storage,
+				'acarreos/' + new Date().getTime() + files.originalname
+			);
+			const metadata = {
+				contentType: files.mimetype,
+			};
+			uploadBytes(storageRef, files.buffer, metadata)
+				.then((snapshot) => {
+					//generar url de descarga de la imagen
+					getDownloadURL(ref(storage, snapshot.metadata.fullPath))
+						.then((url) => {
+							//envio de datos a la funcion callback para guardar en firebase
+							//callback(url, text1, text2);
+							callback(data, url);
+						})
+						.catch((error) => {
+							console.log(error);
+						});
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	}
 	// funciones para guardar imagenes en firebase storage
 	sendImagesPerfil(files, id, callback) {

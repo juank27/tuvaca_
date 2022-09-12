@@ -22,6 +22,7 @@ tipoveh.addEventListener("click", function () {
         otro_R.style.display = "none";
         otro_R.required = false;
         tipoveh.required = true;
+        otro_R.value=""
     }
 })
 atrasI.addEventListener("click", function () {
@@ -44,10 +45,14 @@ function visualizar(file) {
     var imgCodified = URL.createObjectURL(file);
     foto.style.display = "flex";
     f5.src = imgCodified;
+    requerido.innerHTML = "";
 }
 
 subir.addEventListener("click", function () {
-    
+    if(otro_R.value!==""){
+        tipoveh.value=otro_R.value;
+
+    }
     if (valor === 0) {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";
@@ -56,5 +61,7 @@ subir.addEventListener("click", function () {
 foto.addEventListener("click", function () {
     foto.style.display = "none";
     f5.src = "./usuarios/menu/icons/Camera.png";
-
+    valor=0
+    console.log(valor);
+    
 })

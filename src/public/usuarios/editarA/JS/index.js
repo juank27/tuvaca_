@@ -28,6 +28,7 @@ let susar= document.getElementById("susar");
 let simijacar= document.getElementById("simijacar");
 let carupar= document.getElementById("carupar");
 let cucunubar= document.getElementById("cucunubar");
+let ubication= document.getElementById("ubication");
 let ubicationr= document.getElementById("ubicationr");
 let tipovehr= document.getElementById("tipovehr");
 let descripcionr = document.getElementById("descripcionr");
@@ -50,9 +51,11 @@ function cargar(){
         otro_R.value = tipovehr.value
     } else {
         tipoveh.value = tipovehr.value
+        otro_R.value=""
 
     }
     ubication.value=ubicationr.value
+    tipoveh.value=tipovehr.value
     ubate.value=ubater.value
     susa.value=susar.value
     suta.value=sutar.value
@@ -68,6 +71,7 @@ function cargar(){
     }
     foto.style.display = "flex";
     f5.src = input0.value;
+    c_5.required=false;
 }
 tipoveh.addEventListener("click", function () {
     if (tipoveh.value === "Otro") {
@@ -78,6 +82,8 @@ tipoveh.addEventListener("click", function () {
         otro_R.style.display = "none";
         otro_R.required = false;
         tipoveh.required = true;
+        otro_R.value=""
+
     }
 })
 atrasI.addEventListener("click", function () {
@@ -103,7 +109,10 @@ function visualizar(file) {
 }
 
 subir.addEventListener("click", function () {
-    tipoveh.value=otro_R.value;
+    if(otro_R.value!==""){
+        tipoveh.value=otro_R.value;
+
+    }
     if (valor === 0) {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";
@@ -150,5 +159,6 @@ foto.addEventListener("click", function () {
     foto.style.display = "none";
     f5.src = "./usuarios/menu/icons/Camera.png";
     input0.value=""
-
+    valor=0
+    c_5.required=true;
 })
