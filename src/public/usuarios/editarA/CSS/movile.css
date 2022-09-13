@@ -33,8 +33,15 @@ html {
     justify-content: space-around;
 }
 .body_crearP p{
-    font-size: 1.3rem;
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;
     margin-bottom: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .body_crearP span{
     font-size: 1.3rem;
@@ -42,7 +49,7 @@ html {
 main{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     height: auto;
@@ -51,7 +58,7 @@ form{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 80%;
-    height: auto;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -60,20 +67,22 @@ form{
     border-radius: 5px;
 }
 form p{
+    font-family: var(--font1);
+    font-size: 1.4rem;
     font-weight: bold;
-    font-size: var(--font2);
-    color: var(--gris_oscuro);
-    text-align: left;
+    color:dimgrey;
+    line-height: 2rem;;
 }
 .imagen{
     width: 80%;
     height: auto;
     margin-top: 5%;
-    margin-bottom: 5%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 5%;
 }
 .imagen div{
     background-image: url("../../../principal/icons/Cancel.png");
@@ -114,7 +123,7 @@ input:focus, select:focus, textarea:focus {
     border-left:none ;
     border-right:none ;
 }
-.actualizar{
+input[type=submit]{
     margin-bottom: 5%;
     margin-top: 5%;
     width: 50%;
@@ -128,7 +137,7 @@ input:focus, select:focus, textarea:focus {
     font-size: 1.3rem;
     font-weight: bold;
 }
-.actualizar:hover{
+input[type=submit]:hover{
     color: var(--verde);
     background-color: var(--gris_claro);
 }
@@ -139,7 +148,7 @@ label{
     justify-content: space-around;
     margin-bottom: 5%;
 }
-label input{
+label select{
     width: 45%;
     border: 1px solid var(--verde);
     margin-bottom: 0;
@@ -148,9 +157,12 @@ label input{
 .texto{
     font-weight: bold;
     width: 45%;
-    font-size: var(--font1);
     border: 1px solid var(--verde);
-    color: var(--gris_oscuro);
+    font-family: var(--font1);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:dimgrey;
+    line-height: 2rem;;
     height: 20px;
     display: flex;
     align-items: center;
@@ -187,118 +199,59 @@ input[type=number]::-webkit-outer-spin-button {
     color: var(--gris_oscuro);
     font-size: 1.3rem;
 }
-#prenada,#tipoprenada,#semanas,#primeriza,#nprenada,#otro_T,#otro_R{
+#otro_R{
     display: none;
 }
-/***************modal**********/
 
-
-.modal_f {
-    width: 90%;
-    background-color: rgb(229, 229, 229);
-    height: 70%;
-    display: none;
+/***********botones selectores******/
+.selector{
+    width: 100%;
+    display: flex;
     align-items: center;
-    flex-direction: column;
-    border-radius: 5px;
-    position: relative;
-    transform: translateY(0%);
-    transition: transform 1s;
-    margin-bottom: 5%;
-}
-
-.modal_Cuerpo {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    height: auto;
-    width: 100%;
-}
-/************insertar fotografia******/
-.modal_Cuerpof {
-    display: flex;
-    height: auto;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.insert_Foto{
-    width: 100px;
-    height: 100px;
-    border: 5px dashed var(--verde);
-    background-image: url(../../menu/icons/Camera.png);
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:cover;
-    cursor: pointer;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.mas{
-    width: 20px;
-    height: 20px;
-    background-image: url(../../menu/icons/Sum.png);
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:cover;
-    cursor: pointer;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.foto_publicacion{
-    display: none;
-}
-.IF_2, .IF_3, .IF_4, .IF_5{
-    display: none;
-}
-.imagenes{
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 100vh;
-}
-.cont_img{
-    width: 80%;
-    height: auto;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 5%;
+    flex-direction: column;
+}
+.selector a {
     margin-bottom: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
-    display: none;
-}
-.cerrando{
-    width: 10%;
-    height: auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-.cerrar{
-    background-image: url(../../../principal/icons/Cancel.png);
-    width: 20px;
-    height: 20px;
+    margin-top: 5%;
+    width: 50%;
+    background-color: #4B8325;
+    border: none;
+    font-size: var(--font1);
+    color: var(--blanco);
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+.selector a:hover{
+    color: var(--verde);
+    background-color: var(--gris_claro);
+}
+.atras{
+    width: 100%;
+    height: 30px;
+}
+.atrasI{
+    background-image: url("../../menu/icons/atras.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+}
+.atrasI:hover{
+    background-image: url("../../menu/icons/atras2.png");
 }
 .requerido{
     color: var(--verde);
     text-align: center;
-    width: 50%;
-    margin-top: 10%;
-}
-.limite{
-    margin-top: 5%;
-    color: var(--verde);
-    text-align: center;
-}
-.separador{
     width: 100%;
-    border: 1px solid var(--verde);
+}
+.img_f{
+    display: none;
 }

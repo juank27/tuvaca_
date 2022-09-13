@@ -14,13 +14,14 @@
     <link rel="stylesheet" href="./principal/CSS/tablet.css" media="screen and (min-width:600px)">
     <link rel="stylesheet" href="./principal/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
-    <script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(248282)</script>
+    <script src="https://account.snatchbot.me/script.js"></script>
+    <script>window.sntchChat.Init(248282)</script>
     <title>tuVaca.com</title>
 </head>
 
-<body >
+<body>
     <!--header-->
-    <header id="home" class="header" >
+    <header id="home" class="header">
         <section class="header_imagenes">
             <picture>
                 <source media="(min-width:1300px" srcset="./principal/images/vacas/vaca1-G.jpg">
@@ -98,11 +99,11 @@
                 <img class="main_imagenes_grid" src="./principal/images/granjas/granja3-P.jpg" alt="">
             </picture>
         </section>
-        <p class="main_parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatum officia, 
-            similique iure quidem corrupti placeat, ullam dolorem perferendis 
+        <p class="main_parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatum officia,
+            similique iure quidem corrupti placeat, ullam dolorem perferendis
             quae voluptatem magnam delectus saepe distinctio labore qui consectetur architecto dignissimos.</p>
         <section id="cows" class="main_contenido">
-        <!--Comercio Intermunicipal-->
+            <!--Comercio Intermunicipal-->
             <section class="municipios">
                 <div class="">
                     <h1>Comercio Intermunicipal</h1>
@@ -124,7 +125,7 @@
                 <span class="quince_M" id="quince"></span>
                 <span class="unoseis_M" id="unoseis"></span>
             </section>
-        <!--Publicaciones-->
+            <!--Publicaciones-->
             <section class="main_contenido_p publicaciones">
                 <div class="main_contenido_titulo">
                     <h1>Publicaciones</h1>
@@ -376,7 +377,8 @@
                 <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
                     <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
                     <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
-                    <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
+                    <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7"
+                        required>
                     <button type="submit">Iniciar Sesión</button>
                 </form>
                 <div class="modal_separador"></div>
@@ -398,15 +400,18 @@
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
                 <h1 id="titulo" style="display:none">Completar Registro</h1>
-                <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email" method="POST">
+                <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email"
+                    method="POST">
                     <input type="text" name="id" id="id" type="text" style="display:none">
                     <input type="text" name="photo" id="photo" type="text" style="display:none">
                     <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
                     <input type="text" name="nameb" id="nameb" placeholder="Nombre Completo" style="display:none">
-                    <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                    <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000"
+                        max="9999999999" required>
                     <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required>
                     <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
-                    <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio" required>
+                    <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio"
+                        required>
                     <datalist id="municipios">
                         <option value="Ubaté"></option>
                         <option value="Carmen de Carupa"></option>
@@ -418,18 +423,24 @@
                         <option value="Simijaca"></option>
                         <option value="Susa"></option>
                     </datalist>
-                    <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña" minlength="7" required>
-                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Verificar Contraseña" minlength="7" required>
+                    <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña" minlength="7"
+                        required>
+                    <input type="password" name="confirmPassword" id="confirmPassword"
+                        placeholder="Verificar Contraseña" minlength="7" required>
                     <p id="nn"></p>
-                    <button id="boton" type="submit">Registrarse</button>
+                    <button id="boton" disabled>Registrarse</button>
                 </form>
-                <div class="modal_separador"></div>
-                <div class="modal_google" id="google">
-                    <span></span>
-                    <a id="registergoogle" > Registrarse con Google</a>
+                <div class="check">
+                    <input type="checkbox" id="cbox" >
+                    <a href="">Acepto terminos y condiciones</a>
                 </div>
-                <div class="modal_facebook" id="facebook">
-                    <span></span>
+                <div class="modal_separador"></div>
+                <div class="modal_google" id="google" style="pointer-events: none;">
+                    <span ></span>
+                    <a id="registergoogle"> Registrarse con Google</a>
+                </div>
+                <div class="modal_facebook" id="facebook"  style="pointer-events: none;">
+                    <span ></span>
                     <a id="registerfacebook">Registrarse con Facebook</a>
                 </div>
             </div>
@@ -597,7 +608,7 @@
     </section>
     <!--Section Publicación-->
     <section class="modal_container_P">
-        <section class="modal_P modal_cerrado_P"  >
+        <section class="modal_P modal_cerrado_P">
             <div class="modal_ContendorCP"><span class="cerrar_modal_P"></span></div>
             <div class="">
                 <h1>Publicaciones</h1>
@@ -634,31 +645,31 @@
                         </div>
                     </div>
                     <div class="modal_publicar">
-                            <div class="contenido_p_caja " id="cajaUno">
-                                <div class="contenido_p_izquierdo">
-                                    <div class="cpi_uno"></div>
-                                    <div class="cpi_dos"></div>
-                                    <div class="cpi_tres">
-                                        <div class="cpi_tresS">
-                                            <div class="cpi_tresSpan"></div>
-                                            <div class="cpi_tresSpan"></div>
-                                            <div class="cpi_tresSpan"></div>
-                                            <div class="cpi_tresSpan"></div>
-                                        </div>
-                                        <div class="cpi_tresD"></div>
+                        <div class="contenido_p_caja " id="cajaUno">
+                            <div class="contenido_p_izquierdo">
+                                <div class="cpi_uno"></div>
+                                <div class="cpi_dos"></div>
+                                <div class="cpi_tres">
+                                    <div class="cpi_tresS">
+                                        <div class="cpi_tresSpan"></div>
+                                        <div class="cpi_tresSpan"></div>
+                                        <div class="cpi_tresSpan"></div>
+                                        <div class="cpi_tresSpan"></div>
                                     </div>
-                                </div>
-                                <div class="contenido_p_derecho">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                    <div class="cpi_tresD"></div>
                                 </div>
                             </div>
+                            <div class="contenido_p_derecho">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                         </div>
-                        <div class="modal_borrar">
-                            <p>Publicación Eliminada</p>
-                        </div>
+                    </div>
+                    <div class="modal_borrar">
+                        <p>Publicación Eliminada</p>
+                    </div>
                 </section>
                 <section class="select_publicacion">
                     <div class="C"><span class="crear_S"></span><a class="crear"> Crear</a></div>
@@ -692,4 +703,5 @@
     </script>
     <script src="./JS/firebaseAuth.js"></script>
 </body>
+
 </html>

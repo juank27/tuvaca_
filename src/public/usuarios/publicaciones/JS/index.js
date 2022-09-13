@@ -54,6 +54,7 @@ cerrarSesion.addEventListener("click", function () {
     }, 500)
 })
 
+
 /***recuperando datos para el chat *****/
 
 function posicion4(valor) {

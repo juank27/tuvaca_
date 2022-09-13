@@ -1,8 +1,10 @@
 let submit = document.querySelectorAll(".submit")[0];
 let subir = document.querySelectorAll(".subir")[0];
+let subir2 = document.querySelectorAll(".subir2")[0];
 let filtrado = document.querySelectorAll(".filtrado")[0];
 let volver = document.querySelectorAll(".volver")[0];
 let usuario = document.getElementById("usuarios");
+let form = document.getElementById("form");
 let usuarios = document.getElementById("usuario");
 let usuario1 = document.getElementById("usuarios1");
 let raza = document.getElementById("razas");
@@ -10,18 +12,38 @@ let categoria = document.getElementById("categorias");
 let edad = document.getElementById("edad_");
 let municipio = document.getElementById("ubication");
 let precio = document.getElementById("precios");
-// let foto_perfil = document.getElementById("foto_perfil");
-// function cargar(){
-//     per.style.backgroundImage=(`url(${foto_perfil.value})`);
-//     pub.style.backgroundImage=" url(./usuarios/menu/icons/Cow.png)";
-// }
+let foto_perfil = document.getElementById("foto_perfil");
+function cargar() {
+    per.style.backgroundImage = (`url(${foto_perfil.value})`);
+    pub.style.backgroundImage = " url(./usuarios/menu/icons/Cow.png)";
+}
 let datos = [];
 let palabras = 0;
 let valor = 0;
-
+let cat;
+let pre;
+let ra;
+let mu;
+let ed
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type=text]').forEach(node => node.addEventListener('keypress', e => {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    }))
+});
 subir.addEventListener("click", function () {
-    usuarios.value=usuario.value;
+    usuarios.value = usuario.value;
     submit.click();
+})
+subir2.addEventListener("click", function () {
+    categoria.value=cat
+    precio.value=pre
+    raza.value=ra
+    municipio.value=mu
+    edad.value=ed
+    form.submit();
+    console.log(raza.value)
 })
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";
@@ -36,6 +58,7 @@ categoria.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="categoria" id="imput' + valor + '" value="' + categoria.value + '">')
         $(inpu).insertBefore(".submit");
+        cat=categoria.value
         categoria.value = "";
         categoria.disabled = true;
     }
@@ -47,9 +70,13 @@ categoria.addEventListener("click", function () {
     if (palabras == 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario1.style.display = "flex";
         usuario.style.display = "none";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 raza.addEventListener("click", function () {
@@ -63,6 +90,7 @@ raza.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="raza" id="imput' + valor + '" value="' + raza.value + '">')
         $(inpu).insertBefore(".submit");
+        ra=raza.value
         raza.value = "";
         raza.disabled = true;
     }
@@ -73,9 +101,13 @@ raza.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 municipio.addEventListener("click", function () {
@@ -89,6 +121,7 @@ municipio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="municipio" id="imput' + valor + '" value="' + municipio.value + '">')
         $(inpu).insertBefore(".submit");
+        mu=municipio.value
         municipio.value = "";
         municipio.disabled = true;
     }
@@ -99,9 +132,13 @@ municipio.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 edad.addEventListener("click", function () {
@@ -115,6 +152,7 @@ edad.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="edad" id="imput' + valor + '" value="' + edad.value + '">')
         $(inpu).insertBefore(".submit");
+        ed=edad.value
         edad.value = "";
         edad.disabled = true;
     }
@@ -125,9 +163,13 @@ edad.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 precio.addEventListener("click", function () {
@@ -141,6 +183,7 @@ precio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="number" name="precio" id="imput' + valor + '" value="' + precio.value + '">')
         $(inpu).insertBefore(".submit");
+        pre=precio.value
         precio.value = "";
         precio.disabled = true;
     }
@@ -151,9 +194,13 @@ precio.addEventListener("click", function () {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     } else {
         usuario.style.display = "none";
         usuario1.style.display = "flex";
+        subir2.style.display = "flex";
+        subir.style.display = "none";
     }
 })
 function comparado(texto) {
@@ -181,6 +228,8 @@ $(document).on("click", " .cerrar1", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     comparado(imput)
@@ -195,6 +244,8 @@ $(document).on("click", " .cerrar2", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput2");
@@ -210,6 +261,8 @@ $(document).on("click", " .cerrar3", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput3");
@@ -225,6 +278,8 @@ $(document).on("click", " .cerrar4", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput4");
@@ -240,6 +295,8 @@ $(document).on("click", " .cerrar5", function (e) {
     if (palabras === 0) {
         usuario.style.display = "flex";
         usuario1.style.display = "none";
+        subir.style.display = "flex";
+        subir2.style.display = "none";
     }
     filtrado.innerHTML = "";
     let imput = document.getElementById("imput5");
@@ -248,3 +305,68 @@ $(document).on("click", " .cerrar5", function (e) {
     $(this).parent().remove();
 });
 
+/****publicaciones */
+
+
+let abrirSesion;
+let id;
+let cerrarSesion = document.querySelectorAll(".cerrar_modal_p")[0];
+let buscando = document.querySelectorAll(".buscando")[0];
+let modalSesion = document.querySelectorAll(".modal_container_p")[0];
+let modalSesion2 = document.querySelectorAll(".modal_p")[0];
+let publicación = document.getElementById("publicacion");
+let id2 = document.getElementById("id2");
+let id3 = document.getElementById("id3");
+let framer = document.getElementById("framer");
+
+function posicion(valor) {
+    framer.contentDocument.location.reload(true);
+    id = document.querySelectorAll(".id")[valor].value;
+    id2.value = id;
+    publicación.submit();
+    setTimeout(function () {
+        modal()
+    }, 1000);
+}
+let perfils = document.querySelectorAll(".perfilS")[0];
+function posicion2(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id3.value = id;
+    perfils.submit();
+}
+function posicion3(valor) {
+    id = document.querySelectorAll(".id")[valor].value;
+    id3.value = id;
+    perfils.submit();
+}
+
+function modal() {
+    framer.src += ''
+    modalSesion.style.opacity = "1";
+    modalSesion.style.visibility = "visible";
+    modalSesion2.classList.toggle("modal_cerrado_p");
+}
+cerrarSesion.addEventListener("click", function () {
+    modalSesion2.classList.toggle("modal_cerrado_p");
+    setTimeout(function () {
+        modalSesion.style.opacity = "0";
+        modalSesion.style.visibility = "hidden";
+        id.value = "";
+    }, 500)
+})
+
+/***recuperando datos para el chat *****/
+
+function posicion4(valor) {
+    console.log("dentro");
+    let _name = document.querySelectorAll(".nombre")[valor].value;
+    let phone = document.querySelectorAll(".phone")[valor].value;
+    let updateAt = document.querySelectorAll(".updateAt")[valor].value;
+    let raza = document.querySelectorAll(".raza")[valor].value;
+    let categoria = document.querySelectorAll(".categoria")[valor].value;
+    let precio = document.querySelectorAll(".precio")[valor].value;
+    let yo = document.getElementById("yo");
+
+    let url = "https://api.whatsapp.com/send?phone=57" + phone + "&text=Hola%20" + _name + ",%20yo%20soy%20" + yo.innerHTML + "%20y%20estoy%20interesado%20en%20la%20publicación%20que%20realizo%20el%20" + updateAt + ",%20el%20cual%20es%20" + categoria + "%20de%20raza%20" + raza + "%20con%20precio%20" + precio + ",%20me%20gustaría%20tener%20más%20información,%20muchas%20gracias.";
+    window.open(url);
+}

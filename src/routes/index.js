@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const multer = require('multer')
+const multer = require('multer');
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
 const { createUserWithEmailAndPassword,
@@ -14,14 +14,14 @@ const { createUserWithEmailAndPassword,
 	GoogleAuthProvider,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
-const {doc, deleteDoc, updateDoc, setDoc} = require('firebase/firestore'); //crud
+const { doc, deleteDoc, updateDoc, setDoc } = require('firebase/firestore'); //crud
 const envioImg = require('../functions');
 
 const router = Router();
 var imagen = new envioImg();
 const storageLocal = multer.memoryStorage();
 const upload = multer({ storage: storageLocal });
-let a ;
+let a;
 let buscarGlobal = "";
 let mensaje = undefined; //mensaje de error
 let estado = false; //estado de la sesion
@@ -31,7 +31,7 @@ globalThis.idUser = _idUser;
 globalThis.photo = '';
 globalThis.name = '';
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
+function verificarEstado(res, ruta, ruta2, datos = '', data = '', callback) {
 	//console.log(mensaje);
 	if (estado) {
 		console.log('home raiz');
@@ -40,7 +40,7 @@ function verificarEstado(res, ruta, ruta2, datos = '', data='', callback) {
 		if (modal) {
 			console.log("$$$$$$$$$$$$$$$$$$");
 			console.log(data);
-			res.render(ruta, {datos, data});
+			res.render(ruta, { datos, data });
 		} else {
 			res.render(ruta, { layout: false, datos });
 			modal = true;
@@ -66,10 +66,10 @@ router.get('/', async (req, res) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
 					let info = {
-						name : globalThis.name,
-						photo : globalThis.photo,
+						name: globalThis.name,
+						photo: globalThis.photo,
 					}
-					verificarEstado(res, 'publicaciones', 'index', publicacion, info,() => {
+					verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
 						//...
 					});
 				})
@@ -88,6 +88,8 @@ router.use('/logout', async (req, res, next) => {
 		estado = false;
 		buscarGlobal = "";
 		globalThis.idUser = '';
+		globalThis.photo = '';
+		globalThis.name = '';
 		console.log('logout');
 		//next();
 		res.redirect('/');
@@ -209,7 +211,14 @@ router.post('/login-email', async (req, res) => {
 					globalThis.idUser = user.uid; //id user global
 					estado = true;
 					mensaje = undefined;
-					res.redirect('/publicaciones');
+					data_perfil(user.uid)
+						.then((data) => {
+							setTimeout(() => {
+								globalThis.photo = data[0].photo;
+								globalThis.name = data[0].name;
+								res.redirect('/publicaciones');
+							}, 1000);
+						})
 				})
 				.catch((error) => {
 					const errorCode = error.code;
@@ -322,12 +331,21 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
-router.get('/editarPublicacion', async (req, res) => {
-	//res.render('crearPublicacion');
-	verificarEstado(res, 'editarPublicaciones', 'index', datos = '', globalThis.photo, () => {
-		//...
-	});
-});
+
+let multpleInput = upload.fields([
+	{ name: 'input0' },
+	{ name: 'input1' },
+	{ name: 'input2' },
+	{ name: 'input3' },
+	{ name: 'input4' }
+]);
+
+// router.get('/editarAcarreos', async (req, res) => {
+// 	//res.render('crearPublicacion');
+// 	verificarEstado(res, '/editarAcarreos', 'index', datos = '', globalThis.photo, () => {
+// 		//...
+// 	});
+// });
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
 	verificarEstado(res, 'crearAcarreo', 'index', datos = '', globalThis.photo, () => {
@@ -343,12 +361,31 @@ router.get('/acarreos', async (req, res) => {
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
+					let publicacion2 = publicacion.sort(function (x, y) {
+						let a = x.updatedAt;
+						a = a.split('/');
+						let d ;
+						if (a[1].length === 1){
+							d = a[2] + +"0" + a[1] + a[0];
+						} else {
+							d = a[2] + a[1] + a[0];
+						}
+						let b = y.updatedAt;
+						b = b.split('/');
+						let c;
+						if (b[1].length === 1) {
+							c = b[2] + +"0" + b[1] + b[0];
+						} else {
+							c = b[2] + b[1] + b[0];
+						}
+						return parseInt(c) - parseInt(d);
+					});
 					setTimeout(() => {
 						let info = {
 							photo: globalThis.photo,
 							name: globalThis.name,
 						}
-						verificarEstado(res, 'acarreos', 'index', publicacion, info, () => {
+						verificarEstado(res, 'acarreos', 'index', publicacion2, info, () => {
 							//...
 						});
 					}, 500);
@@ -356,9 +393,6 @@ router.get('/acarreos', async (req, res) => {
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
 		.catch((error) => { console.log("No hay publicaiones", error); });
-	// verificarEstado(res, 'acarreos', 'index', datos = '', () => {
-	// 	//...
-	// });
 });
 router.get('/seleccionacarreos', async (req, res) => {
 	//res.render('acarreos');
@@ -470,12 +504,32 @@ router.post('/perfilA', async (req, res) => {
 	// console.log(id_p);
 	// res.render('perfilAcarreos')
 });
+router.post('/visualizarAcarreos', async (req, res) => {
+	let { id_p } = req.body;
+	console.log("🚀 ~ file: index.js ~ line 509 ~ router.post ~ id_p", id_p)
+	publicaciones('acarreos')
+		.then((publicaciones) => {
+			let idusuarioverr = [];
+			publicaciones.forEach((doc) => {
+				if (doc.id === id_p) {
+					idusuarioverr.push(doc);
+				}
+			})
+			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
+			verificarEstado(res, 'editarAcarreos', 'index', idusuarioverr[0], globalThis.photo, () => {
+				console.log('Estoy dentro del perfil con un callback');
+			});
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error)
+		});
+});
 
 router.post('/visualizarPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	publicaciones('publications')
 		.then((publicaciones) => {
-			let idusuarioverr=[];
+			let idusuarioverr = [];
 			publicaciones.forEach((doc) => {
 				if (doc.id === id_p) {
 					idusuarioverr.push(doc);
@@ -483,6 +537,7 @@ router.post('/visualizarPublicacion', async (req, res) => {
 			})
 			console.log("llllllllllllllllllll");
 			console.log(idusuarioverr[0].edad);
+			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
 			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], globalThis.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
@@ -559,7 +614,7 @@ router.get('/perfil', async (req, res) => {
 
 //actualizar perfil
 router.post('/update_data_personal', async (req, res) => {
-	let { name, phone, ubication} = req.body;
+	let { name, phone, ubication } = req.body;
 	data = {
 		name,
 		phone,
@@ -580,7 +635,7 @@ router.post('/estadoPublicacion', async (req, res) => {
 	let { id_p } = req.body;
 	let data = imagen.getDate();
 	data = {
-		updatedAt : data,
+		updatedAt: data,
 	}
 	console.log(data);
 	console.log(id_p);
@@ -594,7 +649,7 @@ router.post('/estadoPublicacion', async (req, res) => {
 });
 
 //actualizar imagen de perfil
-router.post('/actualizar_img', upload.single('perfil'),  async (req, res) => {
+router.post('/actualizar_img', upload.single('perfil'), async (req, res) => {
 	let img = req.file;
 	imagen.sendImagesPerfil(img, globalThis.idUser, update_data);
 	res.redirect('/perfil');
@@ -685,6 +740,143 @@ router.get('/modalpublicaciones', async (req, res) => {
 	});
 });
 
+//Busqueda bovinos
+router.post('/busquedaBovina', async (req, res) => {
+	let { razas, categorias, edad_, ubication, precios } = req.body;
+	buscador = {
+		raza: razas,
+		categoria: categorias,
+		edad: edad_,
+		ubicacion: ubication,
+		precio: precios,
+	}
+	publicaciones('publications')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					nullB= dataNullBovino(buscador);
+					let buscar = filtrarBovinos(publicacion, nullB);
+					console.log("Buscaaaaaaaaaaaaaaaaaaaaaar");
+					//console.log(publicacion);
+					console.log(nullB);
+					let info = {
+						photo: globalThis.photo,
+						name: globalThis.name,
+					}
+					//res.render('buscarPublicaciones.hbs', datos = buscar);
+					verificarEstado(res, 'buscarPublicaciones', 'index', buscar, info, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error);
+		});
+});
+
+//busquda de usuarios
+router.post('/buscando', async (req, res) => {
+	let { usuario } = req.body;
+	usuario = usuario.toLowerCase();
+	Users()
+		.then((users) => {
+			let busqueda = filtrar(users, usuario);
+			b = busqueda;
+			console.log("----------------------------------------------");
+			console.log(b);
+			console.log("esta es la busqueda de data");
+			console.log(busqueda.length);
+			//console.log(busqueda.length(), "longitudddd");
+			//publicaciones_propias('publications', id)
+			let dataEncontrada = [];
+			for (let index = 0; index < busqueda.length; index++) {
+				publicaciones_propias('publications', busqueda[index].id)
+					.then((publicaciones) => {
+						let u = unir(publicaciones, users);
+						dataEncontrada.push(u);
+					})
+			}
+			setTimeout(() => {
+				let info = dataNull(dataEncontrada);
+				let org = organizares(info);
+				//res.render('buscarPublicaciones', { layout: false, dataEncontrada: org });
+				let infoPerfil = {
+					photo: globalThis.photo,
+					name: globalThis.name,
+				}
+				verificarEstado(res, 'buscarPublicaciones', 'index', org, infoPerfil, () => {
+					//...
+				});
+			}, 2000);
+		})
+		.catch((error) => {
+			console.log("No hay Usuarios", error);
+		});
+});
+//organizar datos
+function organizares(data) {
+	let dataOrganizada = [];
+	for (let index = 0; index < data.length; index++) {
+		for (let i = 0; i < data[index].length; i++) {
+			dataOrganizada.push(data[index][i]);
+		}
+	}
+	return dataOrganizada;
+}
+
+//validar datos no encontrados
+function dataNull(data) {
+	let info = []
+	for (let index = 0; index < data.length; index++) {
+		if (data[index].length !== 0) {
+			info.push(data[index]);
+		}
+	}
+	return info;
+}
+//validar datos no llenos
+function dataNullBovino(data) {
+	let info = []
+	for (let key in data) {
+		if (data[key] !== "") {
+			info.push(key);
+			info.push(data[key]);
+		}
+	}
+	return info;
+}
+//filtrar las busquedas
+function filtrar(info, busqueda) {
+	let encontro = [];
+	info.forEach((dataUser) => {
+		if (((dataUser.name).toLowerCase()).includes(busqueda)) {
+			encontro.push(dataUser);
+		}
+	})
+	return encontro;
+}
+
+//filtrar las busquedas
+function filtrarBovinos(info, busqueda) {
+	let encontro = [];
+	i = 0;
+	info.forEach((dataUser) => {
+		// if (dataUser.raza === busqueda.raza ||
+		// 	dataUser.categoria === busqueda.categoria ||
+		// 	dataUser.ubicacion === busqueda.ubicacion ||
+		// 	dataUser.precio === busqueda.precio ||
+		// 	dataUser.edad === busqueda.edad) {
+		// 	encontro.push(dataUser);
+		// }
+		if (dataUser[busqueda[i]] === busqueda[i+1]) {
+			encontro.push(dataUser);
+		}
+	})
+	return encontro;
+}
+
 //funcion para verificar el email
 async function verficEmail(res, email, callback) {
 	let users = db.collection('users');
@@ -731,13 +923,23 @@ async function publicaciones(dataBase) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.orderBy('updatedAt', 'desc').get();
+	let querySnapshot = await publications.get();
+
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
 		id: doc.id,
 		...doc.data(),
 	}));
+	userRegister.sort(function (x, y) {
+		a = x.updatedAt;
+		a = a.split('/');
+		a = a[2] + a[1] + a[0];
+		let b = y.updatedAt;
+		b = b.split('/');
+		b = b[2] + b[1] + b[0];
+		return b - a;
+	});
 	console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
 	if (userRegister.length > 0) {
@@ -755,7 +957,7 @@ async function publicaciones_propias(dataBase, idUser) {
 	console.log(typeof (dataBase));//-> salida: string
 	let publications = db.collection(dataBase);
 	//consulta con la condicion
-	let querySnapshot = await publications.orderBy('updatedAt', 'desc').get();
+	let querySnapshot = await publications.orderBy("updatedAt", "desc").get();
 	//console.log('imprimiendo contenido');
 	//obtener los datos de la consulta en un nuevo objeto
 	let userRegister = querySnapshot.docs.map((doc) => ({
@@ -764,6 +966,15 @@ async function publicaciones_propias(dataBase, idUser) {
 	}));
 	//console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
+	userRegister.sort(function (x, y) {
+		a = x.updatedAt;
+		a = a.split('/');
+		a = a[2] + a[1] + a[0];
+		let b = y.updatedAt;
+		b = b.split('/');
+		b = b[2] + b[1] + b[0];
+		return b - a;
+	});
 	let data_publications = [];
 	let aux = 0;
 	userRegister.forEach(element => {

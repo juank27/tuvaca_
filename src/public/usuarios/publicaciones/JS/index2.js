@@ -26,8 +26,10 @@ function posicion6(valor) {
 function posicion2(valor) {
     let perfils = document.getElementById("perfilS");
     id = document.querySelectorAll(".id")[valor].value;
+    id3 = document.getElementById("id3");
     console.log(id);
     id3.value = id;
+    console.log(id3.value);
     perfils.click();
 }
 /******opcion eliminar */

@@ -22,6 +22,7 @@ tipoveh.addEventListener("click", function () {
         otro_R.style.display = "none";
         otro_R.required = false;
         tipoveh.required = true;
+        otro_R.value=""
     }
 })
 atrasI.addEventListener("click", function () {
@@ -44,6 +45,7 @@ function visualizar(file) {
     var imgCodified = URL.createObjectURL(file);
     foto.style.display = "flex";
     f5.src = imgCodified;
+    requerido.innerHTML = "";
 }
 
 subir.addEventListener("click", function () {
@@ -54,6 +56,8 @@ subir.addEventListener("click", function () {
 })
 foto.addEventListener("click", function () {
     foto.style.display = "none";
-    f5.src = "./usuarios/menu/icons/camera.png";
-
+    f5.src = "./usuarios/menu/icons/Camera.png";
+    valor=0
+    console.log(valor);
+    
 })

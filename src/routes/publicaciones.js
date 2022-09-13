@@ -58,21 +58,26 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		nprenadas,
 		descripcion,
 		edad_es,
+		anos,
 		otro_R,
-		otro_T
+		otro_T,
 	} = req.body;
 	console.log(data);
-	data.edad=edad+' '+ edad_es;
-	if (data['prenada'] === 'Esta preñada'){
-		data.toro = 'Con toro ' + toro;
-		data.meses = meses;
-	}
 	if(data['raza'] === 'Otra'){
-		data.raza=otro_R;
+		data.raza=data.otro_R;
 	}
 	if(data['toro'] === 'Otra'){
-		data.raza=otro_T;
+		console.log("cambiando toro");
+		data.toro=data.otro_T;
 	}
+	if (data['prenada'] === 'Esta preñada'){
+		data.toro = 'Con toro ' + data.toro;
+		data.meses = meses;
+	}
+	// if(data['edad_es'==='']){
+	// 	data.edad_es=data.anos;
+	// }
+	data.edad=data.edad+' '+ data.edad_es;
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {
 		createdAt : fecha,
@@ -104,6 +109,72 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		.catch(function (error) {
 			console.log('Ocurrio un error');
 		});
+});
+
+//editar publicaciones
+router.post('/editarPublicacion', multpleInput, async (req, res) => {
+	let files = req.files;
+	let data = {
+		input0e,
+		input1e,
+		input2e,
+		input3e,
+		input4e,
+		id,
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		nprenadas,
+		descripcion,
+		edad_es,
+		otro_R,
+		otro_T,
+	} = req.body;
+	let modifData = {
+		'input0' : input0e,
+		'input1': input1e,
+		'input2': input2e,
+		'input3': input3e,
+		'input4': input4e,
+		ubication,
+		categoria,
+		edad,
+		raza,
+		producto,
+		precio,
+		prenada,
+		tipoprenada,
+		toro,
+		meses,
+		nprenadas,
+		descripcion,
+		edad_es,
+		otro_R,
+		otro_T,
+		'updatedAt' : getDate(),
+	}
+	if(modifData['raza'] === 'Otra'){
+		modifData.raza=modifData.otro_R;
+	}
+	if(modifData['toro'] === 'Otra'){
+		console.log("cambiando toro");
+		modifData.toro=modifData.otro_T;
+	}
+	if (modifData['prenada'] === 'Esta preñada'){
+		modifData.toro = 'Con toro ' + modifData.toro;
+		modifData.meses = meses;
+	}
+	const dataupdate = db.collection("publications").doc(id);
+	await dataupdate.update(modifData);
+	sendImages(files, updateImage, id);
+	res.redirect('/perfil');
 });
 // -------------------------- Funciones necesarias -------------------------------------
 // funciones para guardar imagenes en firebase storage
