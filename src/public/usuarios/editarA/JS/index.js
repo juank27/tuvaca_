@@ -48,14 +48,15 @@ function cargar(){
     if (es) {
         otro_R.style.display = "flex";
         otro_R.required = true;
-        otro_R.value = tipovehr.value
+        otro_R.value = tipovehr.value;
+        tipoveh.required = false;
     } else {
         tipoveh.value = tipovehr.value
         otro_R.value=""
 
     }
     ubication.value=ubicationr.value
-    tipoveh.value=tipovehr.value
+    // tipoveh.value=tipovehr.value
     ubate.value=ubater.value
     susa.value=susar.value
     suta.value=sutar.value
@@ -72,6 +73,7 @@ function cargar(){
     foto.style.display = "flex";
     f5.src = input0.value;
     c_5.required=false;
+    valor = 1;
 }
 tipoveh.addEventListener("click", function () {
     if (tipoveh.value === "Otro") {
@@ -109,10 +111,10 @@ function visualizar(file) {
 }
 
 subir.addEventListener("click", function () {
-    if(otro_R.value!==""){
-        tipoveh.value=otro_R.value;
+    // if(otro_R.value!==""){
+    //     tipoveh.value=otro_R.value;
 
-    }
+    // }
     if (valor === 0) {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";
@@ -123,7 +125,7 @@ subir.addEventListener("click", function () {
     if (tipoveh.value !== tipovehr.value && tipoveh.value !== "") {
         tipovehr.value = tipoveh.value
     }
-    if (descripcion.value !== descripcionr.value && descripcion.value !== "") {
+    if (descripcion.value !== descripcionr.value) {
         descripcionr.value = descripcion.value
     }
     if (ubate.value !== ubater.value && ubate.value !== "") {

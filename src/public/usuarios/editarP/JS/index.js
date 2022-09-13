@@ -539,7 +539,7 @@ subir.addEventListener("click", function () {
     if(precio.value!== precior.value && precio.value!==""){
         precior.value=precio.value
     }
-    if(descripcion.value!== descripcionr.value && descripcion.value!==""){
+    if(descripcion.value!== descripcionr.value){
         descripcionr.value=descripcion.value
     }
 })
