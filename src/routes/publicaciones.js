@@ -160,6 +160,17 @@ router.post('/editarPublicacion', multpleInput, async (req, res) => {
 		otro_T,
 		'updatedAt' : getDate(),
 	}
+	if(modifData['raza'] === 'Otra'){
+		modifData.raza=modifData.otro_R;
+	}
+	if(modifData['toro'] === 'Otra'){
+		console.log("cambiando toro");
+		modifData.toro=modifData.otro_T;
+	}
+	if (modifData['prenada'] === 'Esta preñada'){
+		modifData.toro = 'Con toro ' + modifData.toro;
+		modifData.meses = meses;
+	}
 	const dataupdate = db.collection("publications").doc(id);
 	await dataupdate.update(modifData);
 	sendImages(files, updateImage, id);

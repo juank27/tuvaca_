@@ -109,7 +109,6 @@ function visualizar(file) {
 }
 
 subir.addEventListener("click", function () {
-
     if (valor === 0) {
         requerido.style.color = "red";
         requerido.innerHTML = "Debe elegir una imagen de portada";

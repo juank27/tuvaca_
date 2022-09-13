@@ -22,6 +22,7 @@ router.get('/imgaa', (req, res) => {
 router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 	let img = req.file;
 	let data = {
+		otro_R,
 		ubication,
 		tipoveh,
 		ubate,
@@ -35,11 +36,16 @@ router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 		cucunuba,
 		descripcion,
 	} = req.body;
+
+	if(tipoveh === 'Otro'){
+		data.tipoveh = otro_R;
+	}
+
 	console.log("-------------------");
 	console.log(data);
 	console.log("-------------------");
 	console.log(img);
-	imagen.sendImages(img, imagen.editData, data);
+	imagen.sendImages(img, imagen.enviarPublication, data);
 	res.redirect('/acarreos');
 });
 
@@ -47,6 +53,7 @@ router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 router.post('/edit-acarreo', upload.single('vehiculo'), async(req, res) => {
 	let img = req.file;
 	let data = {
+		otro_R,
 		id,
 		url : vehiculof,
 		ubication,
@@ -62,6 +69,10 @@ router.post('/edit-acarreo', upload.single('vehiculo'), async(req, res) => {
 		cucunuba,
 		descripcion,
 	} = req.body;
+
+	if (tipoveh === 'Otro') {
+		data.tipoveh = otro_R;
+	}
 	let a = data;
 	data['updatedAt'] = imagen.getDate();
 	imagen.sendImages(img, imagen.editData, id);

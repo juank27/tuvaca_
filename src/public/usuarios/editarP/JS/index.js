@@ -178,6 +178,7 @@ function cargar() {
         otro_R.style.display = "flex";
         otro_R.required = true;
         otro_R.value = razar.value
+        raza.required=false
     } else {
         raza.value = razar.value
 
@@ -230,6 +231,7 @@ function cargar() {
                 otro_T.style.display = "flex";
                 otro_T.required = true;
                 otro_T.value = div2[1]
+                toro.required=false
             } else {
                 console.log(typeof(div2[1]));
                 toro.value =div2[1]
