@@ -331,6 +331,11 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
+router.get('/condiciones', async (req, res) => {
+	verificarEstado(res, 'publicaciones', 'condiciones', datos = '', data = '', () => {
+		//...
+	});
+});
 
 let multpleInput = upload.fields([
 	{ name: 'input0' },
