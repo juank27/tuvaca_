@@ -747,7 +747,7 @@ router.get('/modalpublicaciones', async (req, res) => {
 
 //Busqueda bovinos
 router.post('/busquedaBovina', async (req, res) => {
-	let { razas, categorias, edad_, ubication, precios } = req.body;
+	let { razas, categorias, edad_, ubication, precios,prueba } = req.body;
 	buscador = {
 		raza: razas,
 		categoria: categorias,

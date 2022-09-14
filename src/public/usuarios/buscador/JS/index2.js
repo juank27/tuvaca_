@@ -18,17 +18,14 @@ function cargar(){
 let datos = [];
 let palabras = 0;
 let valor = 0;
-let pre;
-let mu;
-let veh;
+let pre=document.getElementById('e');;
+let mu=document.getElementById('d');;
+let veh=document.getElementById('a');;
 subir.addEventListener("click", function () {
     usuarios.value=usuario.value;
     submit.click();
 })
 subir2.addEventListener("click", function () {
-    precio.value=pre
-    municipio.value=mu
-    vehiculo.value=veh
     form.submit();
 })
 volver.addEventListener("click", function () {
@@ -45,6 +42,7 @@ vehiculo.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="vehiculo" id="imput' + valor + '" value="' + vehiculo.value + '">')
         $(inpu).insertBefore(".submit");
+        veh.value=vehiculo.value;
         vehiculo.value = "";
         vehiculo.disabled = true;
     }
@@ -75,6 +73,7 @@ municipio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="text" name="municipio" id="imput' + valor + '" value="' + municipio.value + '">')
         $(inpu).insertBefore(".submit");
+        mu.value=municipio.value;
         municipio.value = "";
         municipio.disabled = true;
     }
@@ -105,6 +104,7 @@ precio.addEventListener("click", function () {
         $(texto).insertBefore("#ruta");
         var inpu = $('<input type="number" name="precio" id="imput' + valor + '" value="' + precio.value + '">')
         $(inpu).insertBefore(".submit");
+        pre.value=precio.value
         precio.value = "";
         precio.disabled = true;
     }
