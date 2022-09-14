@@ -824,6 +824,48 @@ router.post('/buscando', async (req, res) => {
 			console.log("No hay Usuarios", error);
 		});
 });
+
+
+//busquda de usuarios para acarreos
+router.post('/buscandoAcarreo', async (req, res) => {
+	let { usuario } = req.body;
+	usuario = usuario.toLowerCase();
+	Users()
+		.then((users) => {
+			let busqueda = filtrar(users, usuario);
+			b = busqueda;
+			console.log("----------------------------------------------");
+			console.log(b);
+			console.log("esta es la busqueda de data");
+			console.log(busqueda.length);
+			//console.log(busqueda.length(), "longitudddd");
+			//publicaciones_propias('publications', id)
+			let dataEncontrada = [];
+			for (let index = 0; index < busqueda.length; index++) {
+				publicaciones_propias('acarreos', busqueda[index].id)
+					.then((publicaciones) => {
+						let u = unir(publicaciones, users);
+						dataEncontrada.push(u);
+					})
+			}
+			setTimeout(() => {
+				let info = dataNull(dataEncontrada);
+				let org = organizares(info);
+				//res.render('buscarPublicaciones', { layout: false, dataEncontrada: org });
+				let infoPerfil = {
+					photo: globalThis.photo,
+					name: globalThis.name,
+				}
+				verificarEstado(res, 'buscarAcarreos', 'index', org, infoPerfil, () => {
+					//...
+				});
+			}, 2000);
+		})
+		.catch((error) => {
+			console.log("No hay Usuarios", error);
+		});
+});
+
 //organizar datos
 function organizares(data) {
 	let dataOrganizada = [];
