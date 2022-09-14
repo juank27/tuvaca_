@@ -42,8 +42,12 @@ subir2.addEventListener("click", function () {
     raza.value=ra
     municipio.value=mu
     edad.value=ed
+    // console.log(raza.value)
+    // console.log(categoria.value)
+    // console.log(precio.value)
+    // console.log(municipio.value)
+    // console.log(edad.value)
     form.submit();
-    console.log(raza.value)
 })
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";

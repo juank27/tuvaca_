@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router, query } = require('express');
 const multer = require('multer');
 const { db, } = require('../firebase');//importar la base de datos
 const { dbFirebase, app, auth, provider, user } = require('../firebaseCloud');//importar la base de datos
@@ -14,7 +14,7 @@ const { createUserWithEmailAndPassword,
 	GoogleAuthProvider,
 } = require('firebase/auth');
 const { async } = require('@firebase/util');
-const { doc, deleteDoc, updateDoc, setDoc } = require('firebase/firestore'); //crud
+const { doc, deleteDoc, updateDoc, setDoc, collection } = require('firebase/firestore'); //crud
 const envioImg = require('../functions');
 
 const router = Router();
@@ -755,22 +755,31 @@ router.post('/busquedaBovina', async (req, res) => {
 		ubicacion: ubication,
 		precio: precios,
 	}
+		console.log("🚀 ~ file: index.js ~ line 747 ~ router.post ~ buscador", buscador)
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
-					nullB= dataNullBovino(buscador);
-					let buscar = filtrarBovinos(publicacion, nullB);
-					console.log("Buscaaaaaaaaaaaaaaaaaaaaaar");
-					//console.log(publicacion);
-					console.log(nullB);
+					let buscando = [];
+					publicacion.forEach((element) => {
+						if (element.raza === razas || element.categoria === categorias || element.edad === edad_ || element.ubicacion === ubication || element.precio === precios) {
+							console.log("🚀 ~ file: index.js ~ line 761 ~ publicacion.forEach ~ razas", razas)
+							console.log("🚀 ~ file: index.js ~ line 761 ~ .then ~ element", element.raza)
+							buscando.push(element);
+						}
+					});
+					//nullB= dataNullBovino(buscador);
+					// let buscar = filtrarBovinos(publicacion, nullB);
+					// console.log("Buscaaaaaaaaaaaaaaaaaaaaaar");
+					// //console.log(publicacion);
+					// console.log(nullB);
 					let info = {
 						photo: globalThis.photo,
 						name: globalThis.name,
 					}
 					//res.render('buscarPublicaciones.hbs', datos = buscar);
-					verificarEstado(res, 'buscarPublicaciones', 'index', buscar, info, () => {
+					verificarEstado(res, 'buscarPublicaciones', 'index', buscando, info, () => {
 						//...
 					});
 				})
@@ -830,6 +839,17 @@ function organizares(data) {
 	}
 	return dataOrganizada;
 }
+//busqueda por los parametros
+async function buscando_parametros(database, parametro, valor) {
+	let data = [];
+	let q = query(collection(db, database)).where(parametro, "==", valor);
+	const querySnapshot = await getDocs(q);
+	querySnapshot.forEach((doc) => {
+		data.push(doc.data());
+	});
+	return data;
+}
+
 
 //validar datos no encontrados
 function dataNull(data) {
