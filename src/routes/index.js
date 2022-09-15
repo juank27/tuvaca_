@@ -752,21 +752,119 @@ router.post('/busquedaBovina', async (req, res) => {
 		raza: razas,
 		categoria: categorias,
 		edad: edad_,
-		ubicacion: ubication,
+		ubication: ubication,
 		precio: precios,
 	}
-		console.log("🚀 ~ file: index.js ~ line 747 ~ router.post ~ buscador", buscador)
+	console.log("🚀 ~ file: index.js ~ line 747 ~ router.post ~ buscador", buscador)
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					let buscando = [];
+					let nullB = dataNullBovino(buscador);
+					let len = (nullB.length)/2;
 					publicacion.forEach((element) => {
-						if (element.raza === razas || element.categoria === categorias || element.edad === edad_ || element.ubicacion === ubication || element.precio === precios) {
-							console.log("🚀 ~ file: index.js ~ line 761 ~ publicacion.forEach ~ razas", razas)
-							console.log("🚀 ~ file: index.js ~ line 761 ~ .then ~ element", element.raza)
-							buscando.push(element);
+						// if (element.raza === razas || element.categoria === categorias || element.edad === edad_ || element.ubication === ubication || element.precio === precios) {
+						// 	console.log("🚀 ~ file: index.js ~ line 761 ~ publicacion.forEach ~ razas", razas)
+						// 	console.log("🚀 ~ file: index.js ~ line 761 ~ .then ~ element", element.raza)
+						// 	buscando.push(element);
+						// }
+						if(len === 1){
+							let aa = nullB[0];
+							let b = nullB[1];
+							if (element[aa] == b) {
+								buscando.push(element);
+							}
+						}
+						if (len === 2) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] ) {
+								buscando.push(element);
+							}
+						}
+						if (len === 3) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+						}
+						if (len === 4) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5] && element[nullB[6]] == nullB[7]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1]){
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]){
+								buscando.push(element);
+							}
+							else if (element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[5]] == nullB[6]) {
+								buscando.push(element);
+							}
+						}
+						if (len === 5) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5] && element[nullB[6]] == nullB[7] && element[nullB[8]] == nullB[9]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5] && element[nullB[6]] == nullB[7]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5] ) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] ) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5] && element[nullB[6]] == nullB[7] && element[nullB[8]] == nullB[9]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] ) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[5]] == nullB[6]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[7]] == nullB[8]) {
+								buscando.push(element);
+							}
 						}
 					});
 					//nullB= dataNullBovino(buscador);
@@ -780,6 +878,89 @@ router.post('/busquedaBovina', async (req, res) => {
 					}
 					//res.render('buscarPublicaciones.hbs', datos = buscar);
 					verificarEstado(res, 'buscarPublicaciones', 'index', buscando, info, () => {
+						//...
+					});
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => {
+			console.log("No hay publicaiones", error);
+		});
+});
+
+
+//Busqueda bovinos
+router.post('/busquedaAcarreos', async (req, res) => {
+	let { vehiculo, ubication, precios } = req.body;
+	buscador = {
+		tipoveh : vehiculo,
+		ubication: ubication,
+		precio: precios,
+	}
+	console.log("🚀 ~ file: index.js ~ line 747 ~ router.post ~ buscador", buscador)
+	publicaciones('acarreos')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					console.log("🚀 ~ file: index.js ~ line 906 ~ .then ~ publicacion", publicacion)
+					let buscando = [];
+					let nullB = dataNullBovino(buscador);
+					let len = (nullB.length) / 2;
+					publicacion.forEach((element) => {
+						if (len === 1) {
+							let aa = nullB[0];
+							let b = nullB[1];
+							if (element[aa] == b) {
+								buscando.push(element);
+							}
+						}
+						if (len === 2) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1]) {
+								buscando.push(element);
+							}
+						}
+						if (len === 3) {
+							if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3] && element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[0]] == nullB[1]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[2]] == nullB[3]) {
+								buscando.push(element);
+							}
+							else if (element[nullB[4]] == nullB[5]) {
+								buscando.push(element);
+							}
+						}
+					});
+					//nullB= dataNullBovino(buscador);
+					// let buscar = filtrarBovinos(publicacion, nullB);
+					// console.log("Buscaaaaaaaaaaaaaaaaaaaaaar");
+					// //console.log(publicacion);
+					// console.log(nullB);
+					let info = {
+						photo: globalThis.photo,
+						name: globalThis.name,
+					}
+					//res.render('buscarPublicaciones.hbs', datos = buscar);
+					verificarEstado(res, 'buscarAcarreos', 'index', buscando, info, () => {
 						//...
 					});
 				})
