@@ -331,6 +331,11 @@ router.get('/crearPublicacion', async (req, res) => {
 		//...
 	});
 });
+router.get('/condiciones', async (req, res) => {
+	verificarEstado(res, 'publicaciones', 'condiciones', datos = '', data = '', () => {
+		//...
+	});
+});
 
 let multpleInput = upload.fields([
 	{ name: 'input0' },
@@ -742,7 +747,7 @@ router.get('/modalpublicaciones', async (req, res) => {
 
 //Busqueda bovinos
 router.post('/busquedaBovina', async (req, res) => {
-	let { razas, categorias, edad_, ubication, precios } = req.body;
+	let { razas, categorias, edad_, ubication, precios,prueba } = req.body;
 	buscador = {
 		raza: razas,
 		categoria: categorias,
