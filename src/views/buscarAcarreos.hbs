@@ -25,27 +25,32 @@
         <p>Filtrado de Busquedas</p>
     </section>
     <section class="buscador">
-        <form action="" id="form">
+        <form action="/busquedaAcarreos" id="form" method="POST">
             <input class="usuario" id="usuarios" type="text" placeholder="Buscar por usuario">
             <div class="usuario1" id="usuarios1">
                 <div id="ruta"></div>
+            </div>
+            <div style="display: none;">
+                <input type="text" name="vehiculo" id="a">
+                <input type="text" name="ubication" id="d">
+                <input type="text" name="precios" id="e">
             </div>
             <div class="subir"></div>
             <div class="subir2"></div>
 
             <p class="filtrado"></p>
             <div class="selectores">
-                <select class="selector" type="text" name="vehiculo" id="vehiculo">
+                <select class="selector" type="text"  id="vehiculo">
                     <option value="">Vehiculo</option>
-                    <option value="Turbo de estacas">Furgon de estacas</option>
+                    <option value="Furgon de estacas">Furgon de estacas</option>
                     <option value="Camioneta de estacas">Camioneta de estacas</option>
                     <option value="Camioneta de platon">Camioneta de platon</option>
-                    <option value="Frugon">Frugon</option>
+                    <option value="Furgon">Furgon</option>
                 </select>
-                <select class="selector" type="text" name="ubication" id="ubication">
+                <select class="selector" type="text"  id="ubication">
                     <option value="">Municipio</option>
                     <option value="Ubaté">Ubaté</option>
-                    <option value="Carupa">Carupa</option>
+                    <option value="Carmen de Carupa">Carupa</option>
                     <option value="Tausa">Tausa</option>
                     <option value="Suta">Suta</option>
                     <option value="Lenguazaque">Lenguazaque</option>
@@ -54,18 +59,18 @@
                     <option value="Simijaca">Simijaca</option>
                     <option value="Susa">Susa</option>
                 </select>
-                <select class="selector" type="number" name="precios" id="precios">
-                <option value="">Precio</option>
-                <option value="$20.000-$50.000">$20.000-$50.000</option>
-                <option value="$50.000-$80.000">$50.000-$80.000</option>
-                <option value="$80.000-$100.000">$80.000-$100.000</option>
-                <option value="$100.000-$150.000">$100.000-$150.000</option>
-                <option value="$150.000-$200.000">$150.000-$200.000</option>
-                <option value="$200.000-mas">$200.000-mas</option>
-                </select>
+                {{!-- <select class="selector" type="number"  id="precios">
+                    <option value="">Precio</option>
+                    <option value="$20.000-$50.000">$20.000-$50.000</option>
+                    <option value="$50.000-$80.000">$50.000-$80.000</option>
+                    <option value="$80.000-$100.000">$80.000-$100.000</option>
+                    <option value="$100.000-$150.000">$100.000-$150.000</option>
+                    <option value="$150.000-$200.000">$150.000-$200.000</option>
+                    <option value="$200.000-mas">$200.000-mas</option>
+                </select> --}}
             </div>
         </form>
-        <form action="/buscando" method="POST" class="oculto">
+        <form action="/buscandoAcarreo" method="POST" class="oculto">
             <input type="text" name="usuario" id="usuario">
             <input type="submit" class="submit">
         </form>

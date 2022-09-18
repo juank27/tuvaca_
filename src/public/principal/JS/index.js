@@ -492,3 +492,6 @@ B1.addEventListener("click", function () {
 })
 
 /***check */
+function popUp(URL) {
+    window.open(URL, 'Terminos y Condiciones', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=500,height=500,left = 390,top = 50');
+}

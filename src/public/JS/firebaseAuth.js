@@ -13,13 +13,16 @@ const formulario = document.getElementById("register-form");
 const notification = document.getElementById("notification");
 /**** */
 let check = document.getElementById("cbox");
+let valor
 check.addEventListener("click", function () {
     if (check.checked) {
+		valor=1;
         boton.disabled = false;
         boton.style.background = "#4B8325"
         google.style.pointerEvents = "auto";
         facebook.style.pointerEvents = "auto";
     } else {
+		valor=0
         boton.disabled = true;
         boton.style.background = "#A6A6A6"
         google.style.pointerEvents = "none";
@@ -27,6 +30,7 @@ check.addEventListener("click", function () {
     }
 
 })
+
 
 // register with google
 registergoogle.addEventListener('click', (e) => {
@@ -56,9 +60,10 @@ registergoogle.addEventListener('click', (e) => {
 			document.getElementById("id").value = user.uid;
 			document.getElementById("photo").value = user.photoURL;
 			document.getElementById("nameb").value = user.displayName;
-			document.getElementById("emailb").value = user.email;
+			document.getElementById("emailbb").value = user.email;
 			nombre.value = user.displayName;
 			correo.value = user.email;
+			console.log(user.email);
 			boton.innerText = "Finalizar";
 			formulario.setAttribute('action', 'register-google')
 			//window.location.href = "/registro";
@@ -124,6 +129,11 @@ registerfacebook.addEventListener('click', (e) => {
 			console.log('Codigo de error ');
 			console.log(errorCode);
 			//alert(errorMessage);
+			// if (errorCode == 'auth/account-exists-with-different-credential') {
+			// 	formulario.setAttribute('action', 'errorRegisterFacebook')
+			// }
+			// formulario.setAttribute('action', 'errorRegisterFacebook')
+			window.location.assign("/errorRegisterFacebook");
 		})
 });
 
@@ -175,5 +185,6 @@ loginfacebook.addEventListener('click', (e) => {
 			// The email of the user's account used.
 			console.log(errorMessage);
 			console.log('Codigo de error ', errorCode);
+			window.location.assign("/errorRegisterFacebook");
 		});
 });
