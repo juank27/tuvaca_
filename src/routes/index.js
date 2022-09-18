@@ -143,9 +143,11 @@ router.post('/register-google', async (req, res) => {
 	let { nameb, emailb, id, phone, ubication, photo } = req.body;
 	let name = nameb;
 	let email = emailb;
+	console.log("🚀 ~ file: index.js ~ line 146 ~ router.post ~ email", email)
 	verficEmail(res, email, () => {
 		setPersistence(auth, browserSessionPersistence)
-			.then(() => {
+			.then((data) => {
+				console.log("🚀 ~ file: index.js ~ line 169 ~ .then ~ data", data)
 				db.collection('users').doc(id).set({
 					name,
 					email,
@@ -155,6 +157,10 @@ router.post('/register-google', async (req, res) => {
 				});
 				console.log('si entre');
 				estado = true;
+				mensaje = undefined;
+				globalThis.photo = photo;
+				globalThis.name = name;
+				globalThis.idUser = id;
 				res.redirect('/publicaciones');
 			})
 			.catch((error) => {
@@ -183,6 +189,10 @@ router.post('/register-facebook', async (req, res) => {
 				});
 				console.log('si entre');
 				estado = true;
+				mensaje = undefined;
+				globalThis.photo = photo;
+				globalThis.name = name;
+				globalThis.idUser = id;
 				res.redirect('/publicaciones');
 			})
 			.catch((error) => {
@@ -192,6 +202,12 @@ router.post('/register-facebook', async (req, res) => {
 				res.send(errorCode)
 			});
 	});
+});
+
+//register with facebook
+router.get('/errorRegisterFacebook', async (req, res) => {
+	console.log("Entre");
+	res.render('InicioSesion', { layout:false , mensajeError: 'La cuenta ya existe intente con google o email.' });
 });
 
 //------------------------------------------------- Logins ----------------------------------------------//
