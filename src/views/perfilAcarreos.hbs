@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_perfil" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photoprincipal}}>
+    <p id="yo" style="display: none;">{{data.name_us}} </p>
+    <section class="fijar">
+        <section class="datos_usuario">
+            <div class="foto">
+                <div class="foto_perfil" style="background-image: url({{data.photo}})"></div>
+            </div>
+            <div class="datos">
+                <p>{{data.name}}</p>
+                <p>{{data.email}}</p>
+                <p>{{data.phone}}</p>
+                <p>{{data.ubication}}</p>
+            </div>
+        </section>
+    </section>
+    <section class="publicaciones">
+        {{#each datos}}
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+            <!--ocultos -->
+            <input class="phone" type="text" value="{{phone}}" style="display:none;">
+            <input class="categoria" type="text" value="{{tipoveh}}" style="display:none;">
+            <input class="nombre" type="text" value="{{name}}" style="display:none;">
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+                <img src={{url}} alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>{{updatedAt}}</p>
+                <div>
+                    <p>{{phone}}</p>
+                    <div class="chat" onclick="posicionA({{@index}})"></div>
+                </div>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div style="background-image: url({{photo}})"></div>
+                    <!--nombre del publicador-->
+                    <p>{{name}}</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>{{ubication}}</p>
+
+            </div>
+            <p class="textoA">Tipo de Vehiculo: {{tipoveh}}</p>
+            <div class="publicacion_linea3b" style="justify-content:center; align-items: center;">
+                <table class="">
+                    <tr>
+                        <td>Ubaté</td>
+                        <td>{{ubate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Carupa</td>
+                        <td>{{carupa}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tausa</td>
+                        <td>{{tausa}}</td>
+                    </tr>
+                    <tr>
+                        <td>Suta</td>
+                        <td>{{suta}}</td>
+                    </tr>
+                    <tr>
+                        <td>Lenguazaque</td>
+                        <td>{{lenguazaque}}</td>
+                    </tr>
+                    <tr>
+                        <td>Guacheta</td>
+                        <td>{{guacheta}}</td>
+                    </tr>
+                    <tr>
+                        <td>Simijaca</td>
+                        <td>{{simijaca}}</td>
+                    </tr>
+                    <tr>
+                        <td>Susa</td>
+                        <td>{{susa}}</td>
+                    </tr>
+                    <tr>
+                        <td>Cucunuba</td>
+                        <td>{{cucunuba}}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="publicacion_linea4b" style="justify-content:center ;">
+                <p>
+                    {{descripcion}}
+                </p>
+            </div>
+        </form>
+        {{/each}}
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/perfil/JS/index.js"></script>
+    <script>
+
+        let foto_perfil = document.getElementById("foto_perfil");
+        function cargar() {
+            per.style.backgroundImage = (`url(${foto_perfil.value})`);
+            pub.style.backgroundImage = " url(./usuarios/menu/icons/Cow.png)";
+        }
+    </script>
+</body>
+
+</html>

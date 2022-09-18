@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./principal/CSS/movile.css">
+    <link rel="stylesheet" href="./principal/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./principal/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images//logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+<body class="body">
+    <section class="modal_container_R2 ">
+        <section class="modal_R2 ">
+            <div class="modal_Cuerpo">
+                <img class="modal_logo" src="./principal/images/logo2.png" alt="">
+                <h1 id="titulo" style="display:none">Completar Registro</h1>
+                <form class=" modal_formulario_R modal_formulario" id="register-form" action="/new-user-email" method="POST">
+                    <input type="text" name="id" id="id" type="text" style="display:none">
+                    <input type="text" name="photo" id="photo" type="text" style="display:none">
+                    <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
+                    <input type="text" name="nameb" id="nameb" placeholder="Nombre Completo" style="display:none">
+                    <input type="number" name="phone" id="phone" placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                    <input type="email" name="email" id="email-a" placeholder="Correo Electronico" required>
+                    <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
+                    <input type="text" name="ubication" id="ubication" list="municipios" placeholder="Municipio" required>
+                    <datalist id="municipios">
+                        <option value="Ubaté"></option>
+                        <option value="Carmen de Carupa"></option>
+                        <option value="Tausa"></option>
+                        <option value="Suta"></option>
+                        <option value="Lenguazaque"></option>
+                        <option value="Guacheta"></option>
+                        <option value="Cucunuba"></option>
+                        <option value="Simijaca"></option>
+                        <option value="Susa"></option>
+                    </datalist>
+                    <input type="password" name="passwordd" id="passwordd" placeholder="Contraseña" minlength="7" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Verificar Contraseña" minlength="7" required>
+                    <p id="nn"></p>
+                    <button id="boton" type="submit">Registrarse</button>
+                </form>
+                <p style="font-size: 13px;" class="error">{{mensajeError}}</p>
+                <div class="modal_separador"></div>
+                <div class="modal_google" id="google">
+                    <span></span>
+                    <a id="registergoogle" > Registrarse con Google</a>
+                </div>
+                <div class="modal_facebook" id="facebook">
+                    <span></span>
+                    <a id="registerfacebook">Registrarse con Facebook</a>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="./principal/JS/index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+    <!-- Don't change the format for any other products. -->
+    <!-- etc. -->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            // YOUR FIREBASE CREDENTIALS HERE
+            apiKey: "AIzaSyDlasdrgnXPMmIqioRVObso5lwBp1e5UCs",
+            authDomain: "tuvaca-ce478.firebaseapp.com",
+            projectId: "tuvaca-ce478",
+            storageBucket: "tuvaca-ce478.appspot.com",
+            messagingSenderId: "487906553455",
+            appId: "1:487906553455:web:35cd78dd5c339b1d3ba79a",
+            measurementId: "G-3LYFGJK1ET"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+    </script>
+    <script src="./JS/firebaseAuth.js"></script>
+</body>
+</html>

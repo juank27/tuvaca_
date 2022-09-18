@@ -1,0 +1,41 @@
+:root{
+    --verde:#4B8325;
+    --blanco:#ffff;
+    --gris_claro:#E5E5E5;
+    --gris_oscuro:#A6A6A6;
+    --cafe:#A96224;
+    --font1:'Port Lligat Sans', sans-serif;
+    --font2: 'Inter', sans-serif;
+}
+form{
+    width: 50%;
+}
+.body_crearP p{
+    font-size: 1.8rem;
+}
+.body_crearP span{
+    font-size: 1.6rem;
+}
+input,select,textarea{
+    width: 40%;
+}
+::placeholder, select,textarea {
+    font-size: 1.6rem;
+}
+input[type=submit]{
+    width: 40%;
+    font-size: 1.6rem;
+}
+.imagen div{
+    width: 30px;
+    height: 30px;
+    top: calc(100% - 35px);
+    left: calc(100% - 35px);
+}
+label{
+    width: 70%;
+}
+.selector a{
+    width: 20%;
+    font-size: 1.6rem;
+}

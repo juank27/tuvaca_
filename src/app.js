@@ -9,7 +9,7 @@ app.set("views", path.join(__dirname, "views")); //permite trabajar con handleba
 app.engine(
 	".hbs",
 	exphbs.create({
-		defaultLayout: false,//para poder usar layouts
+		defaultLayout: "menu",//para poder usar layouts
 		extname: ".hbs",
 		//layoutsDir: "views/layouts/"
 	}).engine
@@ -20,6 +20,8 @@ app.use(morgan('dev'));
 app.use(express.json()); //para traer info del frontend con method POST
 app.use(express.urlencoded({ extended: false }));//traer info del frontend
 app.use(require('./routes/index'));
+app.use(require('./routes/publicaciones'));
+app.use(require('./routes/acarreos'));
 app.use(express.static(path.join(__dirname, 'public')));//archivos estaticos
 
 

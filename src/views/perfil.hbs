@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_perfil" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}}>
+    <section class="fijar">
+        <section class="datos_usuario">
+            <div class="foto">
+                <div class="foto_perfil" style="background-image: url({{data.photo}})"></div>
+                <form action="/actualizar_img" method="POST" enctype="multipart/form-data">
+                    <div class="foto_selector"></div>
+                    <input class="perfil" type="file" name="perfil" accept="image/png, .jpeg, .jpg">
+                    <input type="submit" class="subir" value="Guardar Cambios">
+                </form>
+            </div>
+            <div class="datos">
+                <div class="herramientas">
+                    <a class="uno" href="/misacarreos" title="Mis Acarreos"></a>
+                    <div class="dos" title="Ajustes"></div>
+                    <a class="tres" href="/logout" title="Cerrar Sesión"></a>
+                </div>
+                <p>{{data.name}}</p>
+                <p>{{data.email}}</p>
+                <p>{{data.phone}}</p>
+                <p>{{data.ubication}}</p>
+            </div>
+        </section>
+    </section>
+    <section class="publicaciones">
+        {{#each datos}}
+        <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+            <input value={{id}} type="text" class="id" style="display:none;">
+            <input name="id_p" type="text" id="id2" value="" style="display:none;">
+
+            <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+            <div onclick="posicion5({{@index}})" class="publicacion_mas">
+                <span></span>
+            </div>
+            <!--En esta division esta la imagen del bovino a vender-->
+            <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
+                <img src={{input0}} alt="">
+            </div>
+            <!--En esta división esta la fecha, los me gusta y el chat-->
+            <div class="publicacion_linea1">
+                <p>{{updatedAt}}</p>
+            </div>
+            <!--En esta división esta:-->
+            <div class="publicacion_linea2">
+                <div class="publicacion_perfil">
+                    <!--foto de perfil del publicador-->
+                    <div id="foto" style="background-image: url({{photo}})"></div>
+                    <!--nombre del publicador-->
+                    <p id="nombre">{{name}}</p>
+                </div>
+                <!--ubicación del bovino-->
+                <p>{{ubication}}</p>
+            </div>
+            </div>
+            <div class="publicacion_linea3">
+                <!--precio del bovino-->
+                <p>{{precio}}</p>
+                <!--tipo de bovino-->
+                <p>{{raza}}</p>
+            </div>
+            <section class="modal_container_t ">
+                <section class="modal_t modal_cerrado_t">
+                    <div class="modal_Contendort"><span class="cerrar_modal_t" onclick="posicion6({{@index}})"></span>
+                    </div>
+                    <div class="modal_Cuerpot">
+                        <div class="editar" onclick="posicion2({{@index}})">
+                            <a>Editar</a>
+                        </div>
+                        <div class="estado" onclick="estado({{@index}})">
+                            <a>Estado</a>
+                        </div>
+                        <div class="eliminar" onclick="eliminar({{@index}})">
+                            <a>Elminar</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </form>
+        <!--modal eliminar-->
+        <section class="modal_container_e">
+            <section class="modal_e ">
+                <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
+                <div>
+                    <button class="no" onclick="eliminarS({{@index}})">No Eliminar</button>
+                    <button class="si" onclick="posicionE({{@index}})">Eliminar</button>
+                </div>
+                <form id="subido" action="/buscando" method="POST">
+                </form>
+            </section>
+        </section>
+        <!--modal estado-->
+        <section class="modal_container_s">
+            <section class="modal_s modal_cerrado_s">
+                <div class="modal_Contendors"><span class="cerrar_modal_s"></span></div>
+                <p>Recuerde que debe Actualizar el estado de su publicación o sera eliminada ¿Su publicación ya esta
+                    vendida?</p>
+                <div>
+                    <button class="no2" onclick="posicionEs({{@index}})">No Vendida</button>
+                    <button class="si2" onclick="estadoc({{@index}})">Vendida</button>
+                </div>
+                <form id="subido" action="/buscando" method="POST">
+                </form>
+            </section>
+        </section>
+        <!--Formulario para dirigirse a editar-->
+        <form style="display:none;" action="/visualizarPublicacion" method="POST" >
+            <input name="id_p" id="id3" type="text" value="">
+            <input type="submit" value="" id="perfilS">
+        </form>
+        <!--Formulario para dirigirse a eliminar-->
+        <form style="display:none;" action="/eliminarPublicacion" method="POST" >
+            <input name="id_p" id="id4" type="text" value="">
+            <input type="submit" value="" id="perfilE">
+        </form>
+        <!--Formulario para dirigirse a estado-->
+        <form style="display:none;" action="/estadoPublicacion" method="POST" >
+            <input name="id_p" id="id5" type="text" value="">
+            <input type="submit" value="" id="perfilEs">
+        </form>
+        {{/each}}
+    </section>
+    <!--modal publicaciones-->
+    <section class="modal_container_p">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
+    <!--modal ajustes-->
+    <section class="modal_container_h ">
+        <section class="modal_h modal_cerrado_h">
+            <div class="modal_Contendorh"><span class="cerrar_modal_h"></span></div>
+            <div class="modal_Cuerpoh">
+                <div class="datosP">
+                    <p>Datos Personales</p>
+                    <form action="/update_data_personal" method="POST">
+                        <input type="text" value="{{data.name}}" name="name" id="name" placeholder="Nombre Completo"
+                            required>
+                        <input type="number" value="{{data.phone}}" name="phone" id="phone"
+                            placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
+                        <input type="text" value="{{data.ubication}}" name="ubication" id="ubication" list="municipios"
+                            placeholder="Municipio" required>
+                        <datalist id="municipios">
+                            <option value="Ubaté"></option>
+                            <option value="Carmen de Carupa"></option>
+                            <option value="Tausa"></option>
+                            <option value="Suta"></option>
+                            <option value="Lenguazaque"></option>
+                            <option value="Guacheta"></option>
+                            <option value="Cucunuba"></option>
+                            <option value="Simijaca"></option>
+                            <option value="Susa"></option>
+                        </datalist>
+                        <button id="boton" type="submit">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/perfil/JS/index.js"></script>
+</body>
+
+</html>

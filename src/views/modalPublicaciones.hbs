@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_modal">
+    <section class="modal_p2 ">
+        <div class="modal_Cuerpo">
+            <!--ocultos -->
+            <p id="yo"  style="display: none;">{{datos.name}} </p>
+            <input class="phone" type="text" value="{{datos.phone}}" style="display:none;">
+            <input class="categoria" type="text" value="{{datos.categoria}}" style="display:none;">
+            <input class="updateAt" type="text" value="{{datos.updatedAt}}" style="display:none;">
+            <input class="raza" type="text" value="{{datos.raza}}" style="display:none;">
+            <input class="precio" type="text" value="{{datos.precio}}" style="display:none;">
+            <input class="nombre" type="text" value="{{datos.name}}" style="display:none;">
+
+            <!--En esta division esta la imagen del bovino a vender-->
+            <p class="e">{{datos.input0}}</p>
+            <p class="e">{{datos.input1}}</p>
+            <p class="e">{{datos.input2}}</p>
+            <p class="e">{{datos.input3}}</p>
+            <p class="e">{{datos.input4}}</p>
+            <div class="publicacion_imagen2">
+                <span class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</span>
+                <p id="cambiar"></p>
+                <span class="next" id="next vid" onclick="plusSlides(1)">&#10095;</span>
+            </div>
+            <div class="publicacion_descripcion">
+                <!--En esta división esta la fecha, los me gusta y el chat-->
+                <div class="publicacion_linea1b">
+                    <p>{{datos.updatedAt}}</p>
+                    <div>
+                        <p>{{datos.phone}}</p>
+                        <div onclick="posicion4()" class="chat"></div>
+                    </div>
+                </div>
+                <!--En esta división esta:-->
+                <div class="publicacion_linea2b">
+                    <div class="publicacion_perfil">
+                        <!--foto de perfil del publicador-->
+                        <div style=" background-image: url({{datos.photo}})"></div>
+                        <!--nombre del publicador-->
+                        <p>{{datos.name}}</p>
+                        </p>
+                    </div>
+                    <!--municipio del bovino-->
+                    <p>{{datos.ubication}}</p>
+                </div>
+                <div class="publicacion_linea3b">
+                    <ul>
+                        <li id="c">Categoria: {{datos.categoria}}</li>
+                        <li> Edad: {{datos.edad}}</li>
+                        <li>Raza: {{datos.raza}}</li>
+                        <li>Tipo de Producción:{{datos.producto}}</li>
+                        <li>Precio:{{datos.precio}}</li>
+                    </ul>
+                    <ul id="opcion1">
+                        <li id="op2">{{datos.prenada}}</li>
+                    </ul>
+                    <ul id="opcion2">
+                        <li>Metodo:{{datos.tipoprenada}}</li>
+                        <li>{{datos.toro}}</li>
+                        <li>Tiene {{datos.meses}} </li>
+                    </ul>
+                    <ul id="opcion3">
+                        <li id="op5">Parto número: {{datos.nprenadas}}</li>
+                    </ul>
+                    <p>
+                </div>
+                <div class="publicacion_linea4b">
+                    <p>
+                        {{datos.descripcion}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/publicaciones/JS/index3.js"></script>
+</body>
+
+</html>

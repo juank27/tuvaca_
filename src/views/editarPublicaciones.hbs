@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/editarP/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_crearP" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data}}>
+    <form action="/editarPublicacion" method="POST" enctype="multipart/form-data">
+        <div class="imagen">
+            <div class="fotos"></div>
+            <img class="img_p" src="./usuarios/menu/icons/Camera.png" alt="">
+        </div>
+
+        <section class="modal_f ">
+            <div class="modal_Cuerpof">
+                <!--Inpur file 1-->
+                <div class="insert_Foto IF_1"></div>
+                <input type="file" name="input0" class="foto_publicacion f1" accept="image/png, .jpeg, .jpg">
+                <p class="requerido">Requerida: <br> Esta primer imagen sera la portada de la publicacion</p>
+                <div class="separador"></div>
+                <!--Inpur file 2-->
+                <div class="insert_Foto IF_2"></div>
+                <input type="file" name="input1" class="foto_publicacion f2" accept="image/png, .jpeg, .jpg, video/*">
+                <div class="cont_img ct_2">
+                    <img src="" class="imagenes im_2">
+                    <video controls src="" class="vd_2"></video>
+                    <div class=" cerrando">
+                        <div class="cerrar c_2"></div>
+                    </div>
+                </div>
+                <!--Inpur file 3-->
+                <div class="insert_Foto IF_3"></div>
+                <input type="file" name="input2" class="foto_publicacion f3" accept="image/png, .jpeg, .jpg, video/*">
+                <div class="cont_img ct_3">
+                    <img src="" class="imagenes im_3">
+                    <video controls src="" class="vd_3"></video>
+                    <div class=" cerrando">
+                        <div class="cerrar c_3"></div>
+                    </div>
+                </div>
+                <!--Inpur file 4-->
+                <div class="insert_Foto IF_4"></div>
+                <input type="file" name="input3" class="foto_publicacion f4" accept="image/png, .jpeg, .jpg, video/*">
+                <div class="cont_img ct_4">
+                    <img src="" class="imagenes im_4">
+                    <video controls src="" class="vd_4"></video>
+                    <div class=" cerrando">
+                        <div class="cerrar c_4"></div>
+                    </div>
+                </div>
+                <!--Inpur file 5-->
+                <div class="insert_Foto IF_5"></div>
+                <input type="file" name="input4" class="foto_publicacion f5" accept="image/png, .jpeg, .jpg, video/*">
+                <div class="cont_img ct_5">
+                    <img src="" class="imagenes im_5">
+                    <video controls src="" class="vd_5"></video>
+                    <div class=" cerrando">
+                        <div class="cerrar c_5"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="limite">Clic aqui para agregar archivos multimedia</p>
+            <div class="mas"></div>
+        </section>
+        <!--Datos ocultos-->
+        <div style="display: none;">
+            <input type="text" name="id" value="{{datos.id}}">
+            <input type="text" name="ubication" value="{{datos.ubication}}" id="ubicationr">
+            <input type="text" name="descripcion" value="{{datos.descripcion}}" id="descripcionr">
+            <input type="text" name="categoria" value="{{datos.categoria}}" id="categoriar">
+            <input type="text" name="edad" value="{{datos.edad}}" id="edadr">
+            <input type="text" value="{{datos.edad_es}}" id="edadr">
+            <input type="text" name="raza" value="{{datos.raza}}" id="razar">
+            <input type="text" name="producto" value="{{datos.producto}}" id="productor">
+            <input type="text" name="prenada" value="{{datos.prenada}}" id="prenadar">
+            <input type="text" name="precio" value="{{datos.precio}}" id="precior">
+            <input type="text" name="tipoprenada" value="{{datos.tipoprenada}}" id="tipoprenadar">
+            <input type="text" name="toro" value="{{datos.toro}}" id="toror">
+            <input type="text" value="{{datos.otro_R}}" >
+            <input type="text" value="{{datos.otro_T}}">
+            <input type="text" name="nprenadas" value="{{datos.nprenadas}}" id="nprenadasr">
+            <input type="text" name="meses" value="{{datos.meses}}" id="mesesr">
+            <input type="text" name="input0e" value="{{datos.input0}}" id="principal">
+            <input type="text" name="input1e" value="{{datos.input1}}" class="multi">
+            <input type="text" name="input2e" value="{{datos.input2}}" class="multi">
+            <input type="text" name="input3e" value="{{datos.input3}}" class="multi">
+            <input type="text" name="input4e" value="{{datos.input4}}" class="multi">
+        </div>
+        <select id="ubication" required>
+            <option value="">Ubicación del Bovino</option>
+            <option value="Ubaté">Ubaté</option>
+            <option value="Carmen de Carupa">Carmen de Carupa</option>
+            <option value="Tausa">Tausa</option>
+            <option value="Suta">Suta</option>
+            <option value="Lenguazaque">Lenguazaque</option>
+            <option value="Guacheta">Guacheta</option>
+            <option value="Cucunuba">Cucunuba</option>
+            <option value="Simijaca">Simijaca</option>
+            <option value="Susa">Susa</option>
+        </select>
+        <select id="categoria" required>
+            <option value="">Categoria</option>
+            <option value="Ternera">Ternera</option>
+            <option value="Ternero">Ternero</option>
+            <option value="Novilla">Novilla</option>
+            <option value="Novillo">Novillo</option>
+            <option value="Vaca">Vaca</option>
+            <option value="Toro">Toro</option>
+        </select>
+        <input type="text" id="edad" placeholder="Edad del Bovino" required>
+        {{!-- <input type="text" name="edad_es" id="edad_es" required> --}}
+        <select name="edad_es" id="edad_es" required>
+            <option value="">Indique meses o años</option>
+            <option value="meses">meses</option>
+            <option value="años">años</option>
+        </select>
+        <input type="text" id="anos" name="annos" style="display:none ;">
+
+        <select id="raza" required>
+            <option value="">Raza</option>
+            <option value="Angus">Angus</option>
+            <option value="Brahman">Brahman</option>
+            <option value="Gyr">Gyr</option>
+            <option value="Holstein">Holstein</option>
+            <option value="Ayrshire">Ayrshire</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Simental">Simental</option>
+            <option value="Normando">Normando</option>
+            <option value="Pardo Suizo">Pardo Suizo</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Otra">Otro</option>
+        </select>
+        <input type="text" placeholder="¿Qué raza?" id="otro_R" name="otro_R">
+        <select id="producto" required>
+            <option value="">Tipo de Produccion</option>
+            <option value="Carnico">Producccion Carnica</option>
+            <option value="Lechero">Produccion Lechera</option>
+            <option value="engorde">Para Engorde</option>
+        </select>
+        <select id="precio">
+            <option value="">Precio</option>
+            <option value="$70.000-$500.000">$70.000-$500.000</option>
+            <option value="$500.000-$1´000.000">$500.000-$1´000.000</option>
+            <option value="$1´000.000-$2´000.000">$1´000.000-$2´000.000</option>
+            <option value="$2´000.000-$3´000.000">$2´000.000-$3´000.000</option>
+            <option value="$3´000.000-$4´000.000">$3´000.000-$4´000.000</option>
+            <option value="$4´000.000-$5´000.000">$4´000.000-$5´000.000</option>
+            <option value="$5´000.000-$6´000.000">$5´000.000-$6´000.000</option>
+            <option value="$6´000.000-mas">$6´000.000-mas</option>
+        </select>
+        <select id="prenada">
+            <option value="">¿Esta preñada?</option>
+            <option value="Esta preñada">Si esta preñada</option>
+            <option value="No esta preñada">No esta preñada</option>
+        </select>
+        <select id="tipoprenada">
+            <option value="">¿Comó quedo preñada? </option>
+            <option value="Inseminacion">Inseminación</option>
+            <option value="Natural">Natural</option>
+        </select>
+
+        <select id="toro">
+            <option value="">Toro</option>
+            <option value="Angus">Angus</option>
+            <option value="Brahman">Brahman</option>
+            <option value="Gyr">Gyr</option>
+            <option value="Holstein">Holstein</option>
+            <option value="Ayrshire">Ayrshire</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Simental">Simental</option>
+            <option value="Normando">Normando</option>
+            <option value="Pardo Suizo">Pardo Suizo</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Otra">Otro</option>
+        </select>
+        <input type="text" placeholder="¿Qué raza?" id="otro_T" name="otro_T">
+        <select id="semanas">
+            <option value="">Meses de preñada</option>
+            <option value="1 mes">1</option>
+            <option value="2 meses">2</option>
+            <option value="3 meses">3</option>
+            <option value="4 meses">4</option>
+            <option value="5 meses">5</option>
+            <option value="6 meses">6</option>
+            <option value="7 meses">7</option>
+            <option value="8 meses">8</option>
+            <option value="9 meses">9</option>
+        </select>
+        <select id="nprenada">
+            <option value="">Número de parto</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+
+        <textarea id="descripcion" placeholder="Descripción Adicional"></textarea>
+        <input type="submit" value="Actualizar Publicación" class="actualizar">
+    </form>
+    <section class="modal_container_f ">
+        <section class="modal_f modal_cerrado_f">
+            <div class="modal_Contendorf"><span class="cerrar_modal_f"></span></div>
+            <div class="modal_Cuerpo">
+
+            </div>
+        </section>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="./usuarios/editarP/JS/index.js"></script>
+</body>
+
+</html>

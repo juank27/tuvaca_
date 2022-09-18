@@ -1,0 +1,55 @@
+/************************section***********************************/
+.body_perfil {
+    width: 80%;
+}
+
+.modal_p {
+    width: 70%;
+
+}
+
+
+.publicacion_imagen2 {
+    width: auto;
+    height: auto;
+}
+
+.publicacion_descripcion {
+    width: 50%;
+    height: auto;
+}
+
+.publicacion_linea1b p {
+    font-size: 1.6rem;
+}
+
+.publicacion_linea2b p {
+    font-size: 1.6rem;
+}
+
+/*************section datos de usuario*********/
+.fijar {
+    margin-top: 5%;
+}
+.datos p{
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+/***************modal tres puntos**********/
+.modal_container_t {
+    height: 25%;}
+/***************modal ajustes**********/
+
+.modal_Cuerpoh div{
+    width: 50%;
+}
+.publicacion_imagen2 {
+    margin-top: 80px;
+}
+.modal_p iframe{
+    height: 100vh;
+}
+.prev, .next{
+    position:static;
+    left: 0;
+}

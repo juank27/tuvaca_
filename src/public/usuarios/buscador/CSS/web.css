@@ -1,0 +1,100 @@
+.regresar {
+    width: 80%;
+    margin-bottom: 1%;
+}
+.body_buscador{
+    width: 80%;
+}
+.buscador {
+    width: 80%;
+}
+.regresar p{
+    font-size: 2.2rem;;
+}
+.regresar div{
+    width: 35px;
+    height: 35px;
+}
+.subir{
+    width: 25px;
+    height: 25px;
+}
+.subir2{
+    width: 25px;
+    height: 25px;
+}
+.usuario{
+    width: 70%;
+    height: 5vh;
+    margin-bottom: 2%;
+    font-size: 1.6rem;
+}
+.selector{
+    width: 15%;
+    padding: 5px;
+    font-size: 1.6rem;
+    margin-bottom: 2%;
+}
+.buscador form{
+    margin-bottom: 0;
+}
+::placeholder {
+    margin-left: 5px;
+    font-family: var(--font2);
+    color: var(--gris_oscuro);
+    font-size: 1.6rem;
+}
+.busqueda{
+    display: flex;
+    width: 30%;
+}
+.texto{
+    font-size: 2rem;
+}
+
+
+/****publicar***/
+
+/************************section***********************************/
+
+.body_publicaciones{
+    width: 80%;
+}
+.modal_p {
+    width: 80%;
+}
+
+.publicacion{
+    width: 30%;
+}
+.publicacion_imagen2{
+    width: 50%;
+    height: auto;
+}
+.publicacion_descripcion{
+    width: 40%;
+    height: auto;
+}
+.publicacion_linea1b p{
+    font-size: 1.8rem;
+}
+.publicacion_linea2b p{
+    font-size: 1.8rem;
+}
+.publicacion_linea3b p{
+    font-size: 1.8rem;
+}
+/***************modal tres puntos**********/
+.modal_container_t {
+    height: 15%;}
+.prev, .next{
+    position:static;
+    left: 0;
+}
+/* .modal_Contendorp {
+    width: 5%;
+    height: 90vh;
+} */
+.modal_p iframe{
+    height: 90vh;
+}

@@ -1,0 +1,15 @@
+:root{
+    --verde:#4B8325;
+    --blanco:#ffff;
+    --gris_claro:#E5E5E5;
+    --gris_oscuro:#A6A6A6;
+    --cafe:#A96224;
+    --font1:'Port Lligat Sans', sans-serif;
+    --font2: 'Inter', sans-serif;
+}
+input,select,textarea{
+    width: 45%;
+}
+input[type=submit]{
+    width: 60%;
+}

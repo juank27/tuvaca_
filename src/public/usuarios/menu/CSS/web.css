@@ -1,0 +1,33 @@
+:root {
+    --verde: #4B8325;
+    --blanco: #ffff;
+    --gris_claro: #E5E5E5;
+    --gris_oscuro: #A6A6A6;
+    --cafe: #A96224;
+    --font1: 'Port Lligat Sans', sans-serif;
+    --font2: 'Inter', sans-serif;
+}
+body{
+    width: 80%;
+}
+
+/*menu de navegación*/
+.header_navegacion ul{
+    width: 50%;
+}
+.header_navegacion h1{
+    font-size: 3rem;
+}
+/*estilos iconos de navegacion*/
+.header_icon_uno,.header_icon_dos {
+    width:33px;
+    height: 33px;
+}
+.header_icon_tres {
+    width: 35px;
+    height: 35px;
+}
+.header_icon_cuatro {
+    width: 40px;
+    height: 40px;
+}

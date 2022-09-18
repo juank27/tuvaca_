@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_publicaciones" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}}>
+    <p id="yo" style="display: none;">{{data.name}} </p>
+    <div title="bucar" class="buscando">
+        <div title="buscar" class="buscando2"></div>
+        <p>Buscar</p>
+    </div>
+    {{#each datos}}
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+        <input value={{id}} type="text" class="id" style="display:none;">
+        <input name="id_p" type="text" id="id2" value="" style="display:none;">
+        <!--ocultos -->
+        <input class="phone" type="text" value="{{phone}}" style="display:none;">
+        <input class="categoria" type="text" value="{{categoria}}" style="display:none;">
+        <input class="updateAt" type="text" value="{{updatedAt}}" style="display:none;">
+        <input class="raza" type="text" value="{{raza}}" style="display:none;">
+        <input class="precio" type="text" value="{{precio}}" style="display:none;">
+        <input class="nombre" type="text" value="{{name}}" style="display:none;">
+
+        <!--En  esta division esta la imagen del bovino a vender-->
+        <div class="publicacion_imagen" onclick="posicion({{@index}})" title="Click para ver descripción">
+            <img src={{input0}} alt="">
+        </div>
+        <!--En esta división esta la fecha, los me gusta y el chat-->
+        <div class="publicacion_linea1">
+            <p id="updateAt">{{updatedAt}}</p>
+            <div>
+                <div onclick="posicion4({{@index}})" class="chat"></div>
+            </div>
+        </div>
+        <!--En esta división esta:-->
+        <div class="publicacion_linea2">
+            <div class="publicacion_perfil">
+                <!--foto de perfil del publicador-->
+                <div id="foto" onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
+                <!--nombre del publicador-->
+                <p id="nombre" onclick="posicion2({{@index}})">{{name}}</p>
+            </div>
+            <!--ubicación del bovino-->
+            <p>{{ubication}}</p>
+
+        </div>
+        </div>
+        <div class="publicacion_linea3">
+            <!--precio del bovino-->
+            <p id="precio">{{precio}}</p>
+            <!--tipo de bovino-->
+            <p id="raza">{{raza}}</p>
+        </div>
+    </form>
+    <!--Formulario para dirigirse al perfil-->
+    <form style="display:none;" action="/perfilU" method="POST" class="perfilS">
+        <input name="id_p" id="id3" type="text" value="">
+        {{!-- <input type="submit" value="" class="perfilS"> --}}
+    </form>
+    {{/each}}
+    <section class="modal_container_p ">
+        <section class="modal_p modal_cerrado_p">
+            <div class="modal_Contendorp"><span class="cerrar_modal_p"></span></div>
+            <iframe scrolling="no" id="framer" src="/modalpublicaciones"></iframe>
+        </section>
+    </section>
+</body>
+<script src="./usuarios/publicaciones/JS/index.js"></script>
+<script
+    src=" https :// cdnjs . cloudflare . com / ajax / libs / handlebars . js / 3 . 0 . 1 / handlebars . min . js "></script>
+<script src="/try/examples/js/handlebars_helpers_if_eq.js"></script>
+</html>

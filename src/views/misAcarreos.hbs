@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Port+Lligat+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/movile.css">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/tablet.css" media="screen and (min-width:600px)">
+    <link rel="stylesheet" href="./usuarios/publicaciones/CSS/web.css" media="screen and (min-width:1000px)">
+    <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
+    <title>tuVaca.com</title>
+</head>
+
+<body class="body_publicaciones" onload="cargar()">
+    <input type="text" id="foto_perfil" style="display: none;" value={{data.photo}}>
+    <div class="atras">
+        <a href="/crearAcarreo">Crear Publicación</a>
+        <a href="/crearAcarreo" class="atrasI"></a>
+    </div>
+    {{#each datos}}
+    <form class="publicacion" id="publicacion" action="/abrir-publicaciones" method="POST">
+        <input value={{id}} type="text" class="id" style="display:none;">
+        <input name="id_p" type="text" id="id2" value="" style="display:none;">
+        <!--en esta division estan los tres punticos para borrar y editar la publicación-->
+        <div onclick="posicion5({{@index}})" class="publicacion_mas">
+            <span></span>
+        </div>
+        <!--En esta division esta la imagen del bovino a vender-->
+        <div class="publicacion_imagen" onclick="modal()" title="Click para ver descripción">
+            <img src={{url}} alt="">
+        </div>
+        <!--En esta división esta la fecha, los me gusta y el chat-->
+        <div class="publicacion_linea1">
+            <p>{{updatedAt}}</p>
+        </div>
+        <!--En esta división esta:-->
+        <div class="publicacion_linea2">
+            <div class="publicacion_perfil">
+                <!--foto de perfil del publicador-->
+                <div onclick="posicion3({{@index}})" style="background-image: url({{photo}})"></div>
+                <!--nombre del publicador-->
+                <p onclick="posicion2({{@index}})">{{name}}</p>
+            </div>
+            <!--ubicación del bovino-->
+            <p>{{ubication}}</p>
+
+        </div>
+        <p class="textoA">Tipo de Vehiculo: {{tipoveh}}</p>
+        <div class="publicacion_linea3b" style="justify-content:center; align-items: center;">
+            <table class="">
+                <tr>
+                    <td>Ubaté</td>
+                    <td>{{ubate}}</td>
+                </tr>
+                <tr>
+                    <td>Carupa</td>
+                    <td>{{carupa}}</td>
+                </tr>
+                <tr>
+                    <td>Tausa</td>
+                    <td>{{tausa}}</td>
+                </tr>
+                <tr>
+                    <td>Suta</td>
+                    <td>{{suta}}</td>
+                </tr>
+                <tr>
+                    <td>Lenguazaque</td>
+                    <td>{{lenguazaque}}</td>
+                </tr>
+                <tr>
+                    <td>Guacheta</td>
+                    <td>{{guacheta}}</td>
+                </tr>
+                <tr>
+                    <td>Simijaca</td>
+                    <td>{{simijaca}}</td>
+                </tr>
+                <tr>
+                    <td>Susa</td>
+                    <td>{{susa}}</td>
+                </tr>
+                <tr>
+                    <td>Cucunuba</td>
+                    <td>{{cucunuba}}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="publicacion_linea4b" style="justify-content:center ;">
+            <p>
+                {{descripcion}}
+            </p>
+        </div>
+        <section class="modal_container_t ">
+            <section class="modal_t modal_cerrado_t">
+                <div class="modal_Contendort"><span class="cerrar_modal_t" onclick="posicion6({{@index}})"></span>
+                </div>
+                <div class="modal_Cuerpot">
+                    <div class="editar" onclick="posicion2({{@index}})">
+                        <a>Editar</a>
+                    </div>
+                    <div class="eliminar" onclick="eliminar({{@index}})">
+                        <a>Elminar</a>
+                    </div>
+                </div>
+
+    </form>
+            </section>
+        </section>
+        <!--modal eliminar-->
+        <section class="modal_container_e">
+            <section class="modal_e ">
+                <p>Esta publicación sera eliminada,¿Esta seguro de eliminarla?</p>
+                <div>
+                    <button class="no" onclick="eliminarS({{@index}})">No Eliminar</button>
+                    <button class="si" onclick="posicionE({{@index}})">Eliminar</button>
+                </div>
+                <form id="subido" action="/buscando" method="POST">
+                </form>
+            </section>
+        </section>
+
+        <!--Formulario para dirigirse a editar-->
+        <form style="display:none;" action="/visualizarAcarreos" method="POST">
+            <input name="id_p" id="id3" type="text" value="">
+            <input type="submit" value="" id="perfilS">
+        </form>
+        <!--Formulario para dirigirse a eliminar-->
+        <form style="display:none;" action="/eliminarA" method="POST">
+            <input name="id_p" id="id4" type="text" value="">
+            <input type="submit" value="" id="perfilE">
+        </form>
+    {{/each}}
+    <script src="./usuarios/publicaciones/JS/index2.js"></script>
+
+</body>
+
+</html>

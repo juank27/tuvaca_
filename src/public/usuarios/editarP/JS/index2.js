@@ -1,0 +1,12 @@
+let ubicationr= document.getElementById("ubicationr")
+let categoriar= document.getElementById("categoriar")
+let edadr= document.getElementById("edadr")
+let razar= document.getElementById("razar")
+let productor= document.getElementById("productor")
+let prenadar= document.getElementById("prenadar")
+let tipoprenadar= document.getElementById("tipoprenadar")
+let toror= document.getElementById("toror")
+let nprenadasr= document.getElementById("nprenadasr")
+let mesesr= document.getElementById("mesesr")
+let principal= document.getElementById("")
+let multi=document.querySelectorAll(".multi")[0]

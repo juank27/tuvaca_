@@ -1,0 +1,44 @@
+
+/************************section***********************************/
+
+.body_publicaciones{
+    width: 80%;
+}
+.modal_p {
+    width: 80%;
+}
+
+.publicacion{
+    width: 30%;
+}
+.publicacion_imagen2{
+    width: 50%;
+    height: auto;
+}
+.publicacion_descripcion{
+    width: 40%;
+    height: auto;
+}
+.publicacion_linea1b p{
+    font-size: 1.8rem;
+}
+.publicacion_linea2b p{
+    font-size: 1.8rem;
+}
+.publicacion_linea3b p{
+    font-size: 1.8rem;
+}
+/***************modal tres puntos**********/
+.modal_container_t {
+    height: 15%;}
+.prev, .next{
+    position:static;
+    left: 0;
+}
+/* .modal_Contendorp {
+    width: 5%;
+    height: 90vh;
+} */
+.modal_p iframe{
+    height: 90vh;
+}
