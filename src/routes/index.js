@@ -307,7 +307,10 @@ router.post('/login-facebook', async (req, res) => {
 		mensaje = undefined;
 		//recuperar el id del usuario
 		verific.forEach((doc) => {
+			console.log("🚀 ~ file: index.js ~ line 310 ~ verific.forEach ~ doc", doc)
 			globalThis.idUser = doc.id;
+			globalThis.photo = doc._fieldsProto.photo.stringValue;
+			globalThis.name = doc._fieldsProto.name.stringValue;
 		});
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
