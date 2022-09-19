@@ -38,8 +38,6 @@ function verificarEstado(res, ruta, ruta2, datos = '', data = '', callback) {
 		// res.render('home');
 		callback();
 		if (modal) {
-			console.log("$$$$$$$$$$$$$$$$$$");
-			console.log(data);
 			res.render(ruta, { datos, data });
 		} else {
 			res.render(ruta, { layout: false, datos });
@@ -284,6 +282,9 @@ router.post('/login-google', async (req, res) => {
 			console.log(doc);
 			globalThis.name = doc._fieldsProto.name.stringValue;
 			globalThis.idUser = doc.id;
+			req.session.myVariable = globalThis.name;
+			console.log("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+			console.log("🚀 ~ file: index.js ~ line 235 ~ setTimeout ~ req", req.session);
 		});
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
