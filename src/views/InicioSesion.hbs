@@ -16,12 +16,14 @@
     <title>tuVaca.com</title>
 </head>
 <body class="body">
+    {{!-- {{{layout : false}}} --}}
     <section class="modal_container_IS2 ">
         <section class="modal_IS2 ">
             <div class="modal_Cuerpo">
                 <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                <form class="modal_formulario_IS modal_formulario" action="/login-email" method="POST">
+                <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
                     <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
+                    <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
                     <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
                     <button type="submit">Iniciar Sesión</button>
                 </form>
@@ -29,11 +31,11 @@
                 <div class="modal_separador"></div>
                 <div class="modal_google">
                     <span></span>
-                    <a href="" id="logingoogle">Iniciar Sesión con Google</a>
+                    <a id="logingoogle">Iniciar Sesión con Google</a>
                 </div>
                 <div class="modal_facebook">
                     <span></span>
-                    <a href="" id="loginfacebook">Iniciar Sesión con Facebook</a>
+                    <a id="loginfacebook">Iniciar Sesión con Facebook</a>
                 </div>
             </div>
         </section>
