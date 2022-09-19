@@ -45,6 +45,7 @@ loginfacebook.addEventListener('click', (e) => {
 			const errorMessage = error.message;
 			// The email of the user's account used.
 			console.log(errorMessage);
-			console.log('Codigo de error ', errorCode);
+			window.location.assign("/errorRegisterFacebook");
+
 		});
 });

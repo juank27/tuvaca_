@@ -46,8 +46,8 @@ vehiculo.addEventListener("click", function () {
         vehiculo.value = "";
         vehiculo.disabled = true;
     }
-    if (palabras === 3) {
-        filtrado.innerHTML = "Solo podemos filtrar 3 categorias, elimine una si quiere agregar otra diferente";
+    if (palabras === 2) {
+        filtrado.innerHTML = "Solo podemos filtrar 2 categorias, elimine una si quiere agregar otra diferente";
     }
     if (palabras == 0) {
         usuario.style.display = "flex";
@@ -77,8 +77,8 @@ municipio.addEventListener("click", function () {
         municipio.value = "";
         municipio.disabled = true;
     }
-    if (palabras === 3) {
-        filtrado.innerHTML = "Solo podemos filtrar 3 categorias, elimine una si quiere agregar otra diferente";
+    if (palabras === 2) {
+        filtrado.innerHTML = "Solo podemos filtrar 2 categorias, elimine una si quiere agregar otra diferente";
     }
     if (palabras === 0) {
         usuario.style.display = "flex";
@@ -93,36 +93,7 @@ municipio.addEventListener("click", function () {
     }
 })
 
-precio.addEventListener("click", function () {
-    let encontrar = datos.includes(precio.value);
 
-    if (encontrar === false && precio.value !== "") {
-        datos.push(precio.value)
-        palabras = palabras + 1;
-        valor = valor + 1;
-        var texto = $('<div class="busqueda "><p id="texto' + valor + '" class="texto">' + precio.value + '</p><div class="cerrar' + valor + ' cerrar"></div> </div>');
-        $(texto).insertBefore("#ruta");
-        var inpu = $('<input type="number" name="precio" id="imput' + valor + '" value="' + precio.value + '">')
-        $(inpu).insertBefore(".submit");
-        pre.value=precio.value
-        precio.value = "";
-        precio.disabled = true;
-    }
-    if (palabras === 3) {
-        filtrado.innerHTML = "Solo podemos filtrar 3 categorias, elimine una si quiere agregar otra diferente";
-    }
-    if (palabras === 0) {
-        usuario.style.display = "flex";
-        usuario1.style.display = "none";
-        subir.style.display = "flex";
-        subir2.style.display = "none";
-    } else {
-        usuario.style.display = "none";
-        usuario1.style.display = "flex";
-        subir2.style.display = "flex";
-        subir.style.display = "none";
-    }
-})
 function comparado(texto) {
     if (texto.name === "vehiculo") {
         vehiculo.disabled = false;
