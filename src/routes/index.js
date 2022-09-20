@@ -31,10 +31,10 @@ globalThis.idUser = _idUser;
 globalThis.photo = '';
 globalThis.name = '';
 //verificando estados de la sesion con las rutas
-function verificarEstado(res, ruta, ruta2, datos = '', data = '', callback) {
+function verificarEstado(req, res, ruta, ruta2, datos = '', data = '', callback) {
 	//console.log(mensaje);
 	// if (estado) {
-	if (estado) {
+	if (req.session.idUser !== undefined) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
@@ -73,7 +73,7 @@ router.get('/', async (req, res) => {
 						photo: req.session.photo,
 					}
 					console.log("🚀 ~ file: index.js ~ line 71 ~ .then ~ info", info)
-					verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
+					verificarEstado(req, res, 'publicaciones', 'index', publicacion, info, () => {
 						//...
 					});
 				})
@@ -347,14 +347,14 @@ router.post('/login-facebook', async (req, res) => {
 //---------------------------------------------- other actions --------------------------------------------//
 router.get('/iniciosesion', async (req, res) => {
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', data = '', () => {
+	verificarEstado(req, res, 'publicaciones', 'InicioSesion', datos = '', data = '', () => {
 		//...
 	});
 });
 
 // formulario de registro y solicitudes en la pagina de inicio
 router.get('/registro', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'registro', datos = '', data = '', () => {
+	verificarEstado(req, res, 'publicaciones', 'registro', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -363,7 +363,7 @@ router.get('/registro', async (req, res) => {
 router.get('/publicacioness', async (req, res) => {
 	publicaciones()
 		.then((publicaciones) => {
-			verificarEstado(res, 'publicaciones', 'index', publicaciones, data = '', () => {
+			verificarEstado(req, res, 'publicaciones', 'index', publicaciones, data = '', () => {
 				//...
 			});
 		})
@@ -371,12 +371,12 @@ router.get('/publicacioness', async (req, res) => {
 });
 router.get('/crearPublicacion', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearPublicacion', 'index', datos = '', /*globalThis.photo*/ req.session.photo, () => {
+	verificarEstado(req, res, 'crearPublicacion', 'index', datos = '', /*globalThis.photo*/ req.session.photo, () => {
 		//...
 	});
 });
 router.get('/condiciones', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'condiciones', datos = '', data = '', () => {
+	verificarEstado(req, res, 'publicaciones', 'condiciones', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -397,7 +397,7 @@ let multpleInput = upload.fields([
 // });
 router.get('/crearAcarreo', async (req, res) => {
 	//res.render('crearPublicacion');
-	verificarEstado(res, 'crearAcarreo', 'index', datos = '', req.session.photo, () => {
+	verificarEstado(req, res, 'crearAcarreo', 'index', datos = '', req.session.photo, () => {
 		//...
 	});
 });
@@ -436,7 +436,7 @@ router.get('/acarreos', async (req, res) => {
 							photo: req.session.photo,
 							name: req.session.name,
 						}
-						verificarEstado(res, 'acarreos', 'index', publicacion2, info, () => {
+						verificarEstado(req, res, 'acarreos', 'index', publicacion2, info, () => {
 							//...
 						});
 					}, 500);
@@ -447,19 +447,19 @@ router.get('/acarreos', async (req, res) => {
 });
 router.get('/seleccionacarreos', async (req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'seleccionA', 'index', datos = '', data = '', () => {
+	verificarEstado(req, res, 'seleccionA', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/perfilUsuarios', async (req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'perfilUsuarios', 'index', datos = '', () => {
+	verificarEstado(req, res, 'perfilUsuarios', 'index', datos = '', () => {
 		//...
 	});
 });
 router.get('/perfilAcarreos', async (req, res) => {
 	//res.render('acarreos');
-	verificarEstado(res, 'perfilAcarreos', 'index', datos = '', () => {
+	verificarEstado(req, res, 'perfilAcarreos', 'index', datos = '', () => {
 		//...
 	});
 });
@@ -496,7 +496,7 @@ router.post('/perfilU', async (req, res) => {
 							console.log("#####################################");
 							console.log(data);
 
-							verificarEstado(res, 'perfilUsuarios', 'index', unir_publicaciones, data[0], () => {
+							verificarEstado(req, res, 'perfilUsuarios', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
 						}).catch((error) => {
@@ -544,7 +544,7 @@ router.post('/perfilA', async (req, res) => {
 							// data[0]['name_us'] = globalThis.name;
 							data[0]['photoprincipal'] = req.session.photo;
 							data[0]['name_us'] = req.session.name;
-							verificarEstado(res, 'perfilAcarreos', 'index', unir_publicaciones, data[0], () => {
+							verificarEstado(req, res, 'perfilAcarreos', 'index', unir_publicaciones, data[0], () => {
 								console.log('Estoy dentro del perfil con un callback');
 							});
 						}).catch((error) => {
@@ -571,7 +571,7 @@ router.post('/visualizarAcarreos', async (req, res) => {
 				}
 			})
 			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
-			verificarEstado(res, 'editarAcarreos', 'index', idusuarioverr[0], req.session.photo, () => {
+			verificarEstado(req, res, 'editarAcarreos', 'index', idusuarioverr[0], req.session.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
 		})
@@ -593,7 +593,7 @@ router.post('/visualizarPublicacion', async (req, res) => {
 			console.log("llllllllllllllllllll");
 			console.log(idusuarioverr[0].edad);
 			console.log("🚀 ~ file: index.js ~ line 539 ~ .then ~ idusuarioverr", idusuarioverr[0]);
-			verificarEstado(res, 'editarPublicaciones', 'index', idusuarioverr[0], req.session.photo, () => {
+			verificarEstado(req, res, 'editarPublicaciones', 'index', idusuarioverr[0], req.session.photo, () => {
 				console.log('Estoy dentro del perfil con un callback');
 			});
 		})
@@ -614,7 +614,7 @@ router.get('/misacarreos', async (req, res) => {
 					// console.log(result);
 					let unir_publicaciones = unir(result, data);
 					console.log(unir_publicaciones);
-					verificarEstado(res, 'misAcarreos', 'index', unir_publicaciones, data[0], () => {
+					verificarEstado(req, res, 'misAcarreos', 'index', unir_publicaciones, data[0], () => {
 						console.log('Estoy dentro del perfil con un callback');
 					});
 				}).catch((error) => {
@@ -631,13 +631,13 @@ router.get('/misacarreos', async (req, res) => {
 });
 router.get('/buscarPublicaciones', async (req, res) => {
 	modal = false;
-	verificarEstado(res, 'buscarPublicaciones', 'index', datos = '', data = '', () => {
+	verificarEstado(req, res, 'buscarPublicaciones', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
 router.get('/buscarAcarreos', async (req, res) => {
 	modal = false;
-	verificarEstado(res, 'buscarAcarreos', 'index', datos = '', data = '', () => {
+	verificarEstado(req, res, 'buscarAcarreos', 'index', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -657,7 +657,7 @@ router.get('/perfil', async (req, res) => {
 					// console.log(result);
 					let unir_publicaciones = unir(result, data);
 					console.log(unir_publicaciones);
-					verificarEstado(res, 'perfil', 'index', unir_publicaciones, data[0], () => {
+					verificarEstado(req, res, 'perfil', 'index', unir_publicaciones, data[0], () => {
 						console.log('Estoy dentro del perfil con un callback');
 					});
 				}).catch((error) => {
@@ -755,7 +755,7 @@ router.get('/publicaciones', async (req, res) => {
 							name: req.session.name,
 						}
 						console.log("el nomnbre es: ", info.name);
-						verificarEstado(res, 'publicaciones', 'index', publicacion, info, () => {
+						verificarEstado(req, res, 'publicaciones', 'index', publicacion, info, () => {
 							//...
 						});
 					}, 500);
@@ -797,7 +797,7 @@ router.get('/modalpublicaciones', async (req, res) => {
 		name: req.session.name,
 	}
 	console.log(info);
-	verificarEstado(res, 'modalPublicaciones', 'index', buscarGlobal, info, () => {
+	verificarEstado(req, res, 'modalPublicaciones', 'index', buscarGlobal, info, () => {
 		//...
 	});
 });
@@ -936,7 +936,7 @@ router.post('/busquedaBovina', async (req, res) => {
 						name : req.session.name,
 					}
 					//res.render('buscarPublicaciones.hbs', datos = buscar);
-					verificarEstado(res, 'buscarPublicaciones', 'index', buscando, info, () => {
+					verificarEstado(req, res, 'buscarPublicaciones', 'index', buscando, info, () => {
 						//...
 					});
 				})
@@ -1021,7 +1021,7 @@ router.post('/busquedaAcarreos', async (req, res) => {
 						name: req.session.name,
 					}
 					//res.render('buscarPublicaciones.hbs', datos = buscar);
-					verificarEstado(res, 'buscarAcarreos', 'index', buscando, info, () => {
+					verificarEstado(req, res, 'buscarAcarreos', 'index', buscando, info, () => {
 						//...
 					});
 				})
@@ -1064,7 +1064,7 @@ router.post('/buscando', async (req, res) => {
 					photo: req.session.photo,
 					name: req.session.name,
 				}
-				verificarEstado(res, 'buscarPublicaciones', 'index', org, infoPerfil, () => {
+				verificarEstado(req, res, 'buscarPublicaciones', 'index', org, infoPerfil, () => {
 					//...
 				});
 			}, 2000);
@@ -1107,7 +1107,7 @@ router.post('/buscandoAcarreo', async (req, res) => {
 					photo: req.session.photo,
 					name: req.session.name,
 				}
-				verificarEstado(res, 'buscarAcarreos', 'index', org, infoPerfil, () => {
+				verificarEstado(req, res, 'buscarAcarreos', 'index', org, infoPerfil, () => {
 					//...
 				});
 			}, 2000);
