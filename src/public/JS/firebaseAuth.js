@@ -60,7 +60,7 @@ registergoogle.addEventListener('click', (e) => {
 			document.getElementById("id").value = user.uid;
 			document.getElementById("photo").value = user.photoURL;
 			document.getElementById("nameb").value = user.displayName;
-			document.getElementById("emailb").value = user.email;
+			document.getElementById("emailbb").value = user.email;
 			nombre.value = user.displayName;
 			correo.value = user.email;
 			console.log(user.email);
@@ -110,7 +110,7 @@ registerfacebook.addEventListener('click', (e) => {
 			document.getElementById("id").value = user.uid;
 			document.getElementById("photo").value = user.photoURL;
 			document.getElementById("nameb").value = user.displayName;
-			document.getElementById("emailb").value = user.email;
+			document.getElementById("emailbb").value = user.email;
 			nombre.value = user.displayName;
 			correo.value = user.email;
 			boton.innerText = "Finalizar";
