@@ -81,7 +81,8 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 	let fecha = getDate(); //obtener la fecha actual
 	let publication = {
 		createdAt : fecha,
-		iduser : globalThis.idUser,
+		// iduser : globalThis.idUser,
+		iduser: req.session.idUser,
 		...data,
 		input0: '',
 		input1: '',

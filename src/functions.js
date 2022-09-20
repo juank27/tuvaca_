@@ -14,7 +14,7 @@ class envioImg {
 		return fecha;
 	}
 	// funciones para guardar imagenes en firebase storage
-	sendImages(files, callback, data) {
+	sendImages(files, callback, data, req) {
 		//console.log(files);
 
 		console.log(files);
@@ -34,7 +34,7 @@ class envioImg {
 						.then((url) => {
 							//envio de datos a la funcion callback para guardar en firebase
 							//callback(url, text1, text2);
-							callback(data, url);
+							callback(data, url, req);
 						})
 						.catch((error) => {
 							console.log(error);
@@ -82,11 +82,12 @@ class envioImg {
 			});
 	}
 	//funcion para guardar publicaciones
-	async enviarPublication(data, url) {
+	async enviarPublication(data, url, req) {
 		let fecha = new envioImg();
 		data.updatedAt = fecha.getDate();
 		data.url = url;
-		data.iduser = globalThis.idUser;
+		// data.iduser = globalThis.idUser;
+		data.iduser = req.session.idUser;
 		const publication = await db.collection('acarreos').add(data);
 		console.log(publication.id);
 		return publication.id;

@@ -45,7 +45,7 @@ router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 	console.log(data);
 	console.log("-------------------");
 	console.log(img);
-	imagen.sendImages(img, imagen.enviarPublication, data);
+	imagen.sendImages(img, imagen.enviarPublication, data, req);
 	res.redirect('/acarreos');
 });
 
@@ -75,7 +75,7 @@ router.post('/edit-acarreo', upload.single('vehiculo'), async(req, res) => {
 	}
 	let a = data;
 	data['updatedAt'] = imagen.getDate();
-	imagen.sendImages(img, imagen.editData, id);
+	imagen.sendImages(img, imagen.editData, id, req);
 	const dataupdate = db.collection("acarreos").doc(id);
 	await dataupdate.update(data);
 	res.redirect('/misacarreos');
