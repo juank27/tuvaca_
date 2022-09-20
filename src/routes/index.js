@@ -358,6 +358,13 @@ router.get('/registro', async (req, res) => {
 		//...
 	});
 });
+// formulario de registro y solicitudes en la pagina de inicio
+router.get('/manual', async (req, res) => {
+	verificarEstado(res, 'publicaciones', 'manual', datos = '', data = '', () => {
+		//...
+	});
+});
+
 
 //ruta inicial para renderizar publicaciones
 router.get('/publicacioness', async (req, res) => {
