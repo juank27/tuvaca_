@@ -79,7 +79,7 @@ router.get('/', async (req, res) => {
 });
 
 
-console.log(estado)
+
 
 // //logout
 router.use('/logout', async (req, res, next) => {
@@ -307,7 +307,10 @@ router.post('/login-facebook', async (req, res) => {
 		mensaje = undefined;
 		//recuperar el id del usuario
 		verific.forEach((doc) => {
+			console.log("🚀 ~ file: index.js ~ line 310 ~ verific.forEach ~ doc", doc)
 			globalThis.idUser = doc.id;
+			globalThis.photo = doc._fieldsProto.photo.stringValue;
+			globalThis.name = doc._fieldsProto.name.stringValue;
 		});
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
@@ -330,6 +333,13 @@ router.get('/registro', async (req, res) => {
 		//...
 	});
 });
+// formulario de registro y solicitudes en la pagina de inicio
+router.get('/manual', async (req, res) => {
+	verificarEstado(res, 'publicaciones', 'manual', datos = '', data = '', () => {
+		//...
+	});
+});
+
 
 //ruta inicial para renderizar publicaciones
 router.get('/publicacioness', async (req, res) => {
