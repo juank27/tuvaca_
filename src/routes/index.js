@@ -34,7 +34,7 @@ globalThis.name = '';
 function verificarEstado(req, res, ruta, ruta2, datos = '', data = '', callback) {
 	//console.log(mensaje);
 	// if (estado) {
-	if (req.session.idUser !== undefined) {
+	if (req.session.idUser) {
 		console.log('home raiz');
 		// res.render('home');
 		callback();
