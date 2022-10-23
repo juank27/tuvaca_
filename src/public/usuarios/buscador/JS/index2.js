@@ -31,7 +31,7 @@ subir2.addEventListener("click", function () {
 volver.addEventListener("click", function () {
     window.location = "/acarreos";
 })
-vehiculo.addEventListener("click", function () {
+vehiculo.addEventListener("change", function () {
     let encontrar = datos.includes(vehiculo.value);
 
     if (encontrar === false && vehiculo.value !== "") {
@@ -62,7 +62,7 @@ vehiculo.addEventListener("click", function () {
     }
 })
 
-municipio.addEventListener("click", function () {
+municipio.addEventListener("change", function () {
     let encontrar = datos.includes(municipio.value);
 
     if (encontrar === false && municipio.value !== "") {
