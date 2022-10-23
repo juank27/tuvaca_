@@ -43,7 +43,7 @@ subir2.addEventListener("click", function () {
 volver.addEventListener("click", function () {
     window.location = "/publicaciones";
 })
-categoria.addEventListener("click", function () {
+categoria.addEventListener("change", function () {
     let encontrar = datos.includes(categoria.value);
     if (encontrar === false && categoria.value !== "") {
         datos.push(categoria.value)
