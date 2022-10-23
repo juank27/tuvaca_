@@ -74,7 +74,7 @@ categoria.addEventListener("change", function () {
         subir.style.display = "none";
     }
 })
-raza.addEventListener("click", function () {
+raza.addEventListener("change", function () {
     let encontrar = datos.includes(raza.value);
 
     if (encontrar === false && raza.value !== "") {
@@ -105,7 +105,7 @@ raza.addEventListener("click", function () {
         subir.style.display = "none";
     }
 })
-municipio.addEventListener("click", function () {
+municipio.addEventListener("change", function () {
     let encontrar = datos.includes(municipio.value);
 
     if (encontrar === false && municipio.value !== "") {
@@ -136,7 +136,7 @@ municipio.addEventListener("click", function () {
         subir.style.display = "none";
     }
 })
-edad.addEventListener("click", function () {
+edad.addEventListener("change", function () {
     let encontrar = datos.includes(edad.value);
 
     if (encontrar === false && edad.value !== "") {
@@ -167,7 +167,7 @@ edad.addEventListener("click", function () {
         subir.style.display = "none";
     }
 })
-precio.addEventListener("click", function () {
+precio.addEventListener("change", function () {
     let encontrar = datos.includes(precio.value);
 
     if (encontrar === false && precio.value !== "") {

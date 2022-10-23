@@ -74,7 +74,7 @@ function cargar(){
     c_5.required=false;
     valor=1;
 }
-tipoveh.addEventListener("click", function () {
+tipoveh.addEventListener("change", function () {
     if (tipoveh.value === "Otro") {
         otro_R.style.display = "flex";
         otro_R.required = true;

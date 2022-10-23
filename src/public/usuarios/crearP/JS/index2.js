@@ -13,7 +13,7 @@ function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
     per.style.boxShadow="0px 4px 4px 0px #A96224"
 }
-tipoveh.addEventListener("click", function () {
+tipoveh.addEventListener("change", function () {
     if (tipoveh.value === "Otro") {
         otro_R.style.display = "flex";
         otro_R.required = true;

@@ -15,7 +15,7 @@ function cargar() {
     crear.style.backgroundImage = "url(./usuarios/menu/icons/Sum2.png)";
 }
 
-categoria.addEventListener("click", function () {
+categoria.addEventListener("change", function () {
     if (categoria.value === "Vaca" || categoria.value === "Novilla") {
         prenada.style.display = "flex";
         prenada.required = true;
@@ -52,7 +52,7 @@ categoria.addEventListener("click", function () {
         edad_es.required = true;
     }
 })
-prenada.addEventListener("click", function () {
+prenada.addEventListener("change", function () {
     if (prenada.value === "Esta preñada") {
         tipoprenada.style.display = "flex";
         toro.style.display = "flex";
@@ -74,7 +74,7 @@ prenada.addEventListener("click", function () {
         otro_R.required = false;
     }
 })
-raza.addEventListener("click", function () {
+raza.addEventListener("change", function () {
     if (raza.value === "Otra") {
         otro_R.style.display = "flex";
         otro_R.required = true;
@@ -85,7 +85,7 @@ raza.addEventListener("click", function () {
         raza.required = true;
     }
 })
-toro.addEventListener("click", function () {
+toro.addEventListener("change", function () {
     if (toro.value === "Otra") {
         otro_T.style.display = "flex";
         otro_T.required = true;
