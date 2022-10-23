@@ -346,23 +346,23 @@ router.post('/login-facebook', async (req, res) => {
 
 //---------------------------------------------- other actions --------------------------------------------//
 router.get('/iniciosesion', async (req, res) => {
-	modal = true;
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					setTimeout(() => {
-						let info = {
-							photo: globalThis.photo,
-							name: globalThis.name,
-						}
-						console.log("el nomnbre es: ", info.name);
-						verificarEstado(res, 'publicaciones', 'InicioSesion', publicacion, info, () => {
-							//...
-						});
-					}, 500);
+					let info = {
+					// 	name: globalThis.name,
+					// 	photo: globalThis.photo,
+					// }
+						name: req.session.name,
+						photo: req.session.photo,
+					}
+					console.log("🚀 ~ file: index.js ~ line 71 ~ .then ~ info", info)
+					verificarEstado(req, res, 'publicaciones', 'InicioSesion', publicacion, info, () => {
+						//...
+					});
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
@@ -375,23 +375,23 @@ router.get('/iniciosesion', async (req, res) => {
 
 // formulario de registro y solicitudes en la pagina de inicio
 router.get('/registro', async (req, res) => {
-	modal = true;
 	publicaciones('publications')
 		.then((publicaciones) => {
 			Users()
 				.then((users) => {
 					let publicacion = unir(publicaciones, users);
 					//res.send(a);
-					setTimeout(() => {
-						let info = {
-							photo: globalThis.photo,
-							name: globalThis.name,
-						}
-						console.log("el nomnbre es: ", info.name);
-						verificarEstado(res, 'publicaciones', 'registro', publicacion, info, () => {
-							//...
-						});
-					}, 500);
+					let info = {
+					// 	name: globalThis.name,
+					// 	photo: globalThis.photo,
+					// }
+						name: req.session.name,
+						photo: req.session.photo,
+					}
+					console.log("🚀 ~ file: index.js ~ line 71 ~ .then ~ info", info)
+					verificarEstado(req, res, 'publicaciones', 'registro', publicacion, info, () => {
+						//...
+					});
 				})
 				.catch((error) => { console.log("No hay Usuarios", error); });
 		})
@@ -1338,7 +1338,7 @@ async function publicaciones_propias(dataBase, idUser) {
 	}));
 	//console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
-	userRegistersort(function (x, y) {
+	userRegister.sort(function (x, y) {
 		let a = x.updatedAt;
 		a = a.split('/');
 		let d ;
