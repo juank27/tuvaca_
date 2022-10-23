@@ -67,6 +67,7 @@ prenada.addEventListener("change", function () {
         toro.style.display = "none";
         semanas.style.display = "none";
         primeriza.style.display = "none";
+        nprenada.style.display = "none";
         tipoprenada.required = false;
         toro.required = false;
         semanas.required = false;
@@ -303,7 +304,9 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
-    edad_es.value=anos.value
+    if(anos.value!=" "){
+        edad_es.value=anos.value
+    }
     if (valor === 0) {
         modalf.style.display = "flex";
         requerido.style.color = "red";

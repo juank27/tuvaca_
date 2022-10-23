@@ -360,7 +360,7 @@ router.get('/registro', async (req, res) => {
 });
 // formulario de registro y solicitudes en la pagina de inicio
 router.get('/manual', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'manual', datos = '', data = '', () => {
+	verificarEstado(req, res, 'publicaciones', 'manual', datos = '', data = '', () => {
 		//...
 	});
 });
@@ -1252,13 +1252,23 @@ async function publicaciones(dataBase) {
 		...doc.data(),
 	}));
 	userRegister.sort(function (x, y) {
-		a = x.updatedAt;
+		let a = x.updatedAt;
 		a = a.split('/');
-		a = a[2] + a[1] + a[0];
+		let d ;
+		if (a[1].length === 1){
+			d = a[2] + +"0" + a[1] + a[0];
+		} else {
+			d = a[2] + a[1] + a[0];
+		}
 		let b = y.updatedAt;
 		b = b.split('/');
-		b = b[2] + b[1] + b[0];
-		return b - a;
+		let c;
+		if (b[1].length === 1) {
+			c = b[2] + +"0" + b[1] + b[0];
+		} else {
+			c = b[2] + b[1] + b[0];
+		}
+		return parseInt(c) - parseInt(d);
 	});
 	console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
@@ -1286,14 +1296,24 @@ async function publicaciones_propias(dataBase, idUser) {
 	}));
 	//console.log(typeof (userRegister));//-> salida: object
 	//console.log(userRegister);//-> Estructura de datos
-	userRegister.sort(function (x, y) {
-		a = x.updatedAt;
+	userRegistersort(function (x, y) {
+		let a = x.updatedAt;
 		a = a.split('/');
-		a = a[2] + a[1] + a[0];
+		let d ;
+		if (a[1].length === 1){
+			d = a[2] + +"0" + a[1] + a[0];
+		} else {
+			d = a[2] + a[1] + a[0];
+		}
 		let b = y.updatedAt;
 		b = b.split('/');
-		b = b[2] + b[1] + b[0];
-		return b - a;
+		let c;
+		if (b[1].length === 1) {
+			c = b[2] + +"0" + b[1] + b[0];
+		} else {
+			c = b[2] + b[1] + b[0];
+		}
+		return parseInt(c) - parseInt(d);
 	});
 	let data_publications = [];
 	let aux = 0;

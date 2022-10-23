@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
     <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
-    <title>tuVaca.com</title>
+    <title>tuVaca</title>
 </head>
 
 <body class="body_perfil" onload="cargar()">
@@ -123,17 +123,17 @@
             </section>
         </section>
         <!--Formulario para dirigirse a editar-->
-        <form style="display:none;" action="/visualizarPublicacion" method="POST" >
+        <form style="display:none;" action="/visualizarPublicacion" method="POST">
             <input name="id_p" id="id3" type="text" value="">
             <input type="submit" value="" id="perfilS">
         </form>
         <!--Formulario para dirigirse a eliminar-->
-        <form style="display:none;" action="/eliminarPublicacion" method="POST" >
+        <form style="display:none;" action="/eliminarPublicacion" method="POST">
             <input name="id_p" id="id4" type="text" value="">
             <input type="submit" value="" id="perfilE">
         </form>
         <!--Formulario para dirigirse a estado-->
-        <form style="display:none;" action="/estadoPublicacion" method="POST" >
+        <form style="display:none;" action="/estadoPublicacion" method="POST">
             <input name="id_p" id="id5" type="text" value="">
             <input type="submit" value="" id="perfilEs">
         </form>
@@ -170,6 +170,8 @@
                             <option value="Cucunuba"></option>
                             <option value="Simijaca"></option>
                             <option value="Susa"></option>
+                            <option value="Fúquene">Fúquene</option>
+
                         </datalist>
                         <button id="boton" type="submit">Guardar Cambios</button>
                     </form>
