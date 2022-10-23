@@ -322,17 +322,59 @@ router.post('/login-facebook', async (req, res) => {
 
 //---------------------------------------------- other actions --------------------------------------------//
 router.get('/iniciosesion', async (req, res) => {
+	modal = true;
+	publicaciones('publications')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					setTimeout(() => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						console.log("el nomnbre es: ", info.name);
+						verificarEstado(res, 'publicaciones', 'InicioSesion', publicacion, info, () => {
+							//...
+						});
+					}, 500);
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
 	//res.render('InicioSesion');
-	verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', data = '', () => {
+	/*verificarEstado(res, 'publicaciones', 'InicioSesion', datos = '', data = '', () => {
 		//...
-	});
+	});*/
 });
 
 // formulario de registro y solicitudes en la pagina de inicio
 router.get('/registro', async (req, res) => {
-	verificarEstado(res, 'publicaciones', 'registro', datos = '', data = '', () => {
+	modal = true;
+	publicaciones('publications')
+		.then((publicaciones) => {
+			Users()
+				.then((users) => {
+					let publicacion = unir(publicaciones, users);
+					//res.send(a);
+					setTimeout(() => {
+						let info = {
+							photo: globalThis.photo,
+							name: globalThis.name,
+						}
+						console.log("el nomnbre es: ", info.name);
+						verificarEstado(res, 'publicaciones', 'registro', publicacion, info, () => {
+							//...
+						});
+					}, 500);
+				})
+				.catch((error) => { console.log("No hay Usuarios", error); });
+		})
+		.catch((error) => { console.log("No hay publicaiones", error); });
+	/*verificarEstado(res, 'publicaciones', 'registro', datos = '', data = '', () => {
 		//...
-	});
+	});*/
 });
 
 //ruta inicial para renderizar publicaciones
