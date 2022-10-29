@@ -103,7 +103,7 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 			sendImages(files,updateImage, docRef);
 			//redireccion al momento de subir la publicacion
 			//utiliza tiempo para alcanzar a cargar la informacion
-			// setTimeout(() => {
+			setTimeout(() => {
 				res.redirect('/publicaciones');
 			}, 2300);
 		})
