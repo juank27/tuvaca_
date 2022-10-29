@@ -13,6 +13,7 @@ let foto_perfil = document.getElementById("foto_perfil");
 function cargar() {
     per.style.backgroundImage = (`url(${foto_perfil.value})`);
     crear.style.backgroundImage = "url(./usuarios/menu/icons/Sum2.png)";
+    anos.value="";
 }
 
 categoria.addEventListener("change", function () {
@@ -30,6 +31,9 @@ categoria.addEventListener("change", function () {
         toro.required = false;
         semanas.required = false;
         nprenada.required = false;
+    }
+    if(categoria.value === "Novillo"){
+        anos.value="";
     }
     if (categoria.value === "Toro" || categoria.value === "Vaca" || categoria.value === "Ternera" || categoria.value === "Ternero") {
         if (categoria.value === "Ternera" || categoria.value === "Ternero") {
@@ -229,7 +233,9 @@ c_3.addEventListener("click", function () {
     array1[1] = 2;
     limite.innerHTML = "";
 })
-
+function hola(){
+    anos.value=""
+}
 /****input 4******/
 IF_4.addEventListener("click", function () {
     f4.click();
@@ -304,7 +310,8 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
-    if(anos.value!=" "){
+    console.log(anos.value)
+    if(anos.value!=""){
         edad_es.value=anos.value
     }
     if (valor === 0) {
