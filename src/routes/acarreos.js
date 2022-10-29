@@ -12,10 +12,10 @@ const upload = multer({ storage: storageLocal });
 var imagen = new envioImg();
 //ruta del render para la prueba con imagenes
 router.get('/imgaa', (req, res) => {
-	console.log('------------------------------------');
+	//console.log('------------------------------------');
 	//console.log(id.getUser());
 	//console.log(globalThis.idUser);
-	console.log(imagen.getDate());
+	//console.log(imagen.getDate());
 	res.render('img', { layout: false });
 });
 //nuevo acarreo
@@ -41,10 +41,10 @@ router.post('/new-acarreo', upload.single('vehiculo'), (req, res) => {
 		data.tipoveh = otro_R;
 	}
 
-	console.log("-------------------");
+	/*console.log("-------------------");
 	console.log(data);
 	console.log("-------------------");
-	console.log(img);
+	console.log(img);*/
 	imagen.sendImages(img, imagen.enviarPublication, data, req);
 	res.redirect('/acarreos');
 });

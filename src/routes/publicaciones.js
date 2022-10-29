@@ -13,19 +13,16 @@ const upload = multer({ storage: storageLocal });
 
 //ruta del render para la prueba con imagenes
 router.get('/imga', (req, res) => {
-	console.log('------------------------------------');
-	//console.log(id.getUser());
-	//console.log(globalThis.idUser);
 	let a = enviarPublication(
 		{
 			Ultimo: 'ultimo22222',
 		}
 	)
 		.then(function (docRef) {
-			console.log("Document written with ID: ", docRef);
+			//console.log("Document written with ID: ", docRef);
 		})
 		.catch(function (error) {
-			console.log('Ocurrio un error');
+			//console.log('Ocurrio un error');
 		});
 	res.render('img', {layout: false});
 });
@@ -62,12 +59,10 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		otro_R,
 		otro_T,
 	} = req.body;
-	console.log(data);
 	if(data['raza'] === 'Otra'){
 		data.raza=data.otro_R;
 	}
 	if(data['toro'] === 'Otra'){
-		console.log("cambiando toro");
 		data.toro=data.otro_T;
 	}
 	if (data['prenada'] === 'Esta preñada'){
@@ -91,7 +86,6 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 		input4: '',
 		updatedAt : fecha,
 	};
-	console.log(publication);
 	//-> files[inputt][0].originalname forma para ingresar a los datos
 	//Object.keys(files).length -> longitud de los archivos que se subieron
 	//sendImages(files, enviar, text1, text2);
@@ -99,7 +93,7 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 	enviarPublication(publication)
 		.then(function (docRef) {
 			//obtengo el id de la publicacion
-			console.log("Document written with ID: ", docRef);
+			//console.log("Document written with ID: ", docRef);
 			sendImages(files,updateImage, docRef);
 			//redireccion al momento de subir la publicacion
 			//utiliza tiempo para alcanzar a cargar la informacion
@@ -108,7 +102,7 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 			}, 2300);
 		})
 		.catch(function (error) {
-			console.log('Ocurrio un error');
+			//console.log('Ocurrio un error');
 		});
 });
 
@@ -165,7 +159,7 @@ router.post('/editarPublicacion', multpleInput, async (req, res) => {
 		modifData.raza=modifData.otro_R;
 	}
 	if(modifData['toro'] === 'Otra'){
-		console.log("cambiando toro");
+		//console.log("cambiando toro");
 		modifData.toro=modifData.otro_T;
 	}
 	if (modifData['prenada'] === 'Esta preñada'){
@@ -201,11 +195,11 @@ function sendImages(files, callback, id) {
 						callback(id, url, inputt);
 					})
 					.catch((error) => {
-						console.log(error);
+						//console.log(error);
 					});
 			})
 			.catch((error) => {
-				console.log(error);
+				//console.log(error);
 			});
 	}
 }
@@ -213,7 +207,7 @@ function sendImages(files, callback, id) {
 //funcion para guardar publicaciones
 async	function enviarPublication(data) {
 	const publication =  await db.collection('publications').add(data);
-	console.log(publication.id);
+	//console.log(publication.id);
 	return publication.id;
 }
 async function updateImage(id, url, inputt) {
@@ -222,7 +216,7 @@ async function updateImage(id, url, inputt) {
 	let updateData = {};
 	updateData[inputt] = url;
 	await db.collection('publications').doc(id).update(updateData);
-	console.log('se actualizo la imagen');
+	//console.log('se actualizo la imagen');
 }
 
 //obtener la fecha actual en formato dd/mm/yyyy

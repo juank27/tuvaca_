@@ -17,7 +17,7 @@ class envioImg {
 	sendImages(files, callback, data, req) {
 		//console.log(files);
 
-		console.log(files);
+		//console.log(files);
 		//ref de la imagen y asignacion de nombre unico
 		if(files!==undefined){
 			const storageRef = ref(
@@ -37,11 +37,11 @@ class envioImg {
 							callback(data, url, req);
 						})
 						.catch((error) => {
-							console.log(error);
+							//console.log(error);
 						});
 				})
 				.catch((error) => {
-					console.log(error);
+					////console.log(error);
 				});
 		}
 	}
@@ -70,15 +70,15 @@ class envioImg {
 							.then((result) => {
 							})
 							.catch((error) => {
-								console.log(error);
+								//console.log(error);
 							});
 					})
 					.catch((error) => {
-						console.log(error);
+						//console.log(error);
 					});
 			})
 			.catch((error) => {
-				console.log(error);
+				//console.log(error);
 			});
 	}
 	//funcion para guardar publicaciones
@@ -89,7 +89,7 @@ class envioImg {
 		// data.iduser = globalThis.idUser;
 		data.iduser = req.session.idUser;
 		const publication = await db.collection('acarreos').add(data);
-		console.log(publication.id);
+		//console.log(publication.id);
 		return publication.id;
 	}
 	//funcion para guardar publicaciones
