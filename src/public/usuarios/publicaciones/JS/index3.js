@@ -2,8 +2,6 @@
 let c = document.getElementById("c");
 let op1 = document.getElementById("opcion1");
 let op2 = document.getElementById("opcion2");
-let op3 = document.getElementById("opcion3");
-let op4 = document.getElementById("opcion4");
 let op6 = document.getElementById("op2");
 
 function vacas() {
@@ -12,7 +10,6 @@ function vacas() {
         op1.style.display = 'block';
         if (op6.innerHTML == "Esta preñada") {
             op2.style.display = 'block';
-            op3.style.display = 'block';
         }
     }
 }
