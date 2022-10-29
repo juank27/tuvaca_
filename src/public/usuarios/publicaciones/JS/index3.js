@@ -12,7 +12,6 @@ function vacas() {
         op1.style.display = 'block';
         if (op6.innerHTML == "Esta preñada") {
             op2.style.display = 'block';
-            op5.style.display = 'block';
             op3.style.display = 'block';
         }
     }
