@@ -310,7 +310,6 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
-    console.log(anos.value)
     if(anos.value!=""){
         edad_es.value=anos.value
     }
