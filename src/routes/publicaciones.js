@@ -104,9 +104,8 @@ router.post('/new_publication', multpleInput,  (req, res) => {
 			//redireccion al momento de subir la publicacion
 			//utiliza tiempo para alcanzar a cargar la informacion
 			// setTimeout(() => {
-			// 	res.redirect('/publicaciones');
-			// }, 2300);
-			res.redirect('/publicaciones');
+				res.redirect('/publicaciones');
+			}, 2300);
 		})
 		.catch(function (error) {
 			console.log('Ocurrio un error');
