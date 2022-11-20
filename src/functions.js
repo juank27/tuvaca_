@@ -68,17 +68,18 @@ class envioImg {
 						};
 						callback("users", id, data)
 							.then((result) => {
+								//console.log(result);
 							})
 							.catch((error) => {
-								//console.log(error);
+								console.log(error);
 							});
 					})
 					.catch((error) => {
-						//console.log(error);
+						console.log(error);
 					});
 			})
 			.catch((error) => {
-				//console.log(error);
+				console.log(error);
 			});
 	}
 	//funcion para guardar publicaciones

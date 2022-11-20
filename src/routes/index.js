@@ -30,6 +30,7 @@ var _idUser = ''; //id del usuario
 globalThis.idUser = _idUser;
 globalThis.photo = '';
 globalThis.name = '';
+globalThis.url_global = '';
 //verificando estados de la sesion con las rutas
 function verificarEstado(req, res, ruta, ruta2, datos = '', data = '', callback) {
 	//console.log(mensaje);
@@ -725,6 +726,7 @@ router.get('/perfil', async (req, res) => {
 					// //result.push(data)
 					// console.log(result);
 					let unir_publicaciones = unir(result, data);
+					req.session.photo = data[0].photo;
 					////////console.log(unir_publicaciones);
 					verificarEstado(req, res, 'perfil', 'index', unir_publicaciones, data[0], () => {
 						////////console.log('Estoy dentro del perfil con un callback');
@@ -778,7 +780,9 @@ router.post('/estadoPublicacion', async (req, res) => {
 router.post('/actualizar_img', upload.single('perfil'), async (req, res) => {
 	let img = req.file;
 	imagen.sendImagesPerfil(img, req.session.idUser, update_data);
-	res.redirect('/perfil');
+	setTimeout(() => {
+		res.redirect('/perfil');
+	}, 2000);
 });
 
 //eliminar publicacion
@@ -1453,7 +1457,7 @@ async function data_perfil(idUser) {
 //actualizar datos de una coleccion
 async function update_data(bdatos, id, dataUpdate) {
 	const data = db.collection(bdatos).doc(id);
-	await data.update(dataUpdate);
+	data.update(dataUpdate);
 }
 //------------------------------Esto es una prueba -------------------------------------------------------
 router.get('/consulta', async (req, res) => {
