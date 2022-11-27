@@ -204,6 +204,7 @@ IF_2.addEventListener("click", function () {
 })
 f2.addEventListener("change", function () {
     var files = this.files;
+    console.log(files);
     array2[0] = 1;
     array1[0] = 0;
     visualizar(files[0], IF_2, ct_2, im2, vd2);
@@ -279,26 +280,41 @@ function visualizar(file, input, foto, imagen, video) {
     var imgCodified = URL.createObjectURL(file);
 
     if (file.type === "video/mp4") {
-        video.style.display = "flex";
-        video.src = imgCodified;
-        foto.style.display = "flex";
-        input.style.display = "none";
-        imagen.style.display = "none";
+        if(file.size<=18874368){
+
+            video.style.display = "flex";
+            video.src = imgCodified;
+            foto.style.display = "flex";
+            input.style.display = "none";
+            imagen.style.display = "none";
+        }else{
+            limite.innerHTML="No se pudo cargar el video seleccionado ya que sobre pasa el peso limite para videos que es 18MB"
+        }
     } else {
-        imagen.style.display = "flex";
-        imagen.src = imgCodified;
-        foto.style.display = "flex";
-        input.style.display = "none";
-        video.style.display = "none";
+        if(file.size<=4194304){
+
+            imagen.style.display = "flex";
+            imagen.src = imgCodified;
+            foto.style.display = "flex";
+            input.style.display = "none";
+            video.style.display = "none";
+        }else{
+            limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 5MB"
+        }
     }
 }
 function visualizar2(file, imagen2) {
-    var imgCodified = URL.createObjectURL(file);
-    separador.style.display = "none";
-    requerido.style.display = "none";
-    IF_1.style.display = "none";
-    foto.style.display = "flex";
-    principal.src = imgCodified;
+    if(file.size<=4194304){
+
+        var imgCodified = URL.createObjectURL(file);
+        separador.style.display = "none";
+        requerido.style.display = "none";
+        IF_1.style.display = "none";
+        foto.style.display = "flex";
+        principal.src = imgCodified;
+    }else{
+        limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 5MB"
+    }
 
 }
 foto.addEventListener("click", function () {

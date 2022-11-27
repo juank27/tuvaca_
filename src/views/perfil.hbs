@@ -155,7 +155,7 @@
                     <p>Datos Personales</p>
                     <form action="/update_data_personal" method="POST">
                         <input type="text" value="{{data.name}}" name="name" id="name" placeholder="Nombre Completo"
-                            required>
+                            required pattern="[A-Za-z\s]{5,50}" title="Solo puede usar letras mayusculas y minusculas no se aceptan valores numericos">
                         <input type="number" value="{{data.phone}}" name="phone" id="phone"
                             placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
                         <input type="text" value="{{data.ubication}}" name="ubication" id="ubication" list="municipios"
