@@ -155,6 +155,8 @@ let valor = 0;
 /****input 1******/
 IF_1.addEventListener("click", function () {
     f1.click();
+    limite.innerHTML = "";
+
 })
 f1.addEventListener("change", function () {
     var files = this.files;
@@ -288,7 +290,7 @@ function visualizar(file, input, foto, imagen, video) {
             input.style.display = "none";
             imagen.style.display = "none";
         }else{
-            limite.innerHTML="No se pudo cargar el video seleccionado ya que sobre pasa el peso limite para videos que es 18MB"
+            limite.innerHTML="No se pudo cargar el video seleccionado ya que sobrepasa el peso limite para videos que es 18MB"
         }
     } else {
         if(file.size<=4194304){
@@ -299,7 +301,7 @@ function visualizar(file, input, foto, imagen, video) {
             input.style.display = "none";
             video.style.display = "none";
         }else{
-            limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 5MB"
+            limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobrepasa el peso limite para imagenes que es 4MB"
         }
     }
 }
@@ -313,7 +315,8 @@ function visualizar2(file, imagen2) {
         foto.style.display = "flex";
         principal.src = imgCodified;
     }else{
-        limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 5MB"
+        limite.style.color = "red";
+        limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 4MB"
     }
 
 }
