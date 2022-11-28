@@ -32,6 +32,7 @@ let valor = 0;
 /****input 5******/
 f5.addEventListener("click", function () {
     c_5.click();
+    requerido.innerHTML=""
 })
 c_5.addEventListener("change", function () {
     var files = this.files;

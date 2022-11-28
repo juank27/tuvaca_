@@ -203,6 +203,8 @@ mas.addEventListener("click", function () {
 /****input 2******/
 IF_2.addEventListener("click", function () {
     f2.click();
+    limite.innerHTML = "";
+
 })
 f2.addEventListener("change", function () {
     var files = this.files;
@@ -222,6 +224,8 @@ c_2.addEventListener("click", function () {
 /****input 3******/
 IF_3.addEventListener("click", function () {
     f3.click();
+    limite.innerHTML = "";
+
 })
 f3.addEventListener("change", function () {
     var files = this.files;
@@ -242,6 +246,8 @@ function hola(){
 /****input 4******/
 IF_4.addEventListener("click", function () {
     f4.click();
+    limite.innerHTML = "";
+
 })
 f4.addEventListener("change", function () {
     var files = this.files;
@@ -260,6 +266,8 @@ c_4.addEventListener("click", function () {
 /****input 5******/
 IF_5.addEventListener("click", function () {
     f5.click();
+    limite.innerHTML = "";
+
 })
 f5.addEventListener("change", function () {
     var files = this.files;
