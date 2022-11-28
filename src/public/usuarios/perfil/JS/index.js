@@ -117,10 +117,13 @@ let f5 = document.querySelectorAll(".foto_selector")[0];
 let c_5 = document.querySelectorAll(".perfil")[0];
 let ct_5 = document.querySelectorAll(".foto_perfil")[0];
 let guardar= document.querySelectorAll(".subir")[0];
+let error= document.getElementById("error");
+
 
 /****input 5******/
 f5.addEventListener("click", function () {
     c_5.click();
+    error.innerHTML="";
 })
 c_5.addEventListener("change", function () {
     var files = this.files;
@@ -129,9 +132,13 @@ c_5.addEventListener("change", function () {
 
 /*******funciones*******/
 function visualizar(file) {
-    var imgCodified = URL.createObjectURL(file);
-    ct_5.style.backgroundImage =`url(${imgCodified})`;
-    guardar.style.display="flex";
+    if(file.size<=4194304){
+        var imgCodified = URL.createObjectURL(file);
+        ct_5.style.backgroundImage =`url(${imgCodified})`;
+        guardar.style.display="flex";
+    }else{
+        error.innerHTML="No se pudo cargar la imagen seleccionada ya que sobrepasa el peso limite para imagenes que es 4MB"
+    }
 }
 
 
