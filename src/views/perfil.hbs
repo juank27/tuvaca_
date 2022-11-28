@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./usuarios/perfil/CSS/tablet.css" media="screen and (min-width:600px)">
     <link rel="stylesheet" href="./usuarios/perfil/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
-    <title>tuVaca.com</title>
+    <title>tuVaca</title>
 </head>
 
 <body class="body_perfil" onload="cargar()">
@@ -26,11 +26,12 @@
                 <form action="/actualizar_img" method="POST" enctype="multipart/form-data">
                     <div class="foto_selector"></div>
                     <input class="perfil" type="file" name="perfil" accept="image/png, .jpeg, .jpg">
+                    <p id="error" style="color: red;"></p>
                     <input type="submit" class="subir" value="Guardar Cambios">
                 </form>
             </div>
             <div class="datos">
-                <div class="herramientas">
+                <div class="herramientas" >
                     <a class="uno" href="/misacarreos" title="Mis Acarreos"></a>
                     <div class="dos" title="Ajustes"></div>
                     <a class="tres" href="/logout" title="Cerrar Sesión"></a>
@@ -123,17 +124,17 @@
             </section>
         </section>
         <!--Formulario para dirigirse a editar-->
-        <form style="display:none;" action="/visualizarPublicacion" method="POST" >
+        <form style="display:none;" action="/visualizarPublicacion" method="POST">
             <input name="id_p" id="id3" type="text" value="">
             <input type="submit" value="" id="perfilS">
         </form>
         <!--Formulario para dirigirse a eliminar-->
-        <form style="display:none;" action="/eliminarPublicacion" method="POST" >
+        <form style="display:none;" action="/eliminarPublicacion" method="POST">
             <input name="id_p" id="id4" type="text" value="">
             <input type="submit" value="" id="perfilE">
         </form>
         <!--Formulario para dirigirse a estado-->
-        <form style="display:none;" action="/estadoPublicacion" method="POST" >
+        <form style="display:none;" action="/estadoPublicacion" method="POST">
             <input name="id_p" id="id5" type="text" value="">
             <input type="submit" value="" id="perfilEs">
         </form>
@@ -155,7 +156,7 @@
                     <p>Datos Personales</p>
                     <form action="/update_data_personal" method="POST">
                         <input type="text" value="{{data.name}}" name="name" id="name" placeholder="Nombre Completo"
-                            required>
+                            required pattern="[A-Za-z\s]{5,50}" title="Solo puede usar letras mayusculas y minusculas no se aceptan valores numericos">
                         <input type="number" value="{{data.phone}}" name="phone" id="phone"
                             placeholder="Número de Teléfono" min="3000000000" max="9999999999" required>
                         <input type="text" value="{{data.ubication}}" name="ubication" id="ubication" list="municipios"
@@ -170,6 +171,8 @@
                             <option value="Cucunuba"></option>
                             <option value="Simijaca"></option>
                             <option value="Susa"></option>
+                            <option value="Fúquene">Fúquene</option>
+
                         </datalist>
                         <button id="boton" type="submit">Guardar Cambios</button>
                     </form>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,33 +13,32 @@
     <link rel="stylesheet" href="./principal/CSS/tablet.css" media="screen and (min-width:600px)">
     <link rel="stylesheet" href="./principal/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images//logoblanco.png" sizes="100x100">
-    <title>tuVaca.com</title>
+    <title>tuVaca</title>
 </head>
 <body class="body">
-        <!--Section fomulario de inicio de sesion-->
-        <section class="modal_container_IS2 ">
-            <section class="modal_IS2 ">
-                <div class="modal_Cuerpo">
-                    <img class="modal_logo" src="./principal/images/logo2.png" alt="">
-                    <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
-                        <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
-                        <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
-                        <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7" required>
-                        <button type="submit">Iniciar Sesión</button>
-                    </form>
+    {{!-- {{{layout : false}}} --}}
+    <section class="modal_container_IS2 ">
+        <section class="modal_IS2 ">
+           <div class="modal_Cuerpo2">
+                <img class="modal_logo" src="./principal/images/logo2.png" alt="">
+                <form class="modal_formulario_IS modal_formulario" id="login-form" action="/login-email" method="POST">
+                    <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
+                    <input type="email" name="emailb" id="emailb" placeholder="Correo Electronico" style="display:none">
+                    <input type="password" name="password" id="password" placeholder="Contraseña" minlength="7"
+                        required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
                 <h1 class="errores">{{mensajeError}}</h1>
-
-                    <div class="modal_separador"></div>
-                    <div class="modal_google">
-                        <span></span>
-                        <a id="logingoogle">Iniciar Sesión con Google</a>
-                    </div>
-                    <div class="modal_facebook">
-                        <span></span>
-                        <a id="loginfacebook">Iniciar Sesión con Facebook</a>
-                    </div>
+                <div class="modal_separador"></div>
+                <div class="modal_google">
+                    <span></span>
+                    <a id="logingoogle">Iniciar Sesión con Google</a>
                 </div>
-            </section>
+                <div class="modal_facebook">
+                    <span></span>
+                    <a id="loginfacebook">Iniciar Sesión con Facebook</a>
+                </div>
+            </div>
         </section>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>

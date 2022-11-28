@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="./usuarios/publicaciones/CSS/tablet.css" media="screen and (min-width:600px)">
     <link rel="stylesheet" href="./usuarios/publicaciones/CSS/web.css" media="screen and (min-width:1000px)">
     <link rel="icon" type="image/png" href="./principal/images/logoblanco.png" sizes="100x100">
-    <title>tuVaca.com</title>
+    <title>tuVaca</title>
 </head>
 
 <body class="body_modal">
     <section class="modal_p2 ">
         <div class="modal_Cuerpo">
             <!--ocultos -->
-            <p id="yo"  style="display: none;">{{datos.name}} </p>
+            <p id="yo"  style="display: none;">{{datos.name_User}} </p>
             <input class="phone" type="text" value="{{datos.phone}}" style="display:none;">
             <input class="categoria" type="text" value="{{datos.categoria}}" style="display:none;">
             <input class="updateAt" type="text" value="{{datos.updatedAt}}" style="display:none;">
@@ -75,10 +75,8 @@
                     <ul id="opcion2">
                         <li>Metodo:{{datos.tipoprenada}}</li>
                         <li>{{datos.toro}}</li>
-                        <li>Tiene {{datos.meses}} </li>
-                    </ul>
-                    <ul id="opcion3">
-                        <li id="op5">Parto número: {{datos.nprenadas}}</li>
+                        <li>Tiene {{datos.meses}} de preñada </li>
+                        <li>Parto número: {{datos.nprenadas}}</li>
                     </ul>
                     <p>
                 </div>

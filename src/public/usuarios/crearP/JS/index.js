@@ -13,9 +13,10 @@ let foto_perfil = document.getElementById("foto_perfil");
 function cargar() {
     per.style.backgroundImage = (`url(${foto_perfil.value})`);
     crear.style.backgroundImage = "url(./usuarios/menu/icons/Sum2.png)";
+    anos.value="";
 }
 
-categoria.addEventListener("click", function () {
+categoria.addEventListener("change", function () {
     if (categoria.value === "Vaca" || categoria.value === "Novilla") {
         prenada.style.display = "flex";
         prenada.required = true;
@@ -30,6 +31,9 @@ categoria.addEventListener("click", function () {
         toro.required = false;
         semanas.required = false;
         nprenada.required = false;
+    }
+    if(categoria.value === "Novillo"){
+        anos.value="";
     }
     if (categoria.value === "Toro" || categoria.value === "Vaca" || categoria.value === "Ternera" || categoria.value === "Ternero") {
         if (categoria.value === "Ternera" || categoria.value === "Ternero") {
@@ -52,7 +56,7 @@ categoria.addEventListener("click", function () {
         edad_es.required = true;
     }
 })
-prenada.addEventListener("click", function () {
+prenada.addEventListener("change", function () {
     if (prenada.value === "Esta preñada") {
         tipoprenada.style.display = "flex";
         toro.style.display = "flex";
@@ -67,6 +71,7 @@ prenada.addEventListener("click", function () {
         toro.style.display = "none";
         semanas.style.display = "none";
         primeriza.style.display = "none";
+        nprenada.style.display = "none";
         tipoprenada.required = false;
         toro.required = false;
         semanas.required = false;
@@ -74,7 +79,7 @@ prenada.addEventListener("click", function () {
         otro_R.required = false;
     }
 })
-raza.addEventListener("click", function () {
+raza.addEventListener("change", function () {
     if (raza.value === "Otra") {
         otro_R.style.display = "flex";
         otro_R.required = true;
@@ -85,7 +90,7 @@ raza.addEventListener("click", function () {
         raza.required = true;
     }
 })
-toro.addEventListener("click", function () {
+toro.addEventListener("change", function () {
     if (toro.value === "Otra") {
         otro_T.style.display = "flex";
         otro_T.required = true;
@@ -150,6 +155,8 @@ let valor = 0;
 /****input 1******/
 IF_1.addEventListener("click", function () {
     f1.click();
+    limite.innerHTML = "";
+
 })
 f1.addEventListener("change", function () {
     var files = this.files;
@@ -199,6 +206,7 @@ IF_2.addEventListener("click", function () {
 })
 f2.addEventListener("change", function () {
     var files = this.files;
+    console.log(files);
     array2[0] = 1;
     array1[0] = 0;
     visualizar(files[0], IF_2, ct_2, im2, vd2);
@@ -228,7 +236,9 @@ c_3.addEventListener("click", function () {
     array1[1] = 2;
     limite.innerHTML = "";
 })
-
+function hola(){
+    anos.value=""
+}
 /****input 4******/
 IF_4.addEventListener("click", function () {
     f4.click();
@@ -272,26 +282,42 @@ function visualizar(file, input, foto, imagen, video) {
     var imgCodified = URL.createObjectURL(file);
 
     if (file.type === "video/mp4") {
-        video.style.display = "flex";
-        video.src = imgCodified;
-        foto.style.display = "flex";
-        input.style.display = "none";
-        imagen.style.display = "none";
+        if(file.size<=18874368){
+
+            video.style.display = "flex";
+            video.src = imgCodified;
+            foto.style.display = "flex";
+            input.style.display = "none";
+            imagen.style.display = "none";
+        }else{
+            limite.innerHTML="No se pudo cargar el video seleccionado ya que sobrepasa el peso limite para videos que es 18MB"
+        }
     } else {
-        imagen.style.display = "flex";
-        imagen.src = imgCodified;
-        foto.style.display = "flex";
-        input.style.display = "none";
-        video.style.display = "none";
+        if(file.size<=4194304){
+
+            imagen.style.display = "flex";
+            imagen.src = imgCodified;
+            foto.style.display = "flex";
+            input.style.display = "none";
+            video.style.display = "none";
+        }else{
+            limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobrepasa el peso limite para imagenes que es 4MB"
+        }
     }
 }
 function visualizar2(file, imagen2) {
-    var imgCodified = URL.createObjectURL(file);
-    separador.style.display = "none";
-    requerido.style.display = "none";
-    IF_1.style.display = "none";
-    foto.style.display = "flex";
-    principal.src = imgCodified;
+    if(file.size<=4194304){
+
+        var imgCodified = URL.createObjectURL(file);
+        separador.style.display = "none";
+        requerido.style.display = "none";
+        IF_1.style.display = "none";
+        foto.style.display = "flex";
+        principal.src = imgCodified;
+    }else{
+        limite.style.color = "red";
+        limite.innerHTML="No se pudo cargar la imagen seleccionada ya que sobre pasa el peso limite para imagenes que es 4MB"
+    }
 
 }
 foto.addEventListener("click", function () {
@@ -303,7 +329,9 @@ foto.addEventListener("click", function () {
 
 })
 subir.addEventListener("click", function () {
-    edad_es.value=anos.value
+    if(anos.value!=""){
+        edad_es.value=anos.value
+    }
     if (valor === 0) {
         modalf.style.display = "flex";
         requerido.style.color = "red";

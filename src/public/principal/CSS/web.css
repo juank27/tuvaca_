@@ -169,6 +169,9 @@
 .municipios h1{
     font-size: 1.6rem;
 }
+.modal_Cuerpo2{
+
+}
 /************************Main baner dos***********************************/
 .main_banerD {
     height: 200px;
@@ -296,4 +299,8 @@
     width: 60%;
     height: 60%;
 
+}
+.manual{
+    width: 40%;
+    height: 80%;
 }

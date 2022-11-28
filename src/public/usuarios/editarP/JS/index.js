@@ -489,7 +489,10 @@ foto.addEventListener("click", function () {
 })
 subir.addEventListener("click", function () {
     console.log(anos.value);
-    edad_es.value = anos.value;
+    if(anos.value!==""){
+
+        edad_es.value = anos.value;
+    }
     if (valor === 0) {
         modalf.style.display = "flex";
         requerido.style.color = "red";

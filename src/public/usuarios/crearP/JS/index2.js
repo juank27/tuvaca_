@@ -13,7 +13,7 @@ function cargar(){
     per.style.backgroundImage=(`url(${foto_perfil.value})`);
     per.style.boxShadow="0px 4px 4px 0px #A96224"
 }
-tipoveh.addEventListener("click", function () {
+tipoveh.addEventListener("change", function () {
     if (tipoveh.value === "Otro") {
         otro_R.style.display = "flex";
         otro_R.required = true;
@@ -42,10 +42,16 @@ c_5.addEventListener("change", function () {
 
 /*******funciones*******/
 function visualizar(file) {
-    var imgCodified = URL.createObjectURL(file);
-    foto.style.display = "flex";
-    f5.src = imgCodified;
-    requerido.innerHTML = "";
+    if(file.size<=4194304){
+
+        var imgCodified = URL.createObjectURL(file);
+        foto.style.display = "flex";
+        f5.src = imgCodified;
+        requerido.innerHTML = "";
+    }else{
+        requerido.style.color="red";
+        requerido.innerHTML="No se pudo cargar la imagen seleccionada ya que sobrepasa el peso limite para imagenes que es 4MB"
+    }
 }
 
 subir.addEventListener("click", function () {
